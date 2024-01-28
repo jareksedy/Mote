@@ -16,6 +16,7 @@
 		CAF5488E2B6687080048F9CF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5488D2B6687080048F9CF /* ContentView.swift */; };
 		CAF548902B6687090048F9CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF5488F2B6687090048F9CF /* Assets.xcassets */; };
 		CAF548932B6687090048F9CF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF548922B6687090048F9CF /* Preview Assets.xcassets */; };
+		CAF5489D2B66872A0048F9CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF5488F2B6687090048F9CF /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -211,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAF548812B6687080048F9CF /* Preview Assets.xcassets in Resources */,
+				CAF5489D2B66872A0048F9CF /* Assets.xcassets in Resources */,
 				CAF5487E2B6687080048F9CF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
