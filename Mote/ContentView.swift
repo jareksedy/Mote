@@ -12,15 +12,17 @@ struct ContentView: View {
     @State private var message: String = ""
     var body: some View {
         VStack {
-            Text("Received message: \(viewModel.message)")
-                .fixedSize(horizontal: false, vertical: true)
-            Divider()
-            TextField("Message to paired Apple Watch", text: $message)
-            Button("Send", action: {
-                let data = ["message": message]
-                message = ""
-                viewModel.session.sendMessage(data, replyHandler: nil)
-            })
+            ScrollView {
+                Text("Received message: \(viewModel.message)")
+                    .fixedSize(horizontal: false, vertical: true)
+                Divider()
+                TextField("Message to paired Apple Watch", text: $message)
+                Button("Send", action: {
+                    let data = ["message": message]
+                    message = ""
+                    viewModel.session.sendMessage(data, replyHandler: nil)
+                })
+            }
         }
         .padding()
     }
