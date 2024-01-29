@@ -9,12 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var viewModel = MoteViewModel()
+    @State private var message: String = ""
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("Received message: \(viewModel.message)")
+                .fixedSize(horizontal: false, vertical: true)
+            Divider()
+            TextField("Message to paired iPhone", text: $message)
+            Button("Send", action: {
+                let data = ["message": message]
+                message = ""
+                viewModel.session.sendMessage(data, replyHandler: nil)
+            })
         }
         .padding()
     }
