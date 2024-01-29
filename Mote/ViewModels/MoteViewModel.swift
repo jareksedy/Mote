@@ -10,14 +10,23 @@ import WatchConnectivity
 import WebOSClient
 
 final class MoteViewModel: NSObject, ObservableObject {
-    var session: WCSession
-    @Published var message: String = "..."
+    private var session: WCSession
+    private var tv: WebOSClient?
     
     init(session: WCSession = .default){
         self.session = session
         super.init()
         session.delegate = self
         session.activate()
+        connectAndRegister()
+    }
+}
+
+private extension MoteViewModel {
+    private func connectAndRegister() {
+        tv = WebOSClient(url: URL(string: "wss://192.168.8.10"), delegate: self)
+        tv?.connect()
+        tv?.send(.register(clientKey: AppSettings.shared.clientKey))
     }
 }
 
@@ -32,15 +41,23 @@ extension MoteViewModel: WCSessionDelegate {
         _ session: WCSession,
         didReceiveMessage message: [String : Any]
     ) {
-        if let receivedMessage = message["message"] as? String {
-            DispatchQueue.main.async { [weak self] in
-                guard let self else { return }
-                self.message = receivedMessage
-            }
+        if let target = message[.commonTarget] as? WebOSTarget {
+            tv?.send(target)
+        } else if let target = message[.keyTarget] as? WebOSKeyTarget {
+            tv?.sendKey(target)
         }
     }
     
     func sessionDidBecomeInactive(_ session: WCSession) {}
     
     func sessionDidDeactivate(_ session: WCSession) {}
+}
+
+extension MoteViewModel: WebOSClientDelegate {
+    func didRegister(with clientKey: String) {
+        AppSettings.shared.clientKey = clientKey
+    }
+    
+    func didReceiveNetworkError(_ error: Error?) {
+    }
 }

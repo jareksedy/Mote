@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "foil",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jessesquires/Foil.git",
+      "state" : {
+        "revision" : "bc08a46268cb3bb22fee2c8465d97e6d7bf981e1",
+        "version" : "5.0.1"
+      }
+    },
+    {
       "identity" : "webosclient",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/jareksedy/WebOSClient.git",

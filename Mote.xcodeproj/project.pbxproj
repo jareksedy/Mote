@@ -11,6 +11,14 @@
 		CA5FF7372B678670009C5DB4 /* WebOSClient in Frameworks */ = {isa = PBXBuildFile; productRef = CA5FF7362B678670009C5DB4 /* WebOSClient */; };
 		CA5FF73A2B6787CA009C5DB4 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FF7392B6787CA009C5DB4 /* StringExtensions.swift */; };
 		CA5FF73D2B6788DF009C5DB4 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FF7392B6787CA009C5DB4 /* StringExtensions.swift */; };
+		CA5FF73F2B679282009C5DB4 /* AppIconProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FF73E2B679282009C5DB4 /* AppIconProvider.swift */; };
+		CA5FF7402B679282009C5DB4 /* AppIconProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FF73E2B679282009C5DB4 /* AppIconProvider.swift */; };
+		CA5FF7442B6792E0009C5DB4 /* AppVersionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FF7432B6792E0009C5DB4 /* AppVersionProvider.swift */; };
+		CA5FF7452B6792E0009C5DB4 /* AppVersionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FF7432B6792E0009C5DB4 /* AppVersionProvider.swift */; };
+		CA5FF7482B67A3B6009C5DB4 /* Foil in Frameworks */ = {isa = PBXBuildFile; productRef = CA5FF7472B67A3B6009C5DB4 /* Foil */; };
+		CA5FF74A2B67A3C1009C5DB4 /* Foil in Frameworks */ = {isa = PBXBuildFile; productRef = CA5FF7492B67A3C1009C5DB4 /* Foil */; };
+		CA5FF74C2B67A3E1009C5DB4 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FF74B2B67A3E1009C5DB4 /* AppSettings.swift */; };
+		CA5FF74D2B67A3E1009C5DB4 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FF74B2B67A3E1009C5DB4 /* AppSettings.swift */; };
 		CA87053B2B668B2D0066316B /* MoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87053A2B668B2D0066316B /* MoteViewModel.swift */; };
 		CA87053E2B668C6B0066316B /* MoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87053D2B668C6B0066316B /* MoteViewModel.swift */; };
 		CAF5487A2B6687070048F9CF /* MoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF548792B6687070048F9CF /* MoteApp.swift */; };
@@ -51,6 +59,9 @@
 
 /* Begin PBXFileReference section */
 		CA5FF7392B6787CA009C5DB4 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		CA5FF73E2B679282009C5DB4 /* AppIconProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconProvider.swift; sourceTree = "<group>"; };
+		CA5FF7432B6792E0009C5DB4 /* AppVersionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionProvider.swift; sourceTree = "<group>"; };
+		CA5FF74B2B67A3E1009C5DB4 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		CA87053A2B668B2D0066316B /* MoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteViewModel.swift; sourceTree = "<group>"; };
 		CA87053D2B668C6B0066316B /* MoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteViewModel.swift; sourceTree = "<group>"; };
 		CAF548762B6687070048F9CF /* Mote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mote.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA5FF7482B67A3B6009C5DB4 /* Foil in Frameworks */,
 				CA5FF7342B6785DA009C5DB4 /* WebOSClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -78,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA5FF74A2B67A3C1009C5DB4 /* Foil in Frameworks */,
 				CA5FF7372B678670009C5DB4 /* WebOSClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -103,9 +116,28 @@
 		CA5FF73C2B6787E5009C5DB4 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				CA5FF7392B6787CA009C5DB4 /* StringExtensions.swift */,
+				CA5FF7412B679289009C5DB4 /* Extensions */,
+				CA5FF7422B679293009C5DB4 /* Helpers */,
+				CA5FF74B2B67A3E1009C5DB4 /* AppSettings.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		CA5FF7412B679289009C5DB4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CA5FF7392B6787CA009C5DB4 /* StringExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CA5FF7422B679293009C5DB4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CA5FF73E2B679282009C5DB4 /* AppIconProvider.swift */,
+				CA5FF7432B6792E0009C5DB4 /* AppVersionProvider.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		CA87053C2B668C590066316B /* ViewModels */ = {
@@ -204,6 +236,7 @@
 			name = Mote;
 			packageProductDependencies = (
 				CA5FF7332B6785DA009C5DB4 /* WebOSClient */,
+				CA5FF7472B67A3B6009C5DB4 /* Foil */,
 			);
 			productName = Mote;
 			productReference = CAF548762B6687070048F9CF /* Mote.app */;
@@ -224,6 +257,7 @@
 			name = "Mote Watch App";
 			packageProductDependencies = (
 				CA5FF7362B678670009C5DB4 /* WebOSClient */,
+				CA5FF7492B67A3C1009C5DB4 /* Foil */,
 			);
 			productName = "Mote Watch App";
 			productReference = CAF548862B6687080048F9CF /* Mote Watch App.app */;
@@ -258,6 +292,7 @@
 			mainGroup = CAF5486D2B6687070048F9CF;
 			packageReferences = (
 				CA5FF7322B6785DA009C5DB4 /* XCRemoteSwiftPackageReference "WebOSClient" */,
+				CA5FF7462B67A3B6009C5DB4 /* XCRemoteSwiftPackageReference "Foil" */,
 			);
 			productRefGroup = CAF548772B6687070048F9CF /* Products */;
 			projectDirPath = "";
@@ -296,6 +331,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA5FF74C2B67A3E1009C5DB4 /* AppSettings.swift in Sources */,
+				CA5FF73F2B679282009C5DB4 /* AppIconProvider.swift in Sources */,
+				CA5FF7442B6792E0009C5DB4 /* AppVersionProvider.swift in Sources */,
 				CA5FF73A2B6787CA009C5DB4 /* StringExtensions.swift in Sources */,
 				CAF5487C2B6687070048F9CF /* ContentView.swift in Sources */,
 				CAF5487A2B6687070048F9CF /* MoteApp.swift in Sources */,
@@ -307,6 +345,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA5FF74D2B67A3E1009C5DB4 /* AppSettings.swift in Sources */,
+				CA5FF7402B679282009C5DB4 /* AppIconProvider.swift in Sources */,
+				CA5FF7452B6792E0009C5DB4 /* AppVersionProvider.swift in Sources */,
 				CA5FF73D2B6788DF009C5DB4 /* StringExtensions.swift in Sources */,
 				CAF5488E2B6687080048F9CF /* BasicControlsView.swift in Sources */,
 				CAF5488C2B6687080048F9CF /* MoteApp.swift in Sources */,
@@ -616,6 +657,14 @@
 				minimumVersion = 1.1.0;
 			};
 		};
+		CA5FF7462B67A3B6009C5DB4 /* XCRemoteSwiftPackageReference "Foil" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jessesquires/Foil.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -628,6 +677,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CA5FF7322B6785DA009C5DB4 /* XCRemoteSwiftPackageReference "WebOSClient" */;
 			productName = WebOSClient;
+		};
+		CA5FF7472B67A3B6009C5DB4 /* Foil */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA5FF7462B67A3B6009C5DB4 /* XCRemoteSwiftPackageReference "Foil" */;
+			productName = Foil;
+		};
+		CA5FF7492B67A3C1009C5DB4 /* Foil */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA5FF7462B67A3B6009C5DB4 /* XCRemoteSwiftPackageReference "Foil" */;
+			productName = Foil;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

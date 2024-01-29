@@ -9,21 +9,29 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var viewModel = MoteViewModel()
-    @State private var message: String = ""
+    
     var body: some View {
         VStack {
-            ScrollView {
-                Text("Received message: \(viewModel.message)")
-                    .fixedSize(horizontal: false, vertical: true)
-                Divider()
-                TextField("Message to paired Apple Watch", text: $message)
-                Button("Send", action: {
-                    let data = ["message": message]
-                    message = ""
-                    viewModel.session.sendMessage(data, replyHandler: nil)
-                })
-            }
+            Image(uiImage: Bundle.main.icon ?? UIImage())
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 60, height: 60)
+                .cornerRadius(12)
+            
+            Text("\(AppVersionProvider.appVersion())")
+                .font(.system(size: 10, weight: .bold, design: .rounded))
         }
-        .padding()
+    }
+}
+
+extension Bundle {
+    public var icon: UIImage? {
+        if let icons = infoDictionary?["CFBundleIcons"] as? [String: Any],
+            let primaryIcon = icons["CFBundlePrimaryIcon"] as? [String: Any],
+            let iconFiles = primaryIcon["CFBundleIconFiles"] as? [String],
+            let lastIcon = iconFiles.last {
+            return UIImage(named: lastIcon)
+        }
+        return nil
     }
 }
