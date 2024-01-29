@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA87053B2B668B2D0066316B /* MoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87053A2B668B2D0066316B /* MoteViewModel.swift */; };
+		CA87053E2B668C6B0066316B /* MoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87053D2B668C6B0066316B /* MoteViewModel.swift */; };
 		CAF5487A2B6687070048F9CF /* MoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF548792B6687070048F9CF /* MoteApp.swift */; };
 		CAF5487C2B6687070048F9CF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5487B2B6687070048F9CF /* ContentView.swift */; };
 		CAF5487E2B6687080048F9CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF5487D2B6687080048F9CF /* Assets.xcassets */; };
@@ -14,9 +16,9 @@
 		CAF548872B6687080048F9CF /* Mote Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = CAF548862B6687080048F9CF /* Mote Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CAF5488C2B6687080048F9CF /* MoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5488B2B6687080048F9CF /* MoteApp.swift */; };
 		CAF5488E2B6687080048F9CF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5488D2B6687080048F9CF /* ContentView.swift */; };
-		CAF548902B6687090048F9CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF5488F2B6687090048F9CF /* Assets.xcassets */; };
 		CAF548932B6687090048F9CF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF548922B6687090048F9CF /* Preview Assets.xcassets */; };
-		CAF5489D2B66872A0048F9CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF5488F2B6687090048F9CF /* Assets.xcassets */; };
+		CAF5489E2B66881B0048F9CF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF548922B6687090048F9CF /* Preview Assets.xcassets */; };
+		CAF5489F2B6688280048F9CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF5488F2B6687090048F9CF /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CA87053A2B668B2D0066316B /* MoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteViewModel.swift; sourceTree = "<group>"; };
+		CA87053D2B668C6B0066316B /* MoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteViewModel.swift; sourceTree = "<group>"; };
 		CAF548762B6687070048F9CF /* Mote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF548792B6687070048F9CF /* MoteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteApp.swift; sourceTree = "<group>"; };
 		CAF5487B2B6687070048F9CF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -74,6 +78,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA87053C2B668C590066316B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				CA87053A2B668B2D0066316B /* MoteViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		CA87053F2B668C710066316B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				CA87053D2B668C6B0066316B /* MoteViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		CAF5486D2B6687070048F9CF = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +117,7 @@
 			children = (
 				CAF548792B6687070048F9CF /* MoteApp.swift */,
 				CAF5487B2B6687070048F9CF /* ContentView.swift */,
+				CA87053C2B668C590066316B /* ViewModels */,
 				CAF5487D2B6687080048F9CF /* Assets.xcassets */,
 				CAF5487F2B6687080048F9CF /* Preview Content */,
 			);
@@ -116,6 +137,7 @@
 			children = (
 				CAF5488B2B6687080048F9CF /* MoteApp.swift */,
 				CAF5488D2B6687080048F9CF /* ContentView.swift */,
+				CA87053F2B668C710066316B /* ViewModels */,
 				CAF5488F2B6687090048F9CF /* Assets.xcassets */,
 				CAF548912B6687090048F9CF /* Preview Content */,
 			);
@@ -211,8 +233,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAF5489E2B66881B0048F9CF /* Preview Assets.xcassets in Resources */,
 				CAF548812B6687080048F9CF /* Preview Assets.xcassets in Resources */,
-				CAF5489D2B66872A0048F9CF /* Assets.xcassets in Resources */,
 				CAF5487E2B6687080048F9CF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,8 +243,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAF5489F2B6688280048F9CF /* Assets.xcassets in Resources */,
 				CAF548932B6687090048F9CF /* Preview Assets.xcassets in Resources */,
-				CAF548902B6687090048F9CF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,6 +257,7 @@
 			files = (
 				CAF5487C2B6687070048F9CF /* ContentView.swift in Sources */,
 				CAF5487A2B6687070048F9CF /* MoteApp.swift in Sources */,
+				CA87053B2B668B2D0066316B /* MoteViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,6 +267,7 @@
 			files = (
 				CAF5488E2B6687080048F9CF /* ContentView.swift in Sources */,
 				CAF5488C2B6687080048F9CF /* MoteApp.swift in Sources */,
+				CA87053E2B668C6B0066316B /* MoteViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,14 +6,16 @@
 //
 
 import SwiftUI
+import WatchConnectivity
 
 struct ContentView: View {
+    @StateObject private var viewModel = MoteViewModel()
     var body: some View {
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("Watch Reachable: \(WCSession.default.isReachable ? "YES" : "NO")")
         }
         .padding()
     }

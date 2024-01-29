@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var viewModel = MoteViewModel()
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -17,8 +18,4 @@ struct ContentView: View {
         }
         .padding()
     }
-}
-
-#Preview {
-    ContentView()
 }
