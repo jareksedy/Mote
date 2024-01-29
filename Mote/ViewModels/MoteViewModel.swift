@@ -10,6 +10,8 @@ import WatchConnectivity
 import WebOSClient
 
 final class MoteViewModel: NSObject, ObservableObject {
+    @Published var isConnected: Bool = false
+    
     private var session: WCSession
     private var tv: WebOSClient?
     
@@ -24,7 +26,8 @@ final class MoteViewModel: NSObject, ObservableObject {
 
 private extension MoteViewModel {
     private func connectAndRegister() {
-        tv = WebOSClient(url: URL(string: "wss://192.168.8.10"), delegate: self)
+        guard !isConnected else { return }
+        tv = WebOSClient(url: URL(string: "wss://192.168.8.10:3001"), delegate: self)
         tv?.connect()
         tv?.send(.register(clientKey: AppSettings.shared.clientKey))
     }
@@ -41,23 +44,49 @@ extension MoteViewModel: WCSessionDelegate {
         _ session: WCSession,
         didReceiveMessage message: [String : Any]
     ) {
-        if let target = message[.commonTarget] as? WebOSTarget {
-            tv?.send(target)
-        } else if let target = message[.keyTarget] as? WebOSKeyTarget {
-            tv?.sendKey(target)
+        if let targetString = message[.keyTarget] as? String {
+            switch targetString {
+            case "left":
+                tv?.sendKey(.left)
+            case "right":
+                tv?.sendKey(.right)
+            case "up":
+                tv?.sendKey(.up)
+            case "down":
+                tv?.sendKey(.down)
+            case "volumeUp":
+                tv?.sendKey(.volumeUp)
+            case "volumeDown":
+                tv?.sendKey(.volumeDown)
+            case "enter":
+                tv?.sendKey(.enter)
+            default:
+                break
+            }
         }
     }
     
-    func sessionDidBecomeInactive(_ session: WCSession) {}
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        session.activate()
+    }
     
-    func sessionDidDeactivate(_ session: WCSession) {}
+    func sessionDidDeactivate(_ session: WCSession) {
+        session.activate()
+    }
 }
 
 extension MoteViewModel: WebOSClientDelegate {
     func didRegister(with clientKey: String) {
         AppSettings.shared.clientKey = clientKey
+        Task { @MainActor in
+            isConnected = true
+        }
     }
     
     func didReceiveNetworkError(_ error: Error?) {
+        Task { @MainActor in
+            isConnected = false
+        }
+        connectAndRegister()
     }
 }

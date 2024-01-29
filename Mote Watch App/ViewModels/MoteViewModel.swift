@@ -22,18 +22,9 @@ final class MoteViewModel: NSObject, ObservableObject {
     }
 }
 
-extension MoteViewModel {
-    func send(_ target: WebOSTarget) {
-        session.sendMessage([.commonTarget: target], replyHandler: nil) { [weak self] error in
-            guard let self else { return }
-            Task { @MainActor in
-                self.isConnected = false
-            }
-        }
-    }
-    
+extension MoteViewModel {    
     func sendKey(_ target: WebOSKeyTarget) {
-        session.sendMessage([.keyTarget: target], replyHandler: nil) { [weak self] error in
+        session.sendMessage([.keyTarget: String(describing: target)], replyHandler: nil) { [weak self] error in
             guard let self else { return }
             Task { @MainActor in
                 self.isConnected = false

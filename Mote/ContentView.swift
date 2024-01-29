@@ -20,6 +20,10 @@ struct ContentView: View {
             
             Text("\(AppVersionProvider.appVersion())")
                 .font(.system(size: 10, weight: .bold, design: .rounded))
+            
+            Text("\(viewModel.isConnected ? "Connected" : "Disconnected")")
+                .font(.system(size: 24, weight: .bold, design: .rounded))
+                .foregroundColor(viewModel.isConnected ? .green : .red)
         }
     }
 }

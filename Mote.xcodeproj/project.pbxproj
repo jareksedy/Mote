@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA3BFEA72B67D58700D514A3 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BFEA62B67D58700D514A3 /* MainTabView.swift */; };
 		CA5FF7342B6785DA009C5DB4 /* WebOSClient in Frameworks */ = {isa = PBXBuildFile; productRef = CA5FF7332B6785DA009C5DB4 /* WebOSClient */; };
 		CA5FF7372B678670009C5DB4 /* WebOSClient in Frameworks */ = {isa = PBXBuildFile; productRef = CA5FF7362B678670009C5DB4 /* WebOSClient */; };
 		CA5FF73A2B6787CA009C5DB4 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FF7392B6787CA009C5DB4 /* StringExtensions.swift */; };
@@ -58,6 +59,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CA3BFEA62B67D58700D514A3 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		CA5FF7392B6787CA009C5DB4 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		CA5FF73E2B679282009C5DB4 /* AppIconProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconProvider.swift; sourceTree = "<group>"; };
 		CA5FF7432B6792E0009C5DB4 /* AppVersionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionProvider.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 		CA5FF7382B6787B8009C5DB4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CA3BFEA62B67D58700D514A3 /* MainTabView.swift */,
 				CAF5488D2B6687080048F9CF /* BasicControlsView.swift */,
 			);
 			path = Views;
@@ -348,6 +351,7 @@
 				CA5FF74D2B67A3E1009C5DB4 /* AppSettings.swift in Sources */,
 				CA5FF7402B679282009C5DB4 /* AppIconProvider.swift in Sources */,
 				CA5FF7452B6792E0009C5DB4 /* AppVersionProvider.swift in Sources */,
+				CA3BFEA72B67D58700D514A3 /* MainTabView.swift in Sources */,
 				CA5FF73D2B6788DF009C5DB4 /* StringExtensions.swift in Sources */,
 				CAF5488E2B6687080048F9CF /* BasicControlsView.swift in Sources */,
 				CAF5488C2B6687080048F9CF /* MoteApp.swift in Sources */,
@@ -506,7 +510,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Debug;
 		};
@@ -537,7 +541,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Release;
 		};
