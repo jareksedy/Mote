@@ -7,6 +7,7 @@
 
 import SwiftUI
 import WatchConnectivity
+import WebOSClient
 
 final class MoteViewModel: NSObject, ObservableObject {
     var session: WCSession

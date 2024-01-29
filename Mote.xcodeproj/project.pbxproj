@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA5FF7342B6785DA009C5DB4 /* WebOSClient in Frameworks */ = {isa = PBXBuildFile; productRef = CA5FF7332B6785DA009C5DB4 /* WebOSClient */; };
+		CA5FF7372B678670009C5DB4 /* WebOSClient in Frameworks */ = {isa = PBXBuildFile; productRef = CA5FF7362B678670009C5DB4 /* WebOSClient */; };
+		CA5FF73A2B6787CA009C5DB4 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FF7392B6787CA009C5DB4 /* StringExtensions.swift */; };
+		CA5FF73D2B6788DF009C5DB4 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FF7392B6787CA009C5DB4 /* StringExtensions.swift */; };
 		CA87053B2B668B2D0066316B /* MoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87053A2B668B2D0066316B /* MoteViewModel.swift */; };
 		CA87053E2B668C6B0066316B /* MoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87053D2B668C6B0066316B /* MoteViewModel.swift */; };
 		CAF5487A2B6687070048F9CF /* MoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF548792B6687070048F9CF /* MoteApp.swift */; };
@@ -15,7 +19,7 @@
 		CAF548812B6687080048F9CF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF548802B6687080048F9CF /* Preview Assets.xcassets */; };
 		CAF548872B6687080048F9CF /* Mote Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = CAF548862B6687080048F9CF /* Mote Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CAF5488C2B6687080048F9CF /* MoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5488B2B6687080048F9CF /* MoteApp.swift */; };
-		CAF5488E2B6687080048F9CF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5488D2B6687080048F9CF /* ContentView.swift */; };
+		CAF5488E2B6687080048F9CF /* BasicControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5488D2B6687080048F9CF /* BasicControlsView.swift */; };
 		CAF548932B6687090048F9CF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF548922B6687090048F9CF /* Preview Assets.xcassets */; };
 		CAF5489E2B66881B0048F9CF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF548922B6687090048F9CF /* Preview Assets.xcassets */; };
 		CAF5489F2B6688280048F9CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF5488F2B6687090048F9CF /* Assets.xcassets */; };
@@ -46,6 +50,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CA5FF7392B6787CA009C5DB4 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		CA87053A2B668B2D0066316B /* MoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteViewModel.swift; sourceTree = "<group>"; };
 		CA87053D2B668C6B0066316B /* MoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteViewModel.swift; sourceTree = "<group>"; };
 		CAF548762B6687070048F9CF /* Mote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mote.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,7 +60,7 @@
 		CAF548802B6687080048F9CF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CAF548862B6687080048F9CF /* Mote Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mote Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF5488B2B6687080048F9CF /* MoteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteApp.swift; sourceTree = "<group>"; };
-		CAF5488D2B6687080048F9CF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CAF5488D2B6687080048F9CF /* BasicControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicControlsView.swift; sourceTree = "<group>"; };
 		CAF5488F2B6687090048F9CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAF548922B6687090048F9CF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA5FF7342B6785DA009C5DB4 /* WebOSClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +78,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA5FF7372B678670009C5DB4 /* WebOSClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA5FF7352B678670009C5DB4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CA5FF7382B6787B8009C5DB4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CAF5488D2B6687080048F9CF /* BasicControlsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CA5FF73C2B6787E5009C5DB4 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				CA5FF7392B6787CA009C5DB4 /* StringExtensions.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		CA87053C2B668C590066316B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,7 +129,9 @@
 			children = (
 				CAF548782B6687070048F9CF /* Mote */,
 				CAF5488A2B6687080048F9CF /* Mote Watch App */,
+				CA5FF73C2B6787E5009C5DB4 /* Shared */,
 				CAF548772B6687070048F9CF /* Products */,
+				CA5FF7352B678670009C5DB4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,7 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				CAF5488B2B6687080048F9CF /* MoteApp.swift */,
-				CAF5488D2B6687080048F9CF /* ContentView.swift */,
+				CA5FF7382B6787B8009C5DB4 /* Views */,
 				CA87053F2B668C710066316B /* ViewModels */,
 				CAF5488F2B6687090048F9CF /* Assets.xcassets */,
 				CAF548912B6687090048F9CF /* Preview Content */,
@@ -170,6 +202,9 @@
 				CAF548892B6687080048F9CF /* PBXTargetDependency */,
 			);
 			name = Mote;
+			packageProductDependencies = (
+				CA5FF7332B6785DA009C5DB4 /* WebOSClient */,
+			);
 			productName = Mote;
 			productReference = CAF548762B6687070048F9CF /* Mote.app */;
 			productType = "com.apple.product-type.application";
@@ -187,6 +222,9 @@
 			dependencies = (
 			);
 			name = "Mote Watch App";
+			packageProductDependencies = (
+				CA5FF7362B678670009C5DB4 /* WebOSClient */,
+			);
 			productName = "Mote Watch App";
 			productReference = CAF548862B6687080048F9CF /* Mote Watch App.app */;
 			productType = "com.apple.product-type.application";
@@ -218,6 +256,9 @@
 				Base,
 			);
 			mainGroup = CAF5486D2B6687070048F9CF;
+			packageReferences = (
+				CA5FF7322B6785DA009C5DB4 /* XCRemoteSwiftPackageReference "WebOSClient" */,
+			);
 			productRefGroup = CAF548772B6687070048F9CF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -255,6 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA5FF73A2B6787CA009C5DB4 /* StringExtensions.swift in Sources */,
 				CAF5487C2B6687070048F9CF /* ContentView.swift in Sources */,
 				CAF5487A2B6687070048F9CF /* MoteApp.swift in Sources */,
 				CA87053B2B668B2D0066316B /* MoteViewModel.swift in Sources */,
@@ -265,7 +307,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CAF5488E2B6687080048F9CF /* ContentView.swift in Sources */,
+				CA5FF73D2B6788DF009C5DB4 /* StringExtensions.swift in Sources */,
+				CAF5488E2B6687080048F9CF /* BasicControlsView.swift in Sources */,
 				CAF5488C2B6687080048F9CF /* MoteApp.swift in Sources */,
 				CA87053E2B668C6B0066316B /* MoteViewModel.swift in Sources */,
 			);
@@ -422,7 +465,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 10.2;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
 		};
@@ -453,7 +496,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 10.2;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};
@@ -475,7 +518,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -484,6 +527,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jareksedy.Mote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -508,7 +555,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -517,6 +564,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jareksedy.Mote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -555,6 +606,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CA5FF7322B6785DA009C5DB4 /* XCRemoteSwiftPackageReference "WebOSClient" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jareksedy/WebOSClient.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CA5FF7332B6785DA009C5DB4 /* WebOSClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA5FF7322B6785DA009C5DB4 /* XCRemoteSwiftPackageReference "WebOSClient" */;
+			productName = WebOSClient;
+		};
+		CA5FF7362B678670009C5DB4 /* WebOSClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA5FF7322B6785DA009C5DB4 /* XCRemoteSwiftPackageReference "WebOSClient" */;
+			productName = WebOSClient;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CAF5486E2B6687070048F9CF /* Project object */;
 }

@@ -7,11 +7,13 @@
 
 import SwiftUI
 import WatchConnectivity
+import WebOSClient
 
 final class MoteViewModel: NSObject, ObservableObject {
-    var session: WCSession
-    @Published var message: String = "..."
+    @Published var isConnected: Bool = false
     
+    private var session: WCSession
+
     init(session: WCSession = .default){
         self.session = session
         super.init()
@@ -20,22 +22,39 @@ final class MoteViewModel: NSObject, ObservableObject {
     }
 }
 
+extension MoteViewModel {
+    func send(_ target: WebOSTarget) {
+        session.sendMessage([.commonTarget: target], replyHandler: nil) { [weak self] error in
+            guard let self else { return }
+            Task { @MainActor in
+                self.isConnected = false
+            }
+        }
+    }
+    
+    func sendKey(_ target: WebOSKeyTarget) {
+        session.sendMessage([.keyTarget: target], replyHandler: nil) { [weak self] error in
+            guard let self else { return }
+            Task { @MainActor in
+                self.isConnected = false
+            }
+        }
+    }
+}
+
 extension MoteViewModel: WCSessionDelegate {
     func session(
         _ session: WCSession,
         activationDidCompleteWith activationState: WCSessionActivationState,
         error: Error?
-    ) {}
+    ) {
+        Task { @MainActor in
+            isConnected = error == nil ? true : false
+        }
+    }
     
     func session(
         _ session: WCSession,
         didReceiveMessage message: [String : Any]
-    ) {
-        if let receivedMessage = message["message"] as? String {
-            DispatchQueue.main.async { [weak self] in
-                guard let self else { return }
-                self.message = receivedMessage
-            }
-        }
-    }
+    ) {}
 }
