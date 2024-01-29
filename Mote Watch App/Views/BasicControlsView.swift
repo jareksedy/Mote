@@ -11,7 +11,7 @@ import WebOSClient
 fileprivate enum Constants {
     static let size: CGFloat = 55
     static let spacing: CGFloat = 4
-    static let fontSize: CGFloat = 24
+    static let fontSize: CGFloat = 20
 }
 
 struct BasicControlsView: View {
@@ -21,21 +21,21 @@ struct BasicControlsView: View {
         NavigationStack {
             VStack(spacing: -60) {
                 ButtonRow {
-                    ButtonView(systemName: "plus.rectangle", action: { viewModel.sendKey(.channelUp) })
-                    ButtonView(systemName: "chevron.compact.up", action: { viewModel.sendKey(.up) }, plain: true, highlighted: true)
                     ButtonView(systemName: "speaker.plus", action: { viewModel.sendKey(.volumeUp) })
+                    ButtonView(systemName: "chevron.compact.up", action: { viewModel.sendKey(.up) }, plain: true, highlighted: true)
+                    ButtonView(systemName: "speaker.minus", action: { viewModel.sendKey(.volumeDown) })
                 }
                 
                 ButtonRow {
                     ButtonView(systemName: "chevron.compact.left", action: { viewModel.sendKey(.left) }, plain: true, highlighted: true)
-                    ButtonView(systemName: "scope", action: { viewModel.sendKey(.enter) }, plain: true, highlighted: true)
+                    ButtonView(systemName: "circle", action: { viewModel.sendKey(.enter) }, plain: true, highlighted: true)
                     ButtonView(systemName: "chevron.compact.right", action: { viewModel.sendKey(.right) }, plain: true, highlighted: true)
                 }
                 
                 ButtonRow {
-                    ButtonView(systemName: "minus.rectangle", action: { viewModel.sendKey(.channelDown) })
+                    ButtonView(systemName: "house", action: { viewModel.sendKey(.home) })
                     ButtonView(systemName: "chevron.compact.down", action: { viewModel.sendKey(.down) }, plain: true, highlighted: true)
-                    ButtonView(systemName: "speaker.minus", action: { viewModel.sendKey(.volumeDown) })
+                    ButtonView(systemName: "arrow.uturn.backward", action: { viewModel.sendKey(.back) })
                 }
                     
                 Spacer().padding(.bottom, 35)
@@ -57,7 +57,7 @@ struct ButtonRow<Content: View>: View {
             content()
         }
         .padding(Constants.spacing)
-        .background(Color.moteBackground)
+        .background(Color.moteDarkerGray)
         .cornerRadius(.greatestFiniteMagnitude)
         .frame(height: ((Constants.size * 2) + (Constants.spacing * 2)) + 2)
     }
@@ -72,7 +72,7 @@ struct ButtonView: View {
     var body: some View {
         Circle()
             .frame(width: Constants.size, height: Constants.size)
-            .foregroundColor(tapped ? .accent : plain ? .moteBackground : .black)
+            .foregroundColor(tapped ? .accent : plain ? .moteDarkerGray : .moteDarkGray) //~black
             .overlay {
                 Image(systemName: systemName)
                     .foregroundColor(tapped ? .white : highlighted ? .accent : .white)
@@ -88,7 +88,6 @@ struct ButtonView: View {
 }
 
 extension Color {
-    static var moteLightGray: Color { Color(.lightGray) }
-    static var moteDarkerGray: Color { Color(.darkGray) }
-    static var moteBackground: Color { Color(.brown) }
+    static var moteDarkGray: Color { Color("DarkGrayMote") }
+    static var moteDarkerGray: Color { Color("DarkerGrayMote") }
 }

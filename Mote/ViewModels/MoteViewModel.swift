@@ -60,6 +60,10 @@ extension MoteViewModel: WCSessionDelegate {
                 tv?.sendKey(.volumeDown)
             case "enter":
                 tv?.sendKey(.enter)
+            case "home":
+                tv?.sendKey(.home)
+            case "back":
+                tv?.sendKey(.back)
             default:
                 break
             }
