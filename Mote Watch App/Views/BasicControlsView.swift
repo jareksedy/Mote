@@ -8,46 +8,58 @@
 import SwiftUI
 import WebOSClient
 
-fileprivate enum Constants {
+enum Constants {
     static let size: CGFloat = 55
     static let spacing: CGFloat = 4
     static let fontSize: CGFloat = 20
 }
 
 struct BasicControlsView: View {
-    @StateObject private var viewModel = MoteViewModel()
-
     var body: some View {
         NavigationStack {
-            VStack(spacing: -60) {
+            ButtonGroup {
                 ButtonRow {
-                    ButtonView(systemName: "speaker.plus", action: { viewModel.send(.volumeUp) })
-                    ButtonView(systemName: "chevron.compact.up", action: { viewModel.sendKey(.up) }, plain: true, highlighted: true)
-                    ButtonView(systemName: "speaker.minus", action: { viewModel.send(.volumeDown) })
+                    ButtonView(.channelUp)
+                    ButtonView(.up)
+                    ButtonView(.volumeUp)
                 }
-                
                 ButtonRow {
-                    ButtonView(systemName: "chevron.compact.left", action: { viewModel.sendKey(.left) }, plain: true, highlighted: true)
-                    ButtonView(systemName: "circle", action: { viewModel.sendKey(.enter) }, plain: true, highlighted: true)
-                    ButtonView(systemName: "chevron.compact.right", action: { viewModel.sendKey(.right) }, plain: true, highlighted: true)
+                    ButtonView(.left)
+                    ButtonView(.ok)
+                    ButtonView(.right)
                 }
-                
                 ButtonRow {
-                    ButtonView(systemName: "house", action: { viewModel.sendKey(.home) })
-                    ButtonView(systemName: "chevron.compact.down", action: { viewModel.sendKey(.down) }, plain: true, highlighted: true)
-                    ButtonView(systemName: "arrow.uturn.backward", action: { viewModel.sendKey(.back) })
+                    ButtonView(.channelDown)
+                    ButtonView(.down)
+                    ButtonView(.volumeDown)
                 }
-                    
-                Spacer().padding(.bottom, 35)
             }
             .navigationTitle("Basic")
+        }
+        .background(
+            LinearGradient(
+            stops: [.init(color: .black, location: 0), .init(color: .moteDarkerGray, location: 0.25)],
+            startPoint: .top, endPoint: .bottom
+            )
+        )
+    }
+}
+
+struct ButtonGroup<Content: View>: View {
+    let content: () -> Content
+    init(@ViewBuilder content: @escaping () -> Content) {
+        self.content = content
+    }
+    var body: some View {
+        VStack(spacing: -60) {
+            content()
+            Spacer().padding(.bottom, 35)
         }
     }
 }
 
 struct ButtonRow<Content: View>: View {
     let content: () -> Content
-    
     init(@ViewBuilder content: @escaping () -> Content) {
         self.content = content
     }
@@ -57,33 +69,41 @@ struct ButtonRow<Content: View>: View {
             content()
         }
         .padding(Constants.spacing)
-        .background(Color.moteDarkerGray)
+        .background(.black)
         .cornerRadius(.greatestFiniteMagnitude)
         .frame(height: ((Constants.size * 2) + (Constants.spacing * 2)) + 2)
     }
 }
 
 struct ButtonView: View {
+    @EnvironmentObject var viewModel: MoteViewModel
     @State private var tapped: Bool = false
-    var systemName: String
-    var action: (() -> Void)?
-    var plain: Bool = false
-    var highlighted: Bool = false
+    var type: MoteButton
     var body: some View {
         Circle()
             .frame(width: Constants.size, height: Constants.size)
-            .foregroundColor(tapped ? .accent : plain ? .moteDarkerGray : .moteDarkGray) //~black
+            .foregroundColor(tapped ? .accent : type.plain ? .black : .moteDarkerGray)
             .overlay {
-                Image(systemName: systemName)
-                    .foregroundColor(tapped ? .white : highlighted ? .accent : .white)
+                Image(systemName: type.systemName)
+                    .foregroundColor(tapped ? .white : type.highlighted ? .accent : .gray)
                     .font(.system(size: Constants.fontSize, weight: .bold, design: .rounded))
             }
             ._onButtonGesture(pressing: { pressing in
                 tapped = pressing
             }, perform: {
-                WKInterfaceDevice.current().play(.click)
-                action?()
+                if let hapticType = type.hapticType {
+                    WKInterfaceDevice.current().play(hapticType)
+                }
+                if let keyTarget = type.keyTarget {
+                    viewModel.sendKey(keyTarget)
+                }
+                if let commonTarget = type.commonTarget {
+                    viewModel.send(commonTarget)
+                }
             })
+    }
+    init(_ type: MoteButton) {
+        self.type = type
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  MainTabView.swift
+//  MoteTabView.swift
 //  Mote Watch App
 //
 //  Created by Ярослав on 29.01.2024.
@@ -12,6 +12,7 @@ struct MoteTabView: View {
     var body: some View {
             TabView(selection: $selection) {
                 BasicControlsView()
+                MediaControlsView()
             }
             .tabViewStyle(.verticalPage)
     }
@@ -20,7 +21,6 @@ struct MoteTabView: View {
 extension MoteTabView {
     enum TabSelection {
         case basic
-        case numpad
-        case power
+        case media
     }
 }

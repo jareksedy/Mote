@@ -11,7 +11,8 @@ import SwiftUI
 struct Mote_Watch_AppApp: App {
     var body: some Scene {
         WindowGroup {
-            BasicControlsView()
+            MoteTabView()
         }
+        .environmentObject(MoteViewModel())
     }
 }
