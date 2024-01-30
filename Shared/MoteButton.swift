@@ -137,11 +137,6 @@ extension MoteButton {
         }
     }
     var hapticType: WKHapticType? {
-        switch self {
-        case .ok, .powerOff:
-            return .success
-        default:
-            return .click
-        }
+        return .click
     }
 }
