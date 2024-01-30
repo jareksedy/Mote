@@ -44,29 +44,12 @@ extension MoteViewModel: WCSessionDelegate {
         _ session: WCSession,
         didReceiveMessage message: [String : Any]
     ) {
-        if let targetString = message[.keyTarget] as? String {
-            switch targetString {
-            case "left":
-                tv?.sendKey(.left)
-            case "right":
-                tv?.sendKey(.right)
-            case "up":
-                tv?.sendKey(.up)
-            case "down":
-                tv?.sendKey(.down)
-            case "volumeUp":
-                tv?.sendKey(.volumeUp)
-            case "volumeDown":
-                tv?.sendKey(.volumeDown)
-            case "enter":
-                tv?.sendKey(.enter)
-            case "home":
-                tv?.sendKey(.home)
-            case "back":
-                tv?.sendKey(.back)
-            default:
-                break
-            }
+        if let targetString = message[.keyTarget] as? String,
+           let targetData = targetString.data(using: .utf8) {
+            tv?.sendKey(keyData: targetData)
+        }
+        if let targetJSON = message[.commonTarget] as? String {
+            tv?.send(jsonRequest: targetJSON)
         }
     }
     

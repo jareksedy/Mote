@@ -21,9 +21,9 @@ struct BasicControlsView: View {
         NavigationStack {
             VStack(spacing: -60) {
                 ButtonRow {
-                    ButtonView(systemName: "speaker.plus", action: { viewModel.sendKey(.volumeUp) })
+                    ButtonView(systemName: "speaker.plus", action: { viewModel.send(.volumeUp) })
                     ButtonView(systemName: "chevron.compact.up", action: { viewModel.sendKey(.up) }, plain: true, highlighted: true)
-                    ButtonView(systemName: "speaker.minus", action: { viewModel.sendKey(.volumeDown) })
+                    ButtonView(systemName: "speaker.minus", action: { viewModel.send(.volumeDown) })
                 }
                 
                 ButtonRow {

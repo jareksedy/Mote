@@ -23,9 +23,29 @@ final class MoteViewModel: NSObject, ObservableObject {
 }
 
 extension MoteViewModel {    
+    func send(_ target: WebOSTarget) {
+        guard let targetJSON = target.request.jsonWithId(UUID().uuidString) else {
+            return
+        }
+        session.sendMessage([.commonTarget: targetJSON], replyHandler: nil) { [weak self] error in
+            guard let self else {
+                return
+            }
+            Task { @MainActor in
+                self.isConnected = false
+            }
+        }
+    }
+    
     func sendKey(_ target: WebOSKeyTarget) {
-        session.sendMessage([.keyTarget: String(describing: target)], replyHandler: nil) { [weak self] error in
-            guard let self else { return }
+        guard let targetData = target.request else {
+            return
+        }
+        let targetString = String(decoding: targetData, as: UTF8.self)
+        session.sendMessage([.keyTarget: targetString], replyHandler: nil) { [weak self] error in
+            guard let self else {
+                return
+            }
             Task { @MainActor in
                 self.isConnected = false
             }
