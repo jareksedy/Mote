@@ -28,8 +28,6 @@ struct MediaControlsView: View {
                 }
             }
             .navigationTitle("Media")
-            //.navigationBarTitleDisplayMode(.inline)
-            .toolbar(.visible, for: .navigationBar)
         }
     }
 }
