@@ -10,30 +10,25 @@ import SwiftUI
 struct MediaControlsView: View {
     var body: some View {
         NavigationStack {
-            ButtonGroup {
-                ButtonRow {
-                    ButtonView(.screenOff)
-                    ButtonView(.powerOff)
-                    ButtonView(.mute)
+            MoteButtonGroup {
+                MoteButtonRow {
+                    MoteButton(.screenOff)
+                    MoteButton(.powerOff)
+                    MoteButton(.mute)
                 }
-                ButtonRow {
-                    ButtonView(.rewind)
-                    ButtonView(.playPause)
-                    ButtonView(.fastForward)
+                MoteButtonRow {
+                    MoteButton(.rewind)
+                    MoteButton(.playPause)
+                    MoteButton(.fastForward)
                 }
-                ButtonRow {
-                    ButtonView(.home)
-                    ButtonView(.settings)
-                    ButtonView(.back)
+                MoteButtonRow {
+                    MoteButton(.home)
+                    MoteButton(.settings)
+                    MoteButton(.back)
                 }
             }
             .navigationTitle("Media")
         }
-        .background(
-            LinearGradient(
-            stops: [.init(color: .black, location: 0), .init(color: .moteDarkerGray, location: 0.25)],
-            startPoint: .top, endPoint: .bottom
-            )
-        )
+        .background(BackgroundView())
     }
 }

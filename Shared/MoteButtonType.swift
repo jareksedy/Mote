@@ -8,7 +8,7 @@
 import SwiftUI
 import WebOSClient
 
-enum MoteButton {
+enum MoteButtonType {
     case up
     case down
     case left
@@ -33,7 +33,7 @@ enum MoteButton {
     case settings
 }
 
-extension MoteButton {
+extension MoteButtonType {
     var systemName: String {
         switch self {
         case .up:
