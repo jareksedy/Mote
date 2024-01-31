@@ -9,10 +9,11 @@ import SwiftUI
 
 struct BackgroundView: View {
     var body: some View {
-        LinearGradient(
-        stops: [.init(color: .black, location: 0), .init(color: .darkerGrayMote, location: 0.25)],
-        startPoint: .top,
-        endPoint: .bottom
-        )
+        Color.darkGrayMote
+//        LinearGradient(
+//        stops: [.init(color: .black, location: 0), .init(color: .darkerGrayMote, location: 0.25)],
+//        startPoint: .top,
+//        endPoint: .bottom
+//        )
     }
 }

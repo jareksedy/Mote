@@ -8,17 +8,21 @@
 import SwiftUI
 
 struct MoteTabView: View {
-    @State private var selection: TabSelection = .basic
+    @State private var selection: TabSelection
     var body: some View {
-            TabView(selection: $selection) {
-                BasicControlsView()
-                MediaControlsView()
-            }
-            .tabViewStyle(.verticalPage)
+        TabView(selection: $selection) {
+            BasicControlsView()
+                .tag(TabSelection.basic)
+            MediaControlsView()
+                .tag(TabSelection.media)
+        }
+        .tabViewStyle(.verticalPage)
+        .background(BackgroundView())
+        .ignoresSafeArea(.all)
     }
-}
-
-extension MoteTabView {
+    init(selection: TabSelection = .basic) {
+        self.selection = selection
+    }
     enum TabSelection {
         case basic
         case media

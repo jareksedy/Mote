@@ -12,7 +12,6 @@ struct MoteButtonRow<Content: View>: View {
     init(@ViewBuilder content: @escaping () -> Content) {
         self.content = content
     }
-
     var body: some View {
         HStack(spacing: GlobalConstants.buttonSpacing) {
             content()
@@ -20,6 +19,5 @@ struct MoteButtonRow<Content: View>: View {
         .padding(GlobalConstants.buttonSpacing)
         .background(.black)
         .cornerRadius(.greatestFiniteMagnitude)
-        .frame(height: ((GlobalConstants.buttonSize * 2) + (GlobalConstants.buttonSize * 2)) + 2)
     }
 }

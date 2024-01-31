@@ -179,20 +179,20 @@
 		CA99EBC02B6A1BD6004C28C7 /* HelperViews */ = {
 			isa = PBXGroup;
 			children = (
-				CA99EBBE2B6A1B38004C28C7 /* MoteButton.swift */,
 				CA99EBC52B6A1DCD004C28C7 /* BackgroundView.swift */,
+				CA99EBBE2B6A1B38004C28C7 /* MoteButton.swift */,
 				CA99EBC12B6A1D85004C28C7 /* MoteButtonRow.swift */,
 				CA99EBC32B6A1D9D004C28C7 /* MoteButtonGroup.swift */,
 			);
 			path = HelperViews;
 			sourceTree = "<group>";
 		};
-		CA99EBC92B6A1F04004C28C7 /* Globals */ = {
+		CA99EBC92B6A1F04004C28C7 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
 				CA99EBC72B6A1E69004C28C7 /* GlobalConstants.swift */,
 			);
-			path = Globals;
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		CAF5486D2B6687070048F9CF = {
@@ -239,7 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				CAF5488B2B6687080048F9CF /* MoteApp.swift */,
-				CA99EBC92B6A1F04004C28C7 /* Globals */,
+				CA99EBC92B6A1F04004C28C7 /* Constants */,
 				CA5FF7382B6787B8009C5DB4 /* Views */,
 				CA87053F2B668C710066316B /* ViewModels */,
 				CAF5488F2B6687090048F9CF /* Assets.xcassets */,

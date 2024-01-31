@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import WebOSClient
 
 struct BasicControlsView: View {
     var body: some View {
@@ -29,11 +28,11 @@ struct BasicControlsView: View {
                 }
             }
             .navigationTitle("Basic")
+            
         }
-        .background(BackgroundView())
     }
 }
 
 #Preview {
-    MoteTabView()
+    MoteTabView(selection: .basic)
 }

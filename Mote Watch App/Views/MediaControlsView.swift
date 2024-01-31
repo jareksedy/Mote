@@ -28,7 +28,12 @@ struct MediaControlsView: View {
                 }
             }
             .navigationTitle("Media")
+            //.navigationBarTitleDisplayMode(.inline)
+            .toolbar(.visible, for: .navigationBar)
         }
-        .background(BackgroundView())
     }
+}
+
+#Preview {
+    MoteTabView(selection: .media)
 }

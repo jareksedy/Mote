@@ -13,9 +13,10 @@ struct MoteButtonGroup<Content: View>: View {
         self.content = content
     }
     var body: some View {
-        VStack(spacing: -60) {
+        VStack(spacing: -GlobalConstants.buttonSpacing) {
+            Spacer().frame(height: GlobalConstants.topPadding)
             content()
-            Spacer().padding(.bottom, 35)
         }
+        .ignoresSafeArea(.all)
     }
 }
