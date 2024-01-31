@@ -11,5 +11,5 @@ enum GlobalConstants {
     static let topPadding: CGFloat = 60
     static let buttonSize: CGFloat = 55
     static let buttonSpacing: CGFloat = 4
-    static let buttonFontSize: CGFloat = 20
+    static let buttonFontSize: CGFloat = 18
 }

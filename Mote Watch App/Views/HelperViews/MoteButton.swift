@@ -14,7 +14,7 @@ struct MoteButton: View {
     var body: some View {
         Circle()
             .frame(width: GlobalConstants.buttonSize, height: GlobalConstants.buttonSize)
-            .foregroundColor(tapped ? .accent : type.plain ? .black : .darkerGrayMote)
+            .foregroundColor(tapped ? .accent : type.plain ? .black : .darkGrayMote)
             .overlay {
                 Image(systemName: type.systemName)
                     .foregroundColor(tapped ? .white : type.highlighted ? .accent : .gray)

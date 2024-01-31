@@ -28,7 +28,6 @@ struct BasicControlsView: View {
                 }
             }
             .navigationTitle("Basic")
-            
         }
     }
 }

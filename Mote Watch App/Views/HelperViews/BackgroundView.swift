@@ -11,9 +11,13 @@ struct BackgroundView: View {
     var body: some View {
         Color.darkGrayMote
 //        LinearGradient(
-//        stops: [.init(color: .black, location: 0), .init(color: .darkerGrayMote, location: 0.25)],
-//        startPoint: .top,
-//        endPoint: .bottom
+//            stops:
+//                [
+//                    .init(color: .black, location: 0),
+//                    .init(color: .darkGrayMote, location: 1)
+//                ],
+//            startPoint: .top,
+//            endPoint: .bottom
 //        )
     }
 }
