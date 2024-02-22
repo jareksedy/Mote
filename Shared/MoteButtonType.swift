@@ -45,7 +45,7 @@ extension MoteButtonType {
         case .right:
             return "chevron.compact.right"
         case .ok:
-            return "scope"
+            return "circlebadge"
         case .volumeUp:
             return "speaker.plus"
         case .volumeDown:

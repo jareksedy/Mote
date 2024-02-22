@@ -9,10 +9,18 @@ import SwiftUI
 
 @main
 struct Mote_Watch_AppApp: App {
+    @Environment(\.scenePhase) var scenePhase
+    var viewModel: MoteViewModel = MoteViewModel()
+    
     var body: some Scene {
         WindowGroup {
             MoteTabView()
+                .onChange(of: scenePhase) {
+                    if case .active = scenePhase {
+                        viewModel.sendKey(.asterisk)
+                    }
+                }
         }
-        .environmentObject(MoteViewModel())
+        .environmentObject(viewModel)
     }
 }

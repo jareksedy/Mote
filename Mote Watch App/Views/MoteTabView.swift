@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MoteTabView: View {
     @State private var selection: TabSelection
+    
     var body: some View {
         TabView(selection: $selection) {
             BasicControlsView()
@@ -19,10 +20,24 @@ struct MoteTabView: View {
         .tabViewStyle(.verticalPage)
         .background(BackgroundView())
         .ignoresSafeArea(.all)
+//        .onChange(of: scenePhase) { newPhase in
+//            switch newPhase {
+//            case .inactive:
+//                print("inactive")
+//            case .active:
+//                print("active")
+//            case .background:
+//                print("background")
+//            @unknown default:
+//                fatalError()
+//            }
+//        }
     }
+    
     init(selection: TabSelection = .basic) {
-        self.selection = selection
+        self.selection = .basic
     }
+    
     enum TabSelection {
         case basic
         case media
