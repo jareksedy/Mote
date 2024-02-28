@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct Mote_Watch_AppApp: App {
     @Environment(\.scenePhase) var scenePhase
-    var viewModel: MoteViewModel = MoteViewModel()
+    var viewModel = MoteViewModel()
     
     var body: some Scene {
         WindowGroup {

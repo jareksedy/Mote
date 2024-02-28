@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MediaControlsView: View {
+    @EnvironmentObject var viewModel: MoteViewModel
     var body: some View {
         NavigationStack {
             MoteButtonGroup {
@@ -18,13 +19,21 @@ struct MediaControlsView: View {
                 }
                 MoteButtonRow {
                     MoteButton(.rewind)
-                    MoteButton(.playPause)
+                    MoteButton(.play)
                     MoteButton(.fastForward)
                 }
                 MoteButtonRow {
-                    MoteButton(.home)
-                    MoteButton(.settings)
-                    MoteButton(.back)
+                    if viewModel.preferencesAlternativeView {
+                        MoteButton(.channelUpAlt)
+                    } else {
+                        MoteButton(.home)
+                    }
+                    MoteButton(.pause)
+                    if viewModel.preferencesAlternativeView {
+                        MoteButton(.channelDownAlt)
+                    } else {
+                        MoteButton(.back)
+                    }
                 }
             }
             .navigationTitle("Media")

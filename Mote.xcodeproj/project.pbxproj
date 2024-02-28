@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA1F7FD62B8F6EFF00C5F6B8 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F7FD52B8F6EFF00C5F6B8 /* PreferencesView.swift */; };
 		CA3BFEA72B67D58700D514A3 /* MoteTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BFEA62B67D58700D514A3 /* MoteTabView.swift */; };
 		CA3BFEAA2B691D6700D514A3 /* MoteButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BFEA82B691D6700D514A3 /* MoteButtonType.swift */; };
 		CA3BFEAD2B692CB100D514A3 /* MediaControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BFEAC2B692CB100D514A3 /* MediaControlsView.swift */; };
@@ -66,6 +67,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CA1F7FD52B8F6EFF00C5F6B8 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		CA3BFEA62B67D58700D514A3 /* MoteTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteTabView.swift; sourceTree = "<group>"; };
 		CA3BFEA82B691D6700D514A3 /* MoteButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteButtonType.swift; sourceTree = "<group>"; };
 		CA3BFEAC2B692CB100D514A3 /* MediaControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaControlsView.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				CA3BFEA62B67D58700D514A3 /* MoteTabView.swift */,
 				CAF5488D2B6687080048F9CF /* BasicControlsView.swift */,
 				CA3BFEAC2B692CB100D514A3 /* MediaControlsView.swift */,
+				CA1F7FD52B8F6EFF00C5F6B8 /* PreferencesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				CAF5488C2B6687080048F9CF /* MoteApp.swift in Sources */,
 				CA99EBBF2B6A1B38004C28C7 /* MoteButton.swift in Sources */,
 				CA99EBC42B6A1D9D004C28C7 /* MoteButtonGroup.swift in Sources */,
+				CA1F7FD62B8F6EFF00C5F6B8 /* PreferencesView.swift in Sources */,
 				CA87053E2B668C6B0066316B /* MoteViewModel.swift in Sources */,
 				CA99EBC22B6A1D85004C28C7 /* MoteButtonRow.swift in Sources */,
 			);

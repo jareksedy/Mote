@@ -15,15 +15,21 @@ enum MoteButtonType {
     case right
     
     case ok
-
+    
     case volumeUp
     case volumeDown
     case channelUp
     case channelDown
+    case channelUpAlt
+    case channelDownAlt
     
     case home
+    case homeAlt
     case back
+    case backAlt
     case playPause
+    case play
+    case pause
     
     case fastForward
     case rewind
@@ -45,21 +51,25 @@ extension MoteButtonType {
         case .right:
             return "chevron.compact.right"
         case .ok:
-            return "circlebadge"
+            return "app"
         case .volumeUp:
             return "speaker.plus"
         case .volumeDown:
             return "speaker.minus"
-        case .channelUp:
+        case .channelUp, .channelUpAlt:
             return "plus.rectangle"
-        case .channelDown:
+        case .channelDown, .channelDownAlt:
             return "minus.rectangle"
-        case .home:
+        case .home, .homeAlt:
             return "house"
-        case .back:
+        case .back, .backAlt:
             return "arrow.uturn.backward"
         case .playPause:
             return "playpause"
+        case .play:
+            return "play"
+        case .pause:
+            return "pause"
         case .fastForward:
             return "forward"
         case .rewind:
@@ -90,16 +100,20 @@ extension MoteButtonType {
             return .volumeUp
         case .volumeDown:
             return .volumeDown
-        case .channelUp:
+        case .channelUp, .channelUpAlt:
             return .channelUp
-        case .channelDown:
+        case .channelDown, .channelDownAlt:
             return .channelDown
-        case .home:
+        case .home, .homeAlt:
             return .home
-        case .back:
+        case .back, .backAlt:
             return .back
         case .playPause:
             return .play
+        case .play:
+            return .play
+        case .pause:
+            return .pause
         case .fastForward:
             return .fastForward
         case .rewind:
@@ -122,7 +136,23 @@ extension MoteButtonType {
     }
     var plain: Bool {
         switch self {
-        case .up, .down, .left, .right, .ok, .playPause, .home, .back, .screenOff, .powerOff, .mute, .settings:
+        case
+                .up,
+                .down,
+                .left,
+                .right,
+                .ok,
+                .playPause,
+                .play,
+                .pause,
+                .channelUpAlt,
+                .channelDownAlt,
+                .home,
+                .back,
+                .screenOff,
+                .powerOff,
+                .mute,
+                .settings:
             return true
         default:
             return false

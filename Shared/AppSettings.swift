@@ -16,4 +16,10 @@ final class AppSettings {
 
     @FoilDefaultStorageOptional(key: "clientKey")
     var clientKey: String?
+    
+    @FoilDefaultStorage(key: "watchAltView")
+    var watchAltView: Bool = false
+    
+    @FoilDefaultStorage(key: "watchHaptics")
+    var watchHaptics: Bool = true
 }

@@ -11,6 +11,16 @@ import WebOSClient
 
 final class MoteViewModel: NSObject, ObservableObject {
     @Published var isConnected: Bool = false
+    @Published var preferencesAlternativeView: Bool = AppSettings.shared.watchAltView {
+        didSet {
+            AppSettings.shared.watchAltView = preferencesAlternativeView
+        }
+    }
+    @Published var preferencesHapticFeedback: Bool = AppSettings.shared.watchHaptics {
+        didSet {
+            AppSettings.shared.watchHaptics = preferencesHapticFeedback
+        }
+    }
     
     private var session: WCSession
 

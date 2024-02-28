@@ -23,8 +23,8 @@ struct MoteButton: View {
             ._onButtonGesture(pressing: { pressing in
                 tapped = pressing
             }, perform: {
-                if let hapticType = type.hapticType {
-                    WKInterfaceDevice.current().play(hapticType)
+                if type.hapticType != nil && viewModel.preferencesHapticFeedback {
+                    WKInterfaceDevice.current().play(type.hapticType!)
                 }
                 if let keyTarget = type.keyTarget {
                     viewModel.sendKey(keyTarget)

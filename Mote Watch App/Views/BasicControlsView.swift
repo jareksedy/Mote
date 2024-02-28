@@ -8,11 +8,16 @@
 import SwiftUI
 
 struct BasicControlsView: View {
+    @EnvironmentObject var viewModel: MoteViewModel
     var body: some View {
         NavigationStack {
             MoteButtonGroup {
                 MoteButtonRow {
-                    MoteButton(.channelUp)
+                    if viewModel.preferencesAlternativeView {
+                        MoteButton(.homeAlt)
+                    } else {
+                        MoteButton(.channelUp)
+                    }
                     MoteButton(.up)
                     MoteButton(.volumeUp)
                 }
@@ -22,7 +27,11 @@ struct BasicControlsView: View {
                     MoteButton(.right)
                 }
                 MoteButtonRow {
-                    MoteButton(.channelDown)
+                    if viewModel.preferencesAlternativeView {
+                        MoteButton(.backAlt)
+                    } else {
+                        MoteButton(.channelDown)
+                    }
                     MoteButton(.down)
                     MoteButton(.volumeDown)
                 }
