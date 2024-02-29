@@ -12,28 +12,10 @@ struct MediaControlsView: View {
     var body: some View {
         NavigationStack {
             MoteButtonGroup {
-                MoteButtonRow {
-                    MoteButton(.screenOff)
-                    MoteButton(.powerOff)
-                    MoteButton(.mute)
-                }
-                MoteButtonRow {
-                    MoteButton(.rewind)
-                    MoteButton(.playPause)
-                    MoteButton(.fastForward)
-                }
-                MoteButtonRow {
-                    if viewModel.preferencesAlternativeView {
-                        MoteButton(.channelUpAlt)
-                    } else {
-                        MoteButton(.home)
-                    }
-                    MoteButton(.settings)
-                    if viewModel.preferencesAlternativeView {
-                        MoteButton(.channelDownAlt)
-                    } else {
-                        MoteButton(.back)
-                    }
+                if viewModel.preferencesAlternativeView {
+                    MediaAlternativeView()
+                } else {
+                    MediaDefaultView()
                 }
             }
             .navigationTitle("Media")

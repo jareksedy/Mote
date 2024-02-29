@@ -12,28 +12,10 @@ struct BasicControlsView: View {
     var body: some View {
         NavigationStack {
             MoteButtonGroup {
-                MoteButtonRow {
-                    if viewModel.preferencesAlternativeView {
-                        MoteButton(.homeAlt)
-                    } else {
-                        MoteButton(.channelUp)
-                    }
-                    MoteButton(.up)
-                    MoteButton(.volumeUp)
-                }
-                MoteButtonRow {
-                    MoteButton(.left)
-                    MoteButton(.ok)
-                    MoteButton(.right)
-                }
-                MoteButtonRow {
-                    if viewModel.preferencesAlternativeView {
-                        MoteButton(.backAlt)
-                    } else {
-                        MoteButton(.channelDown)
-                    }
-                    MoteButton(.down)
-                    MoteButton(.volumeDown)
+                if viewModel.preferencesAlternativeView {
+                    BasicAlternativeView()
+                } else {
+                    BasicDefaultView()
                 }
             }
             .navigationTitle("Basic")
