@@ -19,6 +19,16 @@ struct PreferencesView: View {
             }
             .padding()
             .navigationTitle("Preferences")
+            .onChange(of: viewModel.preferencesAlternativeView) {
+                if viewModel.preferencesHapticFeedback {
+                    WKInterfaceDevice.current().play(.click)
+                }
+            }
+            .onChange(of: viewModel.preferencesHapticFeedback) {
+                if viewModel.preferencesHapticFeedback {
+                    WKInterfaceDevice.current().play(.click)
+                }
+            }
         }
     }
 }

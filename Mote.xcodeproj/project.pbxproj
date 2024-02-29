@@ -145,8 +145,8 @@
 		CA5FF7382B6787B8009C5DB4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CA1F7FD92B90B2FC00C5F6B8 /* ButtonGroupViews */,
 				CA99EBC02B6A1BD6004C28C7 /* HelperViews */,
+				CA1F7FD92B90B2FC00C5F6B8 /* ButtonGroupViews */,
 				CA3BFEA62B67D58700D514A3 /* MoteTabView.swift */,
 				CAF5488D2B6687080048F9CF /* BasicControlsView.swift */,
 				CA3BFEAC2B692CB100D514A3 /* MediaControlsView.swift */,
