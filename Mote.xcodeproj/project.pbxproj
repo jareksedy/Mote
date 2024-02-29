@@ -12,6 +12,8 @@
 		CA1F7FDB2B90B37000C5F6B8 /* BasicAlternativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F7FDA2B90B37000C5F6B8 /* BasicAlternativeView.swift */; };
 		CA1F7FDD2B90B4ED00C5F6B8 /* MediaDefaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F7FDC2B90B4ED00C5F6B8 /* MediaDefaultView.swift */; };
 		CA1F7FDF2B90B51600C5F6B8 /* MediaAlternativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F7FDE2B90B51600C5F6B8 /* MediaAlternativeView.swift */; };
+		CA1F7FE12B90D47300C5F6B8 /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F7FE02B90D47300C5F6B8 /* BundleExtension.swift */; };
+		CA1F7FE22B90D47300C5F6B8 /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F7FE02B90D47300C5F6B8 /* BundleExtension.swift */; };
 		CA3BFEA72B67D58700D514A3 /* MoteTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BFEA62B67D58700D514A3 /* MoteTabView.swift */; };
 		CA3BFEAA2B691D6700D514A3 /* MoteButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BFEA82B691D6700D514A3 /* MoteButtonType.swift */; };
 		CA3BFEAD2B692CB100D514A3 /* MediaControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BFEAC2B692CB100D514A3 /* MediaControlsView.swift */; };
@@ -76,6 +78,7 @@
 		CA1F7FDA2B90B37000C5F6B8 /* BasicAlternativeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAlternativeView.swift; sourceTree = "<group>"; };
 		CA1F7FDC2B90B4ED00C5F6B8 /* MediaDefaultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDefaultView.swift; sourceTree = "<group>"; };
 		CA1F7FDE2B90B51600C5F6B8 /* MediaAlternativeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaAlternativeView.swift; sourceTree = "<group>"; };
+		CA1F7FE02B90D47300C5F6B8 /* BundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
 		CA3BFEA62B67D58700D514A3 /* MoteTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteTabView.swift; sourceTree = "<group>"; };
 		CA3BFEA82B691D6700D514A3 /* MoteButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteButtonType.swift; sourceTree = "<group>"; };
 		CA3BFEAC2B692CB100D514A3 /* MediaControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaControlsView.swift; sourceTree = "<group>"; };
@@ -169,6 +172,7 @@
 		CA5FF7412B679289009C5DB4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CA1F7FE02B90D47300C5F6B8 /* BundleExtension.swift */,
 				CA5FF7392B6787CA009C5DB4 /* StringExtensions.swift */,
 			);
 			path = Extensions;
@@ -401,6 +405,7 @@
 				CAF5487C2B6687070048F9CF /* ContentView.swift in Sources */,
 				CAF5487A2B6687070048F9CF /* MoteApp.swift in Sources */,
 				CA87053B2B668B2D0066316B /* MoteViewModel.swift in Sources */,
+				CA1F7FE12B90D47300C5F6B8 /* BundleExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,6 +430,7 @@
 				CA99EBBF2B6A1B38004C28C7 /* MoteButton.swift in Sources */,
 				CA1F7FDB2B90B37000C5F6B8 /* BasicAlternativeView.swift in Sources */,
 				CA99EBC42B6A1D9D004C28C7 /* MoteButtonGroup.swift in Sources */,
+				CA1F7FE22B90D47300C5F6B8 /* BundleExtension.swift in Sources */,
 				CA1F7FD62B8F6EFF00C5F6B8 /* PreferencesView.swift in Sources */,
 				CA87053E2B668C6B0066316B /* MoteViewModel.swift in Sources */,
 				CA99EBC22B6A1D85004C28C7 /* MoteButtonRow.swift in Sources */,
@@ -562,7 +568,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"Mote Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 4NK62H99X6;
 				ENABLE_PREVIEWS = YES;
@@ -574,7 +580,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jareksedy.Mote.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -592,7 +598,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"Mote Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 4NK62H99X6;
 				ENABLE_PREVIEWS = YES;
@@ -604,7 +610,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jareksedy.Mote.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;

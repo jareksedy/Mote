@@ -17,7 +17,8 @@ struct Mote_Watch_AppApp: App {
             MoteTabView()
                 .onChange(of: scenePhase) {
                     if case .active = scenePhase {
-                        print("~\(GlobalConstants.deviceHeight)")
+                        viewModel.sendKey(.asterisk)
+                        viewModel.sendKey(.asterisk)
                         viewModel.sendKey(.asterisk)
                     }
                 }

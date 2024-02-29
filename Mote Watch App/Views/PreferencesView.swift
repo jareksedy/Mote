@@ -14,8 +14,10 @@ struct PreferencesView: View {
             List {
                 Toggle("Alternative view", isOn: $viewModel.preferencesAlternativeView)
                     .tint(.accentColor)
+                    .listRowPlatterColor(.gray.opacity(0.1))
                 Toggle("Haptic feedback", isOn: $viewModel.preferencesHapticFeedback)
                     .tint(.accentColor)
+                    .listRowPlatterColor(.gray.opacity(0.1))
             }
             .padding()
             .navigationTitle("Preferences")
@@ -29,6 +31,14 @@ struct PreferencesView: View {
                     WKInterfaceDevice.current().play(.click)
                 }
             }
+            .font(.system(.body, design: .rounded, weight: .medium))
+            .foregroundColor(.gray)
+            
+            Text("Mote Watch \(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))")
+                .font(.system(size: 8))
+                .foregroundStyle(.gray)
+                .fontWeight(.medium)
+                .fontDesign(.rounded)
         }
     }
 }
