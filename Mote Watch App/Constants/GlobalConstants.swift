@@ -8,8 +8,12 @@
 import SwiftUI
 
 enum GlobalConstants {
-    static let topPadding: CGFloat = 60
-    static let buttonSize: CGFloat = 55
-    static let buttonSpacing: CGFloat = 4
-    static let buttonFontSize: CGFloat = 18
+    /// Device relative constants
+    static let deviceHeight = WKInterfaceDevice.current().screenBounds.size.height
+    static var smallerDevices: Bool { deviceHeight < 240 }
+    
+    static let topPadding: CGFloat = smallerDevices ? 50 : 60
+    static let buttonSize: CGFloat = smallerDevices ? 45 : 55
+    static let buttonSpacing: CGFloat = smallerDevices ? 3 : 4
+    static let buttonFontSize: CGFloat = smallerDevices ? 14 : 18
 }
