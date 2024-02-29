@@ -120,6 +120,8 @@ extension MoteButtonType {
             return .rewind
         case .mute:
             return .mute
+        case .settings:
+            return .menu
         default:
             return nil
         }

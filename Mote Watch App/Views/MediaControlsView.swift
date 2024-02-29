@@ -19,7 +19,7 @@ struct MediaControlsView: View {
                 }
                 MoteButtonRow {
                     MoteButton(.rewind)
-                    MoteButton(.play)
+                    MoteButton(.playPause)
                     MoteButton(.fastForward)
                 }
                 MoteButtonRow {
@@ -28,7 +28,7 @@ struct MediaControlsView: View {
                     } else {
                         MoteButton(.home)
                     }
-                    MoteButton(.pause)
+                    MoteButton(.settings)
                     if viewModel.preferencesAlternativeView {
                         MoteButton(.channelDownAlt)
                     } else {
