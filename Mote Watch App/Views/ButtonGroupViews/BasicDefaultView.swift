@@ -26,3 +26,7 @@ struct BasicDefaultView: View {
         }
     }
 }
+
+#Preview {
+    MoteTabView(selection: .basic)
+}

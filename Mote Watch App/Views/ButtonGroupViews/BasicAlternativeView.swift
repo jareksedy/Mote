@@ -10,7 +10,7 @@ import SwiftUI
 struct BasicAlternativeView: View {
     var body: some View {
         MoteButtonRow {
-            MoteButton(.homeAlt)
+            MoteButton(.homeAlternative)
             MoteButton(.up)
             MoteButton(.volumeUp)
         }
@@ -20,7 +20,7 @@ struct BasicAlternativeView: View {
             MoteButton(.right)
         }
         MoteButtonRow {
-            MoteButton(.backAlt)
+            MoteButton(.backAlternative)
             MoteButton(.down)
             MoteButton(.volumeDown)
         }

@@ -20,13 +20,13 @@ enum MoteButtonType {
     case volumeDown
     case channelUp
     case channelDown
-    case channelUpAlt
-    case channelDownAlt
+    case channelUpAlternative
+    case channelDownAlternative
     
     case home
-    case homeAlt
+    case homeAlternative
     case back
-    case backAlt
+    case backAlternative
     case playPause
     case play
     case pause
@@ -56,13 +56,13 @@ extension MoteButtonType {
             return "speaker.plus"
         case .volumeDown:
             return "speaker.minus"
-        case .channelUp, .channelUpAlt:
+        case .channelUp, .channelUpAlternative:
             return "plus.rectangle"
-        case .channelDown, .channelDownAlt:
+        case .channelDown, .channelDownAlternative:
             return "minus.rectangle"
-        case .home, .homeAlt:
+        case .home, .homeAlternative:
             return "house"
-        case .back, .backAlt:
+        case .back, .backAlternative:
             return "arrow.uturn.backward"
         case .playPause:
             return "playpause"
@@ -100,16 +100,16 @@ extension MoteButtonType {
             return .volumeUp
         case .volumeDown:
             return .volumeDown
-        case .channelUp, .channelUpAlt:
+        case .channelUp, .channelUpAlternative:
             return .channelUp
-        case .channelDown, .channelDownAlt:
+        case .channelDown, .channelDownAlternative:
             return .channelDown
-        case .home, .homeAlt:
+        case .home, .homeAlternative:
             return .home
-        case .back, .backAlt:
+        case .back, .backAlternative:
             return .back
         case .playPause:
-            return .play
+            return .pause
         case .play:
             return .play
         case .pause:
@@ -144,11 +144,10 @@ extension MoteButtonType {
                 .left,
                 .right,
                 .ok,
-                .playPause,
                 .play,
                 .pause,
-                .channelUpAlt,
-                .channelDownAlt,
+                .channelUpAlternative,
+                .channelDownAlternative,
                 .home,
                 .back,
                 .screenOff,

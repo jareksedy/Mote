@@ -10,7 +10,7 @@ import SwiftUI
 struct MediaAlternativeView: View {
     var body: some View {
         MoteButtonRow {
-            MoteButton(.screenOff)
+            MoteButton(.channelUpAlternative)
             MoteButton(.powerOff)
             MoteButton(.mute)
         }
@@ -20,9 +20,9 @@ struct MediaAlternativeView: View {
             MoteButton(.fastForward)
         }
         MoteButtonRow {
-            MoteButton(.channelUpAlt)
+            MoteButton(.channelDownAlternative)
             MoteButton(.settings)
-            MoteButton(.channelDownAlt)
+            MoteButton(.screenOff)
         }
     }
 }
