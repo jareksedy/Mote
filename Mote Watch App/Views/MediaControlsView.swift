@@ -18,7 +18,7 @@ struct MediaControlsView: View {
                     MediaDefaultView()
                 }
             }
-            .navigationTitle("Media")
+            .navigationTitle(Strings.Titles.mediaControls)
         }
     }
 }

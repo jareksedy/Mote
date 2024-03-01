@@ -11,3 +11,9 @@ extension String {
     static let commonTarget = "sendCommon"
     static let keyTarget = "sendKey"
 }
+
+extension String {
+    var localized: String {
+        return NSLocalizedString(self, comment: "")
+    }
+}

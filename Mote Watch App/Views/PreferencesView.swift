@@ -12,15 +12,15 @@ struct PreferencesView: View {
     var body: some View {
         NavigationStack {
             List {
-                Toggle("Alternative view", isOn: $viewModel.preferencesAlternativeView)
+                Toggle(Strings.Settings.alternativeLayout, isOn: $viewModel.preferencesAlternativeView)
                     .tint(.accentColor)
                     .listRowPlatterColor(.gray.opacity(0.1))
-                Toggle("Haptic feedback", isOn: $viewModel.preferencesHapticFeedback)
+                Toggle(Strings.Settings.hapticFeedback, isOn: $viewModel.preferencesHapticFeedback)
                     .tint(.accentColor)
                     .listRowPlatterColor(.gray.opacity(0.1))
             }
             .padding()
-            .navigationTitle("Preferences")
+            .navigationTitle(Strings.Titles.settings)
             .onChange(of: viewModel.preferencesAlternativeView) {
                 if viewModel.preferencesHapticFeedback {
                     WKInterfaceDevice.current().play(.click)
@@ -34,7 +34,7 @@ struct PreferencesView: View {
             .font(.system(.body, design: .rounded, weight: .medium))
             .foregroundColor(.gray)
             
-            Text("Mote Watch \(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))")
+            Text("\(Strings.General.appName) \(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))")
                 .font(.system(size: 8))
                 .foregroundStyle(.gray)
                 .fontWeight(.medium)
@@ -44,5 +44,5 @@ struct PreferencesView: View {
 }
 
 #Preview {
-    MoteTabView(selection: .preferences)
+    MoteTabView(selection: .settings)
 }

@@ -18,7 +18,7 @@ struct MoteTabView: View {
                 .tag(TabSelection.media)
                 .containerBackground(.darkGrayMote, for: .tabView)
             PreferencesView()
-                .tag(TabSelection.preferences)
+                .tag(TabSelection.settings)
                 .containerBackground(.darkGrayMote, for: .tabView)
         }
         .tabViewStyle(.verticalPage)
@@ -28,10 +28,23 @@ struct MoteTabView: View {
     init(selection: TabSelection = .basic) {
         self.selection = .basic
     }
-    
-    enum TabSelection {
-        case basic
-        case media
-        case preferences
+}
+
+enum TabSelection {
+    case basic
+    case media
+    case settings
+}
+
+extension TabSelection {
+    var title: String {
+        switch self {
+        case .basic:
+            return Strings.Titles.basicControls
+        case .media:
+            return Strings.Titles.mediaControls
+        case .settings:
+            return Strings.Titles.settings
+        }
     }
 }

@@ -18,7 +18,7 @@ struct BasicControlsView: View {
                     BasicDefaultView()
                 }
             }
-            .navigationTitle("Basic")
+            .navigationTitle(Strings.Titles.basicControls)
         }
     }
 }
