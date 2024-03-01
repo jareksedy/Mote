@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  Mote
+
+  Created by Ярослав on 01.03.2024.
+  
+*/
+
+"#basicControls" = "Basic";
+"#mediaControls" = "Media controls";
+"#settings" = "Settings";
+
+"#alternativeLayout" = "Alternative Layout";
+"#hapticFeedback" = "Haptic Feedback";
+
