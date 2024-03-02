@@ -6,9 +6,9 @@
   
 */
 
-"#basicControls" = "Basic";
-"#mediaControls" = "Media controls";
-"#settings" = "Settings";
+"#basicControls" = "Навигация";
+"#mediaControls" = "Медиа ойнату";
+"#settings" = "Баптаулар";
 
-"#alternativeLayout" = "Alternative Layout";
-"#hapticFeedback" = "Haptic Feedback";
+"#alternativeLayout" = "Балама көрініс";
+"#hapticFeedback" = "Тактильді жауап";

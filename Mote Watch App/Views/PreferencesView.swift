@@ -19,8 +19,10 @@ struct PreferencesView: View {
                     .tint(.accentColor)
                     .listRowPlatterColor(.gray.opacity(0.1))
             }
+            .padding(.top, GlobalConstants.negativeTopPadding)
             .padding()
             .navigationTitle(Strings.Titles.settings)
+            .navigationBarTitleDisplayMode(.inline)
             .onChange(of: viewModel.preferencesAlternativeView) {
                 if viewModel.preferencesHapticFeedback {
                     WKInterfaceDevice.current().play(.click)

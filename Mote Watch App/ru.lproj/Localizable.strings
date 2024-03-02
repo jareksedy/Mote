@@ -6,9 +6,9 @@
   
 */
 
-"#basicControls" = "Основные";
-"#mediaControls" = "Медиа";
+"#basicControls" = "Навигация";
+"#mediaControls" = "Воспроизведение";
 "#settings" = "Настройки";
 
-"#alternativeLayout" = "Альтернативный внешний вид";
+"#alternativeLayout" = "Альтернативный вид";
 "#hapticFeedback" = "Тактильный отклик";

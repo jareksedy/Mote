@@ -109,7 +109,7 @@ extension MoteButtonType {
         case .back, .backAlternative:
             return .back
         case .playPause:
-            return .pause
+            return .enter
         case .play:
             return .play
         case .pause:
@@ -144,8 +144,6 @@ extension MoteButtonType {
                 .left,
                 .right,
                 .ok,
-                .play,
-                .pause,
                 .channelUpAlternative,
                 .channelDownAlternative,
                 .home,

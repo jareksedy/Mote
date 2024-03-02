@@ -19,6 +19,7 @@ struct BasicControlsView: View {
                 }
             }
             .navigationTitle(Strings.Titles.basicControls)
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

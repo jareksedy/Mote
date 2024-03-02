@@ -19,6 +19,7 @@ struct MediaControlsView: View {
                 }
             }
             .navigationTitle(Strings.Titles.mediaControls)
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

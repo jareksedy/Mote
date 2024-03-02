@@ -6,9 +6,9 @@
   
 */
 
-"#basicControls" = "Basic";
-"#mediaControls" = "Media controls";
-"#settings" = "Settings";
+"#basicControls" = "Navigation";
+"#mediaControls" = "Media Playback";
+"#settings" = "Preferences";
 
 "#alternativeLayout" = "Alternative Layout";
 "#hapticFeedback" = "Haptic Feedback";

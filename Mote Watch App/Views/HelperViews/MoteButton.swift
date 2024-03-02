@@ -34,6 +34,7 @@ struct MoteButton: View {
                 }
             })
     }
+    
     init(_ type: MoteButtonType) {
         self.type = type
     }

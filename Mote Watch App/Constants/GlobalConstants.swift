@@ -12,6 +12,8 @@ enum GlobalConstants {
     static let deviceHeight = WKInterfaceDevice.current().screenBounds.size.height
     static var smallerDevices: Bool { deviceHeight < 240 }
     
+    static var negativeTopPadding: CGFloat = -11
+    
     static var topPadding: CGFloat {
         if deviceHeight > 250 { return 65 }                         // 49mm Ultra
         if deviceHeight < 250 && deviceHeight > 240 { return 60 }   // 45mm
