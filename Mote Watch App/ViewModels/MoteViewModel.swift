@@ -11,9 +11,9 @@ import WebOSClient
 
 final class MoteViewModel: NSObject, ObservableObject {
     @Published var isConnected: Bool = false
-    @Published var preferencesAlternativeView: Bool = AppSettings.shared.watchAltView {
+    @Published var preferencesAlternativeView: Bool = AppSettings.shared.watchAlternativeView {
         didSet {
-            AppSettings.shared.watchAltView = preferencesAlternativeView
+            AppSettings.shared.watchAlternativeView = preferencesAlternativeView
         }
     }
     @Published var preferencesHapticFeedback: Bool = AppSettings.shared.watchHaptics {

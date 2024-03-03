@@ -10,7 +10,9 @@ import SwiftUI
 struct MoteButton: View {
     @EnvironmentObject var viewModel: MoteViewModel
     @State private var tapped: Bool = false
+    
     var type: MoteButtonType
+    
     var body: some View {
         Circle()
             .frame(width: GlobalConstants.buttonSize, height: GlobalConstants.buttonSize)
@@ -22,6 +24,9 @@ struct MoteButton: View {
             }
             ._onButtonGesture(pressing: { pressing in
                 tapped = pressing
+                if type.hapticType != nil && viewModel.preferencesHapticFeedback {
+                    WKInterfaceDevice.current().play(type.hapticType!)
+                }
             }, perform: {
                 if type.hapticType != nil && viewModel.preferencesHapticFeedback {
                     WKInterfaceDevice.current().play(type.hapticType!)
