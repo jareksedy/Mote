@@ -13,14 +13,12 @@ struct MoteTabView: View {
         TabView(selection: $selection) {
             BasicControlsView()
                 .tag(TabSelection.basic)
-                .containerBackground(.darkGrayMote, for: .tabView)
             MediaControlsView()
                 .tag(TabSelection.media)
-                .containerBackground(.darkGrayMote, for: .tabView)
             PreferencesView()
                 .tag(TabSelection.settings)
-                .containerBackground(.darkGrayMote, for: .tabView)
         }
+        .background(.darkGrayMote)
         .tabViewStyle(.verticalPage)
         .ignoresSafeArea(.all)
     }

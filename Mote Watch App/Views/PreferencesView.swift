@@ -38,7 +38,7 @@ struct PreferencesView: View {
             
             Text("\(Strings.General.appName) \(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))")
                 .font(.system(size: 8))
-                .foregroundStyle(.gray)
+                .foregroundStyle(.gray.opacity(0.5))
                 .fontWeight(.medium)
                 .fontDesign(.rounded)
         }
