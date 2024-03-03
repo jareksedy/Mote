@@ -144,6 +144,15 @@
 			path = ButtonGroupViews;
 			sourceTree = "<group>";
 		};
+		CA1F7FE32B943A0C00C5F6B8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CAA7D2542B91D9E80057DD6F /* Strings.swift */,
+				CA08C1132B91E1930063705A /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		CA5FF7352B678670009C5DB4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,7 +233,6 @@
 			isa = PBXGroup;
 			children = (
 				CA99EBC72B6A1E69004C28C7 /* GlobalConstants.swift */,
-				CAA7D2542B91D9E80057DD6F /* Strings.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -273,7 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				CAF5488B2B6687080048F9CF /* MoteApp.swift */,
-				CA08C1132B91E1930063705A /* Localizable.strings */,
+				CA1F7FE32B943A0C00C5F6B8 /* Resources */,
 				CA99EBC92B6A1F04004C28C7 /* Constants */,
 				CA5FF7382B6787B8009C5DB4 /* Views */,
 				CA87053F2B668C710066316B /* ViewModels */,
