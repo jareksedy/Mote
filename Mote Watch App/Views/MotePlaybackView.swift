@@ -1,29 +1,26 @@
 //
-//  BasicControlsView.swift
+//  MotePlaybackView.swift
 //  Mote Watch App
 //
-//  Created by Ярослав on 28.01.2024.
+//  Created by Ярослав on 30.01.2024.
 //
 
 import SwiftUI
 
-struct BasicControlsView: View {
+struct MotePlaybackView: View {
     @EnvironmentObject var viewModel: MoteViewModel
+    
     var body: some View {
         NavigationStack {
             MoteButtonGroup {
                 if viewModel.preferencesAlternativeView {
-                    BasicAlternativeView()
+                    MotePlaybackAlternativeView()
                 } else {
-                    BasicDefaultView()
+                    MotePlaybackDefaultView()
                 }
             }
-            .navigationTitle(Strings.Titles.basicControls)
+            .navigationTitle(Strings.Titles.playbackViewTitle)
             .navigationBarTitleDisplayMode(.inline)
         }
     }
-}
-
-#Preview {
-    MoteTabView(selection: .basic)
 }

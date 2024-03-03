@@ -6,9 +6,9 @@
   
 */
 
-"#basicControls" = "Навигация";
-"#mediaControls" = "Медиа ойнату";
-"#settings" = "Баптаулар";
+"#navigationViewTitle" = "Навигация";
+"#playbackViewTitle" = "Медиа ойнату";
+"#preferencesViewTitle" = "Баптаулар";
 
 "#alternativeLayout" = "Балама көрініс";
 "#hapticFeedback" = "Тактильді жауап";

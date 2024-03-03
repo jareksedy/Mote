@@ -1,5 +1,5 @@
 //
-//  BasicDefaultView.swift
+//  MoteNavigationAlternativeView.swift
 //  Mote Watch App
 //
 //  Created by Ярослав on 29.02.2024.
@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct BasicDefaultView: View {
+struct MoteNavigationAlternativeView: View {
     var body: some View {
         MoteButtonRow {
-            MoteButton(.channelUp)
+            MoteButton(.homeAlternative)
             MoteButton(.up)
             MoteButton(.volumeUp)
         }
@@ -20,13 +20,9 @@ struct BasicDefaultView: View {
             MoteButton(.right)
         }
         MoteButtonRow {
-            MoteButton(.channelDown)
+            MoteButton(.backAlternative)
             MoteButton(.down)
             MoteButton(.volumeDown)
         }
     }
-}
-
-#Preview {
-    MoteTabView(selection: .basic)
 }

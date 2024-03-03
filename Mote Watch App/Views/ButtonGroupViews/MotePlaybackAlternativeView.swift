@@ -1,5 +1,5 @@
 //
-//  MediaAlternativeView.swift
+//  MotePlaybackAlternativeView.swift
 //  Mote Watch App
 //
 //  Created by Ярослав on 29.02.2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MediaAlternativeView: View {
+struct MotePlaybackAlternativeView: View {
     var body: some View {
         MoteButtonRow {
             MoteButton(.channelUpAlternative)
@@ -25,8 +25,4 @@ struct MediaAlternativeView: View {
             MoteButton(.screenOff)
         }
     }
-}
-
-#Preview {
-    MoteTabView(selection: .media)
 }

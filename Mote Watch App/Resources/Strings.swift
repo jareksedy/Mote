@@ -9,12 +9,12 @@ import Foundation
 
 enum Strings {
     enum Titles {
-        static let basicControls = "#basicControls".localized
-        static let mediaControls = "#mediaControls".localized
-        static let settings = "#settings".localized
+        static let navigationViewTitle = "#navigationViewTitle".localized
+        static let playbackViewTitle = "#playbackViewTitle".localized
+        static let preferencesViewTitle = "#preferencesViewTitle".localized
     }
     
-    enum Settings {
+    enum Preferences {
         static let alternativeLayout = "#alternativeLayout".localized
         static let hapticFeedback = "#hapticFeedback".localized
     }
