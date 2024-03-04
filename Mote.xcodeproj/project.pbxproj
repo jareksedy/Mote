@@ -16,6 +16,10 @@
 		CA1F7FE12B90D47300C5F6B8 /* BundleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F7FE02B90D47300C5F6B8 /* BundleExtensions.swift */; };
 		CA1F7FE22B90D47300C5F6B8 /* BundleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F7FE02B90D47300C5F6B8 /* BundleExtensions.swift */; };
 		CA1F7FE42B94495C00C5F6B8 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FF74B2B67A3E1009C5DB4 /* AppSettings.swift */; };
+		CA1F80072B95F35500C5F6B8 /* MoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F80062B95F35500C5F6B8 /* MoteView.swift */; };
+		CA1F80092B95F58700C5F6B8 /* UIFont+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F80082B95F58700C5F6B8 /* UIFont+Rounded.swift */; };
+		CA1F800C2B95FC6900C5F6B8 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F800B2B95FC6900C5F6B8 /* GlobalConstants.swift */; };
+		CA1F800E2B95FE3C00C5F6B8 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F800D2B95FE3C00C5F6B8 /* PreferencesView.swift */; };
 		CA3BFEA72B67D58700D514A3 /* MoteTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BFEA62B67D58700D514A3 /* MoteTabView.swift */; };
 		CA3BFEAA2B691D6700D514A3 /* MoteButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BFEA82B691D6700D514A3 /* MoteButtonType.swift */; };
 		CA3BFEAD2B692CB100D514A3 /* MotePlaybackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BFEAC2B692CB100D514A3 /* MotePlaybackView.swift */; };
@@ -83,6 +87,10 @@
 		CA1F7FDC2B90B4ED00C5F6B8 /* MotePlaybackDefaultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotePlaybackDefaultView.swift; sourceTree = "<group>"; };
 		CA1F7FDE2B90B51600C5F6B8 /* MotePlaybackAlternativeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotePlaybackAlternativeView.swift; sourceTree = "<group>"; };
 		CA1F7FE02B90D47300C5F6B8 /* BundleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtensions.swift; sourceTree = "<group>"; };
+		CA1F80062B95F35500C5F6B8 /* MoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteView.swift; sourceTree = "<group>"; };
+		CA1F80082B95F58700C5F6B8 /* UIFont+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Rounded.swift"; sourceTree = "<group>"; };
+		CA1F800B2B95FC6900C5F6B8 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
+		CA1F800D2B95FE3C00C5F6B8 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		CA3BFEA62B67D58700D514A3 /* MoteTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteTabView.swift; sourceTree = "<group>"; };
 		CA3BFEA82B691D6700D514A3 /* MoteButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteButtonType.swift; sourceTree = "<group>"; };
 		CA3BFEAC2B692CB100D514A3 /* MotePlaybackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotePlaybackView.swift; sourceTree = "<group>"; };
@@ -149,6 +157,14 @@
 				CA08C1132B91E1930063705A /* Localizable.strings */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		CA1F800A2B95FB4500C5F6B8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CA1F80082B95F58700C5F6B8 /* UIFont+Rounded.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		CA5FF7352B678670009C5DB4 /* Frameworks */ = {
@@ -259,6 +275,10 @@
 			children = (
 				CAF548792B6687070048F9CF /* MoteApp.swift */,
 				CAF5487B2B6687070048F9CF /* ContentView.swift */,
+				CA1F800B2B95FC6900C5F6B8 /* GlobalConstants.swift */,
+				CA1F80062B95F35500C5F6B8 /* MoteView.swift */,
+				CA1F800D2B95FE3C00C5F6B8 /* PreferencesView.swift */,
+				CA1F800A2B95FB4500C5F6B8 /* Extensions */,
 				CA87053C2B668C590066316B /* ViewModels */,
 				CAF5487D2B6687080048F9CF /* Assets.xcassets */,
 				CAF5487F2B6687080048F9CF /* Preview Content */,
@@ -413,11 +433,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA1F80092B95F58700C5F6B8 /* UIFont+Rounded.swift in Sources */,
+				CA1F800E2B95FE3C00C5F6B8 /* PreferencesView.swift in Sources */,
 				CA5FF73F2B679282009C5DB4 /* AppIconProvider.swift in Sources */,
 				CA5FF7442B6792E0009C5DB4 /* AppVersionProvider.swift in Sources */,
 				CA5FF73A2B6787CA009C5DB4 /* StringExtensions.swift in Sources */,
 				CAF5487C2B6687070048F9CF /* ContentView.swift in Sources */,
+				CA1F800C2B95FC6900C5F6B8 /* GlobalConstants.swift in Sources */,
 				CAF5487A2B6687070048F9CF /* MoteApp.swift in Sources */,
+				CA1F80072B95F35500C5F6B8 /* MoteView.swift in Sources */,
 				CA87053B2B668B2D0066316B /* MoteViewModel.swift in Sources */,
 				CA1F7FE42B94495C00C5F6B8 /* AppSettings.swift in Sources */,
 				CA1F7FE12B90D47300C5F6B8 /* BundleExtensions.swift in Sources */,
@@ -675,7 +699,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -712,7 +736,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

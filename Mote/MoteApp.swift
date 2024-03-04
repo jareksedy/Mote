@@ -11,7 +11,8 @@ import SwiftUI
 struct MoteApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MoteView()
         }
+        .environmentObject(MoteViewModel())
     }
 }

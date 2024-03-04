@@ -11,6 +11,7 @@ import WebOSClient
 
 final class MoteViewModel: NSObject, ObservableObject {
     @Published var isConnected: Bool = false
+    @Published var preferencesPresented: Bool = false
     
     private var session: WCSession
     private var tv: WebOSClient?
@@ -21,6 +22,14 @@ final class MoteViewModel: NSObject, ObservableObject {
         session.delegate = self
         session.activate()
         connectAndRegister()
+    }
+    
+    func presentPreferencesView() {
+        preferencesPresented = true
+    }
+    
+    func hidePreferencesView() {
+        preferencesPresented = false
     }
 }
 
