@@ -42,6 +42,7 @@ struct MotePreferencesView: View {
                 .foregroundStyle(.gray.opacity(0.5))
                 .fontWeight(.medium)
                 .fontDesign(.rounded)
+                .multilineTextAlignment(.center)
         }
     }
 }
