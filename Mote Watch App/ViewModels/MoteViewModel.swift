@@ -11,6 +11,8 @@ import WebOSClient
 
 final class MoteViewModel: NSObject, ObservableObject {
     @Published var isConnected: Bool = false
+    @Published var tvVolumeLevel: Double = 0
+    @Published var isVolumeViewPresented: Bool = false
     @Published var preferencesAlternativeView: Bool = AppSettings.shared.watchAlternativeView {
         didSet {
             AppSettings.shared.watchAlternativeView = preferencesAlternativeView
@@ -61,6 +63,10 @@ extension MoteViewModel {
             }
         }
     }
+    
+    func presentVolumeView() {
+        isVolumeViewPresented = true
+    }
 }
 
 extension MoteViewModel: WCSessionDelegate {
@@ -77,5 +83,11 @@ extension MoteViewModel: WCSessionDelegate {
     func session(
         _ session: WCSession,
         didReceiveMessage message: [String : Any]
-    ) {}
+    ) {
+        if let volume = message["volumeChanged"] as? Double {
+            Task { @MainActor in
+                tvVolumeLevel = volume
+            }
+        }
+    }
 }

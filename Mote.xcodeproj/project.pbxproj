@@ -20,6 +20,7 @@
 		CA1F80092B95F58700C5F6B8 /* UIFont+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F80082B95F58700C5F6B8 /* UIFont+Rounded.swift */; };
 		CA1F800C2B95FC6900C5F6B8 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F800B2B95FC6900C5F6B8 /* GlobalConstants.swift */; };
 		CA1F800E2B95FE3C00C5F6B8 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F800D2B95FE3C00C5F6B8 /* PreferencesView.swift */; };
+		CA28EB672B975B6E004E2993 /* MoteVolumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA28EB662B975B6E004E2993 /* MoteVolumeView.swift */; };
 		CA3BFEA72B67D58700D514A3 /* MoteTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BFEA62B67D58700D514A3 /* MoteTabView.swift */; };
 		CA3BFEAA2B691D6700D514A3 /* MoteButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BFEA82B691D6700D514A3 /* MoteButtonType.swift */; };
 		CA3BFEAD2B692CB100D514A3 /* MotePlaybackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BFEAC2B692CB100D514A3 /* MotePlaybackView.swift */; };
@@ -91,6 +92,7 @@
 		CA1F80082B95F58700C5F6B8 /* UIFont+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Rounded.swift"; sourceTree = "<group>"; };
 		CA1F800B2B95FC6900C5F6B8 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		CA1F800D2B95FE3C00C5F6B8 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
+		CA28EB662B975B6E004E2993 /* MoteVolumeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteVolumeView.swift; sourceTree = "<group>"; };
 		CA3BFEA62B67D58700D514A3 /* MoteTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteTabView.swift; sourceTree = "<group>"; };
 		CA3BFEA82B691D6700D514A3 /* MoteButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteButtonType.swift; sourceTree = "<group>"; };
 		CA3BFEAC2B692CB100D514A3 /* MotePlaybackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotePlaybackView.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				CAF5488D2B6687080048F9CF /* MoteNavigationView.swift */,
 				CA3BFEAC2B692CB100D514A3 /* MotePlaybackView.swift */,
 				CA1F7FD52B8F6EFF00C5F6B8 /* MotePreferencesView.swift */,
+				CA28EB662B975B6E004E2993 /* MoteVolumeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 				CA5FF7452B6792E0009C5DB4 /* AppVersionProvider.swift in Sources */,
 				CA3BFEA72B67D58700D514A3 /* MoteTabView.swift in Sources */,
 				CA99EBC82B6A1E69004C28C7 /* GlobalConstants.swift in Sources */,
+				CA28EB672B975B6E004E2993 /* MoteVolumeView.swift in Sources */,
 				CA5FF73D2B6788DF009C5DB4 /* StringExtensions.swift in Sources */,
 				CA1F7FDF2B90B51600C5F6B8 /* MotePlaybackAlternativeView.swift in Sources */,
 				CAA7D2552B91D9E80057DD6F /* Strings.swift in Sources */,

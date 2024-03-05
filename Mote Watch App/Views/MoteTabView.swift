@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MoteTabView: View {
+    @EnvironmentObject var viewModel: MoteViewModel
     @State private var selection: TabSelection
     
     var body: some View {
@@ -22,6 +23,9 @@ struct MoteTabView: View {
         .background(.darkGrayMote)
         .tabViewStyle(.verticalPage)
         .ignoresSafeArea(.all)
+        .sheet(isPresented: $viewModel.isVolumeViewPresented) {
+            MoteVolumeView()
+        }
     }
     
     init(selection: TabSelection = .navigation) {
