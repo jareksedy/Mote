@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MoteView: View {
-    @EnvironmentObject var viewModel: MoteViewModel
+    @StateObject var viewModel = MoteViewModel()
     
     var body: some View {
         NavigationStack {

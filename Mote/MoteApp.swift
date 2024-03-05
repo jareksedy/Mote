@@ -13,6 +13,6 @@ struct MoteApp: App {
         WindowGroup {
             MoteView()
         }
-        .environmentObject(MoteViewModel())
+//        .environmentObject(MoteViewModel())
     }
 }
