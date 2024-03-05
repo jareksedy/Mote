@@ -13,6 +13,7 @@ struct MoteView: View {
     var body: some View {
         NavigationStack {
             VStack {
+                Text("Connected: \(viewModel.isConnected ? "👍🏻" : "👎🏻")")
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(uiColor: .systemGray6).ignoresSafeArea())
