@@ -40,9 +40,9 @@ struct MoteWidgetEntryView: View {
     var body: some View {
         ZStack {
             Color(UIColor(named: "AccentColor")!)
-            Image("moteAppIcon")
+            Image("moteWatchAppWidgetIcon")
                 .resizable()
-                .scaledToFit()
+                .scaledToFill()
         }
     }
 }
