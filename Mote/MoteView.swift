@@ -38,7 +38,7 @@ struct MoteView: View {
                 }
             }
             .sheet(isPresented: $viewModel.preferencesPresented) {
-                PreferencesView()
+                PreferencesView(viewModel: viewModel)
                     .presentationCornerRadius(24)
             }
         }

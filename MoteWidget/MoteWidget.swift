@@ -42,7 +42,7 @@ struct MoteWidgetEntryView: View {
             Color(UIColor(named: "AccentColor")!)
             Image("moteAppIcon")
                 .resizable()
-                .scaledToFill()
+                .scaledToFit()
         }
     }
 }
@@ -56,8 +56,8 @@ struct MoteWidget: Widget {
             MoteWidgetEntryView(entry: entry)
                 .containerBackground(Color.accentColor, for: .widget)
         }
-        .configurationDisplayName("Mote")
-        .description("Mote Watch App Widget.")
+        .configurationDisplayName("Mote Widget")
+        .description("Mote Watch App Widget")
         .supportedFamilies([.accessoryCircular])
     }
 }

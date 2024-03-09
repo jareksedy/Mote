@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PreferencesView: View {
-    @EnvironmentObject var viewModel: MoteViewModel
+    private var viewModel: MoteViewModel
     
     var body: some View {
         NavigationStack {
@@ -33,7 +33,9 @@ struct PreferencesView: View {
         }
     }
     
-    init() {
+    init(viewModel: MoteViewModel) {
+        self.viewModel = viewModel
+        
         UINavigationBar.appearance().titleTextAttributes = [
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: GlobalConstants.smallTitleSize, weight: .bold).rounded(),
             NSAttributedString.Key.foregroundColor: UIColor.systemGray
