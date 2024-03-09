@@ -1,8 +1,8 @@
 //
-//  MoteButton.swift
+//  MoteButtonType.swift
 //  Mote
 //
-//  Created by Ярослав on 30.01.2024.
+//  Created by Ярослав on 09.03.2024.
 //
 
 import SwiftUI
@@ -37,6 +37,18 @@ enum MoteButtonType {
     case powerOff
     case mute
     case settings
+    case search
+    
+    case num0
+    case num1
+    case num2
+    case num3
+    case num4
+    case num5
+    case num6
+    case num7
+    case num8
+    case num9
 }
 
 extension MoteButtonType {
@@ -82,6 +94,10 @@ extension MoteButtonType {
             return "speaker.slash"
         case .settings:
             return "gearshape"
+        case .search:
+            return "magnifyingglass"
+        default:
+            return ""
         }
     }
     var keyTarget: WebOSKeyTarget? {
@@ -122,6 +138,26 @@ extension MoteButtonType {
             return .mute
         case .settings:
             return .menu
+        case .num0:
+            return .num0
+        case .num1:
+            return .num1
+        case .num2:
+            return .num2
+        case .num3:
+            return .num3
+        case .num4:
+            return .num4
+        case .num5:
+            return .num5
+        case .num6:
+            return .num6
+        case .num7:
+            return .num7
+        case .num8:
+            return .num8
+        case .num9:
+            return .num9
         default:
             return nil
         }
@@ -132,6 +168,34 @@ extension MoteButtonType {
             return .screenOff
         case .powerOff:
             return .turnOff
+        case .search:
+            return .launchApp(appId: "Search")
+        default:
+            return nil
+        }
+    }
+    var text: String? {
+        switch self {
+        case .num0:
+            return "0"
+        case .num1:
+            return "1"
+        case .num2:
+            return "2"
+        case .num3:
+            return "3"
+        case .num4:
+            return "4"
+        case .num5:
+            return "5"
+        case .num6:
+            return "6"
+        case .num7:
+            return "7"
+        case .num8:
+            return "8"
+        case .num9:
+            return "9"
         default:
             return nil
         }
@@ -147,11 +211,13 @@ extension MoteButtonType {
                 .channelUpAlternative,
                 .channelDownAlternative,
                 .home,
+                .playPause,
                 .back,
-                .screenOff,
                 .powerOff,
-                .mute,
-                .settings:
+                .rewind,
+                .fastForward,
+                .settings,
+                .search:
             return true
         default:
             return false
@@ -165,7 +231,10 @@ extension MoteButtonType {
             return false
         }
     }
-    var hapticType: WKHapticType? {
-        return .click
+    var hapticTypePressed: UIImpactFeedbackGenerator.FeedbackStyle? {
+        return .light
+    }
+    var hapticTypeReleased: UIImpactFeedbackGenerator.FeedbackStyle? {
+        return .medium
     }
 }

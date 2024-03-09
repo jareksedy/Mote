@@ -18,6 +18,17 @@ final class MoteViewModel: NSObject, ObservableObject {
     @Published var preferencesPresented: Bool = false
     @Published var tvVolumeLevel: Double = 0
     
+    @Published var preferencesAlternativeView: Bool = AppSettings.shared.phoneAlternativeView {
+        didSet {
+            AppSettings.shared.phoneAlternativeView = preferencesAlternativeView
+        }
+    }
+    @Published var preferencesHapticFeedback: Bool = AppSettings.shared.phoneHaptics {
+        didSet {
+            AppSettings.shared.phoneHaptics = preferencesHapticFeedback
+        }
+    }
+    
     private var session: WCSession
     private var tv: WebOSClient?
     
@@ -35,6 +46,14 @@ final class MoteViewModel: NSObject, ObservableObject {
     
     func hidePreferencesView() {
         preferencesPresented = false
+    }
+    
+    func send(_ target: WebOSTarget) {
+        tv?.send(target)
+    }
+    
+    func sendKey(_ keyTarget: WebOSKeyTarget) {
+        tv?.sendKey(keyTarget)
     }
 }
 

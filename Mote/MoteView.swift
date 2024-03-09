@@ -13,12 +13,61 @@ struct MoteView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Text("Connected: \(viewModel.isConnected ? "👍🏻" : "👎🏻")")
+                MoteButtonGroup {
+                    MoteButtonRow {
+                        MoteButton(.powerOff)
+                        MoteButton(.settings)
+                        MoteButton(.search)
+                    }
+                    MoteButtonRow {
+                        MoteButton(.num1)
+                        MoteButton(.num2)
+                        MoteButton(.num3)
+                    }
+                    MoteButtonRow {
+                        MoteButton(.num4)
+                        MoteButton(.num5)
+                        MoteButton(.num6)
+                    }
+                    MoteButtonRow {
+                        MoteButton(.num7)
+                        MoteButton(.num8)
+                        MoteButton(.num9)
+                    }
+                    MoteButtonRow {
+                        MoteButton(.rewind)
+                        MoteButton(.num0)
+                        MoteButton(.fastForward)
+                    }
+                    MoteButtonRow {
+                        MoteButton(.channelUp)
+                        MoteButton(.up)
+                        MoteButton(.volumeUp)
+                    }
+                    MoteButtonRow {
+                        MoteButton(.screenOff)
+                        MoteButton(.left)
+                        MoteButton(.ok)
+                        MoteButton(.right)
+                        MoteButton(.mute)
+                    }
+                    MoteButtonRow {
+                        MoteButton(.channelDown)
+                        MoteButton(.down)
+                        MoteButton(.volumeDown)
+                    }
+                    MoteButtonRow {
+                        MoteButton(.home)
+                        MoteButton(.playPause)
+                        MoteButton(.back)
+                    }
+                }
+                .environmentObject(viewModel)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(uiColor: .systemGray6).ignoresSafeArea())
             .ignoresSafeArea(.all)
-            .navigationTitle("LGTV")
+            .navigationTitle("MOTE APP")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -46,12 +95,14 @@ struct MoteView: View {
     
     init() {
         UINavigationBar.appearance().titleTextAttributes = [
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: GlobalConstants.smallTitleSize, weight: .bold).rounded(),
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: GlobalConstants.smallTitleSize,
+                                                           weight: .bold).rounded(),
             NSAttributedString.Key.foregroundColor: UIColor.systemGray
         ]
         
         UINavigationBar.appearance().largeTitleTextAttributes = [
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: GlobalConstants.largetTitleSize, weight: .bold).rounded(),
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: GlobalConstants.largetTitleSize,
+                                                           weight: .bold).rounded(),
             NSAttributedString.Key.foregroundColor: UIColor.systemGray
         ]
     }

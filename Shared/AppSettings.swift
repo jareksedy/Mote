@@ -17,6 +17,12 @@ final class AppSettings {
     @FoilDefaultStorageOptional(key: "clientKey")
     var clientKey: String?
     
+    @FoilDefaultStorage(key: "phoneAlternativeView")
+    var phoneAlternativeView: Bool = false
+    
+    @FoilDefaultStorage(key: "phoneHaptics")
+    var phoneHaptics: Bool = true
+    
     @FoilDefaultStorage(key: "watchAlternativeView")
     var watchAlternativeView: Bool = false
     
