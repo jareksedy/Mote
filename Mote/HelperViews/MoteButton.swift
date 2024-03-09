@@ -18,17 +18,25 @@ struct MoteButton: View {
             .frame(width: GlobalConstants.buttonSize, height: GlobalConstants.buttonSize)
             .foregroundColor(tapped ? .accent : type.plain ? .darkerGrayMote : Color(uiColor: .systemGray6))
             .overlay {
-                if let text = type.text {
-                    Text(text)
-                        .foregroundColor(tapped ? .white : type.highlighted ? .accent : Color(uiColor: .systemGray))
+                if type == .right && viewModel.tvVolumeChanged {
+                    Text("\(viewModel.tvVolumeLevel)")
+                        .foregroundColor(Color(uiColor: .systemGray))
                         .font(.system(size: GlobalConstants.buttonFontSize, weight: .bold, design: .rounded))
+                        .monospacedDigit()
                 } else {
-                    Image(systemName: type.systemName)
-                        .foregroundColor(tapped ? .white : type.highlighted ? .accent : Color(uiColor: .systemGray))
-                        .font(.system(size: GlobalConstants.buttonFontSize, weight: .bold, design: .rounded))
+                    if let text = type.text {
+                        Text(text)
+                            .foregroundColor(tapped ? .white : type.highlighted ? .accent : Color(uiColor: .systemGray))
+                            .font(.system(size: GlobalConstants.buttonFontSize, weight: .bold, design: .rounded))
+                            .monospacedDigit()
+                    } else {
+                        Image(systemName: type.systemName)
+                            .foregroundColor(tapped ? .white : type.highlighted ? .accent : Color(uiColor: .systemGray))
+                            .font(.system(size: GlobalConstants.buttonFontSize, weight: .bold, design: .rounded))
+                    }
                 }
             }
-            .scaleEffect(tapped ? 0.9 : 1.0)
+            .scaleEffect(tapped ? 0.85 : 1.0)
             ._onButtonGesture(pressing: { pressing in
                 withAnimation(.smooth(duration: 0.25)) {
                     tapped = pressing

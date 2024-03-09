@@ -27,6 +27,6 @@ enum GlobalConstants {
     }
     
     static var bottomPadding: CGFloat {
-        return 35
+        return 50
     }
 }

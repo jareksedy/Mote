@@ -16,7 +16,19 @@ fileprivate enum Constants {
 final class MoteViewModel: NSObject, ObservableObject {
     @Published var isConnected: Bool = false
     @Published var preferencesPresented: Bool = false
-    @Published var tvVolumeLevel: Double = 0
+    @Published var tvVolumeLevel: Int = 0 {
+        didSet {
+            tvVolumeChanged = true
+        }
+    }
+    @Published var tvVolumeChanged: Bool = false {
+        didSet {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4) { [weak self] in
+                guard let self else { return }
+                tvVolumeChanged = false
+            }
+        }
+    }
     
     @Published var preferencesAlternativeView: Bool = AppSettings.shared.phoneAlternativeView {
         didSet {
@@ -108,7 +120,7 @@ extension MoteViewModel: WebOSClientDelegate {
         if case .success(let response) = result, response.id == Constants.volumeSubscriptionRequestId {
             session.sendMessage(["volumeChanged": Double(response.payload?.volumeStatus?.volume ?? 0)], replyHandler: nil)
             Task { @MainActor in
-                tvVolumeLevel = Double(response.payload?.volumeStatus?.volume ?? 0)
+                tvVolumeLevel = response.payload?.volumeStatus?.volume ?? 0
             }
         }
     }
