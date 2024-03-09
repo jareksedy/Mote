@@ -38,10 +38,8 @@ struct MotePreferencesView: View {
             .foregroundColor(.gray)
             
             Text("\(Strings.General.appName) \(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))")
-                .font(.system(size: 8))
+                .font(.system(size: 7, weight: .regular, design: .monospaced))
                 .foregroundStyle(.gray.opacity(0.5))
-                .fontWeight(.medium)
-                .fontDesign(.rounded)
                 .multilineTextAlignment(.center)
         }
     }

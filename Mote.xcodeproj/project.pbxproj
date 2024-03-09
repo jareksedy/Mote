@@ -21,6 +21,11 @@
 		CA1F800C2B95FC6900C5F6B8 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F800B2B95FC6900C5F6B8 /* GlobalConstants.swift */; };
 		CA1F800E2B95FE3C00C5F6B8 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F800D2B95FE3C00C5F6B8 /* PreferencesView.swift */; };
 		CA28EB672B975B6E004E2993 /* MoteVolumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA28EB662B975B6E004E2993 /* MoteVolumeView.swift */; };
+		CA28EB862B98C883004E2993 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA28EB852B98C883004E2993 /* WidgetKit.framework */; };
+		CA28EB882B98C883004E2993 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA28EB872B98C883004E2993 /* SwiftUI.framework */; };
+		CA28EB8B2B98C883004E2993 /* MoteWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA28EB8A2B98C883004E2993 /* MoteWidget.swift */; };
+		CA28EB8D2B98C885004E2993 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA28EB8C2B98C885004E2993 /* Assets.xcassets */; };
+		CA28EB912B98C885004E2993 /* MoteWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = CA28EB842B98C883004E2993 /* MoteWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CA3BFEA72B67D58700D514A3 /* MoteTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BFEA62B67D58700D514A3 /* MoteTabView.swift */; };
 		CA3BFEAA2B691D6700D514A3 /* MoteButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BFEA82B691D6700D514A3 /* MoteButtonType.swift */; };
 		CA3BFEAD2B692CB100D514A3 /* MotePlaybackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BFEAC2B692CB100D514A3 /* MotePlaybackView.swift */; };
@@ -55,6 +60,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		CA28EB8F2B98C885004E2993 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAF5486E2B6687070048F9CF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA28EB832B98C883004E2993;
+			remoteInfo = MoteWidgetExtension;
+		};
 		CAF548882B6687080048F9CF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CAF5486E2B6687070048F9CF /* Project object */;
@@ -65,6 +77,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		CA28EB922B98C885004E2993 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CA28EB912B98C885004E2993 /* MoteWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CAF548992B6687090048F9CF /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -93,6 +116,12 @@
 		CA1F800B2B95FC6900C5F6B8 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		CA1F800D2B95FE3C00C5F6B8 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		CA28EB662B975B6E004E2993 /* MoteVolumeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteVolumeView.swift; sourceTree = "<group>"; };
+		CA28EB842B98C883004E2993 /* MoteWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MoteWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA28EB852B98C883004E2993 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		CA28EB872B98C883004E2993 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		CA28EB8A2B98C883004E2993 /* MoteWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteWidget.swift; sourceTree = "<group>"; };
+		CA28EB8C2B98C885004E2993 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CA28EB8E2B98C885004E2993 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA3BFEA62B67D58700D514A3 /* MoteTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteTabView.swift; sourceTree = "<group>"; };
 		CA3BFEA82B691D6700D514A3 /* MoteButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteButtonType.swift; sourceTree = "<group>"; };
 		CA3BFEAC2B692CB100D514A3 /* MotePlaybackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotePlaybackView.swift; sourceTree = "<group>"; };
@@ -120,6 +149,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CA28EB812B98C883004E2993 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA28EB882B98C883004E2993 /* SwiftUI.framework in Frameworks */,
+				CA28EB862B98C883004E2993 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CAF548732B6687070048F9CF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -169,9 +207,21 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		CA28EB892B98C883004E2993 /* MoteWidget */ = {
+			isa = PBXGroup;
+			children = (
+				CA28EB8A2B98C883004E2993 /* MoteWidget.swift */,
+				CA28EB8C2B98C885004E2993 /* Assets.xcassets */,
+				CA28EB8E2B98C885004E2993 /* Info.plist */,
+			);
+			path = MoteWidget;
+			sourceTree = "<group>";
+		};
 		CA5FF7352B678670009C5DB4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CA28EB852B98C883004E2993 /* WidgetKit.framework */,
+				CA28EB872B98C883004E2993 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -259,6 +309,7 @@
 				CAF548782B6687070048F9CF /* Mote */,
 				CAF5488A2B6687080048F9CF /* Mote Watch App */,
 				CA5FF73C2B6787E5009C5DB4 /* Shared */,
+				CA28EB892B98C883004E2993 /* MoteWidget */,
 				CAF548772B6687070048F9CF /* Products */,
 				CA5FF7352B678670009C5DB4 /* Frameworks */,
 			);
@@ -269,6 +320,7 @@
 			children = (
 				CAF548762B6687070048F9CF /* Mote.app */,
 				CAF548862B6687080048F9CF /* Mote Watch App.app */,
+				CA28EB842B98C883004E2993 /* MoteWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -322,6 +374,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CA28EB832B98C883004E2993 /* MoteWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA28EB952B98C885004E2993 /* Build configuration list for PBXNativeTarget "MoteWidgetExtension" */;
+			buildPhases = (
+				CA28EB802B98C883004E2993 /* Sources */,
+				CA28EB812B98C883004E2993 /* Frameworks */,
+				CA28EB822B98C883004E2993 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MoteWidgetExtension;
+			productName = MoteWidgetExtension;
+			productReference = CA28EB842B98C883004E2993 /* MoteWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		CAF548752B6687070048F9CF /* Mote */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CAF5489A2B6687090048F9CF /* Build configuration list for PBXNativeTarget "Mote" */;
@@ -352,10 +421,12 @@
 				CAF548822B6687080048F9CF /* Sources */,
 				CAF548832B6687080048F9CF /* Frameworks */,
 				CAF548842B6687080048F9CF /* Resources */,
+				CA28EB922B98C885004E2993 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CA28EB902B98C885004E2993 /* PBXTargetDependency */,
 			);
 			name = "Mote Watch App";
 			packageProductDependencies = (
@@ -376,6 +447,9 @@
 				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
+					CA28EB832B98C883004E2993 = {
+						CreatedOnToolsVersion = 15.2;
+					};
 					CAF548752B6687070048F9CF = {
 						CreatedOnToolsVersion = 15.2;
 					};
@@ -404,11 +478,20 @@
 			targets = (
 				CAF548752B6687070048F9CF /* Mote */,
 				CAF548852B6687080048F9CF /* Mote Watch App */,
+				CA28EB832B98C883004E2993 /* MoteWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CA28EB822B98C883004E2993 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA28EB8D2B98C885004E2993 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CAF548742B6687070048F9CF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -432,6 +515,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CA28EB802B98C883004E2993 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA28EB8B2B98C883004E2993 /* MoteWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CAF548722B6687070048F9CF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -483,6 +574,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		CA28EB902B98C885004E2993 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA28EB832B98C883004E2993 /* MoteWidgetExtension */;
+			targetProxy = CA28EB8F2B98C885004E2993 /* PBXContainerItemProxy */;
+		};
 		CAF548892B6687080048F9CF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CAF548852B6687080048F9CF /* Mote Watch App */;
@@ -504,6 +600,67 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		CA28EB932B98C885004E2993 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4NK62H99X6;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MoteWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MoteWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jareksedy.Mote.watchkitapp.MoteWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		CA28EB942B98C885004E2993 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4NK62H99X6;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MoteWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MoteWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jareksedy.Mote.watchkitapp.MoteWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
 		CAF548942B6687090048F9CF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -625,10 +782,11 @@
 		CAF548972B6687090048F9CF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_ASSET_PATHS = "\"Mote Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 4NK62H99X6;
 				ENABLE_PREVIEWS = YES;
@@ -641,7 +799,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.4;
+				MARKETING_VERSION = 0.9.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jareksedy.Mote.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -656,10 +814,11 @@
 		CAF548982B6687090048F9CF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_ASSET_PATHS = "\"Mote Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 4NK62H99X6;
 				ENABLE_PREVIEWS = YES;
@@ -672,7 +831,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.4;
+				MARKETING_VERSION = 0.9.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jareksedy.Mote.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -692,7 +851,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_ASSET_PATHS = "\"Mote/Preview Content\"";
 				DEVELOPMENT_TEAM = 4NK62H99X6;
 				ENABLE_PREVIEWS = YES;
@@ -708,7 +867,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.9.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jareksedy.Mote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -729,7 +888,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_ASSET_PATHS = "\"Mote/Preview Content\"";
 				DEVELOPMENT_TEAM = 4NK62H99X6;
 				ENABLE_PREVIEWS = YES;
@@ -745,7 +904,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.9.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jareksedy.Mote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -763,6 +922,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CA28EB952B98C885004E2993 /* Build configuration list for PBXNativeTarget "MoteWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA28EB932B98C885004E2993 /* Debug */,
+				CA28EB942B98C885004E2993 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CAF548712B6687070048F9CF /* Build configuration list for PBXProject "Mote" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

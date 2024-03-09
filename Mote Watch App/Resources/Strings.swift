@@ -20,6 +20,6 @@ enum Strings {
     }
     
     enum General {
-        static let appName = "Mote Watch"
+        static let appName = "Mote Watch App"
     }
 }
