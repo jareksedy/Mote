@@ -28,8 +28,11 @@ struct MoteButton: View {
                         .font(.system(size: GlobalConstants.buttonFontSize, weight: .bold, design: .rounded))
                 }
             }
+            .scaleEffect(tapped ? 0.9 : 1.0)
             ._onButtonGesture(pressing: { pressing in
-                tapped = pressing
+                withAnimation(.smooth(duration: 0.25)) {
+                    tapped = pressing
+                }
                 if tapped && type.hapticTypePressed != nil && viewModel.preferencesHapticFeedback {
                     UIImpactFeedbackGenerator(style: type.hapticTypePressed!).impactOccurred()
                 }
