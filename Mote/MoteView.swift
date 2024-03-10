@@ -36,9 +36,9 @@ struct MoteView: View {
                         MoteButton(.num9)
                     }
                     MoteButtonRow {
-                        MoteButton(.rewind)
+                        MoteButton(.screenOff)
                         MoteButton(.num0)
-                        MoteButton(.fastForward)
+                        MoteButton(.mute)
                     }
                     MoteButtonRow {
                         MoteButton(.channelUp)
@@ -46,11 +46,11 @@ struct MoteView: View {
                         MoteButton(.volumeUp)
                     }
                     MoteButtonRow {
-                        MoteButton(.screenOff)
+                        //MoteButton(.screenOff)
                         MoteButton(.left)
                         MoteButton(.ok)
                         MoteButton(.right)
-                        MoteButton(.mute)
+                        //MoteButton(.mute)
                     }
                     MoteButtonRow {
                         MoteButton(.channelDown)
@@ -66,11 +66,19 @@ struct MoteView: View {
                 .environmentObject(viewModel)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(.darkGrayMote)
-            //.ignoresSafeArea(.all)
+            .background(Color(uiColor: .systemGray6))
             .navigationTitle("Mote App")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Image(systemName: "keyboard.fill")
+                        .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
+                        .foregroundColor(Color(uiColor: .systemGray))
+                        .padding(.trailing, GlobalConstants.iconPadding)
+                        .onTapGesture {
+                            viewModel.isPopupPresented.toggle()
+                        }
+                }
                 ToolbarItem(placement: .topBarLeading) {
                     Image(systemName: "ellipsis")
                         .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
@@ -91,16 +99,16 @@ struct MoteView: View {
                 PreferencesView(viewModel: viewModel)
                     .presentationCornerRadius(24)
             }
-            .popup(isPresented: $viewModel.isPopupPresented) {
-                PopupView()
-            } customize: {
-                $0
-                    .type(.toast)
-                    .position(.bottom)
-                    .animation(.bouncy(duration: 0.35))
-                    .backgroundColor(Color(uiColor: .systemBackground).opacity(0.25))
-                    .closeOnTapOutside(true)
-            }
+        }
+        .popup(isPresented: $viewModel.isPopupPresented) {
+            PopupView()
+        } customize: {
+            $0
+                .type(.toast)
+                .position(.bottom)
+                .animation(.bouncy(duration: 0.35))
+                .backgroundColor(Color(uiColor: .systemBackground).opacity(0.50))
+                .closeOnTapOutside(true)
         }
     }
     
@@ -130,18 +138,18 @@ struct PopupView: View {
                 .frame(height: 25)
             Text("Please accept the registration prompt on the TV")
                 .font(.system(size: 16, weight: .bold, design: .rounded))
-                .foregroundColor(.white)
+                .foregroundColor(Color(uiColor: .label))
                 .multilineTextAlignment(.center)
                 .lineSpacing(4)
         }
         .frame(maxWidth: .greatestFiniteMagnitude)
-        .padding(.top, 35)
-        .padding(.bottom, 40)
+        .padding(.top, 45)
+        .padding(.bottom, 50)
         .padding([.leading, .trailing], 50)
         .background(Color(uiColor: .systemGray6))
         .cornerRadius(32)
         .shadow(radius: 64)
         .padding([.leading, .trailing], 10)
-        .padding(.bottom, 40)
+        .padding(.bottom, 35)
     }
 }

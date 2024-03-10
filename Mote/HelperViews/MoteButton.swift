@@ -29,13 +29,13 @@ struct MoteButton: View {
                         .font(.system(size: GlobalConstants.buttonFontSize, weight: .bold, design: .rounded))
                 }
             }
-            .scaleEffect(tapped ? 0.85 : 1.0)
+            .scaleEffect(tapped ? 0.95 : 1.0)
             ._onButtonGesture(pressing: { pressing in
                 guard viewModel.isConnected || type == .powerOff else {
                     return
                 }
                 
-                withAnimation(.smooth(duration: 0.25)) {
+                withAnimation(.easeInOut(duration: 0.25)) {
                     tapped = pressing
                 }
                 
@@ -59,8 +59,6 @@ struct MoteButton: View {
                 if let commonTarget = type.commonTarget {
                     viewModel.send(commonTarget)
                 }
-                
-                viewModel.isPopupPresented.toggle()
             })
 
     }

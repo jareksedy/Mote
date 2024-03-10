@@ -62,11 +62,13 @@ final class MoteViewModel: NSObject, ObservableObject {
     }
     
     private var session: WCSession
-    private var tv: WebOSClient?
+    private var tv: WebOSClient
     
     init(session: WCSession = .default){
         self.session = session
+        tv = WebOSClient(url: URL(string: "wss://192.168.8.10:3001"))
         super.init()
+        tv.delegate = self
         session.delegate = self
         session.activate()
         connectAndRegister()
@@ -81,23 +83,22 @@ final class MoteViewModel: NSObject, ObservableObject {
     }
     
     func send(_ target: WebOSTarget) {
-        tv?.send(target)
+        tv.send(target)
         if case .turnOff = target {
-            tv?.disconnect()
+            tv.disconnect()
         }
     }
     
     func sendKey(_ keyTarget: WebOSKeyTarget) {
-        tv?.sendKey(keyTarget)
+        tv.sendKey(keyTarget)
     }
 }
 
 private extension MoteViewModel {
     private func connectAndRegister() {
         guard !isConnected else { return }
-        tv = WebOSClient(url: URL(string: "wss://192.168.8.10:3001"), delegate: self)
-        tv?.connect()
-        tv?.send(.register(clientKey: AppSettings.shared.clientKey))
+        tv.connect()
+        tv.send(.register(clientKey: AppSettings.shared.clientKey))
     }
 }
 
@@ -114,10 +115,10 @@ extension MoteViewModel: WCSessionDelegate {
     ) {
         if let targetString = message[.keyTarget] as? String,
            let targetData = targetString.data(using: .utf8) {
-            tv?.sendKey(keyData: targetData)
+            tv.sendKey(keyData: targetData)
         }
         if let targetJSON = message[.commonTarget] as? String {
-            tv?.send(jsonRequest: targetJSON)
+            tv.send(jsonRequest: targetJSON)
         }
     }
     
@@ -133,7 +134,7 @@ extension MoteViewModel: WCSessionDelegate {
 extension MoteViewModel: WebOSClientDelegate {
     func didRegister(with clientKey: String) {
         AppSettings.shared.clientKey = clientKey
-        tv?.send(.getVolume(subscribe: true), id: Constants.volumeSubscriptionRequestId)
+        tv.send(.getVolume(subscribe: true), id: Constants.volumeSubscriptionRequestId)
         Task { @MainActor in
             isConnected = true
         }
@@ -155,6 +156,9 @@ extension MoteViewModel: WebOSClientDelegate {
     }
     
     func didReceiveNetworkError(_ error: Error?) {
+        if let error = error as? NSError {
+            print("~err:\(error.code)")
+        }
         Task { @MainActor in
             isConnected = false
         }
