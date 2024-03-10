@@ -30,6 +30,7 @@
 		CA34868C2B9C4EC90047D3DA /* MoteButtonRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA34868B2B9C4EC90047D3DA /* MoteButtonRow.swift */; };
 		CA34868E2B9C4EED0047D3DA /* MoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA34868D2B9C4EED0047D3DA /* MoteButton.swift */; };
 		CA3486922B9C50010047D3DA /* MoteButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3486912B9C50010047D3DA /* MoteButtonType.swift */; };
+		CA3486962B9CAD200047D3DA /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = CA3486952B9CAD200047D3DA /* PopupView */; };
 		CA3BFEA72B67D58700D514A3 /* MoteTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BFEA62B67D58700D514A3 /* MoteTabView.swift */; };
 		CA3BFEAA2B691D6700D514A3 /* MoteButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BFEA82B691D6700D514A3 /* MoteButtonType.swift */; };
 		CA3BFEAD2B692CB100D514A3 /* MotePlaybackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BFEAC2B692CB100D514A3 /* MotePlaybackView.swift */; };
@@ -162,6 +163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA3486962B9CAD200047D3DA /* PopupView in Frameworks */,
 				CA5FF7482B67A3B6009C5DB4 /* Foil in Frameworks */,
 				CA5FF7342B6785DA009C5DB4 /* WebOSClient in Frameworks */,
 			);
@@ -426,6 +428,7 @@
 			packageProductDependencies = (
 				CA5FF7332B6785DA009C5DB4 /* WebOSClient */,
 				CA5FF7472B67A3B6009C5DB4 /* Foil */,
+				CA3486952B9CAD200047D3DA /* PopupView */,
 			);
 			productName = Mote;
 			productReference = CAF548762B6687070048F9CF /* Mote.app */;
@@ -488,6 +491,7 @@
 			packageReferences = (
 				CA5FF7322B6785DA009C5DB4 /* XCRemoteSwiftPackageReference "WebOSClient" */,
 				CA5FF7462B67A3B6009C5DB4 /* XCRemoteSwiftPackageReference "Foil" */,
+				CA3486942B9CAD200047D3DA /* XCRemoteSwiftPackageReference "PopupView" */,
 			);
 			productRefGroup = CAF548772B6687070048F9CF /* Products */;
 			projectDirPath = "";
@@ -977,6 +981,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CA3486942B9CAD200047D3DA /* XCRemoteSwiftPackageReference "PopupView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/PopupView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.0;
+			};
+		};
 		CA5FF7322B6785DA009C5DB4 /* XCRemoteSwiftPackageReference "WebOSClient" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jareksedy/WebOSClient.git";
@@ -996,6 +1008,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CA3486952B9CAD200047D3DA /* PopupView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA3486942B9CAD200047D3DA /* XCRemoteSwiftPackageReference "PopupView" */;
+			productName = PopupView;
+		};
 		CA5FF7332B6785DA009C5DB4 /* WebOSClient */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CA5FF7322B6785DA009C5DB4 /* XCRemoteSwiftPackageReference "WebOSClient" */;

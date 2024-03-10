@@ -9,11 +9,31 @@ import SwiftUI
 import WatchConnectivity
 import WebOSClient
 
+enum PopupType {
+    case none
+    case prompted
+    case disconnected
+    case connected
+    case tvOff
+}
+
+extension PopupType {
+    var isShown: Bool {
+        switch self {
+        case .none:
+            return false
+        default:
+            return true
+        }
+    }
+}
+
 fileprivate enum Constants {
     static let volumeSubscriptionRequestId = "volumeSubscription"
 }
 
 final class MoteViewModel: NSObject, ObservableObject {
+    @Published var isPopupPresented: Bool = false
     @Published var isConnected: Bool = false
     @Published var preferencesPresented: Bool = false
     @Published var tvVolumeLevel: Int = 0 {
@@ -62,6 +82,9 @@ final class MoteViewModel: NSObject, ObservableObject {
     
     func send(_ target: WebOSTarget) {
         tv?.send(target)
+        if case .turnOff = target {
+            tv?.disconnect()
+        }
     }
     
     func sendKey(_ keyTarget: WebOSKeyTarget) {
@@ -122,6 +145,12 @@ extension MoteViewModel: WebOSClientDelegate {
             Task { @MainActor in
                 tvVolumeLevel = response.payload?.volumeStatus?.volume ?? 0
             }
+        }
+    }
+    
+    func didDisconnect() {
+        Task { @MainActor in
+            isConnected = false
         }
     }
     

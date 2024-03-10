@@ -10,6 +10,24 @@
       }
     },
     {
+      "identity" : "popupview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/exyte/PopupView.git",
+      "state" : {
+        "revision" : "f71f08f1675d8edacdd341282da539ebbf8c1339",
+        "version" : "2.9.0"
+      }
+    },
+    {
+      "identity" : "swiftui-introspect",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/siteline/swiftui-introspect",
+      "state" : {
+        "revision" : "0cd2a5a5895306bc21d54a2254302d24a9a571e4",
+        "version" : "1.1.3"
+      }
+    },
+    {
       "identity" : "webosclient",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/jareksedy/WebOSClient.git",

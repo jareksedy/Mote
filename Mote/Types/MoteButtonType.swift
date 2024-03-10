@@ -217,6 +217,8 @@ extension MoteButtonType {
                 .rewind,
                 .fastForward,
                 .settings,
+                .play,
+                .pause,
                 .search:
             return true
         default:
@@ -232,9 +234,14 @@ extension MoteButtonType {
         }
     }
     var hapticTypePressed: UIImpactFeedbackGenerator.FeedbackStyle? {
-        return .light
+        switch self {
+        case .powerOff:
+            return .light
+        default:
+            return nil
+        }
     }
     var hapticTypeReleased: UIImpactFeedbackGenerator.FeedbackStyle? {
-        return .medium
+        return .light
     }
 }
