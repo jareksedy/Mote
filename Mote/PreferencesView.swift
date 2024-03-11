@@ -26,7 +26,7 @@ struct PreferencesView: View {
                         .foregroundColor(Color(uiColor: .systemGray))
                         .padding(.trailing, GlobalConstants.iconPadding)
                         .onTapGesture {
-                            viewModel.hidePreferencesView()
+                            viewModel.preferencesPresented = false
                         }
                 }
             }

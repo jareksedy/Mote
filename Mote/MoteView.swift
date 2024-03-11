@@ -75,9 +75,6 @@ struct MoteView: View {
                         .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
                         .foregroundColor(Color(uiColor: .systemGray))
                         .padding(.trailing, GlobalConstants.iconPadding)
-                        .onTapGesture {
-                            viewModel.isPopupPresented.toggle()
-                        }
                 }
                 ToolbarItem(placement: .topBarLeading) {
                     Image(systemName: "ellipsis")
@@ -91,23 +88,56 @@ struct MoteView: View {
                         .foregroundColor(Color(uiColor: .systemGray))
                         .padding(.trailing, GlobalConstants.iconPadding)
                         .onTapGesture {
-                            viewModel.presentPreferencesView()
+                            viewModel.preferencesPresented = true
                         }
                 }
             }
             .sheet(isPresented: $viewModel.preferencesPresented) {
                 PreferencesView(viewModel: viewModel)
-                    .presentationCornerRadius(24)
+                    .presentationCornerRadius(32)
             }
         }
-        .popup(isPresented: $viewModel.isPopupPresented) {
-            PopupView()
-        } customize: {
-            $0
+        .popup(isPresented: $viewModel.isPopupPresentedPrompted) {
+            PopupView(type: .prompted)
+        } customize: { popup in
+            popup
                 .type(.toast)
                 .position(.bottom)
-                .animation(.bouncy(duration: 0.35))
+                .animation(.bouncy(duration: 0.45))
                 .backgroundColor(Color(uiColor: .systemBackground).opacity(0.50))
+        }
+        .popup(isPresented: $viewModel.isPopupPresentedTVGoingOff) {
+            PopupView(type: .tvGoingOff)
+        } customize: { popup in
+            popup
+                .type(.toast)
+                .position(.bottom)
+                .animation(.bouncy(duration: 0.45))
+                .backgroundColor(Color(uiColor: .systemBackground).opacity(0.50))
+                .autohideIn(4)
+                .closeOnTap(true)
+                .closeOnTapOutside(true)
+        }
+        .popup(isPresented: $viewModel.isPopupPresentedDisconnected) {
+            PopupView(type: .disconnected)
+        } customize: { popup in
+            popup
+                .type(.toast)
+                .position(.bottom)
+                .animation(.bouncy(duration: 0.45))
+                .backgroundColor(Color(uiColor: .systemBackground).opacity(0.50))
+                .autohideIn(4)
+        }
+        .popup(isPresented: $viewModel.isPopupPresentedConnected) {
+            PopupView(type: .connected)
+        } customize: { popup in
+            popup
+                .type(.toast)
+                .position(.bottom)
+                .animation(.bouncy(duration: 0.45))
+                .backgroundColor(Color(uiColor: .systemBackground).opacity(0.50))
+                .autohideIn(4)
+                .closeOnTap(true)
                 .closeOnTapOutside(true)
         }
     }
@@ -128,24 +158,24 @@ struct MoteView: View {
 }
 
 struct PopupView: View {
+    var type: PopupType
     var body: some View {
         VStack {
-            Image(systemName: "tv.slash")
+            Image(systemName: type.systemName)
                 .font(.system(size: 36, weight: .regular, design: .rounded))
-                .foregroundColor(.accentColor)
+                .foregroundColor(type.iconColor)
                 .multilineTextAlignment(.center)
-            Spacer()
-                .frame(height: 25)
-            Text("Please accept the registration prompt on the TV")
+                .padding(.top, 35)
+            Text(type.message)
                 .font(.system(size: 16, weight: .bold, design: .rounded))
                 .foregroundColor(Color(uiColor: .label))
                 .multilineTextAlignment(.center)
                 .lineSpacing(4)
+                .padding(.top, 25)
+                .padding(.bottom, 35)
         }
         .frame(maxWidth: .greatestFiniteMagnitude)
-        .padding(.top, 45)
-        .padding(.bottom, 50)
-        .padding([.leading, .trailing], 50)
+        .padding([.leading, .trailing], 25)
         .background(Color(uiColor: .systemGray6))
         .cornerRadius(32)
         .shadow(radius: 64)

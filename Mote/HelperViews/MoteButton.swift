@@ -31,7 +31,7 @@ struct MoteButton: View {
             }
             .scaleEffect(tapped ? 0.95 : 1.0)
             ._onButtonGesture(pressing: { pressing in
-                guard viewModel.isConnected || type == .powerOff else {
+                guard viewModel.isConnected else {
                     return
                 }
                 
@@ -44,12 +44,19 @@ struct MoteButton: View {
                 }
                 
             }, perform: {
-                guard viewModel.isConnected || type == .powerOff else {
+                guard viewModel.isConnected else {
                     return
                 }
                 
                 if type.hapticTypeReleased != nil && viewModel.preferencesHapticFeedback {
                     UIImpactFeedbackGenerator(style: type.hapticTypeReleased!).impactOccurred()
+                }
+                
+                if type == .powerOff {
+                    Task { @MainActor in
+                        viewModel.isConnected = false
+                        viewModel.isPopupPresentedTVGoingOff = true
+                    }
                 }
                 
                 if let keyTarget = type.keyTarget {
@@ -71,11 +78,6 @@ struct MoteButton: View {
 private extension MoteButton {
     func getForegroundColor(type: MoteButtonType, tapped: Bool) -> Color {
         guard viewModel.isConnected else {
-            if type == .powerOff && tapped {
-                return .white
-            } else if type == .powerOff && !tapped {
-                return .accentColor
-            }
             return Color(uiColor: .systemGray5)
         }
         

@@ -10,20 +10,49 @@ import WatchConnectivity
 import WebOSClient
 
 enum PopupType {
-    case none
     case prompted
     case disconnected
     case connected
-    case tvOff
+    case tvGoingOff
 }
 
 extension PopupType {
-    var isShown: Bool {
+    var iconColor: Color {
         switch self {
-        case .none:
-            return false
-        default:
-            return true
+        case .prompted:
+            return .accent
+        case .disconnected:
+            return .red
+        case .connected:
+            return .green
+        case .tvGoingOff:
+            return .accent
+        }
+    }
+    
+    var systemName: String {
+        switch self {
+        case .prompted:
+            return "tv"
+        case .disconnected:
+            return "antenna.radiowaves.left.and.right.slash"
+        case .connected:
+            return "antenna.radiowaves.left.and.right"
+        case .tvGoingOff:
+            return "tv.slash"
+        }
+    }
+    
+    var message: String {
+        switch self {
+        case .prompted:
+            return "Please accept the registration\nprompt on the TV"
+        case .disconnected:
+            return "Disconnected,\nattempting to reconnect"
+        case .connected:
+            return "Connected to the TV\nsuccessfully"
+        case .tvGoingOff:
+            return "The TV went off,\ndisconnecting"
         }
     }
 }
@@ -33,7 +62,11 @@ fileprivate enum Constants {
 }
 
 final class MoteViewModel: NSObject, ObservableObject {
-    @Published var isPopupPresented: Bool = false
+    @Published var isPopupPresentedPrompted: Bool = false
+    @Published var isPopupPresentedDisconnected: Bool = false
+    @Published var isPopupPresentedConnected: Bool = false
+    @Published var isPopupPresentedTVGoingOff: Bool = false
+    
     @Published var isConnected: Bool = false
     @Published var preferencesPresented: Bool = false
     @Published var tvVolumeLevel: Int = 0 {
@@ -60,7 +93,7 @@ final class MoteViewModel: NSObject, ObservableObject {
             AppSettings.shared.phoneHaptics = preferencesHapticFeedback
         }
     }
-    
+
     private var session: WCSession
     private var tv: WebOSClient
     
@@ -72,14 +105,6 @@ final class MoteViewModel: NSObject, ObservableObject {
         session.delegate = self
         session.activate()
         connectAndRegister()
-    }
-    
-    func presentPreferencesView() {
-        preferencesPresented = true
-    }
-    
-    func hidePreferencesView() {
-        preferencesPresented = false
     }
     
     func send(_ target: WebOSTarget) {
@@ -95,7 +120,7 @@ final class MoteViewModel: NSObject, ObservableObject {
 }
 
 private extension MoteViewModel {
-    private func connectAndRegister() {
+    func connectAndRegister() {
         guard !isConnected else { return }
         tv.connect()
         tv.send(.register(clientKey: AppSettings.shared.clientKey))
@@ -132,11 +157,23 @@ extension MoteViewModel: WCSessionDelegate {
 }
 
 extension MoteViewModel: WebOSClientDelegate {
+    func didPrompt() {
+        Task { @MainActor in
+            isPopupPresentedPrompted = true
+        }
+    }
+    
     func didRegister(with clientKey: String) {
         AppSettings.shared.clientKey = clientKey
         tv.send(.getVolume(subscribe: true), id: Constants.volumeSubscriptionRequestId)
         Task { @MainActor in
-            isConnected = true
+            isPopupPresentedPrompted = false
+            isPopupPresentedDisconnected = false
+            if !isPopupPresentedTVGoingOff {
+                isConnected = true
+                isPopupPresentedConnected = true
+            }
+            
         }
     }
     
@@ -149,18 +186,22 @@ extension MoteViewModel: WebOSClientDelegate {
         }
     }
     
-    func didDisconnect() {
-        Task { @MainActor in
-            isConnected = false
-        }
-    }
+//    func didDisconnect() {
+//        Task { @MainActor in
+//            isConnected = false
+//            isPopupPresentedTVGoingOff = true
+//        }
+//    }
     
     func didReceiveNetworkError(_ error: Error?) {
         if let error = error as? NSError {
-            print("~err:\(error.code)")
+            print("~err:\(error.localizedDescription) code: \(error.code) ")
         }
         Task { @MainActor in
             isConnected = false
+            if !isPopupPresentedTVGoingOff {
+                isPopupPresentedDisconnected = true
+            }
         }
         connectAndRegister()
     }

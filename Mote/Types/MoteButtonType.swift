@@ -235,8 +235,8 @@ extension MoteButtonType {
     }
     var hapticTypePressed: UIImpactFeedbackGenerator.FeedbackStyle? {
         switch self {
-        case .powerOff:
-            return .light
+        case .powerOff, .home, .ok:
+            return .soft
         default:
             return nil
         }
