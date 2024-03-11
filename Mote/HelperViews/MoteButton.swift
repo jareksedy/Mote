@@ -10,6 +10,7 @@ import SwiftUI
 struct MoteButton: View {
     @EnvironmentObject var viewModel: MoteViewModel
     @State private var tapped: Bool = false
+    @State private var isPaused = false
     
     var type: MoteButtonType
     
@@ -67,7 +68,6 @@ struct MoteButton: View {
                     viewModel.send(commonTarget)
                 }
             })
-
     }
     
     init(_ type: MoteButtonType) {

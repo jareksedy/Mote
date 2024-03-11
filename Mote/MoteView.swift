@@ -13,61 +13,66 @@ struct MoteView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                MoteButtonGroup {
-                    MoteButtonRow {
-                        MoteButton(.powerOff)
-                        MoteButton(.settings)
-                        MoteButton(.search)
+            ScrollView([], showsIndicators: false) {
+                VStack {
+                    Spacer()
+                        .frame(height: 30)
+                    MoteButtonGroup {
+                        MoteButtonRow {
+                            MoteButton(.powerOff)
+                            MoteButton(.settings)
+                            MoteButton(.search)
+                        }
+                        MoteButtonRow {
+                            MoteButton(.num1)
+                            MoteButton(.num2)
+                            MoteButton(.num3)
+                        }
+                        MoteButtonRow {
+                            MoteButton(.num4)
+                            MoteButton(.num5)
+                            MoteButton(.num6)
+                        }
+                        MoteButtonRow {
+                            MoteButton(.num7)
+                            MoteButton(.num8)
+                            MoteButton(.num9)
+                        }
+                        MoteButtonRow {
+                            MoteButton(.screenOff)
+                            MoteButton(.num0)
+                            MoteButton(.mute)
+                        }
+                        MoteButtonRow {
+                            MoteButton(.channelUp)
+                            MoteButton(.up)
+                            MoteButton(.volumeUp)
+                        }
+                        MoteButtonRow {
+                            MoteButton(.left)
+                            MoteButton(.ok)
+                            MoteButton(.right)
+                        }
+                        MoteButtonRow {
+                            MoteButton(.channelDown)
+                            MoteButton(.down)
+                            MoteButton(.volumeDown)
+                        }
+                        MoteButtonRow {
+                            MoteButton(.home)
+                            MoteButton(.playPause)
+                            MoteButton(.back)
+                        }
                     }
-                    MoteButtonRow {
-                        MoteButton(.num1)
-                        MoteButton(.num2)
-                        MoteButton(.num3)
-                    }
-                    MoteButtonRow {
-                        MoteButton(.num4)
-                        MoteButton(.num5)
-                        MoteButton(.num6)
-                    }
-                    MoteButtonRow {
-                        MoteButton(.num7)
-                        MoteButton(.num8)
-                        MoteButton(.num9)
-                    }
-                    MoteButtonRow {
-                        MoteButton(.screenOff)
-                        MoteButton(.num0)
-                        MoteButton(.mute)
-                    }
-                    MoteButtonRow {
-                        MoteButton(.channelUp)
-                        MoteButton(.up)
-                        MoteButton(.volumeUp)
-                    }
-                    MoteButtonRow {
-                        //MoteButton(.screenOff)
-                        MoteButton(.left)
-                        MoteButton(.ok)
-                        MoteButton(.right)
-                        //MoteButton(.mute)
-                    }
-                    MoteButtonRow {
-                        MoteButton(.channelDown)
-                        MoteButton(.down)
-                        MoteButton(.volumeDown)
-                    }
-                    MoteButtonRow {
-                        MoteButton(.home)
-                        MoteButton(.playPause)
-                        MoteButton(.back)
-                    }
+                    .environmentObject(viewModel)
+                    Spacer()
                 }
-                .environmentObject(viewModel)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .ignoresSafeArea(.keyboard)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(uiColor: .systemGray6))
-            .navigationTitle("Mote App")
+            .navigationTitle("Mote")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -75,6 +80,9 @@ struct MoteView: View {
                         .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
                         .foregroundColor(Color(uiColor: .systemGray))
                         .padding(.trailing, GlobalConstants.iconPadding)
+                        .onTapGesture {
+                            viewModel.keyboardPresented = true
+                        }
                 }
                 ToolbarItem(placement: .topBarLeading) {
                     Image(systemName: "ellipsis")
@@ -92,10 +100,17 @@ struct MoteView: View {
                         }
                 }
             }
-            .sheet(isPresented: $viewModel.preferencesPresented) {
-                PreferencesView(viewModel: viewModel)
-                    .presentationCornerRadius(32)
-            }
+        }
+        .sheet(isPresented: $viewModel.preferencesPresented) {
+            PreferencesView(viewModel: viewModel)
+                .presentationDragIndicator(.visible)
+                .presentationCornerRadius(12)
+        }
+        .sheet(isPresented: $viewModel.keyboardPresented) {
+            KeyboardView(showModal: $viewModel.keyboardPresented, viewModel: viewModel)
+                .presentationDetents([.height(48)])
+                .presentationDragIndicator(.visible)
+                .presentationCornerRadius(12)
         }
         .popup(isPresented: $viewModel.isPopupPresentedPrompted) {
             PopupView(type: .prompted)

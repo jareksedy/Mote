@@ -67,6 +67,8 @@ final class MoteViewModel: NSObject, ObservableObject {
     @Published var isPopupPresentedConnected: Bool = false
     @Published var isPopupPresentedTVGoingOff: Bool = false
     
+    @Published var keyboardPresented: Bool = false
+    
     @Published var isConnected: Bool = false
     @Published var preferencesPresented: Bool = false
     @Published var tvVolumeLevel: Int = 0 {

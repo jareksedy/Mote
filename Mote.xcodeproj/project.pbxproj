@@ -31,7 +31,8 @@
 		CA34868E2B9C4EED0047D3DA /* MoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA34868D2B9C4EED0047D3DA /* MoteButton.swift */; };
 		CA3486922B9C50010047D3DA /* MoteButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3486912B9C50010047D3DA /* MoteButtonType.swift */; };
 		CA3486962B9CAD200047D3DA /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = CA3486952B9CAD200047D3DA /* PopupView */; };
-		CA3BFEA72B67D58700D514A3 /* MoteTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BFEA62B67D58700D514A3 /* MoteTabView.swift */; };
+		CA34869A2B9F56140047D3DA /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3486992B9F56140047D3DA /* KeyboardView.swift */; };
+		CA34869C2B9F6A9F0047D3DA /* MoteTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA34869B2B9F6A9F0047D3DA /* MoteTabView.swift */; };
 		CA3BFEAA2B691D6700D514A3 /* MoteButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BFEA82B691D6700D514A3 /* MoteButtonType.swift */; };
 		CA3BFEAD2B692CB100D514A3 /* MotePlaybackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BFEAC2B692CB100D514A3 /* MotePlaybackView.swift */; };
 		CA5FF7342B6785DA009C5DB4 /* WebOSClient in Frameworks */ = {isa = PBXBuildFile; productRef = CA5FF7332B6785DA009C5DB4 /* WebOSClient */; };
@@ -126,7 +127,8 @@
 		CA34868B2B9C4EC90047D3DA /* MoteButtonRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteButtonRow.swift; sourceTree = "<group>"; };
 		CA34868D2B9C4EED0047D3DA /* MoteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteButton.swift; sourceTree = "<group>"; };
 		CA3486912B9C50010047D3DA /* MoteButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteButtonType.swift; sourceTree = "<group>"; };
-		CA3BFEA62B67D58700D514A3 /* MoteTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteTabView.swift; sourceTree = "<group>"; };
+		CA3486992B9F56140047D3DA /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		CA34869B2B9F6A9F0047D3DA /* MoteTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoteTabView.swift; sourceTree = "<group>"; };
 		CA3BFEA82B691D6700D514A3 /* MoteButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteButtonType.swift; sourceTree = "<group>"; };
 		CA3BFEAC2B692CB100D514A3 /* MotePlaybackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotePlaybackView.swift; sourceTree = "<group>"; };
 		CA5FF7392B6787CA009C5DB4 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
@@ -259,7 +261,7 @@
 			children = (
 				CA99EBC02B6A1BD6004C28C7 /* HelperViews */,
 				CA1F7FD92B90B2FC00C5F6B8 /* ButtonGroupViews */,
-				CA3BFEA62B67D58700D514A3 /* MoteTabView.swift */,
+				CA34869B2B9F6A9F0047D3DA /* MoteTabView.swift */,
 				CAF5488D2B6687080048F9CF /* MoteNavigationView.swift */,
 				CA3BFEAC2B692CB100D514A3 /* MotePlaybackView.swift */,
 				CA1F7FD52B8F6EFF00C5F6B8 /* MotePreferencesView.swift */,
@@ -351,6 +353,7 @@
 				CA3486932B9C50060047D3DA /* Types */,
 				CA1F80062B95F35500C5F6B8 /* MoteView.swift */,
 				CA1F800D2B95FE3C00C5F6B8 /* PreferencesView.swift */,
+				CA3486992B9F56140047D3DA /* KeyboardView.swift */,
 				CA1F800A2B95FB4500C5F6B8 /* Extensions */,
 				CA87053C2B668C590066316B /* ViewModels */,
 				CAF5487D2B6687080048F9CF /* Assets.xcassets */,
@@ -557,6 +560,7 @@
 				CA1F80072B95F35500C5F6B8 /* MoteView.swift in Sources */,
 				CA87053B2B668B2D0066316B /* MoteViewModel.swift in Sources */,
 				CA3486892B9C4E260047D3DA /* MoteButtonGroup.swift in Sources */,
+				CA34869A2B9F56140047D3DA /* KeyboardView.swift in Sources */,
 				CA34868C2B9C4EC90047D3DA /* MoteButtonRow.swift in Sources */,
 				CA3486922B9C50010047D3DA /* MoteButtonType.swift in Sources */,
 				CA1F7FE42B94495C00C5F6B8 /* AppSettings.swift in Sources */,
@@ -573,7 +577,6 @@
 				CA3BFEAD2B692CB100D514A3 /* MotePlaybackView.swift in Sources */,
 				CA3BFEAA2B691D6700D514A3 /* MoteButtonType.swift in Sources */,
 				CA1F7FD82B90B2F400C5F6B8 /* MoteNavigationDefaultView.swift in Sources */,
-				CA3BFEA72B67D58700D514A3 /* MoteTabView.swift in Sources */,
 				CA99EBC82B6A1E69004C28C7 /* GlobalConstants.swift in Sources */,
 				CA28EB672B975B6E004E2993 /* MoteVolumeView.swift in Sources */,
 				CA5FF73D2B6788DF009C5DB4 /* StringExtensions.swift in Sources */,
@@ -588,6 +591,7 @@
 				CA1F7FD62B8F6EFF00C5F6B8 /* MotePreferencesView.swift in Sources */,
 				CA87053E2B668C6B0066316B /* MoteViewModel.swift in Sources */,
 				CA99EBC22B6A1D85004C28C7 /* MoteButtonRow.swift in Sources */,
+				CA34869C2B9F6A9F0047D3DA /* MoteTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
