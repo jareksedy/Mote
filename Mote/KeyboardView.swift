@@ -21,7 +21,6 @@ struct KeyboardView: View {
                 .disableAutocorrection(true)
                 .onSubmit {
                     guard inputString != "" else { return }
-                    viewModel.send(.insertText(text: inputString))
                     viewModel.send(.sendEnterKey)
                 }
                 .onAppear {

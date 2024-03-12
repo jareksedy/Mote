@@ -9,65 +9,36 @@ import SwiftUI
 
 struct MoteButton: View {
     @EnvironmentObject var viewModel: MoteViewModel
-    @State private var tapped: Bool = false
-    @State private var isPaused = false
     
     var type: MoteButtonType
     
     var body: some View {
-        Circle()
-            .frame(width: GlobalConstants.buttonSize, height: GlobalConstants.buttonSize)
-            .foregroundColor(tapped ? .accent : type.plain ? .darkerGrayMote : Color(uiColor: .systemGray6))
-            .overlay {
-                if let text = type.text {
-                    Text(text)
-                        .foregroundColor(getForegroundColor(type: type, tapped: tapped))
-                        .font(.system(size: GlobalConstants.buttonFontSize, weight: .bold, design: .rounded))
-                        .monospacedDigit()
-                } else {
-                    Image(systemName: type.systemName)
-                        .foregroundColor(getForegroundColor(type: type, tapped: tapped))
-                        .font(.system(size: GlobalConstants.buttonFontSize, weight: .bold, design: .rounded))
+        Button(action: {
+            guard viewModel.isConnected else {
+                return
+            }
+            
+            if type.hapticTypeReleased != nil && viewModel.preferencesHapticFeedback {
+                UIImpactFeedbackGenerator(style: type.hapticTypeReleased!).impactOccurred()
+            }
+            
+            if type == .powerOff {
+                Task { @MainActor in
+                    viewModel.isConnected = false
+                    viewModel.isPopupPresentedTVGoingOff = true
                 }
             }
-            .scaleEffect(tapped ? 0.95 : 1.0)
-            ._onButtonGesture(pressing: { pressing in
-                guard viewModel.isConnected else {
-                    return
-                }
-                
-                withAnimation(.easeInOut(duration: 0.25)) {
-                    tapped = pressing
-                }
-                
-                if tapped && type.hapticTypePressed != nil && viewModel.preferencesHapticFeedback {
-                    UIImpactFeedbackGenerator(style: type.hapticTypePressed!).impactOccurred()
-                }
-                
-            }, perform: {
-                guard viewModel.isConnected else {
-                    return
-                }
-                
-                if type.hapticTypeReleased != nil && viewModel.preferencesHapticFeedback {
-                    UIImpactFeedbackGenerator(style: type.hapticTypeReleased!).impactOccurred()
-                }
-                
-                if type == .powerOff {
-                    Task { @MainActor in
-                        viewModel.isConnected = false
-                        viewModel.isPopupPresentedTVGoingOff = true
-                    }
-                }
-                
-                if let keyTarget = type.keyTarget {
-                    viewModel.sendKey(keyTarget)
-                }
-                
-                if let commonTarget = type.commonTarget {
-                    viewModel.send(commonTarget)
-                }
-            })
+            
+            if let keyTarget = type.keyTarget {
+                viewModel.sendKey(keyTarget)
+            }
+            
+            if let commonTarget = type.commonTarget {
+                viewModel.send(commonTarget)
+            }
+        }, label: {})
+            .buttonStyle(MoteButtonStyle(type))
+            .buttonRepeatBehavior(type.repeatBehavior)
     }
     
     init(_ type: MoteButtonType) {
@@ -75,12 +46,51 @@ struct MoteButton: View {
     }
 }
 
-private extension MoteButton {
-    func getForegroundColor(type: MoteButtonType, tapped: Bool) -> Color {
+struct MoteButtonStyle: ButtonStyle {
+    @EnvironmentObject var viewModel: MoteViewModel
+    @State private var isPaused = false
+    
+    var type: MoteButtonType
+    
+    func makeBody(configuration: Configuration) -> some View {
+        Circle()
+            .frame(width: GlobalConstants.buttonSize, height: GlobalConstants.buttonSize)
+            .foregroundColor(configuration.isPressed ? .accent : type.plain ? .darkerGrayMote : Color(uiColor: .systemGray6))
+            .overlay {
+                if let text = type.text {
+                    Text(text)
+                        .foregroundColor(getForegroundColor(type: type, pressed: configuration.isPressed))
+                        .font(.system(size: GlobalConstants.buttonFontSize, weight: .bold, design: .rounded))
+                        .monospacedDigit()
+                } else {
+                    Image(systemName: type.systemName)
+                        .foregroundColor(getForegroundColor(type: type, pressed: configuration.isPressed))
+                        .font(.system(size: GlobalConstants.buttonFontSize, weight: .bold, design: .rounded))
+                }
+            }
+            .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
+            .onChange(of: configuration.isPressed) {
+                guard viewModel.isConnected else {
+                    return
+                }
+                
+                if configuration.isPressed && type.hapticTypePressed != nil && viewModel.preferencesHapticFeedback {
+                    UIImpactFeedbackGenerator(style: type.hapticTypePressed!).impactOccurred()
+                }
+            }
+    }
+    
+    init(_ type: MoteButtonType) {
+        self.type = type
+    }
+}
+
+private extension MoteButtonStyle {
+    func getForegroundColor(type: MoteButtonType, pressed: Bool) -> Color {
         guard viewModel.isConnected else {
             return Color(uiColor: .systemGray5)
         }
         
-        return tapped ? .white : type.highlighted ? .accent : Color(uiColor: .systemGray)
+        return pressed ? .white : type.highlighted ? .accent : Color(uiColor: .systemGray)
     }
 }
