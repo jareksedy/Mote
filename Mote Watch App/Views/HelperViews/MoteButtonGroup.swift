@@ -14,7 +14,9 @@ struct MoteButtonGroup<Content: View>: View {
     }
     var body: some View {
         VStack(spacing: -GlobalConstants.buttonSpacing) {
+            Spacer().frame(height: GlobalConstants.topPadding)
             content()
         }
+        .ignoresSafeArea(.all)
     }
 }

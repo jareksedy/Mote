@@ -1,4 +1,5 @@
 {
+  "originHash" : "cf274543acfabf360679423199ef7ef7aab721e2c893639b2845199ea7bba416",
   "pins" : [
     {
       "identity" : "foil",
@@ -37,5 +38,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
