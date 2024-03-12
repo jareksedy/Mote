@@ -14,10 +14,6 @@ struct MoteButton: View {
     
     var body: some View {
         Button(action: {
-            guard viewModel.isConnected else {
-                return
-            }
-            
             if type.hapticTypeReleased != nil && viewModel.preferencesHapticFeedback {
                 UIImpactFeedbackGenerator(style: type.hapticTypeReleased!).impactOccurred()
             }
@@ -39,6 +35,7 @@ struct MoteButton: View {
         }, label: {})
             .buttonStyle(MoteButtonStyle(type))
             .buttonRepeatBehavior(type.repeatBehavior)
+            .disabled(!viewModel.isConnected)
     }
     
     init(_ type: MoteButtonType) {
@@ -70,10 +67,6 @@ struct MoteButtonStyle: ButtonStyle {
             }
             .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
             .onChange(of: configuration.isPressed) {
-                guard viewModel.isConnected else {
-                    return
-                }
-                
                 if configuration.isPressed && type.hapticTypePressed != nil && viewModel.preferencesHapticFeedback {
                     UIImpactFeedbackGenerator(style: type.hapticTypePressed!).impactOccurred()
                 }
