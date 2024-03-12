@@ -179,6 +179,10 @@ extension MoteViewModel: WebOSClientDelegate {
         }
     }
     
+    func didReceive(jsonResponse: String) {
+        print(jsonResponse)
+    }
+    
     func didReceive(_ result: Result<WebOSResponse, Error>) {
         if case .success(let response) = result, response.id == Constants.volumeSubscriptionRequestId {
             session.sendMessage(["volumeChanged": Double(response.payload?.volumeStatus?.volume ?? 0)], replyHandler: nil)

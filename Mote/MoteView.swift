@@ -108,7 +108,7 @@ struct MoteView: View {
         }
         .sheet(isPresented: $viewModel.keyboardPresented) {
             KeyboardView(showModal: $viewModel.keyboardPresented, viewModel: viewModel)
-                .presentationDetents([.height(48)])
+                .presentationDetents([.height(55)])
                 .presentationDragIndicator(.visible)
                 .presentationCornerRadius(12)
         }

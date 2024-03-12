@@ -13,6 +13,12 @@ struct PreferencesView: View {
     var body: some View {
         NavigationStack {
             VStack {
+                Button(action: {
+                    viewModel.sendKey(.down)
+                }, label: {
+                    Text("Down")
+                })
+                .buttonRepeatBehavior(.enabled)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(uiColor: .systemGray6).ignoresSafeArea())

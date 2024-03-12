@@ -20,9 +20,9 @@ struct KeyboardView: View {
                 .focused($focused)
                 .disableAutocorrection(true)
                 .onSubmit {
+                    guard inputString != "" else { return }
                     viewModel.send(.insertText(text: inputString))
                     viewModel.send(.sendEnterKey)
-                    print("~\(inputString)")
                 }
                 .onAppear {
                     focused = true
@@ -31,8 +31,11 @@ struct KeyboardView: View {
                 .onChange(of: focused) {
                     showModal = focused
                 }
-                .padding(.top, 25)
-                .padding(.bottom, 25)
+                .onChange(of: inputString) {
+                    viewModel.send(.deleteCharacters(count: 99))
+                    viewModel.send(.insertText(text: inputString))
+                }
+                .padding(.top, 30)
         }
         .padding([.leading, .trailing])
         .ignoresSafeArea(.keyboard)
@@ -43,7 +46,4 @@ struct KeyboardView: View {
         self._showModal = showModal
         self.viewModel = viewModel
     }
-}
-
-extension KeyboardView {
 }

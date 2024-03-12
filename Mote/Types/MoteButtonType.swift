@@ -100,6 +100,7 @@ extension MoteButtonType {
             return ""
         }
     }
+    
     var keyTarget: WebOSKeyTarget? {
         switch self {
         case .up:
@@ -162,6 +163,7 @@ extension MoteButtonType {
             return nil
         }
     }
+    
     var commonTarget: WebOSTarget? {
         switch self {
         case .screenOff:
@@ -174,6 +176,7 @@ extension MoteButtonType {
             return nil
         }
     }
+    
     var text: String? {
         switch self {
         case .num0:
@@ -200,6 +203,7 @@ extension MoteButtonType {
             return nil
         }
     }
+    
     var plain: Bool {
         switch self {
         case
@@ -225,6 +229,7 @@ extension MoteButtonType {
             return false
         }
     }
+    
     var highlighted: Bool {
         switch self {
         case .up, .down, .left, .right, .ok, .powerOff:
@@ -233,6 +238,7 @@ extension MoteButtonType {
             return false
         }
     }
+    
     var hapticTypePressed: UIImpactFeedbackGenerator.FeedbackStyle? {
         switch self {
         case .powerOff, .home, .ok:
@@ -241,7 +247,17 @@ extension MoteButtonType {
             return nil
         }
     }
+    
     var hapticTypeReleased: UIImpactFeedbackGenerator.FeedbackStyle? {
         return .light
+    }
+    
+    var repeatBehavior: ButtonRepeatBehavior {
+        switch self {
+        case .left, .right, .up, .down, .volumeUp, .volumeDown:
+            return .enabled
+        default:
+            return .disabled
+        }
     }
 }
