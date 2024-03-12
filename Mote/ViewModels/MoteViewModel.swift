@@ -121,11 +121,15 @@ final class MoteViewModel: NSObject, ObservableObject {
     }
 }
 
-private extension MoteViewModel {
+extension MoteViewModel {
     func connectAndRegister() {
         guard !isConnected else { return }
         tv.connect()
         tv.send(.register(clientKey: AppSettings.shared.clientKey))
+    }
+    
+    func disconnect() {
+        tv.disconnect()
     }
 }
 
@@ -140,10 +144,13 @@ extension MoteViewModel: WCSessionDelegate {
         _ session: WCSession,
         didReceiveMessage message: [String : Any]
     ) {
+        connectAndRegister()
+        
         if let targetString = message[.keyTarget] as? String,
            let targetData = targetString.data(using: .utf8) {
             tv.sendKey(keyData: targetData)
         }
+        
         if let targetJSON = message[.commonTarget] as? String {
             tv.send(jsonRequest: targetJSON)
         }
@@ -209,6 +216,6 @@ extension MoteViewModel: WebOSClientDelegate {
                 isPopupPresentedDisconnected = true
             }
         }
-        connectAndRegister()
+        //connectAndRegister()
     }
 }

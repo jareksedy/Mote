@@ -9,6 +9,7 @@ import SwiftUI
 import PopupView
 
 struct MoteView: View {
+    @Environment(\.scenePhase) var scenePhase
     @StateObject var viewModel = MoteViewModel()
     
     var body: some View {
@@ -75,21 +76,21 @@ struct MoteView: View {
             .navigationTitle("Mote App")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
+                ToolbarItem(placement: .topBarLeading) {
                     Image(systemName: "keyboard.fill")
                         .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
                         .foregroundColor(Color(uiColor: .systemGray))
-                        .padding(.trailing, GlobalConstants.iconPadding)
+                        .padding(.leading, GlobalConstants.iconPadding)
                         .onTapGesture {
                             viewModel.keyboardPresented = true
                         }
                 }
-                ToolbarItem(placement: .topBarLeading) {
-                    Image(systemName: "ellipsis")
-                        .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
-                        .foregroundColor(Color(uiColor: .systemGray))
-                        .padding(.leading, GlobalConstants.iconPadding)
-                }
+//                ToolbarItem(placement: .topBarLeading) {
+//                    Image(systemName: "ellipsis")
+//                        .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
+//                        .foregroundColor(Color(uiColor: .systemGray))
+//                        .padding(.leading, GlobalConstants.iconPadding)
+//                }
                 ToolbarItem(placement: .topBarTrailing) {
                     Image(systemName: "gearshape.fill")
                         .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
@@ -154,6 +155,18 @@ struct MoteView: View {
                 .autohideIn(4)
                 .closeOnTap(true)
                 .closeOnTapOutside(true)
+        }
+        .onChange(of: scenePhase) {
+            switch scenePhase {
+            case .active:
+                viewModel.connectAndRegister()
+            case .background:
+                viewModel.disconnect()
+            case .inactive:
+                break
+            @unknown default:
+                break
+            }
         }
     }
     

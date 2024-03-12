@@ -14,8 +14,9 @@ struct MoteButton: View {
     
     var body: some View {
         Button(action: {
-            if type.hapticTypeReleased != nil && viewModel.preferencesHapticFeedback {
-                UIImpactFeedbackGenerator(style: type.hapticTypeReleased!).impactOccurred()
+            if type.hapticTypePressed != nil && viewModel.preferencesHapticFeedback {
+                UIImpactFeedbackGenerator(style: type.hapticTypePressed!).impactOccurred()
+                print("~pressed")
             }
             
             if type == .powerOff {
@@ -67,8 +68,9 @@ struct MoteButtonStyle: ButtonStyle {
             }
             .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
             .onChange(of: configuration.isPressed) {
-                if configuration.isPressed && type.hapticTypePressed != nil && viewModel.preferencesHapticFeedback {
-                    UIImpactFeedbackGenerator(style: type.hapticTypePressed!).impactOccurred()
+                if !configuration.isPressed && type.hapticTypeReleased != nil && viewModel.preferencesHapticFeedback {
+                    UIImpactFeedbackGenerator(style: type.hapticTypeReleased!).impactOccurred()
+                    print("~released")
                 }
             }
     }
