@@ -16,7 +16,7 @@ struct MoteView: View {
             ScrollView([], showsIndicators: false) {
                 VStack {
                     Spacer()
-                        .frame(height: 30)
+                        .frame(height: 25)
                     MoteButtonGroup {
                         MoteButtonRow {
                             MoteButton(.powerOff)
@@ -72,7 +72,7 @@ struct MoteView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(uiColor: .systemGray6))
-            .navigationTitle("Mote")
+            .navigationTitle("Mote App")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
