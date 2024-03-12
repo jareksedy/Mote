@@ -15,13 +15,14 @@ struct KeyboardView: View {
     @Binding var showModal: Bool
     
     var body: some View {
-        ScrollView {
+        ScrollView([], showsIndicators: false) {
             TextField("Your text here...", text: $inputString)
                 .focused($focused)
                 .disableAutocorrection(true)
                 .onSubmit {
                     viewModel.send(.insertText(text: inputString))
                     viewModel.send(.sendEnterKey)
+                    print("~\(inputString)")
                 }
                 .onAppear {
                     focused = true
