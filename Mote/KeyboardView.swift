@@ -38,6 +38,7 @@ struct KeyboardView: View {
         }
         .padding([.leading, .trailing])
         .ignoresSafeArea(.keyboard)
+        .background(Color(uiColor: .systemGray6))
     }
     
     init(showModal: Binding<Bool>, viewModel: MoteViewModel) {

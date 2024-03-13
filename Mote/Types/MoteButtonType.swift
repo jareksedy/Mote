@@ -51,6 +51,8 @@ enum MoteButtonType {
     case num9
     
     case keyboard
+    
+    case none
 }
 
 extension MoteButtonType {
@@ -226,6 +228,7 @@ extension MoteButtonType {
                 .play,
                 .pause,
                 .search,
+                .none,
                 .keyboard:
             return true
         default:

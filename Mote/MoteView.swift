@@ -14,7 +14,7 @@ struct MoteView: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView([], showsIndicators: false) {
+            ScrollView([.vertical], showsIndicators: false) {
                 VStack {
                     Spacer().frame(height: 22.5)
                     
@@ -86,7 +86,7 @@ struct MoteView: View {
 //                        }
 //                }
                 ToolbarItem(placement: .topBarLeading) {
-                    Image(systemName: "tv.inset.filled")
+                    Image(systemName: "list.bullet.rectangle.fill")
                         .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
                         .foregroundColor(Color(uiColor: .systemGray))
                         .padding(.leading, GlobalConstants.iconPadding)
