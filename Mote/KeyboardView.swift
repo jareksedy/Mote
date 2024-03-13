@@ -34,7 +34,7 @@ struct KeyboardView: View {
                     viewModel.send(.deleteCharacters(count: 99))
                     viewModel.send(.insertText(text: inputString))
                 }
-                .padding(.top, 30)
+                .padding(.top, 30.5)
         }
         .padding([.leading, .trailing])
         .ignoresSafeArea(.keyboard)

@@ -22,32 +22,6 @@ struct MoteButton: View {
                     .foregroundColor(tapped ? .white : type.highlighted ? .accent : .gray)
                     .font(.system(size: GlobalConstants.buttonFontSize, weight: .bold, design: .rounded))
             }
-//            .onTapGesture {
-//                if type.hapticType != nil && viewModel.preferencesHapticFeedback {
-//                    WKInterfaceDevice.current().play(type.hapticType!)
-//                }
-//                if let keyTarget = type.keyTarget {
-//                    viewModel.sendKey(keyTarget)
-//                }
-//                if let commonTarget = type.commonTarget {
-//                    viewModel.send(commonTarget)
-//                }
-//            }
-//            .onLongPressGesture(
-//                perform: {
-//                    switch type {
-//                    case .volumeUp, .volumeDown:
-//                        break
-//                    default:
-//                        return
-//                    }
-//                    WKInterfaceDevice.current().play(.click)
-//                    viewModel.presentVolumeView()
-//                },
-//                onPressingChanged: { pressing in
-//                    tapped = pressing
-//                }
-//            )
             ._onButtonGesture(pressing: { pressing in
                 tapped = pressing
             }, perform: {
