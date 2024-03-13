@@ -49,6 +49,8 @@ enum MoteButtonType {
     case num7
     case num8
     case num9
+    
+    case keyboard
 }
 
 extension MoteButtonType {
@@ -96,6 +98,8 @@ extension MoteButtonType {
             return "gearshape"
         case .search:
             return "magnifyingglass"
+        case .keyboard:
+            return "keyboard"
         default:
             return ""
         }
@@ -221,7 +225,8 @@ extension MoteButtonType {
                 .settings,
                 .play,
                 .pause,
-                .search:
+                .search,
+                .keyboard:
             return true
         default:
             return false
@@ -243,7 +248,7 @@ extension MoteButtonType {
     
     var hapticTypeReleased: UIImpactFeedbackGenerator.FeedbackStyle? {
         switch self {
-        case .powerOff, .home, .ok:
+        case .powerOff, .home, .ok, .keyboard:
             return .soft
         default:
             return nil

@@ -16,8 +16,8 @@ struct MoteView: View {
         NavigationStack {
             ScrollView([], showsIndicators: false) {
                 VStack {
-                    Spacer()
-                        .frame(height: 25)
+                    Spacer().frame(height: 22.5)
+                    
                     MoteButtonGroup {
                         MoteButtonRow {
                             MoteButton(.powerOff)
@@ -61,7 +61,7 @@ struct MoteView: View {
                         }
                         MoteButtonRow {
                             MoteButton(.home)
-                            MoteButton(.playPause)
+                            MoteButton(.keyboard)
                             MoteButton(.back)
                         }
                     }
@@ -73,24 +73,24 @@ struct MoteView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(uiColor: .systemGray6))
-            .navigationTitle("Mote App")
+            .navigationTitle("Mote")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Image(systemName: "keyboard.fill")
-                        .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
-                        .foregroundColor(Color(uiColor: .systemGray))
-                        .padding(.leading, GlobalConstants.iconPadding)
-                        .onTapGesture {
-                            viewModel.keyboardPresented = true
-                        }
-                }
 //                ToolbarItem(placement: .topBarLeading) {
-//                    Image(systemName: "ellipsis")
+//                    Image(systemName: "keyboard.fill")
 //                        .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
 //                        .foregroundColor(Color(uiColor: .systemGray))
 //                        .padding(.leading, GlobalConstants.iconPadding)
+//                        .onTapGesture {
+//                            viewModel.keyboardPresented = true
+//                        }
 //                }
+                ToolbarItem(placement: .topBarLeading) {
+                    Image(systemName: "tv.inset.filled")
+                        .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
+                        .foregroundColor(Color(uiColor: .systemGray))
+                        .padding(.leading, GlobalConstants.iconPadding)
+                }
                 ToolbarItem(placement: .topBarTrailing) {
                     Image(systemName: "gearshape.fill")
                         .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))

@@ -50,11 +50,11 @@ struct MoteButtonStyle: ButtonStyle {
             }
             .scaleEffect(isBeingPressed ? 0.9 : 1.0)
             ._onButtonGesture(pressing: { pressing in
-                withAnimation(.bouncy(duration: pressing ? 0.25 : 0.45)) {
+                withAnimation(.bouncy(duration: pressing ? 0.25 : 0.35)) {
                     isBeingPressed = pressing
                 }
                 
-                withAnimation(.smooth(duration: pressing ? 0.05 : 0.75)) {
+                withAnimation(.smooth(duration: pressing ? 0.05 : 0.50)) {
                     isColorChanged = pressing
                 }
                 
@@ -68,6 +68,10 @@ struct MoteButtonStyle: ButtonStyle {
             }, perform: {
                 if type.hapticTypeReleased != nil && viewModel.preferencesHapticFeedback {
                     UIImpactFeedbackGenerator(style: type.hapticTypeReleased!).impactOccurred()
+                }
+                
+                if type == .keyboard {
+                    viewModel.keyboardPresented = true
                 }
             })
     }
