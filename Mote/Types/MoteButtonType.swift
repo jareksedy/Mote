@@ -170,8 +170,6 @@ extension MoteButtonType {
             return .screenOff
         case .powerOff:
             return .turnOff
-        case .search:
-            return .launchApp(appId: "Search")
         default:
             return nil
         }
@@ -240,6 +238,10 @@ extension MoteButtonType {
     }
     
     var hapticTypePressed: UIImpactFeedbackGenerator.FeedbackStyle? {
+        return .soft
+    }
+    
+    var hapticTypeReleased: UIImpactFeedbackGenerator.FeedbackStyle? {
         switch self {
         case .powerOff, .home, .ok:
             return .soft
@@ -248,13 +250,9 @@ extension MoteButtonType {
         }
     }
     
-    var hapticTypeReleased: UIImpactFeedbackGenerator.FeedbackStyle? {
-        return .light
-    }
-    
     var repeatBehavior: ButtonRepeatBehavior {
         switch self {
-        case .left, .right, .up, .down, .volumeUp, .volumeDown:
+        case .up, .down, .left, .right, .volumeUp, .volumeDown, .channelUp, .channelDown:
             return .enabled
         default:
             return .disabled

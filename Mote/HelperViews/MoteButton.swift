@@ -9,29 +9,11 @@ import SwiftUI
 
 struct MoteButton: View {
     @EnvironmentObject var viewModel: MoteViewModel
-    
     var type: MoteButtonType
-    
     var body: some View {
         Button(action: {
-            if type.hapticTypePressed != nil && viewModel.preferencesHapticFeedback {
-                UIImpactFeedbackGenerator(style: type.hapticTypePressed!).impactOccurred()
-                print("~pressed")
-            }
-            
-            if type == .powerOff {
-                Task { @MainActor in
-                    viewModel.isConnected = false
-                    viewModel.isPopupPresentedTVGoingOff = true
-                }
-            }
-            
-            if let keyTarget = type.keyTarget {
-                viewModel.sendKey(keyTarget)
-            }
-            
-            if let commonTarget = type.commonTarget {
-                viewModel.send(commonTarget)
+            if type.repeatBehavior == .enabled {
+                performAction(type: type, viewModel: viewModel)
             }
         }, label: {})
             .buttonStyle(MoteButtonStyle(type))
@@ -46,33 +28,48 @@ struct MoteButton: View {
 
 struct MoteButtonStyle: ButtonStyle {
     @EnvironmentObject var viewModel: MoteViewModel
-    @State private var isPaused = false
-    
+    @State private var isBeingPressed: Bool = false
+    @State private var isColorChanged: Bool = false
     var type: MoteButtonType
     
     func makeBody(configuration: Configuration) -> some View {
         Circle()
             .frame(width: GlobalConstants.buttonSize, height: GlobalConstants.buttonSize)
-            .foregroundColor(configuration.isPressed ? .accent : type.plain ? .darkerGrayMote : Color(uiColor: .systemGray6))
+            .foregroundColor(isColorChanged ? .accent : type.plain ? .darkerGrayMote : Color(uiColor: .systemGray6))
             .overlay {
                 if let text = type.text {
                     Text(text)
-                        .foregroundColor(getForegroundColor(type: type, pressed: configuration.isPressed))
+                        .foregroundColor(getForegroundColor(type: type, isColorChanged))
                         .font(.system(size: GlobalConstants.buttonFontSize, weight: .bold, design: .rounded))
                         .monospacedDigit()
                 } else {
                     Image(systemName: type.systemName)
-                        .foregroundColor(getForegroundColor(type: type, pressed: configuration.isPressed))
+                        .foregroundColor(getForegroundColor(type: type, isColorChanged))
                         .font(.system(size: GlobalConstants.buttonFontSize, weight: .bold, design: .rounded))
                 }
             }
-            .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
-            .onChange(of: configuration.isPressed) {
-                if !configuration.isPressed && type.hapticTypeReleased != nil && viewModel.preferencesHapticFeedback {
-                    UIImpactFeedbackGenerator(style: type.hapticTypeReleased!).impactOccurred()
-                    print("~released")
+            .scaleEffect(isBeingPressed ? 0.9 : 1.0)
+            ._onButtonGesture(pressing: { pressing in
+                withAnimation(.bouncy(duration: pressing ? 0.25 : 0.45)) {
+                    isBeingPressed = pressing
                 }
-            }
+                
+                withAnimation(.smooth(duration: pressing ? 0.05 : 0.75)) {
+                    isColorChanged = pressing
+                }
+                
+                if isBeingPressed && type.hapticTypePressed != nil && viewModel.preferencesHapticFeedback {
+                    UIImpactFeedbackGenerator(style: type.hapticTypePressed!).impactOccurred()
+                }
+                
+                if isBeingPressed {
+                    performAction(type: type, viewModel: viewModel)
+                }
+            }, perform: {
+                if type.hapticTypeReleased != nil && viewModel.preferencesHapticFeedback {
+                    UIImpactFeedbackGenerator(style: type.hapticTypeReleased!).impactOccurred()
+                }
+            })
     }
     
     init(_ type: MoteButtonType) {
@@ -81,11 +78,28 @@ struct MoteButtonStyle: ButtonStyle {
 }
 
 private extension MoteButtonStyle {
-    func getForegroundColor(type: MoteButtonType, pressed: Bool) -> Color {
+    func getForegroundColor(type: MoteButtonType, _ pressed: Bool) -> Color {
         guard viewModel.isConnected else {
             return Color(uiColor: .systemGray5)
         }
         
         return pressed ? .white : type.highlighted ? .accent : Color(uiColor: .systemGray)
+    }
+}
+
+fileprivate func performAction(type: MoteButtonType, viewModel: MoteViewModel) {
+    if type == .powerOff {
+        Task { @MainActor in
+            viewModel.isConnected = false
+            viewModel.isPopupPresentedTVGoingOff = true
+        }
+    }
+    
+    if let keyTarget = type.keyTarget {
+        viewModel.sendKey(keyTarget)
+    }
+    
+    if let commonTarget = type.commonTarget {
+        viewModel.send(commonTarget)
     }
 }
