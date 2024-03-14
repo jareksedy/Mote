@@ -14,7 +14,7 @@ struct MoteView: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView([.vertical], showsIndicators: false) {
+            ScrollView([], showsIndicators: false) {
                 VStack {
                     Spacer().frame(height: 22.5)
                     

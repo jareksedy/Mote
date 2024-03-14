@@ -39,7 +39,7 @@ struct MoteWidgetEntryView: View {
     var entry: Provider.Entry
     var body: some View {
         ZStack {
-            Color(UIColor(named: "AccentColor")!)
+            Color(UIColor(named: "WidgetBackground")!)
             Image("moteWatchAppWidgetIcon")
                 .resizable()
                 .scaledToFill()
@@ -54,7 +54,7 @@ struct MoteWidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             MoteWidgetEntryView(entry: entry)
-                .containerBackground(Color.accentColor, for: .widget)
+                .containerBackground(.widgetBackground, for: .widget)
         }
         .configurationDisplayName("Mote Widget")
         .description("Mote Watch App Widget")
