@@ -38,6 +38,7 @@ enum MoteButtonType {
     case mute
     case settings
     case search
+    case exit
     
     case num0
     case num1
@@ -102,6 +103,8 @@ extension MoteButtonType {
             return "magnifyingglass"
         case .keyboard:
             return "keyboard"
+        case .exit:
+            return "xmark.app"
         default:
             return ""
         }
@@ -145,6 +148,8 @@ extension MoteButtonType {
             return .mute
         case .settings:
             return .menu
+        case .exit:
+            return .exit
         case .num0:
             return .num0
         case .num1:
@@ -228,6 +233,7 @@ extension MoteButtonType {
                 .play,
                 .pause,
                 .search,
+                .exit,
                 .none,
                 .keyboard:
             return true

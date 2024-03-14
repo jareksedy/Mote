@@ -21,8 +21,8 @@ struct MoteView: View {
                     MoteButtonGroup {
                         MoteButtonRow {
                             MoteButton(.powerOff)
-                            MoteButton(.settings)
                             MoteButton(.search)
+                            MoteButton(.settings)
                         }
                         MoteButtonRow {
                             MoteButton(.num1)
@@ -77,20 +77,13 @@ struct MoteView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
 //                ToolbarItem(placement: .topBarLeading) {
-//                    Image(systemName: "keyboard.fill")
-//                        .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
+//                    Image("moteLogo")
+//                        .resizable()
+//                        .frame(width: 48, height: 48)
 //                        .foregroundColor(Color(uiColor: .systemGray))
 //                        .padding(.leading, GlobalConstants.iconPadding)
-//                        .onTapGesture {
-//                            viewModel.keyboardPresented = true
-//                        }
+//                        .padding(.top, 28)
 //                }
-                ToolbarItem(placement: .topBarLeading) {
-                    Image(systemName: "list.bullet.rectangle.fill")
-                        .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
-                        .foregroundColor(Color(uiColor: .systemGray))
-                        .padding(.leading, GlobalConstants.iconPadding)
-                }
                 ToolbarItem(placement: .topBarTrailing) {
                     Image(systemName: "gearshape.fill")
                         .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
