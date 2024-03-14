@@ -9,7 +9,7 @@ import SwiftUI
 
 enum GlobalConstants {
     static let smallTitleSize: CGFloat = 18
-    static let largetTitleSize: CGFloat = 32
+    static let largetTitleSize: CGFloat = 24
     
     static let iconSize: CGFloat = 12
     static let iconPadding: CGFloat = 15

@@ -13,29 +13,12 @@ struct PreferencesView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Button(action: {
-                    viewModel.sendKey(.down)
-                }, label: {
-                    Text("Down")
-                })
-                .buttonRepeatBehavior(.enabled)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(uiColor: .systemGray6).ignoresSafeArea())
             .ignoresSafeArea(.all)
             .navigationTitle("Preferences")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Image(systemName: "xmark.app.fill")
-                        .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
-                        .foregroundColor(Color(uiColor: .systemGray))
-                        .padding(.trailing, GlobalConstants.iconPadding)
-                        .onTapGesture {
-                            viewModel.preferencesPresented = false
-                        }
-                }
-            }
+            .navigationBarTitleDisplayMode(.large)
         }
     }
     
@@ -44,12 +27,12 @@ struct PreferencesView: View {
         
         UINavigationBar.appearance().titleTextAttributes = [
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: GlobalConstants.smallTitleSize, weight: .bold).rounded(),
-            NSAttributedString.Key.foregroundColor: UIColor.systemGray
+            NSAttributedString.Key.foregroundColor: UIColor.accent
         ]
         
         UINavigationBar.appearance().largeTitleTextAttributes = [
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: GlobalConstants.largetTitleSize, weight: .bold).rounded(),
-            NSAttributedString.Key.foregroundColor: UIColor.systemGray
+            NSAttributedString.Key.foregroundColor: UIColor.accent
         ]
     }
 }

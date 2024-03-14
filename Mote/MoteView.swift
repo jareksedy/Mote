@@ -21,7 +21,7 @@ struct MoteView: View {
                     MoteButtonGroup {
                         MoteButtonRow {
                             MoteButton(.powerOff)
-                            MoteButton(.search)
+                            MoteButton(.playPause)
                             MoteButton(.settings)
                         }
                         MoteButtonRow {
@@ -73,22 +73,22 @@ struct MoteView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(uiColor: .systemGray6))
-            .navigationTitle("Mote")
+            .navigationTitle("")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-//                ToolbarItem(placement: .topBarLeading) {
-//                    Image("moteLogo")
-//                        .resizable()
-//                        .frame(width: 48, height: 48)
-//                        .foregroundColor(Color(uiColor: .systemGray))
-//                        .padding(.leading, GlobalConstants.iconPadding)
-//                        .padding(.top, 28)
-//                }
+                ToolbarItem(placement: .topBarLeading) {
+                    Text("Mote")
+                        .font(.system(size: GlobalConstants.largetTitleSize, weight: .bold, design: .rounded))
+                        .foregroundColor(.accentColor)
+                        .padding(.leading, GlobalConstants.iconPadding)
+                        .padding(.top, 25)
+                }
                 ToolbarItem(placement: .topBarTrailing) {
                     Image(systemName: "gearshape.fill")
                         .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
-                        .foregroundColor(Color(uiColor: .systemGray))
+                        .foregroundColor(.accentColor)
                         .padding(.trailing, GlobalConstants.iconPadding)
+                        .padding(.top, 25)
                         .onTapGesture {
                             viewModel.preferencesPresented = true
                         }
@@ -98,7 +98,7 @@ struct MoteView: View {
         .sheet(isPresented: $viewModel.preferencesPresented) {
             PreferencesView(viewModel: viewModel)
                 .presentationDragIndicator(.visible)
-                .presentationCornerRadius(12)
+                .presentationCornerRadius(24)
         }
         .sheet(isPresented: $viewModel.keyboardPresented) {
             KeyboardView(showModal: $viewModel.keyboardPresented, viewModel: viewModel)
@@ -167,13 +167,13 @@ struct MoteView: View {
         UINavigationBar.appearance().titleTextAttributes = [
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: GlobalConstants.smallTitleSize,
                                                            weight: .bold).rounded(),
-            NSAttributedString.Key.foregroundColor: UIColor.systemGray
+            NSAttributedString.Key.foregroundColor: UIColor.accent
         ]
         
         UINavigationBar.appearance().largeTitleTextAttributes = [
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: GlobalConstants.largetTitleSize,
                                                            weight: .bold).rounded(),
-            NSAttributedString.Key.foregroundColor: UIColor.systemGray
+            NSAttributedString.Key.foregroundColor: UIColor.accent
         ]
     }
 }
