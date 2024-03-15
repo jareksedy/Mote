@@ -73,22 +73,26 @@ struct MoteView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(uiColor: .systemGray6))
-            .navigationTitle("")
-            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Text("Mote")
-                        .font(.system(size: GlobalConstants.largetTitleSize, weight: .bold, design: .rounded))
-                        .foregroundColor(.accentColor)
-                        .padding(.leading, GlobalConstants.iconPadding)
-                        .padding(.top, 25)
+                    HStack(spacing: 5.5) {
+                        Text("Mote")
+                            .font(.system(size: 18, weight: .bold, design: .rounded))
+                            .foregroundColor(.accentColor)
+                        Image(systemName: "arrowtriangle.down.circle.fill")
+                            .font(.system(size: 12, weight: .bold, design: .rounded))
+                            .foregroundColor(.accentColor)
+                            .padding(.top, 1)
+                    }
+                    .padding(.leading, GlobalConstants.iconPadding)
+                    .padding(.top, 16.5)
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Image(systemName: "gearshape.fill")
                         .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(Color(uiColor: .systemGray))
                         .padding(.trailing, GlobalConstants.iconPadding)
-                        .padding(.top, 25)
+                        .padding(.top, 20)
                         .onTapGesture {
                             viewModel.preferencesPresented = true
                         }

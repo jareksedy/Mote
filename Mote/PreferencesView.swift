@@ -9,16 +9,40 @@ import SwiftUI
 
 struct PreferencesView: View {
     private var viewModel: MoteViewModel
+    @State private var autoConnect: Bool = true
     
     var body: some View {
         NavigationStack {
-            VStack {
+            List {
+                Section("App") {
+                    NavigationLink("About the App", value: 0)
+                    Button(action: {}, label: { Text("Rate this App") })
+                }
+                
+                Section("Connection") {
+                    Toggle("Autoconnect on start", isOn: $autoConnect)
+                        .tint(.accent)
+                    Button(action: {}, label: { Text("Clear all stored connection data") })
+                }
+                
+                Section("Haptics") {
+                    Toggle("Haptic feedback", isOn: $autoConnect)
+                        .tint(.accent)
+                }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color(uiColor: .systemGray6).ignoresSafeArea())
-            .ignoresSafeArea(.all)
-            .navigationTitle("Preferences")
-            .navigationBarTitleDisplayMode(.large)
+            .background(Color(uiColor: .systemGray6)/*.ignoresSafeArea()*/)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    HStack(spacing: 10) {
+                        Text("Preferences")
+                            .font(.system(size: 18, weight: .bold, design: .rounded))
+                            .foregroundColor(.accentColor)
+                    }
+                    .padding(.leading, GlobalConstants.iconPadding)
+                    .padding(.top, 15)
+                    .padding(.bottom, 10)
+                }
+            }
         }
     }
     
