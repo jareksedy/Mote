@@ -52,6 +52,7 @@ enum MoteButtonType {
     case num9
     
     case keyboard
+    case grid
     
     case none
 }
@@ -105,6 +106,8 @@ extension MoteButtonType {
             return "keyboard"
         case .exit:
             return "xmark.app"
+        case .grid:
+            return "circle.grid.2x2"
         default:
             return ""
         }
@@ -235,6 +238,7 @@ extension MoteButtonType {
                 .search,
                 .exit,
                 .none,
+                .grid,
                 .keyboard:
             return true
         default:
@@ -257,7 +261,7 @@ extension MoteButtonType {
     
     var hapticTypeReleased: UIImpactFeedbackGenerator.FeedbackStyle? {
         switch self {
-        case .powerOff, .home, .ok, .keyboard:
+        case .powerOff, .home, .ok, .keyboard, .grid:
             return .soft
         default:
             return nil

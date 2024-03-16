@@ -16,12 +16,12 @@ struct MoteView: View {
         NavigationStack {
             ScrollView([], showsIndicators: false) {
                 VStack {
-                    Spacer().frame(height: 22.5)
+                    Spacer().frame(height: 25)
                     
                     MoteButtonGroup {
                         MoteButtonRow {
                             MoteButton(.powerOff)
-                            MoteButton(.playPause)
+                            MoteButton(.grid)
                             MoteButton(.settings)
                         }
                         MoteButtonRow {
@@ -85,7 +85,7 @@ struct MoteView: View {
                             .padding(.top, 1)
                     }
                     .padding(.leading, GlobalConstants.iconPadding)
-                    .padding(.top, 18)
+                    .padding(.top, 16.5)
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Image(systemName: "gearshape.fill")
