@@ -30,7 +30,8 @@ struct PreferencesView: View {
                         .tint(.accent)
                 }
             }
-            .background(Color(uiColor: .systemGray6)/*.ignoresSafeArea()*/)
+            .background(Color(uiColor: .systemGray6))
+            .scrollContentBackground(.hidden)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     HStack(spacing: 10) {

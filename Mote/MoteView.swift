@@ -75,17 +75,17 @@ struct MoteView: View {
             .background(Color(uiColor: .systemGray6))
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    HStack(spacing: 5.5) {
+                    HStack(spacing: 6) {
                         Text("Mote")
                             .font(.system(size: 18, weight: .bold, design: .rounded))
                             .foregroundColor(.accentColor)
-                        Image(systemName: "arrowtriangle.down.circle.fill")
+                        Image(systemName: "chevron.down.circle.fill")
                             .font(.system(size: 12, weight: .bold, design: .rounded))
                             .foregroundColor(.accentColor)
                             .padding(.top, 1)
                     }
                     .padding(.leading, GlobalConstants.iconPadding)
-                    .padding(.top, 16.5)
+                    .padding(.top, 18)
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Image(systemName: "gearshape.fill")
