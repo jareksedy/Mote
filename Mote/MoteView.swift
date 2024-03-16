@@ -82,7 +82,7 @@ struct MoteView: View {
                         Image(systemName: "chevron.down.circle.fill")
                             .font(.system(size: 12, weight: .bold, design: .rounded))
                             .foregroundColor(.accentColor)
-                            .padding(.top, 1.5)
+                            .padding(.top, 1)
                     }
                     .padding(.leading, GlobalConstants.iconPadding)
                     .padding(.top, 18)
