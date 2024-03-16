@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UIKit
+import WebOSClient
 
 struct KeyboardView: View {
     private var viewModel: MoteViewModel
@@ -31,8 +32,7 @@ struct KeyboardView: View {
                     showModal = focused
                 }
                 .onChange(of: inputString) {
-                    viewModel.send(.deleteCharacters(count: 99))
-                    viewModel.send(.insertText(text: inputString))
+                    viewModel.send(.insertText(text: inputString, replace: true))
                 }
                 .padding(.top, 30)
         }

@@ -8,6 +8,10 @@
 import SwiftUI
 
 enum GlobalConstants {
+    enum SubscriptionIds {
+        static let remoteKeyboardRequestId = "remoteKeyboard"
+    }
+    
     static let smallTitleSize: CGFloat = 18
     static let largetTitleSize: CGFloat = 24
     

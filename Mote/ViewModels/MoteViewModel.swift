@@ -68,6 +68,7 @@ final class MoteViewModel: NSObject, ObservableObject {
     @Published var isPopupPresentedTVGoingOff: Bool = false
     
     @Published var keyboardPresented: Bool = false
+    @Published var isFocused: Bool = false
     
     @Published var isConnected: Bool = false
     @Published var preferencesPresented: Bool = false
@@ -96,6 +97,7 @@ final class MoteViewModel: NSObject, ObservableObject {
         }
     }
 
+    private var subscriptions: [String: ((WebOSResponse) -> Void)] = [:]
     private var session: WCSession
     private var tv: WebOSClient
     
@@ -109,11 +111,29 @@ final class MoteViewModel: NSObject, ObservableObject {
         connectAndRegister()
     }
     
-    func send(_ target: WebOSTarget) {
-        tv.send(target)
+    func subscribe(_ id: String, completion: @escaping (WebOSResponse) -> Void) {
+        subscriptions[id] = completion
+    }
+    
+    func unsubscribe(_ id: String) {
+        subscriptions.removeValue(forKey: id)
+    }
+    
+    @discardableResult
+    func send(_ target: WebOSTarget, id: String? = nil) -> String? {
+        var newId: String?
+        
+        if let id {
+            newId = tv.send(target, id: id)
+        } else {
+            newId = tv.send(target)
+        }
+        
         if case .turnOff = target {
             tv.disconnect()
         }
+        
+        return newId
     }
     
     func sendKey(_ keyTarget: WebOSKeyTarget) {
@@ -174,7 +194,9 @@ extension MoteViewModel: WebOSClientDelegate {
     
     func didRegister(with clientKey: String) {
         AppSettings.shared.clientKey = clientKey
-        tv.send(.getVolume(subscribe: true), id: Constants.volumeSubscriptionRequestId)
+        
+        tv.send(.registerRemoteKeyboard, id: GlobalConstants.SubscriptionIds.remoteKeyboardRequestId)
+
         Task { @MainActor in
             isPopupPresentedPrompted = false
             isPopupPresentedDisconnected = false
@@ -186,15 +208,23 @@ extension MoteViewModel: WebOSClientDelegate {
         }
     }
     
-    func didReceive(jsonResponse: String) {
-        print(jsonResponse)
-    }
+//    func didReceive(jsonResponse: String) {
+//        print(jsonResponse)
+//    }
     
     func didReceive(_ result: Result<WebOSResponse, Error>) {
-        if case .success(let response) = result, response.id == Constants.volumeSubscriptionRequestId {
-            session.sendMessage(["volumeChanged": Double(response.payload?.volumeStatus?.volume ?? 0)], replyHandler: nil)
+        if case .success(let response) = result,
+           let id = response.id,
+           subscriptions.keys.contains(id) {
+            subscriptions[id]?(response)
+        }
+        
+        if case .success(let response) = result,
+           response.id == GlobalConstants.SubscriptionIds.remoteKeyboardRequestId,
+           let focus = response.payload?.currentWidget?.focus {
             Task { @MainActor in
-                tvVolumeLevel = response.payload?.volumeStatus?.volume ?? 0
+                keyboardPresented = focus
+                isFocused = focus
             }
         }
     }

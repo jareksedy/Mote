@@ -88,6 +88,16 @@ struct MoteView: View {
                     .padding(.top, 18)
                 }
                 ToolbarItem(placement: .topBarTrailing) {
+                    Image(systemName: "keyboard.fill")
+                        .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
+                        .foregroundColor(Color(uiColor: .systemGray))
+                        .padding(.trailing, GlobalConstants.iconPadding)
+                        .padding(.top, 20)
+                        .onTapGesture {
+                            viewModel.keyboardPresented = true
+                        }
+                }
+                ToolbarItem(placement: .topBarTrailing) {
                     Image(systemName: "gearshape.fill")
                         .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
                         .foregroundColor(Color(uiColor: .systemGray))
@@ -104,7 +114,12 @@ struct MoteView: View {
                 .presentationDragIndicator(.visible)
                 .presentationCornerRadius(24)
         }
-        .sheet(isPresented: $viewModel.keyboardPresented) {
+        .sheet(
+            isPresented: $viewModel.keyboardPresented,
+            onDismiss: {
+                if viewModel.isFocused { viewModel.sendKey(.back) }
+            }
+        ) {
             KeyboardView(showModal: $viewModel.keyboardPresented, viewModel: viewModel)
                 .presentationDetents([.height(55)])
                 .presentationDragIndicator(.visible)
