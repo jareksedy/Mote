@@ -54,6 +54,11 @@ enum MoteButtonType {
     case keyboard
     case grid
     
+    case red
+    case green
+    case yellow
+    case blue
+    
     case none
 }
 
@@ -108,6 +113,8 @@ extension MoteButtonType {
             return "xmark.app"
         case .grid:
             return "circle.grid.2x2"
+        case .red, .green, .yellow, .blue:
+            return "circlebadge"
         default:
             return ""
         }
@@ -173,6 +180,14 @@ extension MoteButtonType {
             return .num8
         case .num9:
             return .num9
+        case .red:
+            return .red
+        case .green:
+            return .green
+        case .yellow:
+            return .yellow
+        case .blue:
+            return .blue
         default:
             return nil
         }
@@ -256,12 +271,17 @@ extension MoteButtonType {
     }
     
     var hapticTypePressed: UIImpactFeedbackGenerator.FeedbackStyle? {
-        return .soft
+        switch self {
+        case .grid:
+            return .rigid
+        default:
+            return .soft
+        }
     }
     
     var hapticTypeReleased: UIImpactFeedbackGenerator.FeedbackStyle? {
         switch self {
-        case .powerOff, .home, .ok, .keyboard, .grid:
+        case .powerOff, .home, .ok, .keyboard:
             return .soft
         default:
             return nil

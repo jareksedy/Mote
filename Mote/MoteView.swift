@@ -16,56 +16,14 @@ struct MoteView: View {
         NavigationStack {
             ScrollView([], showsIndicators: false) {
                 VStack {
-                    Spacer().frame(height: 30)
-                    
-                    MoteButtonGroup {
-                        MoteButtonRow {
-                            MoteButton(.powerOff)
-                            MoteButton(.grid)
-                            MoteButton(.settings)
-                        }
-                        MoteButtonRow {
-                            MoteButton(.num1)
-                            MoteButton(.num2)
-                            MoteButton(.num3)
-                        }
-                        MoteButtonRow {
-                            MoteButton(.num4)
-                            MoteButton(.num5)
-                            MoteButton(.num6)
-                        }
-                        MoteButtonRow {
-                            MoteButton(.num7)
-                            MoteButton(.num8)
-                            MoteButton(.num9)
-                        }
-                        MoteButtonRow {
-                            MoteButton(.screenOff)
-                            MoteButton(.num0)
-                            MoteButton(.mute)
-                        }
-                        MoteButtonRow {
-                            MoteButton(.channelUp)
-                            MoteButton(.up)
-                            MoteButton(.volumeUp)
-                        }
-                        MoteButtonRow {
-                            MoteButton(.left)
-                            MoteButton(.ok)
-                            MoteButton(.right)
-                        }
-                        MoteButtonRow {
-                            MoteButton(.channelDown)
-                            MoteButton(.down)
-                            MoteButton(.volumeDown)
-                        }
-                        MoteButtonRow {
-                            MoteButton(.home)
-                            MoteButton(.playPause)
-                            MoteButton(.back)
-                        }
+                    Spacer().frame(height: 20)
+                    if viewModel.colorButtonsPresented {
+                        MoteButtonGroupColorView()
+                            .environmentObject(viewModel)
+                    } else {
+                        MoteButtonGroupDefaultView()
+                            .environmentObject(viewModel)
                     }
-                    .environmentObject(viewModel)
                     Spacer()
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -75,17 +33,13 @@ struct MoteView: View {
             .background(Color(uiColor: .systemGray6))
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    HStack(spacing: 7.5) {
-                        Text("Mote")
-                            .font(.system(size: 18, weight: .bold, design: .rounded))
-                            .foregroundColor(.accentColor)
-                        Image(systemName: "chevron.down.circle.fill")
-                            .font(.system(size: 12, weight: .bold, design: .rounded))
-                            .foregroundColor(.accentColor)
-                            .padding(.top, 1)
-                    }
-                    .padding(.leading, GlobalConstants.iconPadding)
-                    .padding(.top, 10)
+                    Image(systemName: "m.square.fill")
+                        .font(.system(size: 18, weight: .bold, design: .rounded))
+                        .foregroundColor(.accentColor)
+                        .padding(.leading, GlobalConstants.iconPadding)
+                        .padding(.top, 10)
+                        .onTapGesture {
+                        }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Image(systemName: "keyboard.fill")
