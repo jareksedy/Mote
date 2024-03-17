@@ -75,7 +75,7 @@ struct MoteView: View {
             .background(Color(uiColor: .systemGray6))
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    HStack(spacing: 5) {
+                    HStack(spacing: 7.5) {
                         Text("Mote")
                             .font(.system(size: 18, weight: .bold, design: .rounded))
                             .foregroundColor(.accentColor)
