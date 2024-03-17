@@ -16,7 +16,7 @@ struct MoteView: View {
         NavigationStack {
             ScrollView([], showsIndicators: false) {
                 VStack {
-                    Spacer().frame(height: 25)
+                    Spacer().frame(height: 30)
                     
                     MoteButtonGroup {
                         MoteButtonRow {
@@ -61,7 +61,7 @@ struct MoteView: View {
                         }
                         MoteButtonRow {
                             MoteButton(.home)
-                            MoteButton(.keyboard)
+                            MoteButton(.playPause)
                             MoteButton(.back)
                         }
                     }
@@ -75,7 +75,7 @@ struct MoteView: View {
             .background(Color(uiColor: .systemGray6))
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    HStack(spacing: 7.5) {
+                    HStack(spacing: 5) {
                         Text("Mote")
                             .font(.system(size: 18, weight: .bold, design: .rounded))
                             .foregroundColor(.accentColor)
@@ -85,16 +85,25 @@ struct MoteView: View {
                             .padding(.top, 1)
                     }
                     .padding(.leading, GlobalConstants.iconPadding)
-                    .padding(.top, 18)
+                    .padding(.top, 10)
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Image(systemName: "keyboard.fill")
                         .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
                         .foregroundColor(Color(uiColor: .systemGray))
                         .padding(.trailing, GlobalConstants.iconPadding)
-                        .padding(.top, 20)
+                        .padding(.top, 10)
                         .onTapGesture {
                             viewModel.keyboardPresented = true
+                        }
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Image(systemName: "square.grid.2x2.fill")
+                        .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
+                        .foregroundColor(Color(uiColor: .systemGray))
+                        .padding(.trailing, GlobalConstants.iconPadding)
+                        .padding(.top, 10)
+                        .onTapGesture {
                         }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
@@ -102,7 +111,7 @@ struct MoteView: View {
                         .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
                         .foregroundColor(Color(uiColor: .systemGray))
                         .padding(.trailing, GlobalConstants.iconPadding)
-                        .padding(.top, 20)
+                        .padding(.top, 10)
                         .onTapGesture {
                             viewModel.preferencesPresented = true
                         }

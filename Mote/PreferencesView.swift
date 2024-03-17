@@ -41,7 +41,7 @@ struct PreferencesView: View {
                     }
                     .padding(.leading, GlobalConstants.iconPadding)
                     .padding(.top, 15)
-                    .padding(.bottom, 10)
+                    .padding(.bottom, 12.5)
                 }
             }
         }

@@ -26,6 +26,7 @@ struct KeyboardView: View {
                 }
                 .onAppear {
                     focused = true
+                    inputString = ""
                 }
                 .font(.system(size: 24, weight: .bold, design: .rounded))
                 .onChange(of: focused) {
