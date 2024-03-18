@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/jareksedy/WebOSClient.git",
       "state" : {
-        "revision" : "15d3b6080c6f72b810a9695989200d308821571b",
-        "version" : "1.4.2"
+        "revision" : "2f2ea250a42846b80759f57339ab8939747099a0",
+        "version" : "1.4.3"
       }
     }
   ],

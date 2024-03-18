@@ -9,7 +9,8 @@ import SwiftUI
 
 enum GlobalConstants {
     enum SubscriptionIds {
-        static let remoteKeyboardRequestId = "remoteKeyboard"
+        static let remoteKeyboardRequestId = "remoteKeyboardSubscription"
+        static let mediaPlaybackInfoRequestId = "mediaPlaybackInfoSubscription"
     }
     
     static let smallTitleSize: CGFloat = 18

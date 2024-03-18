@@ -68,6 +68,7 @@ final class MoteViewModel: NSObject, ObservableObject {
     @Published var isPopupPresentedTVGoingOff: Bool = false
     
     @Published var colorButtonsPresented: Bool = false
+    @Published var playState: String? = nil
     
     @Published var keyboardPresented: Bool = false
     @Published var isFocused: Bool = false
@@ -185,6 +186,7 @@ extension MoteViewModel: WebOSClientDelegate {
         AppSettings.shared.clientKey = clientKey
         
         tv.send(.registerRemoteKeyboard, id: GlobalConstants.SubscriptionIds.remoteKeyboardRequestId)
+        tv.send(.getForegroundAppMediaStatus(subscribe: true), id: GlobalConstants.SubscriptionIds.mediaPlaybackInfoRequestId)
 
         Task { @MainActor in
             isPopupPresentedPrompted = false
@@ -214,6 +216,14 @@ extension MoteViewModel: WebOSClientDelegate {
             Task { @MainActor in
                 keyboardPresented = focus
                 isFocused = focus
+            }
+        }
+        
+        if case .success(let response) = result,
+           response.id == GlobalConstants.SubscriptionIds.mediaPlaybackInfoRequestId,
+           let playState = response.payload?.foregroundAppInfo?.first?.playState {
+            Task { @MainActor in
+                self.playState = playState
             }
         }
     }

@@ -18,11 +18,27 @@ struct MoteButton: View {
         }, label: {})
             .buttonStyle(MoteButtonStyle(type))
             .buttonRepeatBehavior(type.repeatBehavior)
-            .disabled(!viewModel.isConnected)
+            .disabled(getDisabled(type))
     }
     
     init(_ type: MoteButtonType) {
         self.type = type
+    }
+}
+
+private extension MoteButton {
+    func getDisabled(_ type: MoteButtonType) -> Bool {
+        guard viewModel.isConnected else {
+            return true
+        }
+        
+        if type == .playPause,
+           let playState = viewModel.playState,
+           !(playState == "playing" || playState == "paused") {
+            return true
+        }
+        
+        return false
     }
 }
 
@@ -116,6 +132,12 @@ private extension MoteButtonStyle {
             return Color(uiColor: .systemGray5)
         }
         
+        if type == .playPause,
+           let playState = viewModel.playState,
+           !(playState == "playing" || playState == "paused") {
+            return Color(uiColor: .systemGray5)
+        }
+        
         if type == .grid && viewModel.colorButtonsPresented {
             return .white
         }
@@ -134,6 +156,23 @@ fileprivate func performAction(type: MoteButtonType, viewModel: MoteViewModel) {
             viewModel.isConnected = false
             viewModel.isPopupPresentedTVGoingOff = true
         }
+    }
+
+    if type == .playPause {
+        guard let playState = viewModel.playState else {
+            return
+        }
+        
+        switch playState {
+        case "playing":
+            viewModel.sendKey(.pause)
+        case "paused":
+            viewModel.sendKey(.play)
+        default:
+            break
+        }
+        
+        return
     }
     
     if type == .grid {
