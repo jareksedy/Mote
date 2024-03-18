@@ -35,9 +35,9 @@ extension PopupType {
         case .prompted:
             return "tv"
         case .disconnected:
-            return "antenna.radiowaves.left.and.right.slash"
+            return "tv.slash"
         case .connected:
-            return "antenna.radiowaves.left.and.right"
+            return "tv"
         case .tvGoingOff:
             return "tv.slash"
         }
@@ -46,13 +46,13 @@ extension PopupType {
     var message: String {
         switch self {
         case .prompted:
-            return "Please accept the registration\nprompt on the TV"
+            return "Accept the registration prompt on the TV"
         case .disconnected:
-            return "Disconnected,\nattempting to reconnect"
+            return "Disconnected, attempting to reconnect"
         case .connected:
-            return "Connected to the TV\nsuccessfully"
+            return "Connected to the TV successfully"
         case .tvGoingOff:
-            return "The TV went off,\ndisconnecting"
+            return "The TV is going off, disconnecting"
         }
     }
 }

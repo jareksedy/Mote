@@ -89,7 +89,7 @@ struct MoteView: View {
                 .type(.toast)
                 .position(.bottom)
                 .animation(.bouncy(duration: 0.45))
-                .backgroundColor(Color(uiColor: .systemBackground).opacity(0.50))
+                .backgroundColor(Color(uiColor: .systemBackground).opacity(0.30))
         }
         .popup(isPresented: $viewModel.isPopupPresentedTVGoingOff) {
             PopupView(type: .tvGoingOff)
@@ -98,7 +98,7 @@ struct MoteView: View {
                 .type(.toast)
                 .position(.bottom)
                 .animation(.bouncy(duration: 0.45))
-                .backgroundColor(Color(uiColor: .systemBackground).opacity(0.50))
+                .backgroundColor(Color(uiColor: .systemBackground).opacity(0.30))
                 .autohideIn(4)
                 .closeOnTap(true)
                 .closeOnTapOutside(true)
@@ -110,8 +110,10 @@ struct MoteView: View {
                 .type(.toast)
                 .position(.bottom)
                 .animation(.bouncy(duration: 0.45))
-                .backgroundColor(Color(uiColor: .systemBackground).opacity(0.50))
+                .backgroundColor(Color(uiColor: .systemBackground).opacity(0.30))
                 .autohideIn(4)
+                .closeOnTap(true)
+                .closeOnTapOutside(true)
         }
         .popup(isPresented: $viewModel.isPopupPresentedConnected) {
             PopupView(type: .connected)
@@ -120,7 +122,7 @@ struct MoteView: View {
                 .type(.toast)
                 .position(.bottom)
                 .animation(.bouncy(duration: 0.45))
-                .backgroundColor(Color(uiColor: .systemBackground).opacity(0.50))
+                .backgroundColor(Color(uiColor: .systemBackground).opacity(0.30))
                 .autohideIn(4)
                 .closeOnTap(true)
                 .closeOnTapOutside(true)
@@ -151,32 +153,5 @@ struct MoteView: View {
                                                            weight: .bold).rounded(),
             NSAttributedString.Key.foregroundColor: UIColor.accent
         ]
-    }
-}
-
-struct PopupView: View {
-    var type: PopupType
-    var body: some View {
-        VStack {
-            Image(systemName: type.systemName)
-                .font(.system(size: 36, weight: .regular, design: .rounded))
-                .foregroundColor(type.iconColor)
-                .multilineTextAlignment(.center)
-                .padding(.top, 35)
-            Text(type.message)
-                .font(.system(size: 16, weight: .bold, design: .rounded))
-                .foregroundColor(Color(uiColor: .label))
-                .multilineTextAlignment(.center)
-                .lineSpacing(4)
-                .padding(.top, 25)
-                .padding(.bottom, 35)
-        }
-        .frame(maxWidth: .greatestFiniteMagnitude)
-        .padding([.leading, .trailing], 25)
-        .background(Color(uiColor: .systemGray6))
-        .cornerRadius(32)
-        .shadow(radius: 64)
-        .padding([.leading, .trailing], 10)
-        .padding(.bottom, 35)
     }
 }
