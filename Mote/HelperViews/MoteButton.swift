@@ -32,12 +32,6 @@ private extension MoteButton {
             return true
         }
         
-        if type == .playPause,
-           let playState = viewModel.playState,
-           !(playState == "playing" || playState == "paused") {
-            return true
-        }
-        
         return false
     }
 }
@@ -129,12 +123,6 @@ private extension MoteButtonStyle {
     
     func getForegroundColor(type: MoteButtonType, _ pressed: Bool) -> Color {
         guard viewModel.isConnected else {
-            return Color(uiColor: .systemGray5)
-        }
-        
-        if type == .playPause,
-           let playState = viewModel.playState,
-           !(playState == "playing" || playState == "paused") {
             return Color(uiColor: .systemGray5)
         }
         
