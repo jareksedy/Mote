@@ -46,10 +46,9 @@ struct MoteView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     Image(systemName: "keyboard.fill")
                         .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
-                        .foregroundColor(Color(uiColor: .systemGray))
+                        .foregroundColor(viewModel.isConnected ? Color(uiColor: .systemGray) : Color(uiColor: .systemGray3))
                         .padding(.trailing, GlobalConstants.iconPadding)
                         .padding(.top, 10)
-                        .opacity(viewModel.isConnected ? 1.0 : 0.5)
                         .onTapGesture {
                             guard viewModel.isConnected else { return }
                             viewModel.keyboardPresented = true
