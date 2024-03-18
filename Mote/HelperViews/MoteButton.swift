@@ -93,19 +93,19 @@ private extension MoteButtonStyle {
     func getBackgroundColor(type: MoteButtonType, _ pressed: Bool) -> Color {
         switch type {
         case .red:
-            return .red
+            return viewModel.isConnected ? .red : Color(uiColor: .systemGray6)
         case .green:
-            return .green
+            return viewModel.isConnected ? .green : Color(uiColor: .systemGray6)
         case .yellow:
-            return .yellow
+            return viewModel.isConnected ? .yellow : Color(uiColor: .systemGray6)
         case .blue:
-            return .blue
+            return viewModel.isConnected ? .blue : Color(uiColor: .systemGray6)
         default:
             break
         }
         
         if type == .grid && viewModel.colorButtonsPresented {
-            return .accent
+            return viewModel.isConnected ? .accent : Color(uiColor: .systemGray6)
         }
         
         return pressed ? .accent : type.plain ? .darkerGrayMote : Color(uiColor: .systemGray6)

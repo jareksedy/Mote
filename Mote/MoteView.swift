@@ -16,7 +16,7 @@ struct MoteView: View {
         NavigationStack {
             ScrollView([], showsIndicators: false) {
                 VStack {
-                    Spacer().frame(height: 20)
+                    Spacer().frame(height: 25)
                     if viewModel.colorButtonsPresented {
                         MoteButtonGroupColorView()
                             .environmentObject(viewModel)
@@ -33,13 +33,15 @@ struct MoteView: View {
             .background(Color(uiColor: .systemGray6))
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Image(systemName: "m.square.fill")
-                        .font(.system(size: 18, weight: .bold, design: .rounded))
-                        .foregroundColor(.accentColor)
-                        .padding(.leading, GlobalConstants.iconPadding)
-                        .padding(.top, 10)
-                        .onTapGesture {
-                        }
+                    HStack(spacing: -5) {
+                        Image(systemName: "m.square.fill")
+                            .font(.system(size: 18, weight: .bold, design: .rounded))
+                            .foregroundColor(.accentColor)
+                            .onTapGesture {}
+                    }
+                    .padding(.leading, GlobalConstants.iconPadding)
+                    .padding(.top, 10)
+
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Image(systemName: "keyboard.fill")
@@ -47,17 +49,10 @@ struct MoteView: View {
                         .foregroundColor(Color(uiColor: .systemGray))
                         .padding(.trailing, GlobalConstants.iconPadding)
                         .padding(.top, 10)
+                        .opacity(viewModel.isConnected ? 1.0 : 0.5)
                         .onTapGesture {
+                            guard viewModel.isConnected else { return }
                             viewModel.keyboardPresented = true
-                        }
-                }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Image(systemName: "square.grid.2x2.fill")
-                        .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
-                        .foregroundColor(Color(uiColor: .systemGray))
-                        .padding(.trailing, GlobalConstants.iconPadding)
-                        .padding(.top, 10)
-                        .onTapGesture {
                         }
                 }
                 ToolbarItem(placement: .topBarTrailing) {

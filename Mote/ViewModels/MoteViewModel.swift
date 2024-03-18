@@ -74,19 +74,6 @@ final class MoteViewModel: NSObject, ObservableObject {
     
     @Published var isConnected: Bool = false
     @Published var preferencesPresented: Bool = false
-    @Published var tvVolumeLevel: Int = 0 {
-        didSet {
-            tvVolumeChanged = true
-        }
-    }
-    @Published var tvVolumeChanged: Bool = false {
-        didSet {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4) { [weak self] in
-                guard let self else { return }
-                tvVolumeChanged = false
-            }
-        }
-    }
     
     @Published var preferencesAlternativeView: Bool = AppSettings.shared.phoneAlternativeView {
         didSet {
