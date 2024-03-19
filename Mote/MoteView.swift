@@ -37,7 +37,9 @@ struct MoteView: View {
                         Image(systemName: "m.square.fill")
                             .font(.system(size: 18, weight: .bold, design: .rounded))
                             .foregroundColor(.accentColor)
-                            .onTapGesture {}
+                            .onTapGesture {
+                                viewModel.isPopupPresentedConnected.toggle()
+                            }
                     }
                     .padding(.leading, GlobalConstants.iconPadding)
                     .padding(.top, 10)
@@ -61,7 +63,8 @@ struct MoteView: View {
                         .padding(.trailing, GlobalConstants.iconPadding)
                         .padding(.top, 10)
                         .onTapGesture {
-                            viewModel.preferencesPresented = true
+                            //viewModel.preferencesPresented = true
+                            viewModel.isPopupPresentedDisconnected.toggle()
                         }
                 }
             }
@@ -88,7 +91,7 @@ struct MoteView: View {
             popup
                 .type(.toast)
                 .position(.bottom)
-                .animation(.bouncy(duration: 0.45))
+                .animation(.bouncy(duration: 0.35))
                 .backgroundColor(Color(uiColor: .systemBackground).opacity(0.30))
         }
         .popup(isPresented: $viewModel.isPopupPresentedTVGoingOff) {
@@ -97,7 +100,7 @@ struct MoteView: View {
             popup
                 .type(.toast)
                 .position(.bottom)
-                .animation(.bouncy(duration: 0.45))
+                .animation(.bouncy(duration: 0.35))
                 .backgroundColor(Color(uiColor: .systemBackground).opacity(0.30))
                 .autohideIn(4)
                 .closeOnTap(true)
@@ -109,7 +112,7 @@ struct MoteView: View {
             popup
                 .type(.toast)
                 .position(.bottom)
-                .animation(.bouncy(duration: 0.45))
+                .animation(.bouncy(duration: 0.35))
                 .backgroundColor(Color(uiColor: .systemBackground).opacity(0.30))
                 .autohideIn(4)
                 .closeOnTap(true)
@@ -121,7 +124,7 @@ struct MoteView: View {
             popup
                 .type(.toast)
                 .position(.bottom)
-                .animation(.bouncy(duration: 0.45))
+                .animation(.bouncy(duration: 0.35))
                 .backgroundColor(Color(uiColor: .systemBackground).opacity(0.30))
                 .autohideIn(4)
                 .closeOnTap(true)

@@ -11,31 +11,27 @@ struct PopupView: View {
     var type: PopupType
     var body: some View {
         VStack(alignment: .leading) {
-            HStack(spacing: 25) {
+            VStack(spacing: 25) {
+                Spacer()
                 Image(systemName: type.systemName)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 40)
-                    .font(.system(size: 32, weight: .regular, design: .rounded))
+                    .font(.system(size: 32, weight: .bold, design: .rounded))
                     .foregroundColor(type.iconColor)
-                    .padding(.top, type == .disconnected || type == .tvGoingOff ? -3 : 0)
                 Text(type.message)
-                    .font(.system(size: 18, weight: .bold, design: .rounded))
+                    .font(.system(size: 16, weight: .bold, design: .rounded))
                     .foregroundColor(Color(uiColor: .label))
-                    .multilineTextAlignment(.leading)
+                    .multilineTextAlignment(.center)
                     .lineSpacing(4)
                 Spacer()
             }
-            .padding(.top, 2.5)
-            .padding(.leading, 40)
-            .frame(height: 150)
+            .padding([.leading, .trailing], 25)
+            .frame(height: 175)
         }
         .frame(maxWidth: .greatestFiniteMagnitude)
         .background(Color(uiColor: .systemGray6))
-        .cornerRadius(24)
-        .shadow(radius: 128)
+        .cornerRadius(32)
+        .shadow(radius: 64)
         .padding([.leading, .trailing], 10)
-        .padding(.bottom, 35)
+        .padding(.bottom, 50)
         
     }
 }

@@ -33,26 +33,26 @@ extension PopupType {
     var systemName: String {
         switch self {
         case .prompted:
-            return "tv"
+            return "tv.circle.fill"
         case .disconnected:
-            return "tv.slash"
+            return "exclamationmark.circle.fill"
         case .connected:
-            return "tv"
+            return "checkmark.circle.fill"
         case .tvGoingOff:
-            return "tv.slash"
+            return "power.circle.fill"
         }
     }
     
     var message: String {
         switch self {
         case .prompted:
-            return "Accept the registration prompt on the TV"
+            return "Please accept the registration\nprompt on the TV"
         case .disconnected:
-            return "Disconnected, attempting to reconnect"
+            return "Disconnected,\nattempting to reconnect"
         case .connected:
-            return "Connected to the TV successfully"
+            return "Connected to the TV\nsuccessfully"
         case .tvGoingOff:
-            return "The TV is going off, disconnecting"
+            return "The TV is going off,\ndisconnecting"
         }
     }
 }

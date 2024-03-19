@@ -83,6 +83,14 @@ struct MoteButtonStyle: ButtonStyle {
                 if type == .keyboard {
                     viewModel.keyboardPresented = true
                 }
+                
+                if type == .powerOff {
+                    viewModel.send(.turnOff)
+                    Task { @MainActor in
+                        viewModel.isConnected = false
+                        viewModel.isPopupPresentedTVGoingOff = true
+                    }
+                }
             })
     }
     
@@ -139,13 +147,6 @@ private extension MoteButtonStyle {
 }
 
 fileprivate func performAction(type: MoteButtonType, viewModel: MoteViewModel) {
-    if type == .powerOff {
-        Task { @MainActor in
-            viewModel.isConnected = false
-            viewModel.isPopupPresentedTVGoingOff = true
-        }
-    }
-
     if type == .playPause {
         guard let playState = viewModel.playState else {
             return
@@ -165,6 +166,10 @@ fileprivate func performAction(type: MoteButtonType, viewModel: MoteViewModel) {
     
     if type == .grid {
         viewModel.colorButtonsPresented.toggle()
+    }
+    
+    if type == .powerOff {
+        return
     }
     
     if let keyTarget = type.keyTarget {
