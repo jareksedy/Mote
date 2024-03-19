@@ -38,7 +38,7 @@ struct MoteView: View {
                             .font(.system(size: 18, weight: .bold, design: .rounded))
                             .foregroundColor(.accentColor)
                             .onTapGesture {
-                                viewModel.isPopupPresentedConnected.toggle()
+                                viewModel.isPopupPresentedPrompted.toggle()
                             }
                     }
                     .padding(.leading, GlobalConstants.iconPadding)

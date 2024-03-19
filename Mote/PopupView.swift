@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PopupView: View {
+    @State private var animateSymbol: Bool = false
     var type: PopupType
     var body: some View {
         VStack(alignment: .leading) {
@@ -16,6 +17,10 @@ struct PopupView: View {
                 Image(systemName: type.systemName)
                     .font(.system(size: 32, weight: .bold, design: .rounded))
                     .foregroundColor(type.iconColor)
+                    .symbolEffect(.bounce.down.byLayer, value: animateSymbol)
+                    .onAppear {
+                        animateSymbol.toggle()
+                    }
                 Text(type.message)
                     .font(.system(size: 16, weight: .bold, design: .rounded))
                     .foregroundColor(Color(uiColor: .label))
@@ -31,7 +36,7 @@ struct PopupView: View {
         .cornerRadius(32)
         .shadow(radius: 64)
         .padding([.leading, .trailing], 10)
-        .padding(.bottom, 50)
+        .padding(.bottom, 35)
         
     }
 }
