@@ -238,6 +238,7 @@ extension MoteViewModel: WebOSClientDelegate {
     func didReceiveNetworkError(_ error: Error?) {
         if let error = error as NSError? {
             if error.code == 57 || error.code == 60 || error.code == 54 {
+                tv.disconnect()
                 Task { @MainActor in
                     isConnected = false
                     if !isPopupPresentedTVGoingOff {
