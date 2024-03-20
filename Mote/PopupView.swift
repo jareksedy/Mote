@@ -14,7 +14,7 @@ struct PopupView: View {
         VStack(alignment: .leading) {
             HStack(spacing: 20) {
                 Image(systemName: type.systemName)
-                    .font(.system(size: 32, weight: .bold, design: .rounded))
+                    .font(.system(size: 36, weight: .bold, design: .rounded))
                     .foregroundStyle(.white, type.iconColor)
                     .symbolEffect(.bounce.up.byLayer, value: animateSymbol)
                     .onAppear {
@@ -27,7 +27,8 @@ struct PopupView: View {
                     .lineSpacing(4)
                 Spacer()
             }
-            .padding([.leading], 25)
+            .padding(.top, 2)
+            .padding(.leading, 25)
             .frame(height: 100)
         }
         .frame(maxWidth: .greatestFiniteMagnitude)

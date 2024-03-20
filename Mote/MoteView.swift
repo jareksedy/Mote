@@ -31,6 +31,8 @@ struct MoteView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(uiColor: .systemGray6))
+//            .navigationTitle("Mote")
+//            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     HStack(spacing: -5) {
@@ -144,19 +146,19 @@ struct MoteView: View {
         }
     }
     
-    init() {
-        UINavigationBar.appearance().titleTextAttributes = [
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: GlobalConstants.smallTitleSize,
-                                                           weight: .bold).rounded(),
-            NSAttributedString.Key.foregroundColor: UIColor.accent
-        ]
-        
-        UINavigationBar.appearance().largeTitleTextAttributes = [
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: GlobalConstants.largetTitleSize,
-                                                           weight: .bold).rounded(),
-            NSAttributedString.Key.foregroundColor: UIColor.accent
-        ]
-    }
+//    init() {
+//        UINavigationBar.appearance().titleTextAttributes = [
+//            NSAttributedString.Key.font: UIFont.systemFont(ofSize: GlobalConstants.smallTitleSize,
+//                                                           weight: .bold).rounded(),
+//            NSAttributedString.Key.foregroundColor: UIColor.accent
+//        ]
+//        
+//        UINavigationBar.appearance().largeTitleTextAttributes = [
+//            NSAttributedString.Key.font: UIFont.systemFont(ofSize: GlobalConstants.largetTitleSize,
+//                                                           weight: .bold).rounded(),
+//            NSAttributedString.Key.foregroundColor: UIColor.accent
+//        ]
+//    }
 }
 
 #Preview {
