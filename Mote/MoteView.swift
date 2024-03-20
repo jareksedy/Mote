@@ -62,8 +62,7 @@ struct MoteView: View {
                         .padding(.trailing, GlobalConstants.iconPadding)
                         .padding(.top, 10)
                         .onTapGesture {
-                            //viewModel.preferencesPresented = true
-                            viewModel.isPopupPresentedConnected.toggle()
+                            viewModel.preferencesPresented = true
                         }
                 }
             }
