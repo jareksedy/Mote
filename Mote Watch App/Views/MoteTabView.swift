@@ -31,11 +31,7 @@ struct MoteTabView: View {
             switch scenePhase {
             case .active:
                 viewModel.sendWakeUpMessage()
-            case .background:
-                break
-            case .inactive:
-                break
-            @unknown default:
+            default:
                 break
             }
         }
