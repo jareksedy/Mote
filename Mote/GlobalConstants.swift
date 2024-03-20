@@ -13,6 +13,10 @@ enum GlobalConstants {
         static let mediaPlaybackInfoRequestId = "mediaPlaybackInfoSubscription"
     }
     
+    enum AnimationIntervals {
+        static let buttonFadeInterval: TimeInterval = 0.75
+    }
+    
     static let smallTitleSize: CGFloat = 18
     static let largetTitleSize: CGFloat = 24
     

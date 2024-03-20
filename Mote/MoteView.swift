@@ -137,7 +137,8 @@ struct MoteView: View {
             case .active:
                 viewModel.connectAndRegister()
             case .background:
-                viewModel.disconnect()
+                break
+                //viewModel.disconnect()
             case .inactive:
                 break
             @unknown default:
@@ -159,9 +160,4 @@ struct MoteView: View {
 //            NSAttributedString.Key.foregroundColor: UIColor.accent
 //        ]
 //    }
-}
-
-#Preview {
-    MoteView()
-        .preferredColorScheme(.dark)
 }

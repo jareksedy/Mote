@@ -16,6 +16,7 @@ struct PopupView: View {
                 Image(systemName: type.systemName)
                     .font(.system(size: 36, weight: .bold, design: .rounded))
                     .foregroundStyle(.white, type.iconColor)
+                    .shadow(color: type.iconColor, radius: 16)
                     .symbolEffect(.bounce.up.byLayer, value: animateSymbol)
                     .onAppear {
                         animateSymbol.toggle()
@@ -27,21 +28,16 @@ struct PopupView: View {
                     .lineSpacing(4)
                 Spacer()
             }
-            .padding(.top, 2)
+            .padding(.top, 1)
             .padding(.leading, 25)
             .frame(height: 100)
         }
         .frame(maxWidth: .greatestFiniteMagnitude)
         .background(Color(uiColor: .systemGray6))
-        .cornerRadius(12)
+        .cornerRadius(128)
         .shadow(radius: 64)
         .padding([.leading, .trailing], 10)
-        .padding(.bottom, 50)
+        .padding(.bottom, 35)
         
     }
-}
-
-#Preview {
-    MoteView()
-        .preferredColorScheme(.dark)
 }

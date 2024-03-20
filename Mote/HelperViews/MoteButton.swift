@@ -28,6 +28,10 @@ struct MoteButton: View {
 
 private extension MoteButton {
     func getDisabled(_ type: MoteButtonType) -> Bool {
+        guard type != .powerOff else {
+            return false
+        }
+        
         guard viewModel.isConnected else {
             return true
         }
@@ -64,7 +68,7 @@ struct MoteButtonStyle: ButtonStyle {
                     isBeingPressed = pressing
                 }
                 
-                withAnimation(.smooth(duration: pressing ? 0.05 : 0.50)) {
+                withAnimation(.smooth(duration: pressing ? 0.05 : 0.75)) {
                     isColorChanged = pressing
                 }
                 
@@ -85,10 +89,14 @@ struct MoteButtonStyle: ButtonStyle {
                 }
                 
                 if type == .powerOff {
-                    viewModel.send(.turnOff)
-                    Task { @MainActor in
-                        viewModel.isConnected = false
-                        viewModel.isPopupPresentedTVGoingOff = true
+                    if viewModel.isConnected {
+                        viewModel.send(.turnOff)
+                        Task { @MainActor in
+                            viewModel.isConnected = false
+                            viewModel.isPopupPresentedTVGoingOff = true
+                        }
+                    } else {
+                        viewModel.connectAndRegister()
                     }
                 }
             })
@@ -130,6 +138,10 @@ private extension MoteButtonStyle {
     }
     
     func getForegroundColor(type: MoteButtonType, _ pressed: Bool) -> Color {
+        guard type != .powerOff else {
+            return pressed ? .white : type.highlighted ? .accent : Color(uiColor: .systemGray)
+        }
+        
         guard viewModel.isConnected else {
             return Color(uiColor: .systemGray5)
         }
