@@ -12,31 +12,35 @@ struct PopupView: View {
     var type: PopupType
     var body: some View {
         VStack(alignment: .leading) {
-            VStack(spacing: 25) {
-                Spacer()
+            HStack(spacing: 20) {
                 Image(systemName: type.systemName)
                     .font(.system(size: 32, weight: .bold, design: .rounded))
-                    .foregroundColor(type.iconColor)
-                    .symbolEffect(.bounce.down.byLayer, value: animateSymbol)
+                    .foregroundStyle(.white, type.iconColor)
+                    .symbolEffect(.bounce.up.byLayer, value: animateSymbol)
                     .onAppear {
                         animateSymbol.toggle()
                     }
                 Text(type.message)
                     .font(.system(size: 16, weight: .bold, design: .rounded))
                     .foregroundColor(Color(uiColor: .label))
-                    .multilineTextAlignment(.center)
+                    .multilineTextAlignment(.leading)
                     .lineSpacing(4)
                 Spacer()
             }
-            .padding([.leading, .trailing], 25)
-            .frame(height: 175)
+            .padding([.leading], 25)
+            .frame(height: 100)
         }
         .frame(maxWidth: .greatestFiniteMagnitude)
         .background(Color(uiColor: .systemGray6))
-        .cornerRadius(32)
+        .cornerRadius(12)
         .shadow(radius: 64)
         .padding([.leading, .trailing], 10)
-        .padding(.bottom, 35)
+        .padding(.bottom, 50)
         
     }
+}
+
+#Preview {
+    MoteView()
+        .preferredColorScheme(.dark)
 }

@@ -14,10 +14,19 @@ struct PreferencesView: View {
     var body: some View {
         NavigationStack {
             List {
-                Section("App") {
+                Section(content: {
                     NavigationLink("About the App", value: 0)
                     Button(action: {}, label: { Text("Rate this App") })
-                }
+                }, header: {
+                    Text("Application")
+                        .font(.system(size: 12, weight: .regular, design: .rounded))
+                        .foregroundColor(.gray)
+                        .textCase(.uppercase)
+                })
+//                Section("App") {
+//                    NavigationLink("About the App", value: 0)
+//                    Button(action: {}, label: { Text("Rate this App") })
+//                }
                 
                 Section("Connection") {
                     Toggle("Autoconnect on start", isOn: $autoConnect)
@@ -32,18 +41,7 @@ struct PreferencesView: View {
             }
             .background(Color(uiColor: .systemGray6))
             .scrollContentBackground(.hidden)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    HStack(spacing: 10) {
-                        Text("Preferences")
-                            .font(.system(size: 18, weight: .bold, design: .rounded))
-                            .foregroundColor(.accentColor)
-                    }
-                    .padding(.leading, GlobalConstants.iconPadding)
-                    .padding(.top, 15)
-                    .padding(.bottom, 12.5)
-                }
-            }
+            .navigationTitle("Preferences")
         }
     }
     
@@ -60,4 +58,9 @@ struct PreferencesView: View {
             NSAttributedString.Key.foregroundColor: UIColor.accent
         ]
     }
+}
+
+#Preview {
+    PreferencesView(viewModel: MoteViewModel())
+        .preferredColorScheme(.dark)
 }

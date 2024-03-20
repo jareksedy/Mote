@@ -36,9 +36,9 @@ struct MoteView: View {
                     HStack(spacing: -5) {
                         Image(systemName: "m.square.fill")
                             .font(.system(size: 18, weight: .bold, design: .rounded))
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(Color(uiColor: .systemGray6))
                             .onTapGesture {
-                                viewModel.isPopupPresentedPrompted.toggle()
+                                viewModel.isPopupPresentedDisconnected.toggle()
                             }
                     }
                     .padding(.leading, GlobalConstants.iconPadding)
@@ -64,7 +64,7 @@ struct MoteView: View {
                         .padding(.top, 10)
                         .onTapGesture {
                             //viewModel.preferencesPresented = true
-                            viewModel.isPopupPresentedDisconnected.toggle()
+                            viewModel.isPopupPresentedConnected.toggle()
                         }
                 }
             }
@@ -93,6 +93,8 @@ struct MoteView: View {
                 .position(.bottom)
                 .animation(.bouncy(duration: 0.35))
                 .backgroundColor(Color(uiColor: .systemBackground).opacity(0.30))
+                .closeOnTap(true)
+                .closeOnTapOutside(true)
         }
         .popup(isPresented: $viewModel.isPopupPresentedTVGoingOff) {
             PopupView(type: .tvGoingOff)
@@ -157,4 +159,9 @@ struct MoteView: View {
             NSAttributedString.Key.foregroundColor: UIColor.accent
         ]
     }
+}
+
+#Preview {
+    MoteView()
+        .preferredColorScheme(.dark)
 }
