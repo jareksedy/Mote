@@ -34,7 +34,11 @@ final class MoteViewModel: NSObject, ObservableObject {
     }
 }
 
-extension MoteViewModel {    
+extension MoteViewModel {
+    func sendWakeUpMessage() {
+        session.sendMessage(["WAKE_UP": true], replyHandler: nil)
+    }
+    
     func send(_ target: WebOSTarget) {
         guard let targetJSON = target.request.jsonWithId(UUID().uuidString) else {
             return

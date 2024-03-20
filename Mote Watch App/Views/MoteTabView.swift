@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MoteTabView: View {
+    @Environment(\.scenePhase) var scenePhase
     @EnvironmentObject var viewModel: MoteViewModel
     @State private var selection: TabSelection
     
@@ -25,6 +26,18 @@ struct MoteTabView: View {
         .ignoresSafeArea(.all)
         .sheet(isPresented: $viewModel.isVolumeViewPresented) {
             MoteVolumeView()
+        }
+        .onChange(of: scenePhase) {
+            switch scenePhase {
+            case .active:
+                viewModel.sendWakeUpMessage()
+            case .background:
+                break
+            case .inactive:
+                break
+            @unknown default:
+                break
+            }
         }
     }
     
