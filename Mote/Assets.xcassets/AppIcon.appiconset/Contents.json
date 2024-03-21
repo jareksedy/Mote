@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "MoteAppIcon.png",
+      "filename" : "moteAppIcon.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"

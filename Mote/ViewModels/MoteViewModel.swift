@@ -93,9 +93,7 @@ final class MoteViewModel: NSObject, ObservableObject {
     
     init(session: WCSession = .default){
         self.session = session
-        tv = WebOSClient(url: URL(string: "wss://192.168.8.10:3001"))
         super.init()
-        tv?.delegate = self
         session.delegate = self
         session.activate()
         connectAndRegister()
@@ -133,12 +131,20 @@ final class MoteViewModel: NSObject, ObservableObject {
 
 extension MoteViewModel {
     func connectAndRegister() {
+        guard let host = AppSettings.shared.host else {
+            return
+        }
+        tv = WebOSClient(url: URL(string: "wss://\(host):3001"))
+        tv?.delegate = self
         tv?.connect()
         tv?.send(.register(clientKey: AppSettings.shared.clientKey))
     }
     
     func disconnect() {
         tv?.disconnect()
+        Task { @MainActor in
+            isConnected = false
+        }
     }
     
     private func subscribeAll() {
@@ -195,7 +201,7 @@ extension MoteViewModel: WebOSClientDelegate {
             isPopupPresentedPrompted = false
             isPopupPresentedDisconnected = false
             if !isPopupPresentedTVGoingOff {
-                withAnimation(.smooth(duration: GlobalConstants.AnimationIntervals.buttonFadeInterval)) {
+                withAnimation(.easeInOut(duration: GlobalConstants.AnimationIntervals.buttonFadeInterval)) {
                     isConnected = true
                 }
                 
@@ -235,7 +241,6 @@ extension MoteViewModel: WebOSClientDelegate {
             if error.code == 57 || error.code == 60 || error.code == 54 {
                 Task { @MainActor in
                     isConnected = false
-                    
                     if !isPopupPresentedTVGoingOff {
                         isPopupPresentedDisconnected = true
                     }

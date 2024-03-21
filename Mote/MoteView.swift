@@ -35,17 +35,16 @@ struct MoteView: View {
 //            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    HStack(spacing: -5) {
-                        Image(systemName: "m.square.fill")
-                            .font(.system(size: 18, weight: .bold, design: .rounded))
-                            .foregroundColor(Color(uiColor: .systemGray6))
-                            .onTapGesture {
-                                viewModel.isPopupPresentedDisconnected.toggle()
-                            }
-                    }
-                    .padding(.leading, GlobalConstants.iconPadding)
-                    .padding(.top, 10)
-
+                    Image("MoteLogo")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(height: 28)
+                        .foregroundColor(.accentColor)
+                        .padding(.leading, 10)
+                        .padding(.top, 10)
+                        .onTapGesture {
+                            viewModel.isPopupPresentedDisconnected.toggle()
+                        }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Image(systemName: "keyboard.fill")

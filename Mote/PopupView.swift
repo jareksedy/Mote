@@ -25,7 +25,7 @@ struct PopupView: View {
                     .font(.system(size: 16, weight: .bold, design: .rounded))
                     .foregroundColor(Color(uiColor: .label))
                     .multilineTextAlignment(.leading)
-                    .lineSpacing(4)
+                    .lineSpacing(3)
                 Spacer()
             }
             .padding(.top, 1)
@@ -37,7 +37,7 @@ struct PopupView: View {
         .cornerRadius(128)
         .shadow(radius: 64)
         .padding([.leading, .trailing], 10)
-        .padding(.bottom, 35)
+        .padding(.bottom, 50)
         
     }
 }
