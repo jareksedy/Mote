@@ -93,6 +93,9 @@ final class MoteViewModel: NSObject, ObservableObject {
     
     init(session: WCSession = .default){
         self.session = session
+        if let host = AppSettings.shared.host {
+            tv = WebOSClient(url: URL(string: "wss://\(host):3001"))
+        }
         super.init()
         session.delegate = self
         session.activate()
@@ -131,10 +134,6 @@ final class MoteViewModel: NSObject, ObservableObject {
 
 extension MoteViewModel {
     func connectAndRegister() {
-        guard let host = AppSettings.shared.host else {
-            return
-        }
-        tv = WebOSClient(url: URL(string: "wss://\(host):3001"))
         tv?.delegate = self
         tv?.connect()
         tv?.send(.register(clientKey: AppSettings.shared.clientKey))

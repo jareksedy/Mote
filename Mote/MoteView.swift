@@ -39,7 +39,7 @@ struct MoteView: View {
                         .resizable()
                         .scaledToFill()
                         .frame(height: 28)
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(Color(uiColor: .systemGray5))
                         .padding(.leading, 10)
                         .padding(.top, 10)
                         .onTapGesture {

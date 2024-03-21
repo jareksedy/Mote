@@ -25,7 +25,11 @@ struct PreferencesView: View {
                     Toggle("Autoconnect on start", isOn: $autoConnect)
                         .tint(.accent)
                     Button(action: { enterIpAlertShown.toggle() }, label: { Text("Manually enter your TV's IP") })
-                    Button(action: {}, label: { Text("Clear all stored connection data") })
+                    Button(action: {
+                        AppSettings.shared.clientKey = nil
+                        viewModel.disconnect()
+                        viewModel.connectAndRegister()
+                    }, label: { Text("Clear all stored connection data") })
                 }
                 
                 Section("Haptics") {
