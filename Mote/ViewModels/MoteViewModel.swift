@@ -9,59 +9,14 @@ import SwiftUI
 import WatchConnectivity
 import WebOSClient
 
-enum PopupType {
-    case prompted
-    case disconnected
-    case connected
-    case tvGoingOff
-}
-
-extension PopupType {
-    var iconColor: Color {
-        switch self {
-        case .prompted:
-            return .accent
-        case .disconnected:
-            return .red
-        case .connected:
-            return .green
-        case .tvGoingOff:
-            return .accent
-        }
-    }
-    
-    var systemName: String {
-        switch self {
-        case .prompted:
-            return "tv.circle.fill"
-        case .disconnected:
-            return "exclamationmark.circle.fill"
-        case .connected:
-            return "checkmark.circle.fill"
-        case .tvGoingOff:
-            return "power.circle.fill"
-        }
-    }
-    
-    var message: String {
-        switch self {
-        case .prompted:
-            return "Please accept the registration\nprompt on the TV"
-        case .disconnected:
-            return "Disconnected,\nattempting to reconnect"
-        case .connected:
-            return "Connected to the TV\nsuccessfully"
-        case .tvGoingOff:
-            return "The TV is going off,\ndisconnecting"
-        }
-    }
-}
-
 fileprivate enum Constants {
     static let volumeSubscriptionRequestId = "volumeSubscription"
 }
 
 final class MoteViewModel: NSObject, ObservableObject {
+    @Published var isToastPresented: Bool = false
+    @Published var toastConfiguration: ToastConfiguration? = nil
+    
     @Published var isPopupPresentedPrompted: Bool = false
     @Published var isPopupPresentedDisconnected: Bool = false
     @Published var isPopupPresentedConnected: Bool = false
@@ -87,7 +42,6 @@ final class MoteViewModel: NSObject, ObservableObject {
         }
     }
 
-    private var subscriptions: [String: ((WebOSResponse) -> Void)] = [:]
     private var session: WCSession
     private var tv: WebOSClient?
     
@@ -100,14 +54,6 @@ final class MoteViewModel: NSObject, ObservableObject {
         session.delegate = self
         session.activate()
         connectAndRegister()
-    }
-    
-    func subscribe(_ id: String, completion: @escaping (WebOSResponse) -> Void) {
-        subscriptions[id] = completion
-    }
-    
-    func unsubscribe(_ id: String) {
-        subscriptions.removeValue(forKey: id)
     }
     
     @discardableResult
@@ -129,6 +75,11 @@ final class MoteViewModel: NSObject, ObservableObject {
     
     func sendKey(_ keyTarget: WebOSKeyTarget) {
         tv?.sendKey(keyTarget)
+    }
+    
+    func toast(_ configuration: ToastConfiguration) {
+        toastConfiguration = configuration
+        isToastPresented = true
     }
 }
 
@@ -193,9 +144,7 @@ extension MoteViewModel: WebOSClientDelegate {
     
     func didRegister(with clientKey: String) {
         AppSettings.shared.clientKey = clientKey
-        
         subscribeAll()
-
         Task { @MainActor in
             isPopupPresentedPrompted = false
             isPopupPresentedDisconnected = false
@@ -203,20 +152,12 @@ extension MoteViewModel: WebOSClientDelegate {
                 withAnimation(.easeInOut(duration: GlobalConstants.AnimationIntervals.buttonFadeInterval)) {
                     isConnected = true
                 }
-                
                 //isPopupPresentedConnected = true
             }
-            
         }
     }
     
     func didReceive(_ result: Result<WebOSResponse, Error>) {
-        if case .success(let response) = result,
-           let id = response.id,
-           subscriptions.keys.contains(id) {
-            subscriptions[id]?(response)
-        }
-        
         if case .success(let response) = result,
            response.id == GlobalConstants.SubscriptionIds.remoteKeyboardRequestId,
            let focus = response.payload?.currentWidget?.focus {

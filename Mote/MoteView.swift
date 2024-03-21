@@ -31,8 +31,6 @@ struct MoteView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(uiColor: .systemGray6))
-//            .navigationTitle("Mote")
-//            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Image("MoteLogo")
@@ -43,7 +41,7 @@ struct MoteView: View {
                         .padding(.leading, 10)
                         .padding(.top, 10)
                         .onTapGesture {
-                            viewModel.isPopupPresentedDisconnected.toggle()
+                            viewModel.toast(.prompted)
                         }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
@@ -84,79 +82,25 @@ struct MoteView: View {
                 .presentationDragIndicator(.visible)
                 .presentationCornerRadius(12)
         }
-        .popup(isPresented: $viewModel.isPopupPresentedPrompted) {
-            PopupView(type: .prompted)
+        .popup(isPresented: $viewModel.isToastPresented) {
+            ToastView(configuration: viewModel.toastConfiguration!)
         } customize: { popup in
             popup
                 .type(.toast)
                 .position(.bottom)
-                .animation(.bouncy(duration: 0.35))
+                .animation(.bouncy(duration: 0.4))
                 .backgroundColor(Color(uiColor: .systemBackground).opacity(0.30))
-                .closeOnTap(true)
-                .closeOnTapOutside(true)
-        }
-        .popup(isPresented: $viewModel.isPopupPresentedTVGoingOff) {
-            PopupView(type: .tvGoingOff)
-        } customize: { popup in
-            popup
-                .type(.toast)
-                .position(.bottom)
-                .animation(.bouncy(duration: 0.35))
-                .backgroundColor(Color(uiColor: .systemBackground).opacity(0.30))
-                .autohideIn(4)
-                .closeOnTap(true)
-                .closeOnTapOutside(true)
-        }
-        .popup(isPresented: $viewModel.isPopupPresentedDisconnected) {
-            PopupView(type: .disconnected)
-        } customize: { popup in
-            popup
-                .type(.toast)
-                .position(.bottom)
-                .animation(.bouncy(duration: 0.35))
-                .backgroundColor(Color(uiColor: .systemBackground).opacity(0.30))
-                .autohideIn(4)
-                .closeOnTap(true)
-                .closeOnTapOutside(true)
-        }
-        .popup(isPresented: $viewModel.isPopupPresentedConnected) {
-            PopupView(type: .connected)
-        } customize: { popup in
-            popup
-                .type(.toast)
-                .position(.bottom)
-                .animation(.bouncy(duration: 0.35))
-                .backgroundColor(Color(uiColor: .systemBackground).opacity(0.30))
-                .autohideIn(4)
-                .closeOnTap(true)
-                .closeOnTapOutside(true)
+                .autohideIn(viewModel.toastConfiguration?.autohideIn)
+                .closeOnTap(viewModel.toastConfiguration?.closeOnTap ?? true)
+                .closeOnTapOutside(viewModel.toastConfiguration?.closeOnTapOutside ?? true)
         }
         .onChange(of: scenePhase) {
             switch scenePhase {
             case .active:
                 viewModel.connectAndRegister()
-            case .background:
-                break
-                //viewModel.disconnect()
-            case .inactive:
-                break
-            @unknown default:
+            default:
                 break
             }
         }
     }
-    
-//    init() {
-//        UINavigationBar.appearance().titleTextAttributes = [
-//            NSAttributedString.Key.font: UIFont.systemFont(ofSize: GlobalConstants.smallTitleSize,
-//                                                           weight: .bold).rounded(),
-//            NSAttributedString.Key.foregroundColor: UIColor.accent
-//        ]
-//        
-//        UINavigationBar.appearance().largeTitleTextAttributes = [
-//            NSAttributedString.Key.font: UIFont.systemFont(ofSize: GlobalConstants.largetTitleSize,
-//                                                           weight: .bold).rounded(),
-//            NSAttributedString.Key.foregroundColor: UIColor.accent
-//        ]
-//    }
 }

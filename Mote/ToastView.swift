@@ -7,21 +7,21 @@
 
 import SwiftUI
 
-struct PopupView: View {
+struct ToastView: View {
     @State private var animateSymbol: Bool = false
-    var type: PopupType
+    var configuration: ToastConfiguration
     var body: some View {
         VStack(alignment: .leading) {
             HStack(spacing: 20) {
-                Image(systemName: type.systemName)
+                Image(systemName: configuration.type.systemName)
                     .font(.system(size: 36, weight: .bold, design: .rounded))
-                    .foregroundStyle(.white, type.iconColor)
-                    .shadow(color: type.iconColor, radius: 16)
+                    .foregroundStyle(.white, configuration.type.iconColor)
+                    .shadow(color: configuration.type.iconColor, radius: 16)
                     .symbolEffect(.bounce.up.byLayer, value: animateSymbol)
                     .onAppear {
                         animateSymbol.toggle()
                     }
-                Text(type.message)
+                Text(configuration.message)
                     .font(.system(size: 16, weight: .bold, design: .rounded))
                     .foregroundColor(Color(uiColor: .label))
                     .multilineTextAlignment(.leading)
@@ -30,6 +30,7 @@ struct PopupView: View {
             }
             .padding(.top, 1)
             .padding(.leading, 25)
+            .padding(.trailing, 5)
             .frame(height: 100)
         }
         .frame(maxWidth: .greatestFiniteMagnitude)
@@ -37,7 +38,7 @@ struct PopupView: View {
         .cornerRadius(128)
         .shadow(radius: 64)
         .padding([.leading, .trailing], 10)
-        .padding(.bottom, 50)
+        .padding(.bottom, 30)
         
     }
 }
