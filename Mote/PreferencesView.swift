@@ -28,7 +28,6 @@ struct PreferencesView: View {
                     Button(action: {
                         AppSettings.shared.clientKey = nil
                         viewModel.disconnect()
-                        viewModel.connectAndRegister()
                     }, label: { Text("Clear all stored connection data") })
                 }
                 

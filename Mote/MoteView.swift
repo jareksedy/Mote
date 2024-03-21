@@ -41,7 +41,7 @@ struct MoteView: View {
                         .padding(.leading, 10)
                         .padding(.top, 10)
                         .onTapGesture {
-                            viewModel.toast(.prompted)
+                            viewModel.toast(.promptAccepted)
                         }
                 }
                 ToolbarItem(placement: .topBarTrailing) {

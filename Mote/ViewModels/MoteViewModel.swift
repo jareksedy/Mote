@@ -17,11 +17,6 @@ final class MoteViewModel: NSObject, ObservableObject {
     @Published var isToastPresented: Bool = false
     @Published var toastConfiguration: ToastConfiguration? = nil
     
-    @Published var isPopupPresentedPrompted: Bool = false
-    @Published var isPopupPresentedDisconnected: Bool = false
-    @Published var isPopupPresentedConnected: Bool = false
-    @Published var isPopupPresentedTVGoingOff: Bool = false
-    
     @Published var colorButtonsPresented: Bool = false
     @Published var playState: String? = nil
     
@@ -87,7 +82,7 @@ extension MoteViewModel {
     func connectAndRegister() {
         tv?.delegate = self
         tv?.connect()
-        tv?.send(.register(clientKey: AppSettings.shared.clientKey))
+        tv?.send(.register(clientKey: AppSettings.shared.clientKey), id: "registration")
     }
     
     func disconnect() {
@@ -138,21 +133,22 @@ extension MoteViewModel: WCSessionDelegate {
 extension MoteViewModel: WebOSClientDelegate {
     func didPrompt() {
         Task { @MainActor in
-            isPopupPresentedPrompted = true
+            toast(.prompted)
         }
+    }
+    
+    func didRejectPrompt() {
+        
     }
     
     func didRegister(with clientKey: String) {
         AppSettings.shared.clientKey = clientKey
         subscribeAll()
+        
         Task { @MainActor in
-            isPopupPresentedPrompted = false
-            isPopupPresentedDisconnected = false
-            if !isPopupPresentedTVGoingOff {
-                withAnimation(.easeInOut(duration: GlobalConstants.AnimationIntervals.buttonFadeInterval)) {
-                    isConnected = true
-                }
-                //isPopupPresentedConnected = true
+            withAnimation(.easeInOut(duration: GlobalConstants.AnimationIntervals.buttonFadeInterval)) {
+                isConnected = true
+                isToastPresented = false
             }
         }
     }
@@ -181,9 +177,6 @@ extension MoteViewModel: WebOSClientDelegate {
             if error.code == 57 || error.code == 60 || error.code == 54 {
                 Task { @MainActor in
                     isConnected = false
-                    if !isPopupPresentedTVGoingOff {
-                        isPopupPresentedDisconnected = true
-                    }
                 }
             }
         }

@@ -93,7 +93,6 @@ struct MoteButtonStyle: ButtonStyle {
                         viewModel.send(.turnOff)
                         Task { @MainActor in
                             viewModel.isConnected = false
-                            viewModel.isPopupPresentedTVGoingOff = true
                         }
                     } else {
                         viewModel.connectAndRegister()
