@@ -170,6 +170,10 @@ extension MoteViewModel: WebOSClientDelegate {
                 self.playState = playState
             }
         }
+        
+        if case .failure(let error) = result {
+            print("~e: \(error.localizedDescription)")
+        }
     }
     
     func didReceiveNetworkError(_ error: Error?) {
@@ -181,8 +185,8 @@ extension MoteViewModel: WebOSClientDelegate {
             }
         }
         
-        if let error = error as? NSError {
-            print("~err:\(error.localizedDescription) code: \(error.code) ")
-        }
+//        if let error = error as? NSError {
+//            print("~err:\(error.localizedDescription) code: \(error.code) ")
+//        }
     }
 }
