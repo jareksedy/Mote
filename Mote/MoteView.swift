@@ -10,13 +10,14 @@ import PopupView
 
 struct MoteView: View {
     @Environment(\.scenePhase) var scenePhase
-    @StateObject var viewModel = MoteViewModel()
+    @ObservedObject var viewModel = MoteViewModel()
     
     var body: some View {
         NavigationStack {
             ScrollView([], showsIndicators: false) {
                 VStack {
                     Spacer().frame(height: 25)
+                    
                     if viewModel.colorButtonsPresented {
                         MoteButtonGroupColorView()
                             .environmentObject(viewModel)
@@ -24,6 +25,7 @@ struct MoteView: View {
                         MoteButtonGroupDefaultView()
                             .environmentObject(viewModel)
                     }
+                    
                     Spacer()
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -33,15 +35,13 @@ struct MoteView: View {
             .background(Color(uiColor: .systemGray6))
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Image("MoteLogo")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(height: 28)
-                        .foregroundColor(Color(uiColor: .systemGray5))
-                        .padding(.leading, 10)
+                    Image(systemName: "square.grid.2x2.fill")
+                        .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
+                        .foregroundColor(Color(uiColor: .systemGray))
+                        .padding(.leading, GlobalConstants.iconPadding)
                         .padding(.top, 10)
                         .onTapGesture {
-                            viewModel.toast(.promptAccepted)
+                            viewModel.deviceDiscoveryPresented = true
                         }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
@@ -67,6 +67,11 @@ struct MoteView: View {
             }
         }
         .sheet(isPresented: $viewModel.preferencesPresented) {
+            PreferencesView(viewModel: viewModel)
+                .presentationDragIndicator(.visible)
+                .presentationCornerRadius(24)
+        }
+        .sheet(isPresented: $viewModel.deviceDiscoveryPresented) {
             PreferencesView(viewModel: viewModel)
                 .presentationDragIndicator(.visible)
                 .presentationCornerRadius(24)

@@ -35,6 +35,7 @@
 		CA3486962B9CAD200047D3DA /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = CA3486952B9CAD200047D3DA /* PopupView */; };
 		CA34869A2B9F56140047D3DA /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3486992B9F56140047D3DA /* KeyboardView.swift */; };
 		CA34869C2B9F6A9F0047D3DA /* MoteTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA34869B2B9F6A9F0047D3DA /* MoteTabView.swift */; };
+		CA3BB9742BAC981E00BE6B4E /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BB9732BAC981E00BE6B4E /* AlertView.swift */; };
 		CA3BFEAA2B691D6700D514A3 /* MoteButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BFEA82B691D6700D514A3 /* MoteButtonType.swift */; };
 		CA3BFEAD2B692CB100D514A3 /* MotePlaybackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BFEAC2B692CB100D514A3 /* MotePlaybackView.swift */; };
 		CA5FF7342B6785DA009C5DB4 /* WebOSClient in Frameworks */ = {isa = PBXBuildFile; productRef = CA5FF7332B6785DA009C5DB4 /* WebOSClient */; };
@@ -136,6 +137,7 @@
 		CA3486912B9C50010047D3DA /* MoteButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteButtonType.swift; sourceTree = "<group>"; };
 		CA3486992B9F56140047D3DA /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		CA34869B2B9F6A9F0047D3DA /* MoteTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoteTabView.swift; sourceTree = "<group>"; };
+		CA3BB9732BAC981E00BE6B4E /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		CA3BFEA82B691D6700D514A3 /* MoteButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteButtonType.swift; sourceTree = "<group>"; };
 		CA3BFEAC2B692CB100D514A3 /* MotePlaybackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotePlaybackView.swift; sourceTree = "<group>"; };
 		CA5FF7392B6787CA009C5DB4 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 				CA1F80062B95F35500C5F6B8 /* MoteView.swift */,
 				CA1F800D2B95FE3C00C5F6B8 /* PreferencesView.swift */,
 				CAA8017A2BA87CB300FF1220 /* ToastView.swift */,
+				CA3BB9732BAC981E00BE6B4E /* AlertView.swift */,
 				CAC5661A2BAC87F600C23885 /* ToastConfiguration.swift */,
 				CA154C262BA74B240029855F /* MoteButtonGroupDefaultView.swift */,
 				CA154C282BA74B490029855F /* MoteButtonGroupColorView.swift */,
@@ -571,6 +574,7 @@
 				CA1F800E2B95FE3C00C5F6B8 /* PreferencesView.swift in Sources */,
 				CA5FF73A2B6787CA009C5DB4 /* StringExtensions.swift in Sources */,
 				CAC5661B2BAC87F600C23885 /* ToastConfiguration.swift in Sources */,
+				CA3BB9742BAC981E00BE6B4E /* AlertView.swift in Sources */,
 				CA1F800C2B95FC6900C5F6B8 /* GlobalConstants.swift in Sources */,
 				CAF5487A2B6687070048F9CF /* MoteApp.swift in Sources */,
 				CA34868E2B9C4EED0047D3DA /* MoteButton.swift in Sources */,

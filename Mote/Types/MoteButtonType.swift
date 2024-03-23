@@ -98,7 +98,7 @@ extension MoteButtonType {
         case .rewind:
             return "backward"
         case .screenOff:
-            return "rectangle.slash"
+            return "eye.slash"
         case .powerOff:
             return "power"
         case .mute:

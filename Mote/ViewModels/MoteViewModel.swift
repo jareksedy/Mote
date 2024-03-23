@@ -17,8 +17,12 @@ final class MoteViewModel: NSObject, ObservableObject {
     @Published var isToastPresented: Bool = false
     @Published var toastConfiguration: ToastConfiguration? = nil
     
+    @Published var isAlertPresented: Bool = false
+    
     @Published var colorButtonsPresented: Bool = false
     @Published var playState: String? = nil
+    
+    @Published var deviceDiscoveryPresented: Bool = false
     
     @Published var keyboardPresented: Bool = false
     @Published var isFocused: Bool = false
@@ -38,13 +42,11 @@ final class MoteViewModel: NSObject, ObservableObject {
     }
 
     private var session: WCSession
-    private var tv: WebOSClient?
+    private var tv: WebOSClient
     
     init(session: WCSession = .default){
         self.session = session
-        if let host = AppSettings.shared.host {
-            tv = WebOSClient(url: URL(string: "wss://\(host):3001"))
-        }
+        tv = WebOSClient(url: URL(string: "wss://\(AppSettings.shared.host ?? ""):3001"))
         super.init()
         session.delegate = self
         session.activate()
@@ -56,20 +58,20 @@ final class MoteViewModel: NSObject, ObservableObject {
         var newId: String?
         
         if let id {
-            newId = tv?.send(target, id: id)
+            newId = tv.send(target, id: id)
         } else {
-            newId = tv?.send(target)
+            newId = tv.send(target)
         }
         
         if case .turnOff = target {
-            tv?.disconnect()
+            tv.disconnect()
         }
         
         return newId
     }
     
     func sendKey(_ keyTarget: WebOSKeyTarget) {
-        tv?.sendKey(keyTarget)
+        tv.sendKey(keyTarget)
     }
     
     func toast(_ configuration: ToastConfiguration) {
@@ -80,21 +82,21 @@ final class MoteViewModel: NSObject, ObservableObject {
 
 extension MoteViewModel {
     func connectAndRegister() {
-        tv?.delegate = self
-        tv?.connect()
-        tv?.send(.register(clientKey: AppSettings.shared.clientKey), id: "registration")
+        tv.delegate = self
+        tv.connect()
+        tv.send(.register(clientKey: AppSettings.shared.clientKey), id: "registration")
     }
     
     func disconnect() {
-        tv?.disconnect()
+        tv.disconnect()
         Task { @MainActor in
             isConnected = false
         }
     }
     
     private func subscribeAll() {
-        tv?.send(.registerRemoteKeyboard, id: GlobalConstants.SubscriptionIds.remoteKeyboardRequestId)
-        tv?.send(.getForegroundAppMediaStatus(subscribe: true), id: GlobalConstants.SubscriptionIds.mediaPlaybackInfoRequestId)
+        tv.send(.registerRemoteKeyboard, id: GlobalConstants.SubscriptionIds.remoteKeyboardRequestId)
+        tv.send(.getForegroundAppMediaStatus(subscribe: true), id: GlobalConstants.SubscriptionIds.mediaPlaybackInfoRequestId)
     }
 }
 
@@ -113,11 +115,11 @@ extension MoteViewModel: WCSessionDelegate {
         
         if let targetString = message[.keyTarget] as? String,
            let targetData = targetString.data(using: .utf8) {
-            tv?.sendKey(keyData: targetData)
+            tv.sendKey(keyData: targetData)
         }
         
         if let targetJSON = message[.commonTarget] as? String {
-            tv?.send(jsonRequest: targetJSON)
+            tv.send(jsonRequest: targetJSON)
         }
     }
     
@@ -144,7 +146,6 @@ extension MoteViewModel: WebOSClientDelegate {
     func didRegister(with clientKey: String) {
         AppSettings.shared.clientKey = clientKey
         subscribeAll()
-        
         Task { @MainActor in
             withAnimation(.easeInOut(duration: GlobalConstants.AnimationIntervals.buttonFadeInterval)) {
                 isConnected = true

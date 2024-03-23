@@ -33,8 +33,8 @@ extension ToastConfiguration {
     static let prompted = ToastConfiguration(
         message: "Please accept the registration prompt on the TV",
         autohideIn: nil,
-        closeOnTap: false,
-        closeOnTapOutside: false
+        closeOnTap: true,
+        closeOnTapOutside: true
     )
     
     static let promptAccepted = ToastConfiguration(
