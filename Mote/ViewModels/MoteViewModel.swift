@@ -8,6 +8,7 @@
 import SwiftUI
 import WatchConnectivity
 import WebOSClient
+import SSDPClient
 
 fileprivate enum Constants {
     static let volumeSubscriptionRequestId = "volumeSubscription"
@@ -23,12 +24,15 @@ final class MoteViewModel: NSObject, ObservableObject {
     @Published var playState: String? = nil
     
     @Published var deviceDiscoveryPresented: Bool = false
+    @Published var deviceDiscoveryFinished: Bool = false
     
     @Published var keyboardPresented: Bool = false
     @Published var isFocused: Bool = false
     
     @Published var isConnected: Bool = false
     @Published var preferencesPresented: Bool = false
+    
+    @Published var devices = [DeviceData]()
     
     @Published var preferencesAlternativeView: Bool = AppSettings.shared.phoneAlternativeView {
         didSet {
@@ -43,11 +47,13 @@ final class MoteViewModel: NSObject, ObservableObject {
 
     private var session: WCSession
     private var tv: WebOSClient
+    private var ssdpClient = SSDPDiscovery()
     
     init(session: WCSession = .default){
         self.session = session
         tv = WebOSClient(url: URL(string: "wss://\(AppSettings.shared.host ?? ""):3001"))
         super.init()
+        ssdpClient.delegate = self
         session.delegate = self
         session.activate()
         connectAndRegister()
@@ -81,7 +87,10 @@ final class MoteViewModel: NSObject, ObservableObject {
 }
 
 extension MoteViewModel {
-    func connectAndRegister() {
+    func connectAndRegister(host: String? = nil) {
+        if let host {
+            tv = WebOSClient(url: URL(string: "wss://\(host):3001"))
+        }
         tv.delegate = self
         tv.connect()
         tv.send(.register(clientKey: AppSettings.shared.clientKey), id: "registration")
@@ -92,6 +101,12 @@ extension MoteViewModel {
         Task { @MainActor in
             isConnected = false
         }
+    }
+    
+    func discoverDevices() {
+        deviceDiscoveryFinished = false
+        devices.removeAll()
+        ssdpClient.discoverService()
     }
     
     private func subscribeAll() {
@@ -132,17 +147,32 @@ extension MoteViewModel: WCSessionDelegate {
     }
 }
 
+extension MoteViewModel: SSDPDiscoveryDelegate {
+    func ssdpDiscovery(_ discovery: SSDPDiscovery, didDiscoverService service: SSDPService) {
+        if let searchTarget = service.searchTarget,
+           searchTarget.contains("tv"),
+           !devices.map({ $0.name }).contains(service.server) {
+            let device = DeviceData(id: UUID().uuidString, name: service.server ?? "n/a", host: service.host)
+            Task { @MainActor in
+                devices.append(device)
+            }
+        }
+    }
+    
+    func ssdpDiscoveryDidFinish(_ discovery: SSDPDiscovery) {
+        Task { @MainActor in
+            deviceDiscoveryFinished = true
+        }
+    }
+}
+
 extension MoteViewModel: WebOSClientDelegate {
     func didPrompt() {
         Task { @MainActor in
             toast(.prompted)
         }
     }
-    
-    func didRejectPrompt() {
-        
-    }
-    
+
     func didRegister(with clientKey: String) {
         AppSettings.shared.clientKey = clientKey
         subscribeAll()
@@ -190,4 +220,10 @@ extension MoteViewModel: WebOSClientDelegate {
 //            print("~err:\(error.localizedDescription) code: \(error.code) ")
 //        }
     }
+}
+
+struct DeviceData: Identifiable {
+    let id: String
+    let name: String
+    let host: String
 }

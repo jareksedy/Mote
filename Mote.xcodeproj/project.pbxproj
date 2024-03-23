@@ -45,6 +45,8 @@
 		CA5FF7482B67A3B6009C5DB4 /* Foil in Frameworks */ = {isa = PBXBuildFile; productRef = CA5FF7472B67A3B6009C5DB4 /* Foil */; };
 		CA5FF74A2B67A3C1009C5DB4 /* Foil in Frameworks */ = {isa = PBXBuildFile; productRef = CA5FF7492B67A3C1009C5DB4 /* Foil */; };
 		CA5FF74D2B67A3E1009C5DB4 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FF74B2B67A3E1009C5DB4 /* AppSettings.swift */; };
+		CA74D48E2BAEB7200082FA11 /* DeviceDiscoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA74D48D2BAEB7200082FA11 /* DeviceDiscoveryView.swift */; };
+		CA74D4912BAEB80F0082FA11 /* SSDPClient in Frameworks */ = {isa = PBXBuildFile; productRef = CA74D4902BAEB80F0082FA11 /* SSDPClient */; };
 		CA87053B2B668B2D0066316B /* MoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87053A2B668B2D0066316B /* MoteViewModel.swift */; };
 		CA87053E2B668C6B0066316B /* MoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87053D2B668C6B0066316B /* MoteViewModel.swift */; };
 		CA99EBBF2B6A1B38004C28C7 /* MoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA99EBBE2B6A1B38004C28C7 /* MoteButton.swift */; };
@@ -142,6 +144,7 @@
 		CA3BFEAC2B692CB100D514A3 /* MotePlaybackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotePlaybackView.swift; sourceTree = "<group>"; };
 		CA5FF7392B6787CA009C5DB4 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		CA5FF74B2B67A3E1009C5DB4 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		CA74D48D2BAEB7200082FA11 /* DeviceDiscoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDiscoveryView.swift; sourceTree = "<group>"; };
 		CA87053A2B668B2D0066316B /* MoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteViewModel.swift; sourceTree = "<group>"; };
 		CA87053D2B668C6B0066316B /* MoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteViewModel.swift; sourceTree = "<group>"; };
 		CA99EBBE2B6A1B38004C28C7 /* MoteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteButton.swift; sourceTree = "<group>"; };
@@ -180,6 +183,7 @@
 				CA3486962B9CAD200047D3DA /* PopupView in Frameworks */,
 				CA5FF7482B67A3B6009C5DB4 /* Foil in Frameworks */,
 				CA5FF7342B6785DA009C5DB4 /* WebOSClient in Frameworks */,
+				CA74D4912BAEB80F0082FA11 /* SSDPClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +370,7 @@
 				CA3486932B9C50060047D3DA /* Types */,
 				CA1F80062B95F35500C5F6B8 /* MoteView.swift */,
 				CA1F800D2B95FE3C00C5F6B8 /* PreferencesView.swift */,
+				CA74D48D2BAEB7200082FA11 /* DeviceDiscoveryView.swift */,
 				CAA8017A2BA87CB300FF1220 /* ToastView.swift */,
 				CA3BB9732BAC981E00BE6B4E /* AlertView.swift */,
 				CAC5661A2BAC87F600C23885 /* ToastConfiguration.swift */,
@@ -450,6 +455,7 @@
 				CA5FF7332B6785DA009C5DB4 /* WebOSClient */,
 				CA5FF7472B67A3B6009C5DB4 /* Foil */,
 				CA3486952B9CAD200047D3DA /* PopupView */,
+				CA74D4902BAEB80F0082FA11 /* SSDPClient */,
 			);
 			productName = Mote;
 			productReference = CAF548762B6687070048F9CF /* Mote.app */;
@@ -513,6 +519,7 @@
 				CA5FF7322B6785DA009C5DB4 /* XCRemoteSwiftPackageReference "WebOSClient" */,
 				CA5FF7462B67A3B6009C5DB4 /* XCRemoteSwiftPackageReference "Foil" */,
 				CA3486942B9CAD200047D3DA /* XCRemoteSwiftPackageReference "PopupView" */,
+				CA74D48F2BAEB80F0082FA11 /* XCRemoteSwiftPackageReference "SSDPClient" */,
 			);
 			productRefGroup = CAF548772B6687070048F9CF /* Products */;
 			projectDirPath = "";
@@ -585,6 +592,7 @@
 				CA34869A2B9F56140047D3DA /* KeyboardView.swift in Sources */,
 				CA34868C2B9C4EC90047D3DA /* MoteButtonRow.swift in Sources */,
 				CA3486922B9C50010047D3DA /* MoteButtonType.swift in Sources */,
+				CA74D48E2BAEB7200082FA11 /* DeviceDiscoveryView.swift in Sources */,
 				CA154C272BA74B240029855F /* MoteButtonGroupDefaultView.swift in Sources */,
 				CA1F7FE42B94495C00C5F6B8 /* AppSettings.swift in Sources */,
 				CA1F7FE12B90D47300C5F6B8 /* BundleExtensions.swift in Sources */,
@@ -1033,6 +1041,14 @@
 				minimumVersion = 5.0.1;
 			};
 		};
+		CA74D48F2BAEB80F0082FA11 /* XCRemoteSwiftPackageReference "SSDPClient" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pierrickrouxel/SSDPClient.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1060,6 +1076,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CA5FF7462B67A3B6009C5DB4 /* XCRemoteSwiftPackageReference "Foil" */;
 			productName = Foil;
+		};
+		CA74D4902BAEB80F0082FA11 /* SSDPClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA74D48F2BAEB80F0082FA11 /* XCRemoteSwiftPackageReference "SSDPClient" */;
+			productName = SSDPClient;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

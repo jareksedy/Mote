@@ -1,6 +1,15 @@
 {
-  "originHash" : "cf274543acfabf360679423199ef7ef7aab721e2c893639b2845199ea7bba416",
+  "originHash" : "ec10a6a29676d695c30912d1ff7aa8061c253e3114f56b11dde59fe12ca37e0f",
   "pins" : [
+    {
+      "identity" : "bluesocket",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Kitura/BlueSocket.git",
+      "state" : {
+        "revision" : "c9894fd117457f1d006575fbfb2fdfd6f79eac03",
+        "version" : "1.0.200"
+      }
+    },
     {
       "identity" : "foil",
       "kind" : "remoteSourceControl",
@@ -11,12 +20,48 @@
       }
     },
     {
+      "identity" : "heliumlogger",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Kitura/HeliumLogger.git",
+      "state" : {
+        "revision" : "55fd2f0b70793017acee853c53cfcf8da0bd8d8d",
+        "version" : "1.9.200"
+      }
+    },
+    {
+      "identity" : "loggerapi",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Kitura/LoggerAPI.git",
+      "state" : {
+        "revision" : "e82d34eab3f0b05391082b11ea07d3b70d2f65bb",
+        "version" : "1.9.200"
+      }
+    },
+    {
       "identity" : "popupview",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/exyte/PopupView.git",
       "state" : {
         "revision" : "8c85ff09d474dd3cfb69aba33046395bcf365573",
         "version" : "2.9.1"
+      }
+    },
+    {
+      "identity" : "ssdpclient",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pierrickrouxel/SSDPClient.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "5c7f5947f5a1732f66e4f0bbf9df292b0f01060a"
+      }
+    },
+    {
+      "identity" : "swift-log",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-log.git",
+      "state" : {
+        "revision" : "e97a6fcb1ab07462881ac165fdbb37f067e205d5",
+        "version" : "1.5.4"
       }
     },
     {

@@ -10,7 +10,7 @@ import PopupView
 
 struct MoteView: View {
     @Environment(\.scenePhase) var scenePhase
-    @ObservedObject var viewModel = MoteViewModel()
+    @ObservedObject var viewModel: MoteViewModel
     
     var body: some View {
         NavigationStack {
@@ -35,7 +35,7 @@ struct MoteView: View {
             .background(Color(uiColor: .systemGray6))
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Image(systemName: "square.grid.2x2.fill")
+                    Image(systemName: "plus.rectangle.fill")
                         .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
                         .foregroundColor(Color(uiColor: .systemGray))
                         .padding(.leading, GlobalConstants.iconPadding)
@@ -72,7 +72,7 @@ struct MoteView: View {
                 .presentationCornerRadius(24)
         }
         .sheet(isPresented: $viewModel.deviceDiscoveryPresented) {
-            PreferencesView(viewModel: viewModel)
+            DeviceDiscoveryView(viewModel: viewModel)
                 .presentationDragIndicator(.visible)
                 .presentationCornerRadius(24)
         }
