@@ -35,9 +35,9 @@ struct MoteView: View {
             .background(Color(uiColor: .systemGray6))
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Image(systemName: "plus.rectangle.fill")
-                        .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
-                        .foregroundColor(Color(uiColor: .systemGray))
+                    Image(systemName: "plus.circle.fill")
+                        .font(.system(size: 18, weight: .bold, design: .rounded))
+                        .foregroundColor(.accent)
                         .padding(.leading, GlobalConstants.iconPadding)
                         .padding(.top, 10)
                         .onTapGesture {
