@@ -17,28 +17,51 @@ struct PreferencesView: View {
         NavigationStack {
             List {
                 Section("App") {
-                    NavigationLink("About the App", value: 0)
-                    Button(action: {}, label: { Text("Rate this App") })
+                    NavigationLink(destination: Text("")) {
+                        Text("About Mote")
+                            .font(.system(size: 18, weight: .regular, design: .rounded))
+                            .foregroundColor(Color(uiColor: .lightGray))
+                    }
+                    Button("Rate this app") {}
+                        .font(.system(size: 18, weight: .regular, design: .rounded))
+                        .foregroundColor(.accentColor)
                 }
                 
                 Section("Connection") {
-                    Toggle("Autoconnect on start", isOn: $autoConnect)
-                        .tint(.accent)
-                    Button(action: { enterIpAlertShown.toggle() }, label: { Text("Manually enter your TV's IP") })
-                    Button(action: {
-                        AppSettings.shared.clientKey = nil
-                        viewModel.disconnect()
-                    }, label: { Text("Clear all stored connection data") })
+                    NavigationLink(destination: DeviceDiscoveryView(viewModel: viewModel)) {
+                        Text("Discover TVs")
+                            .font(.system(size: 18, weight: .regular, design: .rounded))
+                            .foregroundColor(Color(uiColor: .lightGray))
+                    }
+                    Button("Reset all connection data") {}
+                        .font(.system(size: 18, weight: .regular, design: .rounded))
+                        .foregroundColor(.accentColor)
                 }
                 
                 Section("Haptics") {
                     Toggle("Haptic feedback", isOn: $autoConnect)
                         .tint(.accent)
+                        .font(.system(size: 18, weight: .regular, design: .rounded))
+                        .foregroundColor(Color(uiColor: .lightGray))
                 }
+                
+                Section {
+                    HStack {
+                        Spacer()
+                        Text("Mote App \(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))")
+                            .font(.system(size: 12, weight: .regular, design: .monospaced))
+                            .foregroundStyle(.gray.opacity(0.5))
+                            .multilineTextAlignment(.center)
+                        Spacer()
+                    }
+                }
+                .listRowBackground(Color.clear)
             }
+            .environment(\.defaultMinListRowHeight, 50)
             .background(Color(uiColor: .systemGray6))
             .scrollContentBackground(.hidden)
             .navigationTitle("Preferences")
+            .navigationBarTitleDisplayMode(.inline)
             .alert("Enter IP", isPresented: $enterIpAlertShown) {
                 TextField("192.168....", text: $tvIP)
                 Button("Cancel", role: .cancel, action: {})
@@ -61,12 +84,12 @@ struct PreferencesView: View {
         self.viewModel = viewModel
         
         UINavigationBar.appearance().titleTextAttributes = [
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: GlobalConstants.smallTitleSize, weight: .bold).rounded(),
+            //NSAttributedString.Key.font: UIFont.systemFont(ofSize: GlobalConstants.smallTitleSize, weight: .bold).rounded(),
             NSAttributedString.Key.foregroundColor: UIColor.accent
         ]
         
         UINavigationBar.appearance().largeTitleTextAttributes = [
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: GlobalConstants.largetTitleSize, weight: .bold).rounded(),
+            //NSAttributedString.Key.font: UIFont.systemFont(ofSize: GlobalConstants.largetTitleSize, weight: .bold).rounded(),
             NSAttributedString.Key.foregroundColor: UIColor.accent
         ]
     }

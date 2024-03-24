@@ -14,11 +14,11 @@ enum GlobalConstants {
     }
     
     enum AnimationIntervals {
-        static let buttonFadeInterval: TimeInterval = 0.15
+        static let buttonFadeInterval: TimeInterval = 0.1
     }
     
     static let smallTitleSize: CGFloat = 18
-    static let largetTitleSize: CGFloat = 24
+    static let largetTitleSize: CGFloat = 36
     
     static let iconSize: CGFloat = 12
     static let iconPadding: CGFloat = 15
