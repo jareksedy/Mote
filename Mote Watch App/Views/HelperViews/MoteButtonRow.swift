@@ -17,7 +17,7 @@ struct MoteButtonRow<Content: View>: View {
             content()
         }
         .padding(GlobalConstants.buttonSpacing)
-        .background(.black)
+        .background(.darkerGrayMote)
         .cornerRadius(.greatestFiniteMagnitude)
     }
 }

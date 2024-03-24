@@ -169,4 +169,26 @@ extension MoteButtonType {
     var hapticType: WKHapticType? {
         return .click
     }
+    
+    var hapticTypePressed: WKHapticType? {
+        return .click
+    }
+    
+    var hapticTypeReleased: WKHapticType? {
+        switch self {
+        case .powerOff, .home, .ok:
+            return .click
+        default:
+            return nil
+        }
+    }
+    
+    var repeatBehavior: ButtonRepeatBehavior {
+        switch self {
+        case .up, .down, .left, .right, .volumeUp, .volumeDown, .channelUp, .channelDown:
+            return .enabled
+        default:
+            return .disabled
+        }
+    }
 }
