@@ -34,16 +34,16 @@ struct MoteView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(uiColor: .systemGray6))
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Image(systemName: "plus.circle.fill")
-                        .font(.system(size: 18, weight: .bold, design: .rounded))
-                        .foregroundColor(.accent)
-                        .padding(.leading, GlobalConstants.iconPadding)
-                        .padding(.top, 10)
-                        .onTapGesture {
-                            viewModel.deviceDiscoveryPresented = true
-                        }
-                }
+//                ToolbarItem(placement: .topBarLeading) {
+//                    Image(systemName: "plus.circle.fill")
+//                        .font(.system(size: 18, weight: .bold, design: .rounded))
+//                        .foregroundColor(.accent)
+//                        .padding(.leading, GlobalConstants.iconPadding)
+//                        .padding(.top, 10)
+//                        .onTapGesture {
+//                            viewModel.deviceDiscoveryPresented = true
+//                        }
+//                }
                 ToolbarItem(placement: .topBarTrailing) {
                     Image(systemName: "keyboard.fill")
                         .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))

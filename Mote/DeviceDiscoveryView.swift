@@ -40,7 +40,7 @@ struct DeviceDiscoveryView: View {
             }
             .background(Color(uiColor: .systemGray6))
             .scrollContentBackground(.hidden)
-            .navigationTitle("Discover TV")
+            .navigationTitle("Search devices on LAN")
             .onAppear {
                 viewModel.discoverDevices()
             }

@@ -18,30 +18,36 @@ struct PreferencesView: View {
             List {
                 Section("App") {
                     NavigationLink(destination: Text("")) {
-                        Text("About Mote")
-                            .font(.system(size: 18, weight: .regular, design: .rounded))
+                        Label("About Mote", systemImage: "info.circle")
+                            .font(.system(size: GlobalConstants.bodyFontSize, weight: .regular, design: .rounded))
                             .foregroundColor(Color(uiColor: .lightGray))
                     }
-                    Button("Rate this app") {}
-                        .font(.system(size: 18, weight: .regular, design: .rounded))
-                        .foregroundColor(.accentColor)
+                    
+                    Button(action: {}, label: {
+                        Label("Rate this app", systemImage: "star.leadinghalf.filled")
+                            .font(.system(size: GlobalConstants.bodyFontSize, weight: .regular, design: .rounded))
+                            .foregroundColor(.accentColor)
+                    })
                 }
                 
                 Section("Connection") {
                     NavigationLink(destination: DeviceDiscoveryView(viewModel: viewModel)) {
-                        Text("Discover TVs")
-                            .font(.system(size: 18, weight: .regular, design: .rounded))
+                        Label("Search devices on LAN", systemImage: "antenna.radiowaves.left.and.right")
+                            .font(.system(size: GlobalConstants.bodyFontSize, weight: .regular, design: .rounded))
                             .foregroundColor(Color(uiColor: .lightGray))
                     }
-                    Button("Reset all connection data") {}
-                        .font(.system(size: 18, weight: .regular, design: .rounded))
-                        .foregroundColor(.accentColor)
+                    
+                    Button(action: {}, label: {
+                        Label("Reset all connection data", systemImage: "gear.badge.xmark")
+                            .font(.system(size: GlobalConstants.bodyFontSize, weight: .regular, design: .rounded))
+                            .foregroundColor(.accentColor)
+                    })
                 }
                 
                 Section("Haptics") {
-                    Toggle("Haptic feedback", isOn: $autoConnect)
+                    Toggle("Haptic feedback", systemImage: "hand.tap", isOn: $autoConnect)
                         .tint(.accent)
-                        .font(.system(size: 18, weight: .regular, design: .rounded))
+                        .font(.system(size: GlobalConstants.bodyFontSize, weight: .regular, design: .rounded))
                         .foregroundColor(Color(uiColor: .lightGray))
                 }
                 
@@ -60,6 +66,7 @@ struct PreferencesView: View {
             .environment(\.defaultMinListRowHeight, 50)
             .background(Color(uiColor: .systemGray6))
             .scrollContentBackground(.hidden)
+            .background(Color(uiColor: .systemGray6).edgesIgnoringSafeArea(.all))
             .navigationTitle("Preferences")
             .navigationBarTitleDisplayMode(.inline)
             .alert("Enter IP", isPresented: $enterIpAlertShown) {

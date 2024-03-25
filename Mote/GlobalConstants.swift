@@ -20,6 +20,8 @@ enum GlobalConstants {
     static let smallTitleSize: CGFloat = 18
     static let largetTitleSize: CGFloat = 36
     
+    static let bodyFontSize: CGFloat = 16
+    
     static let iconSize: CGFloat = 12
     static let iconPadding: CGFloat = 15
     
