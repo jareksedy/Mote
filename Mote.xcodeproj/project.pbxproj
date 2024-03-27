@@ -38,6 +38,7 @@
 		CA3BB9742BAC981E00BE6B4E /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BB9732BAC981E00BE6B4E /* AlertView.swift */; };
 		CA3BFEAA2B691D6700D514A3 /* MoteButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BFEA82B691D6700D514A3 /* MoteButtonType.swift */; };
 		CA3BFEAD2B692CB100D514A3 /* MotePlaybackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BFEAC2B692CB100D514A3 /* MotePlaybackView.swift */; };
+		CA4237682BB44B1C0026791E /* MoteTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4237672BB44B1C0026791E /* MoteTabView.swift */; };
 		CA5FF7342B6785DA009C5DB4 /* WebOSClient in Frameworks */ = {isa = PBXBuildFile; productRef = CA5FF7332B6785DA009C5DB4 /* WebOSClient */; };
 		CA5FF7372B678670009C5DB4 /* WebOSClient in Frameworks */ = {isa = PBXBuildFile; productRef = CA5FF7362B678670009C5DB4 /* WebOSClient */; };
 		CA5FF73A2B6787CA009C5DB4 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FF7392B6787CA009C5DB4 /* StringExtensions.swift */; };
@@ -142,6 +143,7 @@
 		CA3BB9732BAC981E00BE6B4E /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		CA3BFEA82B691D6700D514A3 /* MoteButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteButtonType.swift; sourceTree = "<group>"; };
 		CA3BFEAC2B692CB100D514A3 /* MotePlaybackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotePlaybackView.swift; sourceTree = "<group>"; };
+		CA4237672BB44B1C0026791E /* MoteTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteTabView.swift; sourceTree = "<group>"; };
 		CA5FF7392B6787CA009C5DB4 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		CA5FF74B2B67A3E1009C5DB4 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		CA74D48D2BAEB7200082FA11 /* DeviceDiscoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDiscoveryView.swift; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 				CA1F800B2B95FC6900C5F6B8 /* GlobalConstants.swift */,
 				CA3486932B9C50060047D3DA /* Types */,
 				CA1F80062B95F35500C5F6B8 /* MoteView.swift */,
+				CA4237672BB44B1C0026791E /* MoteTabView.swift */,
 				CA1F800D2B95FE3C00C5F6B8 /* PreferencesView.swift */,
 				CA74D48D2BAEB7200082FA11 /* DeviceDiscoveryView.swift */,
 				CAA8017A2BA87CB300FF1220 /* ToastView.swift */,
@@ -593,6 +596,7 @@
 				CA34868C2B9C4EC90047D3DA /* MoteButtonRow.swift in Sources */,
 				CA3486922B9C50010047D3DA /* MoteButtonType.swift in Sources */,
 				CA74D48E2BAEB7200082FA11 /* DeviceDiscoveryView.swift in Sources */,
+				CA4237682BB44B1C0026791E /* MoteTabView.swift in Sources */,
 				CA154C272BA74B240029855F /* MoteButtonGroupDefaultView.swift in Sources */,
 				CA1F7FE42B94495C00C5F6B8 /* AppSettings.swift in Sources */,
 				CA1F7FE12B90D47300C5F6B8 /* BundleExtensions.swift in Sources */,

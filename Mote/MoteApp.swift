@@ -11,7 +11,7 @@ import SwiftUI
 struct MoteApp: App {
     var body: some Scene {
         WindowGroup {
-            MoteView(viewModel: MoteViewModel())
+            MoteTabView(viewModel: MoteViewModel())
         }
     }
 }
