@@ -50,14 +50,14 @@ struct DeviceDiscoveryView: View {
     init(viewModel: MoteViewModel) {
         self.viewModel = viewModel
         
-        UINavigationBar.appearance().titleTextAttributes = [
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: GlobalConstants.smallTitleSize, weight: .bold).rounded(),
-            NSAttributedString.Key.foregroundColor: UIColor.accent
-        ]
-        
-        UINavigationBar.appearance().largeTitleTextAttributes = [
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: GlobalConstants.largetTitleSize, weight: .bold).rounded(),
-            NSAttributedString.Key.foregroundColor: UIColor.accent
-        ]
+//        UINavigationBar.appearance().titleTextAttributes = [
+//            NSAttributedString.Key.font: UIFont.systemFont(ofSize: GlobalConstants.smallTitleSize, weight: .bold).rounded(),
+//            NSAttributedString.Key.foregroundColor: UIColor.accent
+//        ]
+//        
+//        UINavigationBar.appearance().largeTitleTextAttributes = [
+//            NSAttributedString.Key.font: UIFont.systemFont(ofSize: GlobalConstants.largetTitleSize, weight: .bold).rounded(),
+//            NSAttributedString.Key.foregroundColor: UIColor.accent
+//        ]
     }
 }

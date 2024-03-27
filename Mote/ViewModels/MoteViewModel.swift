@@ -34,6 +34,8 @@ final class MoteViewModel: NSObject, ObservableObject {
     
     @Published var devices = [DeviceData]()
     
+    @Published var navigationPath = [NavigationScreens]()
+    
     @Published var preferencesAlternativeView: Bool = AppSettings.shared.phoneAlternativeView {
         didSet {
             AppSettings.shared.phoneAlternativeView = preferencesAlternativeView
@@ -227,4 +229,10 @@ struct DeviceData: Identifiable {
     let id: String
     let name: String
     let host: String
+}
+
+enum NavigationScreens {
+    case preferences
+    case about
+    case discover
 }

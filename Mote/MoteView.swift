@@ -13,24 +13,22 @@ struct MoteView: View {
     @ObservedObject var viewModel: MoteViewModel
     
     var body: some View {
-        NavigationStack {
-            ScrollView([], showsIndicators: false) {
-                VStack {
-                    Spacer().frame(height: 25)
-                    
-                    if viewModel.colorButtonsPresented {
-                        MoteButtonGroupColorView()
-                            .environmentObject(viewModel)
-                    } else {
-                        MoteButtonGroupDefaultView()
-                            .environmentObject(viewModel)
-                    }
-                    
-                    Spacer()
+        ScrollView([], showsIndicators: false) {
+            VStack {
+                Spacer().frame(height: 22.5)
+                
+                if viewModel.colorButtonsPresented {
+                    MoteButtonGroupColorView()
+                        .environmentObject(viewModel)
+                } else {
+                    MoteButtonGroupDefaultView()
+                        .environmentObject(viewModel)
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .ignoresSafeArea(.keyboard)
+                
+                Spacer()
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .ignoresSafeArea(.keyboard)
         }
     }
 }
