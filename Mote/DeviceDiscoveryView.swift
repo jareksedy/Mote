@@ -10,7 +10,7 @@ import ActivityIndicatorView
 
 struct DeviceDiscoveryView: View {
     @ObservedObject var viewModel: MoteViewModel
-    
+    @State private var animateSymbol: Bool = false
     var body: some View {
         VStack {
             if viewModel.deviceDiscoveryFinished {
@@ -28,9 +28,38 @@ struct DeviceDiscoveryView: View {
                         }
                 }
             } else {
+                Spacer()
+                
                 ActivityIndicatorView(isVisible: $viewModel.isDiscoverDevicesActivityIndicatorShown, type: .growingArc(.accent, lineWidth: 4))
                      .frame(width: 100.0, height: 100.0)
                      .foregroundColor(.accentColor)
+                
+                Spacer()
+                
+                VStack(alignment: .leading) {
+                    HStack(spacing: 20) {
+                        Image(systemName: "exclamationmark.circle.fill")
+                            .font(.system(size: 36, weight: .bold, design: .rounded))
+                            .foregroundStyle(.white, .accent)
+                            .shadow(color: .accent, radius: 16)
+                            .symbolEffect(.bounce.up.byLayer, value: animateSymbol)
+                            .onAppear {
+                                animateSymbol.toggle()
+                            }
+                        Text("You must be connected to the same Wi-Fi network")
+                            .font(.system(size: 18, weight: .bold, design: .rounded))
+                            .foregroundColor(.primary)
+                            .multilineTextAlignment(.leading)
+                            .lineSpacing(3)
+                        Spacer()
+                    }
+                    .padding(.top, 1)
+                    .padding(.leading, 25)
+                    .padding(.trailing, 5)
+                    .frame(height: 100)
+                }
+                .padding([.leading, .trailing], 10)
+                .padding(.bottom, 25)
             }
         }
         .environment(\.defaultMinListRowHeight, 55)
