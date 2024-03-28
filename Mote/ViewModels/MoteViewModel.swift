@@ -91,8 +91,15 @@ final class MoteViewModel: NSObject, ObservableObject {
 }
 
 extension MoteViewModel {
-    func connectAndRegister(host: String? = nil) {
+    func connectAndRegisterWatch(host: String? = nil) {
         guard !isConnected else { return }
+        tv = WebOSClient(url: URL(string: "wss://192.168.8.10:3001"))
+        tv.delegate = self
+        tv.connect()
+        tv.send(.register(clientKey: AppSettings.shared.clientKey), id: "registration")
+    }
+    
+    func connectAndRegister(host: String? = nil) {
 //        if let host {
 //            tv = WebOSClient(url: URL(string: "wss://\(host):3001"))
 //        }
@@ -132,7 +139,7 @@ extension MoteViewModel: WCSessionDelegate {
         _ session: WCSession,
         didReceiveMessage message: [String : Any]
     ) {
-        connectAndRegister()
+        connectAndRegisterWatch()
         
         if let targetString = message[.keyTarget] as? String,
            let targetData = targetString.data(using: .utf8) {
