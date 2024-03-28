@@ -16,7 +16,7 @@ struct ToastView: View {
                 Image(systemName: configuration.type.systemName)
                     .font(.system(size: 36, weight: .bold, design: .rounded))
                     .foregroundStyle(.white, configuration.type.iconColor)
-                    .shadow(color: configuration.type.iconColor, radius: 16)
+                    .shadow(color: configuration.type.iconColor, radius: 24)
                     .symbolEffect(.bounce.up.byLayer, value: animateSymbol)
                     .onAppear {
                         animateSymbol.toggle()
@@ -31,14 +31,14 @@ struct ToastView: View {
             .padding(.top, 1)
             .padding(.leading, 25)
             .padding(.trailing, 5)
-            .frame(height: 100)
+            .frame(height: 125)
         }
         .frame(maxWidth: .greatestFiniteMagnitude)
         .background(Color(uiColor: .systemGray6))
-        .cornerRadius(128)
+        .cornerRadius(24)
         .shadow(radius: 64)
         .padding([.leading, .trailing], 10)
-        .padding(.bottom, 30)
+        .padding(.bottom, 50)
         
     }
 }

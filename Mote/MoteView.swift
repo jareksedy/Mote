@@ -39,6 +39,9 @@ struct MoteView: View {
                         .foregroundColor(.accent)
                         .padding(.leading, GlobalConstants.iconPadding)
                         .padding(.top, 10)
+//                        .onTapGesture {
+//                            viewModel.toast(.prompted)
+//                        }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Image(systemName: "keyboard.fill")
@@ -92,6 +95,11 @@ struct MoteView: View {
                     .autohideIn(viewModel.toastConfiguration?.autohideIn)
                     .closeOnTap(viewModel.toastConfiguration?.closeOnTap ?? true)
                     .closeOnTapOutside(viewModel.toastConfiguration?.closeOnTapOutside ?? true)
+                    .dismissCallback {
+                        if viewModel.toastConfiguration == .prompted && viewModel.isConnected {
+                            viewModel.toast(.promptAccepted)
+                        }
+                    }
             }
             .onChange(of: scenePhase) {
                 switch scenePhase {

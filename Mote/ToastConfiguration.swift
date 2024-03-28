@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ToastConfiguration {
+struct ToastConfiguration: Equatable {
     let type: ToastType
     let message: String
     let autohideIn: TimeInterval?
@@ -39,7 +39,7 @@ extension ToastConfiguration {
     
     static let promptAccepted = ToastConfiguration(
         type: .success,
-        message: "Prompt accepted, successfully connected to the TV"
+        message: "Successfully connected to the TV"
     )
     
     static let promptRejected = ToastConfiguration(
