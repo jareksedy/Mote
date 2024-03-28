@@ -21,18 +21,18 @@ struct PreferencesView: View {
                 Section("App") {
                     NavigationLink(value: NavigationScreens.about) {
                         Label("About Mote", systemImage: "info.circle")
-                            .font(.system(size: GlobalConstants.bodyFontSize, weight: .regular, design: .rounded))
+                            .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.secondary)
                     }
                     
                     Toggle("Alternative layout", systemImage: "circle.grid.2x2", isOn: $alternativeLayout)
                         .tint(.accent)
-                        .font(.system(size: GlobalConstants.bodyFontSize, weight: .regular, design: .rounded))
+                        .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
                         .foregroundColor(.secondary)
 
                     Button(action: { }, label: {
                         Label("Rate us on App store", systemImage: "star.leadinghalf.filled")
-                            .font(.system(size: GlobalConstants.bodyFontSize, weight: .regular, design: .rounded))
+                            .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.accentColor)
                     })
                 }
@@ -40,19 +40,19 @@ struct PreferencesView: View {
                 Section("Connection") {
                     NavigationLink(value: NavigationScreens.discover) {
                         Label("Discover TVs on LAN", systemImage: "cable.coaxial")
-                            .font(.system(size: GlobalConstants.bodyFontSize, weight: .regular, design: .rounded))
+                            .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.secondary)
                     }
                     
                     Button(action: {}, label: {
                         Label("Manually enter your TV's IP", systemImage: "text.append")
-                            .font(.system(size: GlobalConstants.bodyFontSize, weight: .regular, design: .rounded))
+                            .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.accentColor)
                     })
                     
                     Button(action: { isClearAlertShown.toggle() }, label: {
                         Label("Reset all connection data", systemImage: "gear.badge.xmark")
-                            .font(.system(size: GlobalConstants.bodyFontSize, weight: .regular, design: .rounded))
+                            .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.accentColor)
                     })
                 }
@@ -60,7 +60,7 @@ struct PreferencesView: View {
                 Section("Haptics") {
                     Toggle("Haptic feedback", systemImage: "hand.tap", isOn: $hapticFeedback)
                         .tint(.accent)
-                        .font(.system(size: GlobalConstants.bodyFontSize, weight: .regular, design: .rounded))
+                        .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
                         .foregroundColor(.secondary)
                 }
                 

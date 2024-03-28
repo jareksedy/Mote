@@ -16,7 +16,7 @@ struct MoteView: View {
         NavigationStack {
             ScrollView([], showsIndicators: false) {
                 VStack {
-                    Spacer().frame(height: 22.5)
+                    Spacer().frame(height: 25)
                     
                     if viewModel.colorButtonsPresented {
                         MoteButtonGroupColorView()
