@@ -91,7 +91,7 @@ private extension MoteButtonStyle {
     }
     
     func getBackgroundColor(type: MoteButtonType, _ pressed: Bool) -> Color {
-        return pressed ? .accent : type.plain ? .darkerGrayMote : .darkGrayMote
+        return pressed ? .accent : type.plain ? .black : .darkGrayMote
     }
     
     func getForegroundColor(type: MoteButtonType, _ pressed: Bool) -> Color {
