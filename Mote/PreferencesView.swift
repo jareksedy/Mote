@@ -9,8 +9,10 @@ import SwiftUI
 
 struct PreferencesView: View {
     @ObservedObject var viewModel: MoteViewModel
-    @State private var autoConnect: Bool = true
+    @State private var hapticFeedback: Bool = true
+    @State private var alternativeLayout: Bool = false
     @State private var enterIpAlertShown: Bool = false
+    @State private var isClearAlertShown: Bool = false
     @State private var tvIP: String = ""
     
     var body: some View {
@@ -20,35 +22,46 @@ struct PreferencesView: View {
                     NavigationLink(value: NavigationScreens.about) {
                         Label("About Mote", systemImage: "info.circle")
                             .font(.system(size: GlobalConstants.bodyFontSize, weight: .regular, design: .rounded))
-                            .foregroundColor(Color(uiColor: .lightGray))
+                            .foregroundColor(.secondary)
                     }
+                    
+                    Toggle("Alternative layout", systemImage: "circle.grid.2x2", isOn: $alternativeLayout)
+                        .tint(.accent)
+                        .font(.system(size: GlobalConstants.bodyFontSize, weight: .regular, design: .rounded))
+                        .foregroundColor(.secondary)
 
                     Button(action: { }, label: {
-                        Label("Rate this app", systemImage: "star.leadinghalf.filled")
+                        Label("Rate us on App store", systemImage: "star.leadinghalf.filled")
                             .font(.system(size: GlobalConstants.bodyFontSize, weight: .regular, design: .rounded))
-                            .foregroundColor(Color(uiColor: .lightGray))
+                            .foregroundColor(.accentColor)
                     })
                 }
                 
                 Section("Connection") {
-                    NavigationLink(destination: DeviceDiscoveryView(viewModel: viewModel)) {
-                        Label("Search devices on LAN", systemImage: "antenna.radiowaves.left.and.right")
+                    NavigationLink(value: NavigationScreens.discover) {
+                        Label("Discover TVs on LAN", systemImage: "cable.coaxial")
                             .font(.system(size: GlobalConstants.bodyFontSize, weight: .regular, design: .rounded))
-                            .foregroundColor(Color(uiColor: .lightGray))
+                            .foregroundColor(.secondary)
                     }
                     
                     Button(action: {}, label: {
+                        Label("Manually enter your TV's IP", systemImage: "text.append")
+                            .font(.system(size: GlobalConstants.bodyFontSize, weight: .regular, design: .rounded))
+                            .foregroundColor(.accentColor)
+                    })
+                    
+                    Button(action: { isClearAlertShown.toggle() }, label: {
                         Label("Reset all connection data", systemImage: "gear.badge.xmark")
                             .font(.system(size: GlobalConstants.bodyFontSize, weight: .regular, design: .rounded))
-                            .foregroundColor(Color(uiColor: .lightGray))
+                            .foregroundColor(.accentColor)
                     })
                 }
                 
                 Section("Haptics") {
-                    Toggle("Haptic feedback", systemImage: "hand.tap", isOn: $autoConnect)
+                    Toggle("Haptic feedback", systemImage: "hand.tap", isOn: $hapticFeedback)
                         .tint(.accent)
                         .font(.system(size: GlobalConstants.bodyFontSize, weight: .regular, design: .rounded))
-                        .foregroundColor(Color(uiColor: .lightGray))
+                        .foregroundColor(.secondary)
                 }
                 
                 Section {
@@ -56,7 +69,7 @@ struct PreferencesView: View {
                         Spacer()
                         Text("Mote App \(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))")
                             .font(.system(size: 12, weight: .regular, design: .monospaced))
-                            .foregroundStyle(.gray.opacity(0.5))
+                            .foregroundStyle(.tertiary)
                             .multilineTextAlignment(.center)
                         Spacer()
                     }
@@ -86,6 +99,23 @@ struct PreferencesView: View {
                     PreferencesView(viewModel: viewModel)
                 }
             }
+            .alert(
+                "Would you like to reset all connection data?",
+                isPresented: $isClearAlertShown,
+                actions: {
+                    Button("Reset", role: .destructive) {
+                        AppSettings.shared.host = nil
+                        AppSettings.shared.clientKey = nil
+                        viewModel.disconnect()
+                        viewModel.connectAndRegister()
+                        viewModel.preferencesPresented = false
+                    }
+                    Button("Cancel", role: .cancel) {}
+                },
+                message: {
+                    Text("Resetting all stored connection data will require you to add your TV to the app again.")
+                }
+            )
         }
     }
     

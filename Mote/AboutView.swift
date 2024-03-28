@@ -11,16 +11,53 @@ struct AboutView: View {
     @ObservedObject var viewModel: MoteViewModel
     var body: some View {
         VStack {
+            Spacer()
+            
             Image(systemName: "av.remote")
-                .font(.system(size: 64, weight: .light, design: .rounded))
+                .font(.system(size: 100, weight: .light, design: .rounded))
                 .foregroundColor(.accent)
             
-            Spacer().frame(height: 25)
-            
-            Text("Mote")
-                .font(.system(size: 18, weight: .bold, design: .rounded))
+            Text("Mote \(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))")
+                .font(.system(size: GlobalConstants.bodyFontSize, weight: .bold, design: .rounded))
+                .multilineTextAlignment(.center)
                 .foregroundColor(.primary)
+                .padding(.top, 25)
+            
+            Text("LG Smart TV Remote Control App")
+                .font(.system(size: GlobalConstants.bodyFontSize, weight: .bold, design: .rounded))
+                .multilineTextAlignment(.center)
+                .foregroundColor(.secondary)
+                .padding(.top, 5)
+            
+            Text("by Yaroslav Sedyshev")
+                .font(.system(size: GlobalConstants.bodyFontSize, weight: .bold, design: .rounded))
+                .multilineTextAlignment(.center)
+                .foregroundColor(.secondary)
+            
+//            Text("This software is free and open source. Distributed as is under MIT license\nhttps://github.com/jareksedy/Mote")
+//                .font(.system(size: GlobalConstants.bodyFontSize, weight: .bold, design: .rounded))
+//                .multilineTextAlignment(.center)
+//                .foregroundColor(.secondary)
+//                .padding(.top, 25)
+            
+            Spacer()
+            
+            HStack(spacing: 5) {
+                Text("Made with")
+                    .foregroundColor(.secondary)
+                Text("♥")
+                    .foregroundColor(.accent)
+                Text("in Kazakhstan 🇰🇿")
+                    .foregroundColor(.secondary)
+            }
+            .font(.system(size: GlobalConstants.bodyFontSize, weight: .bold, design: .rounded))
+            .multilineTextAlignment(.center)
+            .padding(.top, 25)
+            
+            Spacer()
+                .frame(height: 25)
         }
+        .padding([.leading, .trailing], 50)
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
