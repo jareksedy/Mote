@@ -6,58 +6,57 @@
 //
 
 import SwiftUI
+import ActivityIndicatorView
 
 struct DeviceDiscoveryView: View {
     @ObservedObject var viewModel: MoteViewModel
     
     var body: some View {
-        NavigationStack {
-            Group {
-                if viewModel.deviceDiscoveryFinished {
-                    List(viewModel.devices) { device in
-                        VStack(alignment: .leading, spacing: 5) {
-                            Text(device.name)
-                                .font(.system(size: 16, weight: .bold, design: .rounded))
-                                .foregroundColor(.white)
-                            Text(device.host)
-                                .font(.system(size: 12, weight: .regular, design: .rounded))
-                                .foregroundColor(.gray)
-                        }
-                        .padding([.top, .bottom], 5)
+        VStack {
+            if viewModel.deviceDiscoveryFinished {
+                List(viewModel.devices) { device in
+                    Label("\(device.host)", systemImage: "tv")
+                        .font(.system(size: GlobalConstants.bodyFontSize, weight: .bold, design: .rounded))
+                        .foregroundColor(.secondary)
                         .onTapGesture {
                             AppSettings.shared.host = device.host
                             AppSettings.shared.clientKey = nil
                             viewModel.disconnect()
                             viewModel.connectAndRegister(host: device.host)
                             viewModel.deviceDiscoveryPresented = false
+                            viewModel.preferencesPresented = false
                         }
-                    }
-                } else {
-                    ProgressView()
-                        .progressViewStyle(.circular)
-                        .tint(.accent)
                 }
-            }
-            .background(Color(uiColor: .systemGray6))
-            .scrollContentBackground(.hidden)
-            .navigationTitle("Search devices on LAN")
-            .onAppear {
-                viewModel.discoverDevices()
+            } else {
+                ActivityIndicatorView(isVisible: $viewModel.isDiscoverDevicesActivityIndicatorShown, type: .growingArc(.accent, lineWidth: 4))
+                     .frame(width: 100.0, height: 100.0)
+                     .foregroundColor(.accentColor)
             }
         }
-    }
-    
-    init(viewModel: MoteViewModel) {
-        self.viewModel = viewModel
-        
-//        UINavigationBar.appearance().titleTextAttributes = [
-//            NSAttributedString.Key.font: UIFont.systemFont(ofSize: GlobalConstants.smallTitleSize, weight: .bold).rounded(),
-//            NSAttributedString.Key.foregroundColor: UIColor.accent
-//        ]
-//        
-//        UINavigationBar.appearance().largeTitleTextAttributes = [
-//            NSAttributedString.Key.font: UIFont.systemFont(ofSize: GlobalConstants.largetTitleSize, weight: .bold).rounded(),
-//            NSAttributedString.Key.foregroundColor: UIColor.accent
-//        ]
+        .environment(\.defaultMinListRowHeight, 55)
+        .background(Color(uiColor: .systemGray6))
+        .scrollContentBackground(.hidden)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Image(systemName: "arrow.backward")
+                    .font(.system(size: GlobalConstants.smallTitleSize, weight: .bold, design: .rounded))
+                    .foregroundColor(.accent)
+                    .padding(.top, 10)
+                    .onTapGesture {
+                        viewModel.navigationPath.removeAll()
+                    }
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                Text("Discover TVs on LAN")
+                    .font(.system(size: GlobalConstants.smallTitleSize, weight: .bold, design: .rounded))
+                    .foregroundColor(.accent)
+                    .padding(.trailing, GlobalConstants.iconPadding)
+                    .padding(.top, 10)
+            }
+        }
+        .onAppear {
+            viewModel.discoverDevices()
+        }
     }
 }

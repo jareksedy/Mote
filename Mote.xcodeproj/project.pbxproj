@@ -55,6 +55,7 @@
 		CA99EBC22B6A1D85004C28C7 /* MoteButtonRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA99EBC12B6A1D85004C28C7 /* MoteButtonRow.swift */; };
 		CA99EBC42B6A1D9D004C28C7 /* MoteButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA99EBC32B6A1D9D004C28C7 /* MoteButtonGroup.swift */; };
 		CA99EBC82B6A1E69004C28C7 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA99EBC72B6A1E69004C28C7 /* GlobalConstants.swift */; };
+		CA9E26AA2BB595540018B52D /* ActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = CA9E26A92BB595540018B52D /* ActivityIndicatorView */; };
 		CAA7D2552B91D9E80057DD6F /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA7D2542B91D9E80057DD6F /* Strings.swift */; };
 		CAA8017B2BA87CB300FF1220 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8017A2BA87CB300FF1220 /* ToastView.swift */; };
 		CAC566192BAC824100C23885 /* ToastType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC566182BAC824100C23885 /* ToastType.swift */; };
@@ -184,6 +185,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA9E26AA2BB595540018B52D /* ActivityIndicatorView in Frameworks */,
 				CA3486962B9CAD200047D3DA /* PopupView in Frameworks */,
 				CA5FF7482B67A3B6009C5DB4 /* Foil in Frameworks */,
 				CA5FF7342B6785DA009C5DB4 /* WebOSClient in Frameworks */,
@@ -462,6 +464,7 @@
 				CA5FF7472B67A3B6009C5DB4 /* Foil */,
 				CA3486952B9CAD200047D3DA /* PopupView */,
 				CA74D4902BAEB80F0082FA11 /* SSDPClient */,
+				CA9E26A92BB595540018B52D /* ActivityIndicatorView */,
 			);
 			productName = Mote;
 			productReference = CAF548762B6687070048F9CF /* Mote.app */;
@@ -526,6 +529,7 @@
 				CA5FF7462B67A3B6009C5DB4 /* XCRemoteSwiftPackageReference "Foil" */,
 				CA3486942B9CAD200047D3DA /* XCRemoteSwiftPackageReference "PopupView" */,
 				CA74D48F2BAEB80F0082FA11 /* XCRemoteSwiftPackageReference "SSDPClient" */,
+				CA9E26A82BB595540018B52D /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */,
 			);
 			productRefGroup = CAF548772B6687070048F9CF /* Products */;
 			projectDirPath = "";
@@ -1057,6 +1061,14 @@
 				kind = branch;
 			};
 		};
+		CA9E26A82BB595540018B52D /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/ActivityIndicatorView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1089,6 +1101,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CA74D48F2BAEB80F0082FA11 /* XCRemoteSwiftPackageReference "SSDPClient" */;
 			productName = SSDPClient;
+		};
+		CA9E26A92BB595540018B52D /* ActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA9E26A82BB595540018B52D /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */;
+			productName = ActivityIndicatorView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

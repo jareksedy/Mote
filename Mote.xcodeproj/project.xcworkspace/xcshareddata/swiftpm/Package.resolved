@@ -1,6 +1,15 @@
 {
-  "originHash" : "cb53e2ca8970dee3b1ae9cfdd572b9b73f6446d54f1e4402418c1db6b6ce4ba1",
+  "originHash" : "7db728ab92c51208eaf2f805225e32897604607b839ea6d34358bd41de5639ce",
   "pins" : [
+    {
+      "identity" : "activityindicatorview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/exyte/ActivityIndicatorView.git",
+      "state" : {
+        "revision" : "9970fd0bb7a05dad0b6566ae1f56937716686b24",
+        "version" : "1.1.1"
+      }
+    },
     {
       "identity" : "bluesocket",
       "kind" : "remoteSourceControl",

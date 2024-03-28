@@ -15,6 +15,7 @@ fileprivate enum Constants {
 }
 
 final class MoteViewModel: NSObject, ObservableObject {
+    @Published var isDiscoverDevicesActivityIndicatorShown: Bool = true
     @Published var isToastPresented: Bool = false
     @Published var toastConfiguration: ToastConfiguration? = nil
     

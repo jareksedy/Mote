@@ -79,7 +79,6 @@ struct PreferencesView: View {
             .environment(\.defaultMinListRowHeight, 55)
             .background(Color(uiColor: .systemGray6))
             .scrollContentBackground(.hidden)
-            .background(Color(uiColor: .systemGray6).edgesIgnoringSafeArea(.all))
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Text("Preferences")
