@@ -92,6 +92,7 @@ final class MoteViewModel: NSObject, ObservableObject {
 
 extension MoteViewModel {
     func connectAndRegister(host: String? = nil) {
+        guard !isConnected else { return }
 //        if let host {
 //            tv = WebOSClient(url: URL(string: "wss://\(host):3001"))
 //        }
