@@ -61,26 +61,36 @@ struct MoteView: View {
                         }
                 }
             }
-            .sheet(isPresented: $viewModel.preferencesPresented, onDismiss: {
-                viewModel.navigationPath.removeAll()
-            }) {
-                PreferencesView(viewModel: viewModel)
-                    .presentationDragIndicator(.visible)
-                    .presentationCornerRadius(24)
-            }
-            .sheet(isPresented: $viewModel.deviceDiscoveryPresented) {
-                DeviceDiscoveryView(viewModel: viewModel)
-                    .presentationDragIndicator(.visible)
-                    .presentationCornerRadius(24)
-            }
-            .sheet(isPresented: $viewModel.keyboardPresented, onDismiss: {
-                if viewModel.isFocused { viewModel.sendKey(.back) }
-            }) {
-                KeyboardView(showModal: $viewModel.keyboardPresented, viewModel: viewModel)
-                    .presentationDetents([.height(55)])
-                    .presentationDragIndicator(.visible)
-                    .presentationCornerRadius(12)
-            }
+            .sheet(
+                isPresented: $viewModel.preferencesPresented,
+                onDismiss: {
+                    viewModel.navigationPath.removeAll()
+                }, content: {
+                    PreferencesView(viewModel: viewModel)
+                        .presentationDragIndicator(.visible)
+                        .presentationCornerRadius(24)
+                }
+            )
+            .sheet(
+                isPresented: $viewModel.deviceDiscoveryPresented,
+                content: {
+                    DeviceDiscoveryView(viewModel: viewModel)
+                        .presentationDragIndicator(.visible)
+                        .presentationCornerRadius(24)
+                }
+            )
+            .sheet(
+                isPresented: $viewModel.keyboardPresented,
+                onDismiss: {
+                    if viewModel.isFocused { viewModel.sendKey(.back) }
+                },
+                content: {
+                    KeyboardView(showModal: $viewModel.keyboardPresented, viewModel: viewModel)
+                        .presentationDetents([.height(55)])
+                        .presentationDragIndicator(.visible)
+                        .presentationCornerRadius(12)
+                }
+            )
             .popup(isPresented: $viewModel.isToastPresented) {
                 ToastView(configuration: viewModel.toastConfiguration!)
             } customize: { popup in
@@ -102,6 +112,8 @@ struct MoteView: View {
                 switch scenePhase {
                 case .active:
                     viewModel.connectAndRegister()
+                case .background:
+                    viewModel.disconnect()
                 default:
                     break
                 }

@@ -9,17 +9,10 @@ import SwiftUI
 import WebOSClient
 
 extension MoteViewModel {
-    func connectAndRegisterWatch() {
-        guard !isConnected else { return }
-
-        tv = WebOSClient(url: URL(string: "wss://192.168.8.10:3001"))
-        tv?.delegate = self
-        tv?.connect()
-        tv?.send(.register(clientKey: AppSettings.shared.clientKey), id: "registration")
-    }
-
     func connectAndRegister() {
-        tv = WebOSClient(url: URL(string: "wss://192.168.8.10:3001"))
+        guard !isConnected else { return }
+        let url = URL(string: "wss://192.168.8.10:3001")
+        tv = WebOSClient(url: url, shouldPerformHeartbeat: true, heartbeatTimeInterval: 3)
         tv?.delegate = self
         tv?.connect()
         tv?.send(.register(clientKey: AppSettings.shared.clientKey), id: "registration")

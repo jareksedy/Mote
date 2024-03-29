@@ -43,7 +43,7 @@ extension MoteViewModel {
         guard let targetJSON = target.request.jsonWithId(UUID().uuidString) else {
             return
         }
-        session.sendMessage([.commonTarget: targetJSON], replyHandler: nil) { [weak self] error in
+        session.sendMessage([.commonTarget: targetJSON], replyHandler: nil) { [weak self] _ in
             guard let self else {
                 return
             }
@@ -58,7 +58,7 @@ extension MoteViewModel {
             return
         }
         let targetString = String(decoding: targetData, as: UTF8.self)
-        session.sendMessage([.keyTarget: targetString], replyHandler: nil) { [weak self] error in
+        session.sendMessage([.keyTarget: targetString], replyHandler: nil) { [weak self] _ in
             guard let self else {
                 return
             }

@@ -20,19 +20,19 @@ struct PreferencesView: View {
             List {
                 Section("App") {
                     NavigationLink(value: NavigationScreens.about) {
-                        Label("About Mote", systemImage: "info.circle")
+                        Label("About Mote", systemImage: "info.square")
                             .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.secondary)
                     }
 
                     NavigationLink(value: NavigationScreens.about) {
-                        Label("FAQ", systemImage: "questionmark.circle")
+                        Label("Frequently Asked Questions", systemImage: "book.pages")
                             .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.secondary)
                     }
 
                     Button(action: { }, label: {
-                        Label("Rate us on App store", systemImage: "star.leadinghalf.filled")
+                        Label("Rate us on App store", systemImage: "hand.thumbsup")
                             .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.accentColor)
                     })
@@ -40,26 +40,26 @@ struct PreferencesView: View {
 
                 Section("Connection") {
                     NavigationLink(value: NavigationScreens.discover) {
-                        Label("Discover TVs on LAN", systemImage: "cable.coaxial")
+                        Label("Discover TV on LAN", systemImage: "network")
                             .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.secondary)
                     }
 
                     Button(action: {}, label: {
-                        Label("Manually enter your TV's IP", systemImage: "text.append")
+                        Label("Input IP address manually", systemImage: "hand.point.up.braille")
                             .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.accentColor)
                     })
 
                     Button(action: { isClearAlertShown.toggle() }, label: {
-                        Label("Reset all connection data", systemImage: "gear.badge.xmark")
+                        Label("Reset connection data", systemImage: "gear.badge.xmark")
                             .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.accentColor)
                     })
                 }
 
                 Section("Layout and Haptics") {
-                    Toggle("Alternative layout", systemImage: "circle.grid.2x2", isOn: $alternativeLayout)
+                    Toggle("Alternative layout", systemImage: "square.grid.3x3.square", isOn: $alternativeLayout)
                         .tint(.accent)
                         .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
                         .foregroundColor(.secondary)
@@ -105,7 +105,7 @@ struct PreferencesView: View {
                 }
             }
             .alert(
-                "Would you like to reset all connection data?",
+                "Do you really want to reset all connection data?",
                 isPresented: $isClearAlertShown,
                 actions: {
                     Button("Reset", role: .destructive) {
@@ -116,27 +116,15 @@ struct PreferencesView: View {
                         viewModel.preferencesPresented = false
                     }
                     Button("Cancel", role: .cancel) {}
-                },
-                message: {
-                    Text("Resetting all stored connection data will require you to add your TV to the app again.")
                 }
             )
         }
     }
 
     private func submitHostIP() {
-        guard isValidIP(ip: tvIP) else {
-            return
-        }
         AppSettings.shared.host = tvIP
         viewModel.disconnect()
         viewModel.connectAndRegister()
-    }
-
-    private func isValidIP(ip: String) -> Bool {
-        let ipAddressRegex = #"^(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.((25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.){2}(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)$"#
-
-        return NSPredicate(format: "SELF MATCHES %@", ipAddressRegex).evaluate(with: ip)
     }
 }
 

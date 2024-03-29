@@ -19,7 +19,7 @@ extension MoteViewModel: WCSessionDelegate {
         _ session: WCSession,
         didReceiveMessage message: [String: Any]
     ) {
-        connectAndRegisterWatch()
+        connectAndRegister()
 
         if let targetString = message[.keyTarget] as? String,
            let targetData = targetString.data(using: .utf8) {
