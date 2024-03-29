@@ -39,9 +39,6 @@ struct MoteView: View {
                         .foregroundColor(.accent)
                         .padding(.leading, GlobalConstants.iconPadding)
                         .padding(.top, 10)
-//                        .onTapGesture {
-//                            viewModel.toast(.prompted)
-//                        }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Image(systemName: "keyboard.fill")

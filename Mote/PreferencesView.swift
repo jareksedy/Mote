@@ -25,10 +25,11 @@ struct PreferencesView: View {
                             .foregroundColor(.secondary)
                     }
                     
-                    Toggle("Alternative layout", systemImage: "circle.grid.2x2", isOn: $alternativeLayout)
-                        .tint(.accent)
-                        .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
-                        .foregroundColor(.secondary)
+                    NavigationLink(value: NavigationScreens.about) {
+                        Label("FAQ", systemImage: "questionmark.circle")
+                            .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
+                            .foregroundColor(.secondary)
+                    }
 
                     Button(action: { }, label: {
                         Label("Rate us on App store", systemImage: "star.leadinghalf.filled")
@@ -57,7 +58,12 @@ struct PreferencesView: View {
                     })
                 }
                 
-                Section("Haptics") {
+                Section("Layout and Haptics") {
+                    Toggle("Alternative layout", systemImage: "circle.grid.2x2", isOn: $alternativeLayout)
+                        .tint(.accent)
+                        .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
+                        .foregroundColor(.secondary)
+                    
                     Toggle("Haptic feedback", systemImage: "hand.tap", isOn: $hapticFeedback)
                         .tint(.accent)
                         .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
