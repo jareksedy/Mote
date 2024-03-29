@@ -18,25 +18,10 @@ struct MoteButton: View {
         }, label: {})
             .buttonStyle(MoteButtonStyle(type))
             .buttonRepeatBehavior(type.repeatBehavior)
-            .disabled(getDisabled(type))
     }
 
     init(_ type: MoteButtonType) {
         self.type = type
-    }
-}
-
-private extension MoteButton {
-    func getDisabled(_ type: MoteButtonType) -> Bool {
-        guard type != .powerOff else {
-            return false
-        }
-
-        guard viewModel.isConnected else {
-            return true
-        }
-
-        return false
     }
 }
 
@@ -118,19 +103,19 @@ private extension MoteButtonStyle {
     func getBackgroundColor(type: MoteButtonType, _ pressed: Bool) -> Color {
         switch type {
         case .red:
-            return viewModel.isConnected ? .red : Color(uiColor: .systemGray6)
+            return .red
         case .green:
-            return viewModel.isConnected ? .green : Color(uiColor: .systemGray6)
+            return .green
         case .yellow:
-            return viewModel.isConnected ? .yellow : Color(uiColor: .systemGray6)
+            return .yellow
         case .blue:
-            return viewModel.isConnected ? .blue : Color(uiColor: .systemGray6)
+            return .blue
         default:
             break
         }
 
         if type == .grid && viewModel.colorButtonsPresented {
-            return viewModel.isConnected ? .accent : Color(uiColor: .systemGray6)
+            return .accent
         }
 
         return pressed ? .accent : type.plain ? .darkerGrayMote : Color(uiColor: .systemGray6)
@@ -138,11 +123,7 @@ private extension MoteButtonStyle {
 
     func getForegroundColor(type: MoteButtonType, _ pressed: Bool) -> Color {
         guard type != .powerOff else {
-            return pressed ? .white : type.highlighted ? .accent : Color(uiColor: .systemGray)
-        }
-
-        guard viewModel.isConnected else {
-            return Color(uiColor: .systemGray5)
+            return pressed ? .white : type.highlighted ? .accent : .secondary
         }
 
         if type == .grid && viewModel.colorButtonsPresented {
@@ -153,11 +134,16 @@ private extension MoteButtonStyle {
             return .white
         }
 
-        return pressed ? .white : type.highlighted ? .accent : Color(uiColor: .systemGray)
+        return pressed ? .white : type.highlighted ? .accent : .secondary
     }
 }
 
 private func performAction(type: MoteButtonType, viewModel: MoteViewModel) {
+    guard viewModel.isConnected else {
+        viewModel.connectAndRegister()
+        return
+    }
+
     if type == .playPause {
         guard let playState = viewModel.playState else {
             return

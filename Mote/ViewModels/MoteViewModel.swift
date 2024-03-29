@@ -21,7 +21,6 @@ final class MoteViewModel: NSObject, ObservableObject {
     @Published var isAlertPresented: Bool = false
     @Published var colorButtonsPresented: Bool = false
     @Published var playState: String?
-    @Published var deviceDiscoveryPresented: Bool = false
     @Published var deviceDiscoveryFinished: Bool = false
     @Published var keyboardPresented: Bool = false
     @Published var isFocused: Bool = false

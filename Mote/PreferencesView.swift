@@ -9,7 +9,6 @@ import SwiftUI
 
 struct PreferencesView: View {
     @ObservedObject var viewModel: MoteViewModel
-    @State private var hapticFeedback: Bool = true
     @State private var alternativeLayout: Bool = false
     @State private var enterIpAlertShown: Bool = false
     @State private var isClearAlertShown: Bool = false
@@ -64,7 +63,7 @@ struct PreferencesView: View {
                         .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
                         .foregroundColor(.secondary)
 
-                    Toggle("Haptic feedback", systemImage: "hand.tap", isOn: $hapticFeedback)
+                    Toggle("Haptic feedback", systemImage: "hand.tap", isOn: $viewModel.preferencesHapticFeedback)
                         .tint(.accent)
                         .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
                         .foregroundColor(.secondary)

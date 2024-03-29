@@ -39,7 +39,7 @@ extension ToastConfiguration {
 
     static let promptAccepted = ToastConfiguration(
         type: .success,
-        message: "Successfully connected to the TV"
+        message: "Successfully connected and registered"
     )
 
     static let promptRejected = ToastConfiguration(

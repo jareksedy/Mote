@@ -34,16 +34,24 @@ struct MoteView: View {
             .background(Color(uiColor: .systemGray6))
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Text("Mote App")
-                        .font(.system(size: GlobalConstants.smallTitleSize, weight: .bold, design: .rounded))
-                        .foregroundColor(.accent)
-                        .padding(.leading, GlobalConstants.iconPadding)
-                        .padding(.top, 10)
+                    HStack(spacing: 7) {
+                        Image(systemName: viewModel.isConnected ? "checkmark.circle.fill" : "xmark.circle.fill")
+                            .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
+                            .foregroundColor(viewModel.isConnected ? .accent : .secondary)
+                        Text("Mote")
+                            .font(.system(size: GlobalConstants.smallTitleSize, weight: .bold, design: .rounded))
+                            .foregroundColor(viewModel.isConnected ? .accent : .secondary)
+                    }
+                    .padding(.leading, GlobalConstants.iconPadding)
+                    .padding(.top, 10)
+                    .onTapGesture {
+                        viewModel.toast(.prompted)
+                    }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Image(systemName: "keyboard.fill")
                         .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
-                        .foregroundColor(Color(uiColor: .systemGray))
+                        .foregroundColor(.secondary)
                         .padding(.trailing, GlobalConstants.iconPadding)
                         .padding(.top, 10)
                         .onTapGesture {
@@ -53,7 +61,7 @@ struct MoteView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     Image(systemName: "gearshape.fill")
                         .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
-                        .foregroundColor(Color(uiColor: .systemGray))
+                        .foregroundColor(.secondary)
                         .padding(.trailing, GlobalConstants.iconPadding)
                         .padding(.top, 10)
                         .onTapGesture {
@@ -67,14 +75,6 @@ struct MoteView: View {
                     viewModel.navigationPath.removeAll()
                 }, content: {
                     PreferencesView(viewModel: viewModel)
-                        .presentationDragIndicator(.visible)
-                        .presentationCornerRadius(24)
-                }
-            )
-            .sheet(
-                isPresented: $viewModel.deviceDiscoveryPresented,
-                content: {
-                    DeviceDiscoveryView(viewModel: viewModel)
                         .presentationDragIndicator(.visible)
                         .presentationCornerRadius(24)
                 }

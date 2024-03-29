@@ -15,54 +15,43 @@ struct DeviceDiscoveryView: View {
         VStack {
             if viewModel.deviceDiscoveryFinished {
                 List(viewModel.devices) { device in
-                    Label("\(device.host)", systemImage: "tv")
-                        .font(.system(size: GlobalConstants.bodyFontSize, weight: .bold, design: .rounded))
-                        .foregroundColor(.secondary)
-                        .onTapGesture {
-                            AppSettings.shared.host = device.host
-                            AppSettings.shared.clientKey = nil
-                            viewModel.disconnect()
-                            viewModel.connectAndRegister()
-                            viewModel.deviceDiscoveryPresented = false
-                            viewModel.preferencesPresented = false
-                        }
+                    VStack {
+                        Label("\(device.name) (\(device.host))", systemImage: "tv")
+                            .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
+                            .foregroundColor(.secondary)
+                    }
+                    .onTapGesture {
+                        AppSettings.shared.host = device.host
+                        AppSettings.shared.clientKey = nil
+                        viewModel.disconnect()
+                        viewModel.connectAndRegister()
+                        viewModel.preferencesPresented = false
+                    }
                 }
             } else {
                 Spacer()
 
                 ActivityIndicatorView(
                     isVisible: $viewModel.isDiscoverDevicesActivityIndicatorShown,
-                    type: .growingArc(.accent, lineWidth: 4)
+                    type: .growingArc(.accent, lineWidth: 5)
                 )
-                     .frame(width: 100.0, height: 100.0)
+                     .frame(width: 175, height: 175)
                      .foregroundColor(.accentColor)
+                     .padding(.top, 25)
 
                 Spacer()
 
-                VStack(alignment: .leading) {
-                    HStack(spacing: 20) {
-                        Image(systemName: "exclamationmark.circle.fill")
-                            .font(.system(size: 36, weight: .bold, design: .rounded))
-                            .foregroundStyle(.white, .accent)
-                            .shadow(color: .accent, radius: 16)
-                            .symbolEffect(.bounce.up.byLayer, value: animateSymbol)
-                            .onAppear {
-                                animateSymbol.toggle()
-                            }
-                        Text("You must be connected to the same Wi-Fi network")
-                            .font(.system(size: 18, weight: .bold, design: .rounded))
-                            .foregroundColor(.primary)
-                            .multilineTextAlignment(.leading)
-                            .lineSpacing(3)
-                        Spacer()
-                    }
-                    .padding(.top, 1)
-                    .padding(.leading, 25)
-                    .padding(.trailing, 5)
-                    .frame(height: 100)
+                HStack(spacing: 5) {
+                    Text("You must be connected to the same network as your TV")
+                        .foregroundColor(.secondary)
                 }
-                .padding([.leading, .trailing], 10)
-                .padding(.bottom, 25)
+                .font(.system(size: GlobalConstants.bodyFontSize, weight: .bold, design: .rounded))
+                .multilineTextAlignment(.center)
+                .lineSpacing(4)
+                .padding([.leading, .trailing], 50)
+
+                Spacer()
+                    .frame(height: 25)
             }
         }
         .environment(\.defaultMinListRowHeight, 55)
@@ -80,7 +69,7 @@ struct DeviceDiscoveryView: View {
                     }
             }
             ToolbarItem(placement: .topBarTrailing) {
-                Text("Discover TVs on LAN")
+                Text("Discover TV on LAN")
                     .font(.system(size: GlobalConstants.smallTitleSize, weight: .bold, design: .rounded))
                     .foregroundColor(.accent)
                     .padding(.trailing, GlobalConstants.iconPadding)

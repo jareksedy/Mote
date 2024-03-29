@@ -10,9 +10,13 @@ import WebOSClient
 
 extension MoteViewModel {
     func connectAndRegister() {
-        guard !isConnected else { return }
+        guard !isConnected else {
+            return
+        }
+
         let url = URL(string: "wss://192.168.8.10:3001")
-        tv = WebOSClient(url: url, shouldPerformHeartbeat: true, heartbeatTimeInterval: 3)
+
+        tv = WebOSClient(url: url, shouldPerformHeartbeat: true, heartbeatTimeInterval: 4)
         tv?.delegate = self
         tv?.connect()
         tv?.send(.register(clientKey: AppSettings.shared.clientKey), id: "registration")
@@ -36,6 +40,7 @@ extension MoteViewModel {
             .registerRemoteKeyboard,
             id: GlobalConstants.SubscriptionIds.remoteKeyboardRequestId
         )
+
         tv?.send(
             .getForegroundAppMediaStatus(subscribe: true),
             id: GlobalConstants.SubscriptionIds.mediaPlaybackInfoRequestId
