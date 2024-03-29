@@ -30,7 +30,7 @@ struct AlertView: View {
             .padding(.top, 1)
             .padding(.leading, 25)
             .padding(.trailing, 5)
-            
+
             HStack(spacing: 20) {
                 Image(systemName: "bell.circle.fill")
                     .font(.system(size: 36, weight: .bold, design: .rounded))
@@ -45,7 +45,7 @@ struct AlertView: View {
                                 .font(.system(size: 16, weight: .bold, design: .rounded))
                         })
                     .buttonStyle(.borderedProminent)
-                    
+
                     Button(
                         action: {},
                         label: {
@@ -67,7 +67,6 @@ struct AlertView: View {
         .shadow(radius: 64)
         .padding([.leading, .trailing], 10)
         .padding(.bottom, 30)
-        
+
     }
 }
-

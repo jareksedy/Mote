@@ -12,36 +12,30 @@ struct AboutView: View {
     var body: some View {
         VStack {
             Spacer()
-            
+
             Image(systemName: "av.remote")
                 .font(.system(size: 100, weight: .light, design: .rounded))
                 .foregroundColor(.accent)
-            
+
             Text("Mote \(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))")
                 .font(.system(size: GlobalConstants.bodyFontSize, weight: .bold, design: .rounded))
                 .multilineTextAlignment(.center)
                 .foregroundColor(.primary)
                 .padding(.top, 25)
-            
+
             Text("LG Smart TV Remote Control App")
                 .font(.system(size: GlobalConstants.bodyFontSize, weight: .bold, design: .rounded))
                 .multilineTextAlignment(.center)
                 .foregroundColor(.secondary)
                 .padding(.top, 5)
-            
+
             Text("by Yaroslav Sedyshev")
                 .font(.system(size: GlobalConstants.bodyFontSize, weight: .bold, design: .rounded))
                 .multilineTextAlignment(.center)
                 .foregroundColor(.secondary)
-            
-//            Text("This software is free and open source. Distributed as is under MIT license\nhttps://github.com/jareksedy/Mote")
-//                .font(.system(size: GlobalConstants.bodyFontSize, weight: .bold, design: .rounded))
-//                .multilineTextAlignment(.center)
-//                .foregroundColor(.secondary)
-//                .padding(.top, 25)
-            
+
             Spacer()
-            
+
             HStack(spacing: 5) {
                 Text("Made with")
                     .foregroundColor(.secondary)
@@ -53,7 +47,7 @@ struct AboutView: View {
             .font(.system(size: GlobalConstants.bodyFontSize, weight: .bold, design: .rounded))
             .multilineTextAlignment(.center)
             .padding(.top, 25)
-            
+
             Spacer()
                 .frame(height: 25)
         }
@@ -64,7 +58,7 @@ struct AboutView: View {
                 Image(systemName: "arrow.backward")
                     .font(.system(size: GlobalConstants.smallTitleSize, weight: .bold, design: .rounded))
                     .foregroundColor(.accent)
-                    //.padding(.leading, GlobalConstants.iconPadding)
+                    // .padding(.leading, GlobalConstants.iconPadding)
                     .padding(.top, 10)
                     .onTapGesture {
                         viewModel.navigationPath.removeAll()

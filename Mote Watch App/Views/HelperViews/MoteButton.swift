@@ -20,7 +20,7 @@ struct MoteButton: View {
             .buttonRepeatBehavior(type.repeatBehavior)
             .disabled(getDisabled(type))
     }
-    
+
     init(_ type: MoteButtonType) {
         self.type = type
     }
@@ -37,7 +37,7 @@ struct MoteButtonStyle: ButtonStyle {
     @State private var isBeingPressed: Bool = false
     @State private var isColorChanged: Bool = false
     var type: MoteButtonType
-    
+
     func makeBody(configuration: Configuration) -> some View {
         Circle()
             .frame(width: GlobalConstants.buttonSize, height: GlobalConstants.buttonSize)
@@ -52,15 +52,15 @@ struct MoteButtonStyle: ButtonStyle {
                 withAnimation(.bouncy(duration: pressing ? 0.25 : 0.35)) {
                     isBeingPressed = pressing
                 }
-                
+
                 withAnimation(.smooth(duration: pressing ? 0.05 : 0.75)) {
                     isColorChanged = pressing
                 }
-                
+
                 if isBeingPressed && type.hapticTypePressed != nil && viewModel.preferencesHapticFeedback {
                     WKInterfaceDevice.current().play(type.hapticTypePressed!)
                 }
-                
+
                 if isBeingPressed {
                     performAction(type: type, viewModel: viewModel)
                 }
@@ -68,7 +68,7 @@ struct MoteButtonStyle: ButtonStyle {
                 if type.hapticTypeReleased != nil && viewModel.preferencesHapticFeedback {
                     WKInterfaceDevice.current().play(type.hapticTypeReleased!)
                 }
-                
+
                 if type == .powerOff {
                     if viewModel.isConnected {
                         viewModel.send(.turnOff)
@@ -79,7 +79,7 @@ struct MoteButtonStyle: ButtonStyle {
                 }
             })
     }
-    
+
     init(_ type: MoteButtonType) {
         self.type = type
     }
@@ -89,21 +89,21 @@ private extension MoteButtonStyle {
     func getScale(type: MoteButtonType, _ pressed: Bool) -> CGFloat {
         return pressed ? 0.9 : 1.0
     }
-    
+
     func getBackgroundColor(type: MoteButtonType, _ pressed: Bool) -> Color {
         return pressed ? .accent : type.plain ? .black : .darkGrayMote
     }
-    
+
     func getForegroundColor(type: MoteButtonType, _ pressed: Bool) -> Color {
         guard type != .powerOff else {
             return pressed ? .white : type.highlighted ? .accent : Color(uiColor: .gray)
         }
-        
+
         return pressed ? .white : type.highlighted ? .accent : Color(uiColor: .gray)
     }
 }
 
-fileprivate func performAction(type: MoteButtonType, viewModel: MoteViewModel) {
+private func performAction(type: MoteButtonType, viewModel: MoteViewModel) {
     if type == .powerOff {
         return
     }

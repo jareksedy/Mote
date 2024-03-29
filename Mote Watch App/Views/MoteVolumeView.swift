@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MoteVolumeView: View {
     @EnvironmentObject var viewModel: MoteViewModel
-    
+
     var body: some View {
         NavigationStack {
             Slider(

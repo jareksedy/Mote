@@ -29,13 +29,16 @@ struct DeviceDiscoveryView: View {
                 }
             } else {
                 Spacer()
-                
-                ActivityIndicatorView(isVisible: $viewModel.isDiscoverDevicesActivityIndicatorShown, type: .growingArc(.accent, lineWidth: 4))
+
+                ActivityIndicatorView(
+                    isVisible: $viewModel.isDiscoverDevicesActivityIndicatorShown,
+                    type: .growingArc(.accent, lineWidth: 4)
+                )
                      .frame(width: 100.0, height: 100.0)
                      .foregroundColor(.accentColor)
-                
+
                 Spacer()
-                
+
                 VStack(alignment: .leading) {
                     HStack(spacing: 20) {
                         Image(systemName: "exclamationmark.circle.fill")

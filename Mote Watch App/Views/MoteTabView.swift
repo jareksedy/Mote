@@ -11,7 +11,7 @@ struct MoteTabView: View {
     @Environment(\.scenePhase) var scenePhase
     @EnvironmentObject var viewModel: MoteViewModel
     @State private var selection: TabSelection
-    
+
     var body: some View {
         TabView(selection: $selection) {
             MoteNavigationView()
@@ -36,11 +36,11 @@ struct MoteTabView: View {
             }
         }
     }
-    
+
     init(selection: TabSelection = .navigation) {
         self.selection = .navigation
     }
-    
+
     enum TabSelection {
         case navigation
         case playback

@@ -10,17 +10,17 @@ import WatchConnectivity
 import WebOSClient
 import SSDPClient
 
-fileprivate enum Constants {
+private enum Constants {
     static let volumeSubscriptionRequestId = "volumeSubscription"
 }
 
 final class MoteViewModel: NSObject, ObservableObject {
     @Published var isDiscoverDevicesActivityIndicatorShown: Bool = true
     @Published var isToastPresented: Bool = false
-    @Published var toastConfiguration: ToastConfiguration? = nil
+    @Published var toastConfiguration: ToastConfiguration?
     @Published var isAlertPresented: Bool = false
     @Published var colorButtonsPresented: Bool = false
-    @Published var playState: String? = nil
+    @Published var playState: String?
     @Published var deviceDiscoveryPresented: Bool = false
     @Published var deviceDiscoveryFinished: Bool = false
     @Published var keyboardPresented: Bool = false
@@ -43,8 +43,8 @@ final class MoteViewModel: NSObject, ObservableObject {
     var session: WCSession
     var tv: WebOSClient?
     var ssdpClient = SSDPDiscovery()
-    
-    init(session: WCSession = .default){
+
+    init(session: WCSession = .default) {
         self.session = session
         super.init()
         ssdpClient.delegate = self
@@ -52,28 +52,28 @@ final class MoteViewModel: NSObject, ObservableObject {
         session.activate()
         connectAndRegister()
     }
-    
+
     @discardableResult
     func send(_ target: WebOSTarget, id: String? = nil) -> String? {
         var newId: String?
-        
+
         if let id {
             newId = tv?.send(target, id: id)
         } else {
             newId = tv?.send(target)
         }
-        
+
         if case .turnOff = target {
             tv?.disconnect()
         }
-        
+
         return newId
     }
-    
+
     func sendKey(_ keyTarget: WebOSKeyTarget) {
         tv?.sendKey(keyTarget)
     }
-    
+
     func toast(_ configuration: ToastConfiguration) {
         toastConfiguration = configuration
         isToastPresented = true

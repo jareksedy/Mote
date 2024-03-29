@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MoteNavigationView: View {
     @EnvironmentObject var viewModel: MoteViewModel
-    
+
     var body: some View {
         NavigationStack {
             MoteButtonGroup {

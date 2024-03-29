@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MotePreferencesView: View {
     @EnvironmentObject var viewModel: MoteViewModel
-    
+
     var body: some View {
         NavigationStack {
             List {
@@ -36,7 +36,7 @@ struct MotePreferencesView: View {
             }
             .font(.system(.body, design: .rounded, weight: .medium))
             .foregroundColor(.gray)
-            
+
             Text("\(Strings.General.appName) \(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))")
                 .font(.system(size: 7, weight: .regular, design: .monospaced))
                 .foregroundStyle(.gray.opacity(0.5))

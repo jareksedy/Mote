@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 enum ToastType {
     case warning
     case success
@@ -25,7 +24,7 @@ extension ToastType {
             return .green
         }
     }
-    
+
     var systemName: String {
         switch self {
         case .warning:
@@ -36,7 +35,7 @@ extension ToastType {
             return "bell.circle.fill"
         }
     }
-    
+
 //    var message: String {
 //        switch self {
 //        case .prompted:

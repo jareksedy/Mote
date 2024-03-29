@@ -13,7 +13,7 @@ struct ToastConfiguration: Equatable {
     let autohideIn: TimeInterval?
     let closeOnTap: Bool
     let closeOnTapOutside: Bool
-    
+
     init(
         type: ToastType = .notification,
         message: String,
@@ -36,12 +36,12 @@ extension ToastConfiguration {
         closeOnTap: true,
         closeOnTapOutside: true
     )
-    
+
     static let promptAccepted = ToastConfiguration(
         type: .success,
         message: "Successfully connected to the TV"
     )
-    
+
     static let promptRejected = ToastConfiguration(
         type: .warning,
         message: "Prompt rejected, press the power button to reaccept"

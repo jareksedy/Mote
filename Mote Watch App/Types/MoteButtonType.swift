@@ -13,16 +13,16 @@ enum MoteButtonType {
     case down
     case left
     case right
-    
+
     case ok
-    
+
     case volumeUp
     case volumeDown
     case channelUp
     case channelDown
     case channelUpAlternative
     case channelDownAlternative
-    
+
     case home
     case homeAlternative
     case back
@@ -30,7 +30,7 @@ enum MoteButtonType {
     case playPause
     case play
     case pause
-    
+
     case fastForward
     case rewind
     case screenOff
@@ -165,15 +165,15 @@ extension MoteButtonType {
             return false
         }
     }
-    
+
     var hapticType: WKHapticType? {
         return .click
     }
-    
+
     var hapticTypePressed: WKHapticType? {
         return .click
     }
-    
+
     var hapticTypeReleased: WKHapticType? {
         switch self {
         case .powerOff, .home, .ok:
@@ -182,7 +182,7 @@ extension MoteButtonType {
             return nil
         }
     }
-    
+
     var repeatBehavior: ButtonRepeatBehavior {
         switch self {
         case .up, .down, .left, .right, .volumeUp, .volumeDown, .channelUp, .channelDown:

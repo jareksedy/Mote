@@ -14,7 +14,7 @@ struct KeyboardView: View {
     @FocusState private var focused: Bool
     @State private var inputString = ""
     @Binding var showModal: Bool
-    
+
     var body: some View {
         ScrollView([], showsIndicators: false) {
             TextField("Your text here...", text: $inputString)
@@ -41,7 +41,7 @@ struct KeyboardView: View {
         .ignoresSafeArea(.keyboard)
         .background(Color(uiColor: .systemGray6))
     }
-    
+
     init(showModal: Binding<Bool>, viewModel: MoteViewModel) {
         UITextField.appearance().clearButtonMode = .whileEditing
         self._showModal = showModal

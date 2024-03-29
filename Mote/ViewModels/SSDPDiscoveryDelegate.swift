@@ -19,7 +19,7 @@ extension MoteViewModel: SSDPDiscoveryDelegate {
             }
         }
     }
-    
+
     func ssdpDiscoveryDidFinish(_ discovery: SSDPDiscovery) {
         Task { @MainActor in
             deviceDiscoveryFinished = true

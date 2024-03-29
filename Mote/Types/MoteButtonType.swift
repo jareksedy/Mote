@@ -13,16 +13,16 @@ enum MoteButtonType {
     case down
     case left
     case right
-    
+
     case ok
-    
+
     case volumeUp
     case volumeDown
     case channelUp
     case channelDown
     case channelUpAlternative
     case channelDownAlternative
-    
+
     case home
     case homeAlternative
     case back
@@ -30,7 +30,7 @@ enum MoteButtonType {
     case playPause
     case play
     case pause
-    
+
     case fastForward
     case rewind
     case screenOff
@@ -39,7 +39,7 @@ enum MoteButtonType {
     case settings
     case search
     case exit
-    
+
     case num0
     case num1
     case num2
@@ -50,15 +50,15 @@ enum MoteButtonType {
     case num7
     case num8
     case num9
-    
+
     case keyboard
     case grid
-    
+
     case red
     case green
     case yellow
     case blue
-    
+
     case none
 }
 
@@ -119,7 +119,7 @@ extension MoteButtonType {
             return ""
         }
     }
-    
+
     var keyTarget: WebOSKeyTarget? {
         switch self {
         case .up:
@@ -192,7 +192,7 @@ extension MoteButtonType {
             return nil
         }
     }
-    
+
     var commonTarget: WebOSTarget? {
         switch self {
         case .screenOff:
@@ -203,7 +203,7 @@ extension MoteButtonType {
             return nil
         }
     }
-    
+
     var text: String? {
         switch self {
         case .num0:
@@ -230,7 +230,7 @@ extension MoteButtonType {
             return nil
         }
     }
-    
+
     var plain: Bool {
         switch self {
         case
@@ -260,7 +260,7 @@ extension MoteButtonType {
             return false
         }
     }
-    
+
     var highlighted: Bool {
         switch self {
         case .up, .down, .left, .right, .ok, .powerOff:
@@ -269,7 +269,7 @@ extension MoteButtonType {
             return false
         }
     }
-    
+
     var hapticTypePressed: UIImpactFeedbackGenerator.FeedbackStyle? {
         switch self {
         case .grid:
@@ -278,7 +278,7 @@ extension MoteButtonType {
             return .soft
         }
     }
-    
+
     var hapticTypeReleased: UIImpactFeedbackGenerator.FeedbackStyle? {
         switch self {
         case .powerOff, .home, .ok, .keyboard:
@@ -287,7 +287,7 @@ extension MoteButtonType {
             return nil
         }
     }
-    
+
     var repeatBehavior: ButtonRepeatBehavior {
         switch self {
         case .up, .down, .left, .right, .volumeUp, .volumeDown, .channelUp, .channelDown:

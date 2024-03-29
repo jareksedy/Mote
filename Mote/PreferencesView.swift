@@ -14,7 +14,7 @@ struct PreferencesView: View {
     @State private var enterIpAlertShown: Bool = false
     @State private var isClearAlertShown: Bool = false
     @State private var tvIP: String = ""
-    
+
     var body: some View {
         NavigationStack(path: $viewModel.navigationPath) {
             List {
@@ -24,7 +24,7 @@ struct PreferencesView: View {
                             .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.secondary)
                     }
-                    
+
                     NavigationLink(value: NavigationScreens.about) {
                         Label("FAQ", systemImage: "questionmark.circle")
                             .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
@@ -37,39 +37,39 @@ struct PreferencesView: View {
                             .foregroundColor(.accentColor)
                     })
                 }
-                
+
                 Section("Connection") {
                     NavigationLink(value: NavigationScreens.discover) {
                         Label("Discover TVs on LAN", systemImage: "cable.coaxial")
                             .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.secondary)
                     }
-                    
+
                     Button(action: {}, label: {
                         Label("Manually enter your TV's IP", systemImage: "text.append")
                             .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.accentColor)
                     })
-                    
+
                     Button(action: { isClearAlertShown.toggle() }, label: {
                         Label("Reset all connection data", systemImage: "gear.badge.xmark")
                             .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.accentColor)
                     })
                 }
-                
+
                 Section("Layout and Haptics") {
                     Toggle("Alternative layout", systemImage: "circle.grid.2x2", isOn: $alternativeLayout)
                         .tint(.accent)
                         .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
                         .foregroundColor(.secondary)
-                    
+
                     Toggle("Haptic feedback", systemImage: "hand.tap", isOn: $hapticFeedback)
                         .tint(.accent)
                         .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
                         .foregroundColor(.secondary)
                 }
-                
+
                 Section {
                     HStack {
                         Spacer()
@@ -123,7 +123,7 @@ struct PreferencesView: View {
             )
         }
     }
-    
+
     private func submitHostIP() {
         guard isValidIP(ip: tvIP) else {
             return
@@ -132,10 +132,10 @@ struct PreferencesView: View {
         viewModel.disconnect()
         viewModel.connectAndRegister()
     }
-    
+
     private func isValidIP(ip: String) -> Bool {
         let ipAddressRegex = #"^(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.((25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.){2}(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)$"#
-        
+
         return NSPredicate(format: "SELF MATCHES %@", ipAddressRegex).evaluate(with: ip)
     }
 }

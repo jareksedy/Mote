@@ -13,12 +13,12 @@ enum Strings {
         static let playbackViewTitle = "#playbackViewTitle".localized
         static let preferencesViewTitle = "#preferencesViewTitle".localized
     }
-    
+
     enum Preferences {
         static let alternativeLayout = "#alternativeLayout".localized
         static let hapticFeedback = "#hapticFeedback".localized
     }
-    
+
     enum General {
         static let appName = "Mote Watch App"
     }

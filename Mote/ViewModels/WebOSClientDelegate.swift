@@ -17,9 +17,9 @@ extension MoteViewModel: WebOSClientDelegate {
 
     func didRegister(with clientKey: String) {
         AppSettings.shared.clientKey = clientKey
-        
+
         subscribeAll()
-        
+
         Task { @MainActor in
             withAnimation(.easeInOut(duration: GlobalConstants.AnimationIntervals.buttonFadeInterval)) {
                 isConnected = true
@@ -27,7 +27,7 @@ extension MoteViewModel: WebOSClientDelegate {
             }
         }
     }
-    
+
     func didReceive(_ result: Result<WebOSResponse, Error>) {
         if case .success(let response) = result,
            response.id == GlobalConstants.SubscriptionIds.remoteKeyboardRequestId,
@@ -37,7 +37,7 @@ extension MoteViewModel: WebOSClientDelegate {
                 isFocused = focus
             }
         }
-        
+
         if case .success(let response) = result,
            response.id == GlobalConstants.SubscriptionIds.mediaPlaybackInfoRequestId,
            let playState = response.payload?.foregroundAppInfo?.first?.playState {
@@ -45,22 +45,22 @@ extension MoteViewModel: WebOSClientDelegate {
                 self.playState = playState
             }
         }
-        
+
         if case .failure(let error) = result {
             print("~e: \(error.localizedDescription)")
         }
     }
-    
+
     func didReceiveNetworkError(_ error: Error?) {
         if let error = error as NSError? {
             if error.code == 57 || error.code == 60 || error.code == 54 {
                 Task { @MainActor in
                     isConnected = false
-                    //connectAndRegister()
+                    // connectAndRegister()
                 }
             }
         }
-        
+
 //        if let error = error as? NSError {
 //            print("~err:\(error.localizedDescription) code: \(error.code) ")
 //        }

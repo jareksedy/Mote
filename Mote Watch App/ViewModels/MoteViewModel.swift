@@ -23,10 +23,10 @@ final class MoteViewModel: NSObject, ObservableObject {
             AppSettings.shared.watchHaptics = preferencesHapticFeedback
         }
     }
-    
+
     private var session: WCSession
 
-    init(session: WCSession = .default){
+    init(session: WCSession = .default) {
         self.session = session
         super.init()
         session.delegate = self
@@ -38,7 +38,7 @@ extension MoteViewModel {
     func sendWakeUpMessage() {
         session.sendMessage(["WAKE_UP": true], replyHandler: nil)
     }
-    
+
     func send(_ target: WebOSTarget) {
         guard let targetJSON = target.request.jsonWithId(UUID().uuidString) else {
             return
@@ -52,7 +52,7 @@ extension MoteViewModel {
             }
         }
     }
-    
+
     func sendKey(_ target: WebOSKeyTarget) {
         guard let targetData = target.request else {
             return
@@ -67,7 +67,7 @@ extension MoteViewModel {
             }
         }
     }
-    
+
     func presentVolumeView() {
         isVolumeViewPresented = true
     }
@@ -83,10 +83,10 @@ extension MoteViewModel: WCSessionDelegate {
             isConnected = error == nil ? true : false
         }
     }
-    
+
     func session(
         _ session: WCSession,
-        didReceiveMessage message: [String : Any]
+        didReceiveMessage message: [String: Any]
     ) {
         if let volume = message["volumeChanged"] as? Double {
             Task { @MainActor in
