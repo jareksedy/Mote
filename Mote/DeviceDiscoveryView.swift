@@ -22,7 +22,7 @@ struct DeviceDiscoveryView: View {
                             AppSettings.shared.host = device.host
                             AppSettings.shared.clientKey = nil
                             viewModel.disconnect()
-                            viewModel.connectAndRegister(host: device.host)
+                            viewModel.connectAndRegister()
                             viewModel.deviceDiscoveryPresented = false
                             viewModel.preferencesPresented = false
                         }
