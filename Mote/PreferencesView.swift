@@ -112,7 +112,7 @@ struct PreferencesView: View {
                 }
             }
             .alert(
-                "Do you want to reset all connection data?",
+                "Do you want to reset connection data?",
                 isPresented: $isClearAlertShown,
                 actions: {
                     Button("Reset", role: .destructive) {
@@ -124,7 +124,7 @@ struct PreferencesView: View {
                     }
                     Button("Cancel", role: .cancel) {}
                 }, message: {
-                    Text("You will need to reconnect your TV after this.")
+                    Text("You will need to reconnect your TV.")
                 }
             )
         }
