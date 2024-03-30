@@ -27,7 +27,7 @@ struct GuideView: View {
                     }
             }
             ToolbarItem(placement: .topBarTrailing) {
-                Text("User guide")
+                Text("Frequently Asked Questions")
                     .font(.system(size: Globals.smallTitleSize, weight: .bold, design: .rounded))
                     .foregroundColor(.accent)
                     .padding(.trailing, Globals.iconPadding)

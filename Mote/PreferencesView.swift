@@ -19,13 +19,13 @@ struct PreferencesView: View {
             List {
                 Section("App") {
                     NavigationLink(value: NavigationScreens.about) {
-                        Label("About the app", systemImage: "info.circle")
+                        Label("About Mote", systemImage: "info.circle")
                             .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.secondary)
                     }
 
                     NavigationLink(value: NavigationScreens.guide) {
-                        Label("User guide", systemImage: "book.pages")
+                        Label("Frequently Asked Questions", systemImage: "book.pages")
                             .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.secondary)
                     }
@@ -62,11 +62,19 @@ struct PreferencesView: View {
                         .tint(.accent)
                         .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
                         .foregroundColor(.secondary)
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            alternativeLayout.toggle()
+                        }
 
                     Toggle("Haptic feedback", systemImage: "hand.tap", isOn: $viewModel.preferencesHapticFeedback)
                         .tint(.accent)
                         .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
                         .foregroundColor(.secondary)
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            viewModel.preferencesHapticFeedback.toggle()
+                        }
                 }
 
                 Section {

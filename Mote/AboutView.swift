@@ -66,7 +66,7 @@ struct AboutView: View {
                     }
             }
             ToolbarItem(placement: .topBarTrailing) {
-                Text("About the app")
+                Text("About Mote")
                     .font(.system(size: Globals.smallTitleSize, weight: .bold, design: .rounded))
                     .foregroundColor(.accent)
                     .padding(.trailing, Globals.iconPadding)
