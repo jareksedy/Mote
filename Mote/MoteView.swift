@@ -35,13 +35,13 @@ struct MoteView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     HStack(spacing: 5) {
+                        Text("Mote")
+                            .font(.system(size: Globals.smallTitleSize, weight: .bold, design: .rounded))
+                            .foregroundColor(.accent)
                         Image(systemName: viewModel.isConnected ? "checkmark.circle.fill" : "xmark.circle.fill")
                             .font(.system(size: Globals.iconSize, weight: .bold, design: .rounded))
                             .foregroundColor(.accent)
                             .contentTransition(.symbolEffect(.replace.downUp.byLayer))
-                        Text("Mote")
-                            .font(.system(size: Globals.smallTitleSize, weight: .bold, design: .rounded))
-                            .foregroundColor(.accent)
                     }
                     .padding(.leading, Globals.iconPadding)
                     .padding(.top, 10)
@@ -92,23 +92,20 @@ struct MoteView: View {
                         .presentationCornerRadius(12)
                 }
             )
-            .popup(isPresented: $viewModel.isToastPresented) {
-                ToastView(configuration: viewModel.toastConfiguration!)
-            } customize: { popup in
-                popup
-                    .type(.toast)
-                    .position(.bottom)
-                    .animation(.bouncy(duration: 0.4))
-                    .backgroundColor(Color(uiColor: .systemBackground).opacity(0.30))
-                    .autohideIn(viewModel.toastConfiguration?.autohideIn)
-                    .closeOnTap(viewModel.toastConfiguration?.closeOnTap ?? true)
-                    .closeOnTapOutside(viewModel.toastConfiguration?.closeOnTapOutside ?? true)
-                    .dismissCallback {
-                        if viewModel.toastConfiguration == .prompted && viewModel.isConnected {
-                            viewModel.toast(.promptAccepted)
-                        }
+            .sheet(
+                isPresented: $viewModel.isToastPresented,
+                onDismiss: {
+                    if viewModel.toastConfiguration == .prompted && viewModel.isConnected {
+                        viewModel.toast(.promptAccepted)
                     }
-            }
+                },
+                content: {
+                    ToastSheetView(configuration: viewModel.toastConfiguration!, viewModel: viewModel)
+                        .presentationDetents([.height(175)])
+                        .presentationDragIndicator(.visible)
+                        .presentationCornerRadius(24)
+                }
+            )
             .onChange(of: scenePhase) {
                 switch scenePhase {
                 case .active:

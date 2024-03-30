@@ -114,7 +114,7 @@ struct PreferencesView: View {
                 }
             }
             .alert(
-                "Reset all connection data?",
+                "Reset connection data?",
                 isPresented: $isClearAlertShown,
                 actions: {
                     Button("Reset", role: .destructive, action: viewModel.resetConnectionData)

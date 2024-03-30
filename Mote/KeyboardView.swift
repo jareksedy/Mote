@@ -17,7 +17,7 @@ struct KeyboardView: View {
 
     var body: some View {
         ScrollView([], showsIndicators: false) {
-            TextField("Your text here...", text: $inputString)
+            TextField("Enter text here...", text: $inputString)
                 .focused($focused)
                 .disableAutocorrection(true)
                 .onSubmit {
@@ -35,9 +35,9 @@ struct KeyboardView: View {
                 .onChange(of: inputString) {
                     viewModel.send(.insertText(text: inputString, replace: true))
                 }
+                .padding([.leading, .trailing])
                 .padding(.top, 30)
         }
-        .padding([.leading, .trailing])
         .ignoresSafeArea(.keyboard)
         .background(Color(uiColor: .systemGray6))
     }
