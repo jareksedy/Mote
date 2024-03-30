@@ -6,13 +6,16 @@
 //
 
 import SwiftUI
+import MaskedTextFieldSwiftUI
 
 struct PreferencesView: View {
     @ObservedObject var viewModel: MoteViewModel
+
     @State private var alternativeLayout: Bool = false
     @State private var enterIpAlertShown: Bool = false
     @State private var isClearAlertShown: Bool = false
-    @State private var tvIP: String = ""
+
+    @State var tvIP = "192.168."
 
     var body: some View {
         NavigationStack(path: $viewModel.navigationPath) {
@@ -44,7 +47,7 @@ struct PreferencesView: View {
                             .foregroundColor(.secondary)
                     }
 
-                    Button(action: {}, label: {
+                    Button(action: { enterIpAlertShown.toggle() }, label: {
                         Label("Manually input IP address", systemImage: "hand.point.up.left.and.text")
                             .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.accentColor)
@@ -112,28 +115,28 @@ struct PreferencesView: View {
                 }
             }
             .alert(
-                "Do you want to reset connection data?",
+                "Reset all connection data?",
                 isPresented: $isClearAlertShown,
                 actions: {
-                    Button("Reset", role: .destructive) {
-                        AppSettings.shared.host = nil
-                        AppSettings.shared.clientKey = nil
-                        viewModel.disconnect()
-                        viewModel.connectAndRegister()
-                        viewModel.preferencesPresented = false
-                    }
-                    Button("Cancel", role: .cancel) {}
+                    Button("Reset", role: .destructive, action: viewModel.resetConnectionData)
+                    Button("Cancel", role: .cancel, action: {})
                 }, message: {
                     Text("You will need to reconnect your TV.")
                 }
             )
+            .alert(
+                "IP address of your TV",
+                isPresented: $enterIpAlertShown
+            ) {
+                TextField("Enter IP", text: $tvIP, prompt: Text("192.168."))
+                    .keyboardType(.numbersAndPunctuation)
+                Button("Save", action: { viewModel.setHostManually(host: tvIP) })
+                Button("Cancel", role: .cancel, action: {})
+            }
+            .onAppear {
+                tvIP = "192.168."
+            }
         }
-    }
-
-    private func submitHostIP() {
-        AppSettings.shared.host = tvIP
-        viewModel.disconnect()
-        viewModel.connectAndRegister()
     }
 }
 

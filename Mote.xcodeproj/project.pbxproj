@@ -286,6 +286,14 @@
 			path = Types;
 			sourceTree = "<group>";
 		};
+		CA5B9CEF2BB82C2A005BAB54 /* Globals */ = {
+			isa = PBXGroup;
+			children = (
+				CA1F800B2B95FC6900C5F6B8 /* Globals.swift */,
+			);
+			path = Globals;
+			sourceTree = "<group>";
+		};
 		CA5FF7352B678670009C5DB4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -357,12 +365,12 @@
 			path = HelperViews;
 			sourceTree = "<group>";
 		};
-		CA99EBC92B6A1F04004C28C7 /* Constants */ = {
+		CA99EBC92B6A1F04004C28C7 /* Globals */ = {
 			isa = PBXGroup;
 			children = (
 				CA99EBC72B6A1E69004C28C7 /* GlobalConstants.swift */,
 			);
-			path = Constants;
+			path = Globals;
 			sourceTree = "<group>";
 		};
 		CAF5486D2B6687070048F9CF = {
@@ -392,7 +400,7 @@
 			children = (
 				CAF548792B6687070048F9CF /* MoteApp.swift */,
 				CA34868A2B9C4E2F0047D3DA /* HelperViews */,
-				CA1F800B2B95FC6900C5F6B8 /* Globals.swift */,
+				CA5B9CEF2BB82C2A005BAB54 /* Globals */,
 				CA3486932B9C50060047D3DA /* Types */,
 				CA1F80062B95F35500C5F6B8 /* MoteView.swift */,
 				CA4237672BB44B1C0026791E /* MoteTabView.swift */,
@@ -428,7 +436,7 @@
 				CAF5488B2B6687080048F9CF /* MoteApp.swift */,
 				CA3486902B9C4FB40047D3DA /* Types */,
 				CA1F7FE32B943A0C00C5F6B8 /* Resources */,
-				CA99EBC92B6A1F04004C28C7 /* Constants */,
+				CA99EBC92B6A1F04004C28C7 /* Globals */,
 				CA5FF7382B6787B8009C5DB4 /* Views */,
 				CA87053F2B668C710066316B /* ViewModels */,
 				CAF5488F2B6687090048F9CF /* Assets.xcassets */,

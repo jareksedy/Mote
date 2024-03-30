@@ -35,13 +35,13 @@ struct MoteView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     HStack(spacing: 5) {
-                        Text("Mote")
-                            .font(.system(size: Globals.smallTitleSize, weight: .bold, design: .rounded))
-                            .foregroundColor(.accent)
                         Image(systemName: viewModel.isConnected ? "checkmark.circle.fill" : "xmark.circle.fill")
                             .font(.system(size: Globals.iconSize, weight: .bold, design: .rounded))
                             .foregroundColor(.accent)
                             .contentTransition(.symbolEffect(.replace.downUp.byLayer))
+                        Text("Mote")
+                            .font(.system(size: Globals.smallTitleSize, weight: .bold, design: .rounded))
+                            .foregroundColor(.accent)
                     }
                     .padding(.leading, Globals.iconPadding)
                     .padding(.top, 10)

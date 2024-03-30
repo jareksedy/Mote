@@ -46,4 +46,20 @@ extension MoteViewModel {
             id: Globals.SubscriptionIds.mediaPlaybackInfoRequestId
         )
     }
+
+    func resetConnectionData() {
+        AppSettings.shared.host = nil
+        AppSettings.shared.clientKey = nil
+        disconnect()
+        connectAndRegister()
+        preferencesPresented = false
+    }
+
+    func setHostManually(host: String) {
+        AppSettings.shared.host = host
+        AppSettings.shared.clientKey = nil
+        disconnect()
+        connectAndRegister()
+        preferencesPresented = false
+    }
 }
