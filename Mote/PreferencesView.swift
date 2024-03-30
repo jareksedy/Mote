@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import MaskedTextFieldSwiftUI
 
 struct PreferencesView: View {
     @ObservedObject var viewModel: MoteViewModel
