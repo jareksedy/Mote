@@ -17,7 +17,7 @@ struct DeviceDiscoveryView: View {
                 List(viewModel.devices) { device in
                     VStack {
                         Label("\(device.name) (\(device.host))", systemImage: "tv")
-                            .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
+                            .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.secondary)
                     }
                     .onTapGesture {
@@ -42,13 +42,14 @@ struct DeviceDiscoveryView: View {
                 Spacer()
 
                 HStack(spacing: 5) {
-                    Text("You must be connected to the same network as your TV")
-                        .foregroundColor(.secondary)
+                    Text("TV must be on and connected\nto the same network")
+                        .foregroundColor(.primary)
+                        .lineSpacing(Globals.lineHeight)
                 }
-                .font(.system(size: GlobalConstants.bodyFontSize, weight: .bold, design: .rounded))
+                .font(.system(size: Globals.bodyFontSize, weight: .bold, design: .rounded))
                 .multilineTextAlignment(.center)
                 .lineSpacing(4)
-                .padding([.leading, .trailing], 50)
+                .frame(maxWidth: .greatestFiniteMagnitude)
 
                 Spacer()
                     .frame(height: 25)
@@ -61,7 +62,7 @@ struct DeviceDiscoveryView: View {
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Image(systemName: "arrow.backward")
-                    .font(.system(size: GlobalConstants.smallTitleSize, weight: .bold, design: .rounded))
+                    .font(.system(size: Globals.smallTitleSize, weight: .bold, design: .rounded))
                     .foregroundColor(.accent)
                     .padding(.top, 10)
                     .onTapGesture {
@@ -70,9 +71,9 @@ struct DeviceDiscoveryView: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Text("Discover TV on LAN")
-                    .font(.system(size: GlobalConstants.smallTitleSize, weight: .bold, design: .rounded))
+                    .font(.system(size: Globals.smallTitleSize, weight: .bold, design: .rounded))
                     .foregroundColor(.accent)
-                    .padding(.trailing, GlobalConstants.iconPadding)
+                    .padding(.trailing, Globals.iconPadding)
                     .padding(.top, 10)
             }
         }

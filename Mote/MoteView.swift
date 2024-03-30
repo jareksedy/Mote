@@ -34,15 +34,16 @@ struct MoteView: View {
             .background(Color(uiColor: .systemGray6))
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    HStack(spacing: 7) {
-                        Image(systemName: viewModel.isConnected ? "checkmark.circle.fill" : "xmark.circle.fill")
-                            .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
-                            .foregroundColor(viewModel.isConnected ? .accent : .secondary)
+                    HStack(spacing: 5) {
                         Text("Mote")
-                            .font(.system(size: GlobalConstants.smallTitleSize, weight: .bold, design: .rounded))
-                            .foregroundColor(viewModel.isConnected ? .accent : .secondary)
+                            .font(.system(size: Globals.smallTitleSize, weight: .bold, design: .rounded))
+                            .foregroundColor(.accent)
+                        Image(systemName: viewModel.isConnected ? "checkmark.circle.fill" : "xmark.circle.fill")
+                            .font(.system(size: Globals.iconSize, weight: .bold, design: .rounded))
+                            .foregroundColor(.accent)
+                            .contentTransition(.symbolEffect(.replace.downUp.byLayer))
                     }
-                    .padding(.leading, GlobalConstants.iconPadding)
+                    .padding(.leading, Globals.iconPadding)
                     .padding(.top, 10)
                     .onTapGesture {
                         viewModel.toast(.prompted)
@@ -50,9 +51,9 @@ struct MoteView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Image(systemName: "keyboard.fill")
-                        .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
+                        .font(.system(size: Globals.iconSize, weight: .bold, design: .rounded))
                         .foregroundColor(.secondary)
-                        .padding(.trailing, GlobalConstants.iconPadding)
+                        .padding(.trailing, Globals.iconPadding)
                         .padding(.top, 10)
                         .onTapGesture {
                             viewModel.keyboardPresented = true
@@ -60,9 +61,9 @@ struct MoteView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Image(systemName: "gearshape.fill")
-                        .font(.system(size: GlobalConstants.iconSize, weight: .bold, design: .rounded))
+                        .font(.system(size: Globals.iconSize, weight: .bold, design: .rounded))
                         .foregroundColor(.secondary)
-                        .padding(.trailing, GlobalConstants.iconPadding)
+                        .padding(.trailing, Globals.iconPadding)
                         .padding(.top, 10)
                         .onTapGesture {
                             viewModel.preferencesPresented = true

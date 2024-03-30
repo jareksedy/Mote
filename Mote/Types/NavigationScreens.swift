@@ -8,7 +8,7 @@
 import Foundation
 
 enum NavigationScreens {
-    case preferences
     case about
+    case guide
     case discover
 }

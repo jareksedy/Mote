@@ -19,40 +19,40 @@ struct PreferencesView: View {
             List {
                 Section("App") {
                     NavigationLink(value: NavigationScreens.about) {
-                        Label("About Mote", systemImage: "info.square")
-                            .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
+                        Label("About the app", systemImage: "info.circle")
+                            .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.secondary)
                     }
 
-                    NavigationLink(value: NavigationScreens.about) {
-                        Label("Frequently Asked Questions", systemImage: "book.pages")
-                            .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
+                    NavigationLink(value: NavigationScreens.guide) {
+                        Label("User guide", systemImage: "book.pages")
+                            .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.secondary)
                     }
 
-                    Button(action: { }, label: {
-                        Label("Rate us on App store", systemImage: "hand.thumbsup")
-                            .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
-                            .foregroundColor(.accentColor)
-                    })
+//                    Button(action: { }, label: {
+//                        Label("Rate us on App store", systemImage: "hand.thumbsup")
+//                            .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
+//                            .foregroundColor(.accentColor)
+//                    })
                 }
 
                 Section("Connection") {
                     NavigationLink(value: NavigationScreens.discover) {
                         Label("Discover TV on LAN", systemImage: "network")
-                            .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
+                            .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.secondary)
                     }
 
                     Button(action: {}, label: {
-                        Label("Input IP address manually", systemImage: "hand.point.up.braille")
-                            .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
+                        Label("Manually input IP address", systemImage: "hand.point.up.left.and.text")
+                            .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.accentColor)
                     })
 
                     Button(action: { isClearAlertShown.toggle() }, label: {
                         Label("Reset connection data", systemImage: "gear.badge.xmark")
-                            .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
+                            .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.accentColor)
                     })
                 }
@@ -60,12 +60,12 @@ struct PreferencesView: View {
                 Section("Layout and Haptics") {
                     Toggle("Alternative layout", systemImage: "square.grid.3x3.square", isOn: $alternativeLayout)
                         .tint(.accent)
-                        .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
+                        .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
                         .foregroundColor(.secondary)
 
                     Toggle("Haptic feedback", systemImage: "hand.tap", isOn: $viewModel.preferencesHapticFeedback)
                         .tint(.accent)
-                        .font(.system(size: GlobalConstants.bodyFontSize, weight: .medium, design: .rounded))
+                        .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
                         .foregroundColor(.secondary)
                 }
 
@@ -87,9 +87,9 @@ struct PreferencesView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Text("Preferences")
-                        .font(.system(size: GlobalConstants.smallTitleSize, weight: .bold, design: .rounded))
+                        .font(.system(size: Globals.smallTitleSize, weight: .bold, design: .rounded))
                         .foregroundColor(.accent)
-                        .padding(.leading, GlobalConstants.iconPadding)
+                        .padding(.leading, Globals.iconPadding)
                         .padding(.top, 10)
                 }
             }
@@ -97,14 +97,14 @@ struct PreferencesView: View {
                 switch screen {
                 case .about:
                     AboutView(viewModel: viewModel)
+                case .guide:
+                    GuideView(viewModel: viewModel)
                 case .discover:
                     DeviceDiscoveryView(viewModel: viewModel)
-                case .preferences:
-                    PreferencesView(viewModel: viewModel)
                 }
             }
             .alert(
-                "Do you really want to reset all connection data?",
+                "Do you want to reset all connection data?",
                 isPresented: $isClearAlertShown,
                 actions: {
                     Button("Reset", role: .destructive) {
@@ -115,6 +115,8 @@ struct PreferencesView: View {
                         viewModel.preferencesPresented = false
                     }
                     Button("Cancel", role: .cancel) {}
+                }, message: {
+                    Text("You will need to reconnect your TV after this.")
                 }
             )
         }

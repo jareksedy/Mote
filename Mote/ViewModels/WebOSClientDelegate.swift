@@ -21,16 +21,14 @@ extension MoteViewModel: WebOSClientDelegate {
         subscribeAll()
 
         Task { @MainActor in
-            withAnimation(.easeInOut(duration: GlobalConstants.AnimationIntervals.buttonFadeInterval)) {
-                isConnected = true
-                isToastPresented = false
-            }
+            isConnected = true
+            isToastPresented = false
         }
     }
 
     func didReceive(_ result: Result<WebOSResponse, Error>) {
         if case .success(let response) = result,
-           response.id == GlobalConstants.SubscriptionIds.remoteKeyboardRequestId,
+           response.id == Globals.SubscriptionIds.remoteKeyboardRequestId,
            let focus = response.payload?.currentWidget?.focus {
             Task { @MainActor in
                 keyboardPresented = focus
@@ -39,7 +37,7 @@ extension MoteViewModel: WebOSClientDelegate {
         }
 
         if case .success(let response) = result,
-           response.id == GlobalConstants.SubscriptionIds.mediaPlaybackInfoRequestId,
+           response.id == Globals.SubscriptionIds.mediaPlaybackInfoRequestId,
            let playState = response.payload?.foregroundAppInfo?.first?.playState {
             Task { @MainActor in
                 self.playState = playState

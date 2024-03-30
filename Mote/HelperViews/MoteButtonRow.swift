@@ -13,10 +13,10 @@ struct MoteButtonRow<Content: View>: View {
         self.content = content
     }
     var body: some View {
-        HStack(spacing: GlobalConstants.buttonSpacing) {
+        HStack(spacing: Globals.buttonSpacing) {
             content()
         }
-        .padding(GlobalConstants.buttonSpacing)
+        .padding(Globals.buttonSpacing)
         .background(.darkerGrayMote)
         .cornerRadius(.greatestFiniteMagnitude)
     }

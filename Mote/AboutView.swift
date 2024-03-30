@@ -19,21 +19,18 @@ struct AboutView: View {
                     .foregroundColor(.accent)
 
                 Text("Mote \(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))")
-                    .font(.system(size: GlobalConstants.bodyFontSize, weight: .bold, design: .rounded))
+                    .font(.system(size: Globals.bodyFontSize, weight: .bold, design: .rounded))
                     .multilineTextAlignment(.center)
                     .foregroundColor(.primary)
                     .padding(.top, 25)
+                    .lineSpacing(Globals.lineHeight)
 
-                Text("LG Smart TV Remote Control App")
-                    .font(.system(size: GlobalConstants.bodyFontSize, weight: .bold, design: .rounded))
+                Text("LG Smart TV Remote Control App\nby Yaroslav Sedyshev")
+                    .font(.system(size: Globals.bodyFontSize, weight: .bold, design: .rounded))
                     .multilineTextAlignment(.center)
                     .foregroundColor(.secondary)
                     .padding(.top, 5)
-
-                Text("by Yaroslav Sedyshev")
-                    .font(.system(size: GlobalConstants.bodyFontSize, weight: .bold, design: .rounded))
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(.secondary)
+                    .lineSpacing(Globals.lineHeight)
             }
             .padding(.top, 25)
 
@@ -41,24 +38,26 @@ struct AboutView: View {
 
             HStack(spacing: 5) {
                 Text("Made with")
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.primary)
                 Text("♥")
                     .foregroundColor(.accent)
                 Text("in Kazakhstan 🇰🇿")
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.primary)
             }
-            .font(.system(size: GlobalConstants.bodyFontSize, weight: .bold, design: .rounded))
+            .font(.system(size: Globals.bodyFontSize, weight: .bold, design: .rounded))
             .multilineTextAlignment(.center)
+            .lineSpacing(Globals.lineHeight)
 
             Spacer()
                 .frame(height: 25)
         }
-        .padding([.leading, .trailing], 50)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(uiColor: .systemGray6))
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Image(systemName: "arrow.backward")
-                    .font(.system(size: GlobalConstants.smallTitleSize, weight: .bold, design: .rounded))
+                    .font(.system(size: Globals.smallTitleSize, weight: .bold, design: .rounded))
                     .foregroundColor(.accent)
                     // .padding(.leading, GlobalConstants.iconPadding)
                     .padding(.top, 10)
@@ -67,10 +66,10 @@ struct AboutView: View {
                     }
             }
             ToolbarItem(placement: .topBarTrailing) {
-                Text("About Mote")
-                    .font(.system(size: GlobalConstants.smallTitleSize, weight: .bold, design: .rounded))
+                Text("About the app")
+                    .font(.system(size: Globals.smallTitleSize, weight: .bold, design: .rounded))
                     .foregroundColor(.accent)
-                    .padding(.trailing, GlobalConstants.iconPadding)
+                    .padding(.trailing, Globals.iconPadding)
                     .padding(.top, 10)
             }
         }

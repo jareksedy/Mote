@@ -38,12 +38,12 @@ extension MoteViewModel {
     func subscribeAll() {
         tv?.send(
             .registerRemoteKeyboard,
-            id: GlobalConstants.SubscriptionIds.remoteKeyboardRequestId
+            id: Globals.SubscriptionIds.remoteKeyboardRequestId
         )
 
         tv?.send(
             .getForegroundAppMediaStatus(subscribe: true),
-            id: GlobalConstants.SubscriptionIds.mediaPlaybackInfoRequestId
+            id: Globals.SubscriptionIds.mediaPlaybackInfoRequestId
         )
     }
 }

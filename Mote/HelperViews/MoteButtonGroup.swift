@@ -13,7 +13,7 @@ struct MoteButtonGroup<Content: View>: View {
         self.content = content
     }
     var body: some View {
-        VStack(spacing: -GlobalConstants.buttonSpacing) {
+        VStack(spacing: -Globals.buttonSpacing) {
             content()
         }
     }

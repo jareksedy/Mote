@@ -31,7 +31,7 @@ struct ToastConfiguration: Equatable {
 
 extension ToastConfiguration {
     static let prompted = ToastConfiguration(
-        message: "Please accept the registration prompt on the TV",
+        message: "Accept the registration prompt on the TV",
         autohideIn: nil,
         closeOnTap: true,
         closeOnTapOutside: true

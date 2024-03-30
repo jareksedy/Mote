@@ -1,5 +1,5 @@
 //
-//  GlobalConstants.swift
+//  Globals.swift
 //  Mote
 //
 //  Created by Ярослав on 04.03.2024.
@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-enum GlobalConstants {
+enum Globals {
     enum SubscriptionIds {
         static let remoteKeyboardRequestId = "remoteKeyboardSubscription"
         static let mediaPlaybackInfoRequestId = "mediaPlaybackInfoSubscription"
     }
 
     enum AnimationIntervals {
-        static let buttonFadeInterval: TimeInterval = 0.1
+        // static let buttonFadeInterval: TimeInterval = 0.1
     }
 
     static let smallTitleSize: CGFloat = 18
@@ -27,6 +27,10 @@ enum GlobalConstants {
 
     static var buttonSize: CGFloat {
         return 70
+    }
+
+    static var lineHeight: CGFloat {
+        return 3
     }
 
     static var buttonSpacing: CGFloat {

@@ -33,18 +33,18 @@ struct MoteButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         Circle()
-            .frame(width: GlobalConstants.buttonSize, height: GlobalConstants.buttonSize)
+            .frame(width: Globals.buttonSize, height: Globals.buttonSize)
             .foregroundColor(getBackgroundColor(type: type, isColorChanged))
             .overlay {
                 if let text = type.text {
                     Text(text)
                         .foregroundColor(getForegroundColor(type: type, isColorChanged))
-                        .font(.system(size: GlobalConstants.buttonFontSize, weight: .bold, design: .rounded))
+                        .font(.system(size: Globals.buttonFontSize, weight: .bold, design: .rounded))
                         .monospacedDigit()
                 } else {
                     Image(systemName: type.systemName)
                         .foregroundColor(getForegroundColor(type: type, isColorChanged))
-                        .font(.system(size: GlobalConstants.buttonFontSize, weight: .bold, design: .rounded))
+                        .font(.system(size: Globals.buttonFontSize, weight: .bold, design: .rounded))
                 }
             }
             .scaleEffect(getScale(type: type, isBeingPressed))
@@ -65,6 +65,10 @@ struct MoteButtonStyle: ButtonStyle {
                     performAction(type: type, viewModel: viewModel)
                 }
             }, perform: {
+                if !viewModel.isConnected {
+                    viewModel.connectAndRegister()
+                }
+
                 if type.hapticTypeReleased != nil && viewModel.preferencesHapticFeedback {
                     UIImpactFeedbackGenerator(style: type.hapticTypeReleased!).impactOccurred()
                 }
@@ -139,11 +143,6 @@ private extension MoteButtonStyle {
 }
 
 private func performAction(type: MoteButtonType, viewModel: MoteViewModel) {
-    guard viewModel.isConnected else {
-        viewModel.connectAndRegister()
-        return
-    }
-
     if type == .playPause {
         guard let playState = viewModel.playState else {
             return
