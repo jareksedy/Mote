@@ -27,7 +27,7 @@ struct PreferencesView: View {
                     }
 
                     NavigationLink(value: NavigationScreens.guide) {
-                        Label("Frequently Asked Questions", systemImage: "book.pages")
+                        Label("Frequently Asked Questions", systemImage: "questionmark.circle")
                             .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.secondary)
                     }
@@ -60,7 +60,7 @@ struct PreferencesView: View {
                 }
 
                 Section("Layout and Haptics") {
-                    Toggle("Alternative layout", systemImage: "square.grid.3x3.square", isOn: $alternativeLayout)
+                    Toggle("Alternative layout", systemImage: "circle.grid.2x2", isOn: $alternativeLayout)
                         .tint(.accent)
                         .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
                         .foregroundColor(.secondary)
