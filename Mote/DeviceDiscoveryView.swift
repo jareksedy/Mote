@@ -42,17 +42,17 @@ struct DeviceDiscoveryView: View {
                 Spacer()
 
                 VStack {
-                    Image(systemName: "exclamationmark.triangle.fill")
-                        .font(.system(size: 32, weight: .bold, design: .rounded))
+                    Image(systemName: "exclamationmark.circle.fill")
+                        .font(.system(size: 36, weight: .bold, design: .rounded))
                         .foregroundStyle(.white, .accent)
                         .symbolEffect(.bounce.up.byLayer, value: animateSymbol)
                         .onAppear {
                             animateSymbol.toggle()
                         }
 
-                    Spacer().frame(height: 20)
+                    Spacer().frame(height: 10)
 
-                    Text("TV must be on and connected\nto the same network")
+                    Text("TV must be on and connected to the same network")
                         .font(.system(size: Globals.bodyFontSize, weight: .bold, design: .rounded))
                         .foregroundColor(.primary)
                         .multilineTextAlignment(.center)

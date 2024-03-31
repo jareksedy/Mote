@@ -9,8 +9,8 @@ import SwiftUI
 import WebOSClient
 
 extension MoteViewModel {
-    func connectAndRegister() {
-        guard !isConnected else {
+    func connectAndRegister(forceConnect: Bool = false) {
+        guard !isConnected || forceConnect else {
             return
         }
 
@@ -48,18 +48,18 @@ extension MoteViewModel {
     }
 
     func resetConnectionData() {
+        disconnect()
         AppSettings.shared.host = nil
         AppSettings.shared.clientKey = nil
-        disconnect()
-        connectAndRegister()
         preferencesPresented = false
+        connectAndRegister(forceConnect: true)
     }
 
     func setHostManually(host: String) {
+        disconnect()
         AppSettings.shared.host = host
         AppSettings.shared.clientKey = nil
-        disconnect()
-        connectAndRegister()
         preferencesPresented = false
+        connectAndRegister(forceConnect: true)
     }
 }

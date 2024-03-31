@@ -65,7 +65,6 @@ struct AboutView: View {
                 Image(systemName: "arrow.backward")
                     .font(.system(size: Globals.smallTitleSize, weight: .bold, design: .rounded))
                     .foregroundColor(.accent)
-                    // .padding(.leading, GlobalConstants.iconPadding)
                     .padding(.top, 10)
                     .onTapGesture {
                         viewModel.navigationPath.removeAll()

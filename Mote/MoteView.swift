@@ -40,8 +40,7 @@ struct MoteView: View {
                             .foregroundColor(.accent)
                         Image(
                             systemName: viewModel.isConnected ?
-                            "checkmark.circle.fill" :
-                                "exclamationmark.circle.fill"
+                            "checkmark.circle.fill" : "exclamationmark.circle"
                         )
                         .font(.system(size: Globals.iconSize, weight: .bold, design: .rounded))
                         .foregroundColor(.accent)

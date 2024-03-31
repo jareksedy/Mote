@@ -14,10 +14,10 @@ struct ToastSheetView: View {
 
     var body: some View {
         VStack {
-            Spacer()
+            Spacer().frame(height: 25)
 
             Image(systemName: configuration.type.systemName)
-                .font(.system(size: 32, weight: .bold, design: .rounded))
+                .font(.system(size: 36, weight: .bold, design: .rounded))
                 .foregroundStyle(.white, configuration.type.iconColor)
                 .padding(.top, 25)
                 .symbolEffect(.bounce.up.byLayer, value: animateSymbol)
@@ -25,7 +25,7 @@ struct ToastSheetView: View {
                     animateSymbol.toggle()
                 }
 
-            Spacer().frame(height: 20)
+            Spacer().frame(height: 10)
 
             Text(configuration.message)
                 .font(.system(size: Globals.bodyFontSize, weight: .bold, design: .rounded))
