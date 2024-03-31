@@ -9,6 +9,8 @@ import SwiftUI
 
 struct AboutView: View {
     @ObservedObject var viewModel: MoteViewModel
+    @State private var animateSymbol: Bool = false
+    
     var body: some View {
         VStack {
             Spacer()
@@ -39,9 +41,13 @@ struct AboutView: View {
             HStack(spacing: 5) {
                 Text("Made with")
                     .foregroundColor(.primary)
-                Text("♥")
+                Image(systemName: "heart.fill")
                     .foregroundColor(.accent)
-                Text("in Kazakhstan 🇰🇿")
+                    .symbolEffect(.bounce.up.byLayer, value: animateSymbol)
+                    .onAppear {
+                        animateSymbol.toggle()
+                    }
+                Text("in Kazakhstan")
                     .foregroundColor(.primary)
             }
             .font(.system(size: Globals.bodyFontSize, weight: .bold, design: .rounded))

@@ -38,10 +38,14 @@ struct MoteView: View {
                         Text("Mote")
                             .font(.system(size: Globals.smallTitleSize, weight: .bold, design: .rounded))
                             .foregroundColor(.accent)
-                        Image(systemName: viewModel.isConnected ? "checkmark.circle.fill" : "xmark.circle.fill")
-                            .font(.system(size: Globals.iconSize, weight: .bold, design: .rounded))
-                            .foregroundColor(.accent)
-                            .contentTransition(.symbolEffect(.replace.downUp.byLayer))
+                        Image(
+                            systemName: viewModel.isConnected ?
+                            "checkmark.circle.fill" :
+                                "exclamationmark.circle.fill"
+                        )
+                        .font(.system(size: Globals.iconSize, weight: .bold, design: .rounded))
+                        .foregroundColor(.accent)
+                        .contentTransition(.symbolEffect(.replace.downUp.byLayer))
                     }
                     .padding(.leading, Globals.iconPadding)
                     .padding(.top, 10)

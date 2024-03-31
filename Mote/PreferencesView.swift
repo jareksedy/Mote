@@ -27,7 +27,7 @@ struct PreferencesView: View {
                     }
 
                     NavigationLink(value: NavigationScreens.guide) {
-                        Label("Frequently Asked Questions", systemImage: "questionmark.circle")
+                        Label("Frequently Asked Questions", systemImage: "book.pages")
                             .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.secondary)
                     }
@@ -60,7 +60,7 @@ struct PreferencesView: View {
                 }
 
                 Section("Layout and Haptics") {
-                    Toggle("Alternative layout", systemImage: "circle.grid.2x2", isOn: $alternativeLayout)
+                    Toggle("Alternative layout", systemImage: "square.grid.2x2", isOn: $alternativeLayout)
                         .tint(.accent)
                         .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
                         .foregroundColor(.secondary)
@@ -114,20 +114,20 @@ struct PreferencesView: View {
                 }
             }
             .alert(
-                "Reset connection data?",
+                "Do you want to reset connection data?",
                 isPresented: $isClearAlertShown,
                 actions: {
                     Button("Reset", role: .destructive, action: viewModel.resetConnectionData)
                     Button("Cancel", role: .cancel, action: {})
                 }, message: {
-                    Text("You will need to reconnect your TV.")
+                    Text("You will need to reconnect and re-register with the TV.")
                 }
             )
             .alert(
                 "IP address of your TV",
                 isPresented: $enterIpAlertShown
             ) {
-                TextField("Enter IP", text: $tvIP, prompt: Text("192.168."))
+                TextField("Enter IP", text: $tvIP, prompt: Text("IP address"))
                     .keyboardType(.numbersAndPunctuation)
                 Button("Save", action: { viewModel.setHostManually(host: tvIP) })
                 Button("Cancel", role: .cancel, action: {})

@@ -33,26 +33,35 @@ struct DeviceDiscoveryView: View {
 
                 ActivityIndicatorView(
                     isVisible: $viewModel.isDiscoverDevicesActivityIndicatorShown,
-                    type: .growingArc(.accent, lineWidth: 5)
+                    type: .gradient([Color(uiColor: .systemGray6), .accent], .round, lineWidth: 6)
                 )
-                     .frame(width: 175, height: 175)
+                     .frame(width: 150, height: 150)
                      .foregroundColor(.accentColor)
-                     .padding(.top, 25)
+                     .padding(.top, 50)
 
                 Spacer()
 
-                HStack(spacing: 5) {
+                VStack {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .font(.system(size: 32, weight: .bold, design: .rounded))
+                        .foregroundStyle(.white, .accent)
+                        // .padding(.top, 25)
+                        .symbolEffect(.bounce.up.byLayer, value: animateSymbol)
+                        .onAppear {
+                            animateSymbol.toggle()
+                        }
+
+                    Spacer().frame(height: 20)
+
                     Text("TV must be on and connected\nto the same network")
+                        .font(.system(size: Globals.bodyFontSize, weight: .bold, design: .rounded))
                         .foregroundColor(.primary)
+                        .multilineTextAlignment(.center)
                         .lineSpacing(Globals.lineHeight)
+                        .padding([.leading, .trailing], 50)
                 }
-                .font(.system(size: Globals.bodyFontSize, weight: .bold, design: .rounded))
-                .multilineTextAlignment(.center)
-                .lineSpacing(4)
-                .frame(maxWidth: .greatestFiniteMagnitude)
 
-                Spacer()
-                    .frame(height: 25)
+                Spacer().frame(height: 25)
             }
         }
         .environment(\.defaultMinListRowHeight, 55)
