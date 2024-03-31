@@ -35,7 +35,7 @@ struct DeviceDiscoveryView: View {
                     isVisible: $viewModel.isDiscoverDevicesActivityIndicatorShown,
                     type: .gradient([Color(uiColor: .systemGray6), .accent], .round, lineWidth: 6)
                 )
-                     .frame(width: 150, height: 150)
+                     .frame(width: 175, height: 175)
                      .foregroundColor(.accentColor)
                      .padding(.top, 50)
 
@@ -45,7 +45,6 @@ struct DeviceDiscoveryView: View {
                     Image(systemName: "exclamationmark.triangle.fill")
                         .font(.system(size: 32, weight: .bold, design: .rounded))
                         .foregroundStyle(.white, .accent)
-                        // .padding(.top, 25)
                         .symbolEffect(.bounce.up.byLayer, value: animateSymbol)
                         .onAppear {
                             animateSymbol.toggle()
@@ -65,6 +64,7 @@ struct DeviceDiscoveryView: View {
             }
         }
         .environment(\.defaultMinListRowHeight, 55)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(uiColor: .systemGray6))
         .scrollContentBackground(.hidden)
         .navigationBarBackButtonHidden(true)
