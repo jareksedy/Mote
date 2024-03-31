@@ -36,16 +36,12 @@ extension ToastType {
         }
     }
 
-//    var message: String {
-//        switch self {
-//        case .prompted:
-//            return "Please accept the registration\nprompt on the TV"
-//        case .disconnected:
-//            return "Disconnected,\nattempting to reconnect"
-//        case .connected:
-//            return "Connected to the TV\nsuccessfully"
-//        case .tvGoingOff:
-//            return "The TV is going off,\ndisconnecting"
-//        }
-//    }
+    func getNotificationFeedbackType() -> UINotificationFeedbackGenerator.FeedbackType {
+        switch self {
+        case .notification, .warning:
+            return .error
+        case .success:
+            return .success
+        }
+    }
 }

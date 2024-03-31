@@ -39,6 +39,11 @@ struct ToastSheetView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(uiColor: .systemGray6))
         .onAppear {
+            if viewModel.preferencesHapticFeedback {
+                UINotificationFeedbackGenerator()
+                    .notificationOccurred(configuration.type.getNotificationFeedbackType())
+            }
+
             guard let interval = configuration.autohideIn else {
                 return
             }
