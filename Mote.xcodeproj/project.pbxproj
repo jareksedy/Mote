@@ -59,6 +59,8 @@
 		CA74D4912BAEB80F0082FA11 /* SSDPClient in Frameworks */ = {isa = PBXBuildFile; productRef = CA74D4902BAEB80F0082FA11 /* SSDPClient */; };
 		CA87053B2B668B2D0066316B /* MoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87053A2B668B2D0066316B /* MoteViewModel.swift */; };
 		CA87053E2B668C6B0066316B /* MoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87053D2B668C6B0066316B /* MoteViewModel.swift */; };
+		CA948FAA2BB97EAE008D72B3 /* MoteButtonGroupDefaultAlternativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA948FA92BB97EAE008D72B3 /* MoteButtonGroupDefaultAlternativeView.swift */; };
+		CA948FAC2BB97EF5008D72B3 /* MoteButtonGroupColorAlternativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA948FAB2BB97EF5008D72B3 /* MoteButtonGroupColorAlternativeView.swift */; };
 		CA99EBBF2B6A1B38004C28C7 /* MoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA99EBBE2B6A1B38004C28C7 /* MoteButton.swift */; };
 		CA99EBC22B6A1D85004C28C7 /* MoteButtonRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA99EBC12B6A1D85004C28C7 /* MoteButtonRow.swift */; };
 		CA99EBC42B6A1D9D004C28C7 /* MoteButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA99EBC32B6A1D9D004C28C7 /* MoteButtonGroup.swift */; };
@@ -168,6 +170,8 @@
 		CA74D48D2BAEB7200082FA11 /* DeviceDiscoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDiscoveryView.swift; sourceTree = "<group>"; };
 		CA87053A2B668B2D0066316B /* MoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteViewModel.swift; sourceTree = "<group>"; };
 		CA87053D2B668C6B0066316B /* MoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteViewModel.swift; sourceTree = "<group>"; };
+		CA948FA92BB97EAE008D72B3 /* MoteButtonGroupDefaultAlternativeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteButtonGroupDefaultAlternativeView.swift; sourceTree = "<group>"; };
+		CA948FAB2BB97EF5008D72B3 /* MoteButtonGroupColorAlternativeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteButtonGroupColorAlternativeView.swift; sourceTree = "<group>"; };
 		CA99EBBE2B6A1B38004C28C7 /* MoteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteButton.swift; sourceTree = "<group>"; };
 		CA99EBC12B6A1D85004C28C7 /* MoteButtonRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteButtonRow.swift; sourceTree = "<group>"; };
 		CA99EBC32B6A1D9D004C28C7 /* MoteButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteButtonGroup.swift; sourceTree = "<group>"; };
@@ -415,7 +419,9 @@
 				CAC5661A2BAC87F600C23885 /* ToastConfiguration.swift */,
 				CA5B9CF92BB87F78005BAB54 /* ToastSheetView.swift */,
 				CA154C262BA74B240029855F /* MoteButtonGroupDefaultView.swift */,
+				CA948FA92BB97EAE008D72B3 /* MoteButtonGroupDefaultAlternativeView.swift */,
 				CA154C282BA74B490029855F /* MoteButtonGroupColorView.swift */,
+				CA948FAB2BB97EF5008D72B3 /* MoteButtonGroupColorAlternativeView.swift */,
 				CA3486992B9F56140047D3DA /* KeyboardView.swift */,
 				CA1F800A2B95FB4500C5F6B8 /* Extensions */,
 				CA87053C2B668C590066316B /* ViewModels */,
@@ -643,8 +649,10 @@
 				CA1F80092B95F58700C5F6B8 /* UIFont+Rounded.swift in Sources */,
 				CA154C292BA74B490029855F /* MoteButtonGroupColorView.swift in Sources */,
 				CA1F800E2B95FE3C00C5F6B8 /* PreferencesView.swift in Sources */,
+				CA948FAA2BB97EAE008D72B3 /* MoteButtonGroupDefaultAlternativeView.swift in Sources */,
 				CA5FF73A2B6787CA009C5DB4 /* StringExtensions.swift in Sources */,
 				CAC5661B2BAC87F600C23885 /* ToastConfiguration.swift in Sources */,
+				CA948FAC2BB97EF5008D72B3 /* MoteButtonGroupColorAlternativeView.swift in Sources */,
 				CA3BB9742BAC981E00BE6B4E /* AlertView.swift in Sources */,
 				CA6A24982BB6CD9000F44C0D /* WebOSClientDelegate.swift in Sources */,
 				CA1F800C2B95FC6900C5F6B8 /* Globals.swift in Sources */,

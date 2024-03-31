@@ -10,7 +10,6 @@ import SwiftUI
 struct PreferencesView: View {
     @ObservedObject var viewModel: MoteViewModel
 
-    @State private var alternativeLayout: Bool = false
     @State private var enterIpAlertShown: Bool = false
     @State private var isClearAlertShown: Bool = false
 
@@ -60,14 +59,18 @@ struct PreferencesView: View {
                 }
 
                 Section("Layout and Haptics") {
-                    Toggle("Alternative layout", systemImage: "square.grid.2x2", isOn: $alternativeLayout)
-                        .tint(.accent)
-                        .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
-                        .foregroundColor(.secondary)
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            alternativeLayout.toggle()
-                        }
+                    Toggle(
+                        "Alternative layout",
+                        systemImage: "square.grid.2x2",
+                        isOn: $viewModel.preferencesAlternativeView
+                    )
+                    .tint(.accent)
+                    .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
+                    .foregroundColor(.secondary)
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        viewModel.preferencesAlternativeView.toggle()
+                    }
 
                     Toggle("Haptic feedback", systemImage: "hand.tap", isOn: $viewModel.preferencesHapticFeedback)
                         .tint(.accent)

@@ -18,12 +18,22 @@ struct MoteView: View {
                 VStack {
                     Spacer().frame(height: 25)
 
-                    if viewModel.colorButtonsPresented {
-                        MoteButtonGroupColorView()
-                            .environmentObject(viewModel)
+                    if viewModel.preferencesAlternativeView {
+                        if viewModel.colorButtonsPresented {
+                            MoteButtonGroupColorAlternativeView()
+                                .environmentObject(viewModel)
+                        } else {
+                            MoteButtonGroupDefaultAlternativeView()
+                                .environmentObject(viewModel)
+                        }
                     } else {
-                        MoteButtonGroupDefaultView()
-                            .environmentObject(viewModel)
+                        if viewModel.colorButtonsPresented {
+                            MoteButtonGroupColorView()
+                                .environmentObject(viewModel)
+                        } else {
+                            MoteButtonGroupDefaultView()
+                                .environmentObject(viewModel)
+                        }
                     }
 
                     Spacer()
@@ -34,8 +44,8 @@ struct MoteView: View {
             .background(Color(uiColor: .systemGray6))
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    HStack(spacing: 5) {
-                        Text("Mote")
+                    HStack(spacing: 3.5) {
+                        Text("Mote App")
                             .font(.system(size: Globals.smallTitleSize, weight: .bold, design: .rounded))
                             .foregroundColor(.accent)
                         Image(
