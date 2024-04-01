@@ -52,7 +52,7 @@ struct DeviceDiscoveryView: View {
 
                     Spacer().frame(height: 10)
 
-                    Text("TV must be on and connected to the same network")
+                    Text(Strings.ConnectTV.importantNote)
                         .font(.system(size: Globals.bodyFontSize, weight: .bold, design: .rounded))
                         .foregroundColor(.primary)
                         .multilineTextAlignment(.center)
@@ -79,7 +79,7 @@ struct DeviceDiscoveryView: View {
                     }
             }
             ToolbarItem(placement: .topBarTrailing) {
-                Text("Discover TV on LAN")
+                Text(Strings.Titles.connectTV)
                     .font(.system(size: Globals.smallTitleSize, weight: .bold, design: .rounded))
                     .foregroundColor(.accent)
                     .padding(.trailing, Globals.iconPadding)

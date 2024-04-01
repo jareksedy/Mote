@@ -5,8 +5,6 @@
 //  Created by Ярослав on 01.03.2024.
 //
 
-import Foundation
-
 enum Strings {
     enum Titles {
         static let navigationViewTitle = "#navigationViewTitle".localized

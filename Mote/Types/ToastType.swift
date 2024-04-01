@@ -38,7 +38,9 @@ extension ToastType {
 
     func getNotificationFeedbackType() -> UINotificationFeedbackGenerator.FeedbackType {
         switch self {
-        case .notification, .warning:
+        case .notification:
+            return .warning
+        case .warning:
             return .error
         case .success:
             return .success

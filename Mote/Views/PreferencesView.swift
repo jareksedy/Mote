@@ -18,50 +18,44 @@ struct PreferencesView: View {
     var body: some View {
         NavigationStack(path: $viewModel.navigationPath) {
             List {
-                Section("App") {
+                Section(Strings.SectionHeaders.app) {
                     NavigationLink(value: NavigationScreens.about) {
-                        Label("About Mote", systemImage: "info.circle")
+                        Label(Strings.Titles.aboutMote, systemImage: "info.circle")
                             .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.secondary)
                     }
 
                     NavigationLink(value: NavigationScreens.guide) {
-                        Label("Frequently Asked Questions", systemImage: "book.pages")
+                        Label(Strings.Titles.faq, systemImage: "book.pages")
                             .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.secondary)
                     }
-
-//                    Button(action: { }, label: {
-//                        Label("Rate us on App store", systemImage: "hand.thumbsup")
-//                            .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
-//                            .foregroundColor(.accentColor)
-//                    })
                 }
 
-                Section("Connection") {
+                Section(Strings.SectionHeaders.connection) {
                     NavigationLink(value: NavigationScreens.discover) {
-                        Label("Discover TV on LAN", systemImage: "network")
+                        Label(Strings.Titles.connectTV, systemImage: "network")
                             .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.secondary)
                     }
 
                     Button(action: { enterIpAlertShown.toggle() }, label: {
-                        Label("Manually input IP address", systemImage: "hand.point.up.left.and.text")
+                        Label(Strings.Titles.manuallyEnterIP, systemImage: "hand.point.up.left.and.text")
                             .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.accentColor)
                     })
 
                     Button(action: { isClearAlertShown.toggle() }, label: {
-                        Label("Reset connection data", systemImage: "gear.badge.xmark")
+                        Label(Strings.Titles.resetConnectionData, systemImage: "gear.badge.xmark")
                             .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.accentColor)
                     })
                 }
 
-                Section("Layout and Haptics") {
+                Section(Strings.SectionHeaders.layoutAndHaptics) {
                     Toggle(
-                        "Alternative layout",
-                        systemImage: "square.grid.2x2",
+                        Strings.Titles.alternativeLayout,
+                        systemImage: "circle.grid.2x2",
                         isOn: $viewModel.preferencesAlternativeView
                     )
                     .tint(.accent)
@@ -72,23 +66,31 @@ struct PreferencesView: View {
                         viewModel.preferencesAlternativeView.toggle()
                     }
 
-                    Toggle("Haptic feedback", systemImage: "hand.tap", isOn: $viewModel.preferencesHapticFeedback)
-                        .tint(.accent)
-                        .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
-                        .foregroundColor(.secondary)
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            viewModel.preferencesHapticFeedback.toggle()
-                        }
+                    Toggle(
+                        Strings.Titles.hapticFeedback,
+                        systemImage: "hand.tap",
+                        isOn: $viewModel.preferencesHapticFeedback
+                    )
+                    .tint(.accent)
+                    .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
+                    .foregroundColor(.secondary)
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        viewModel.preferencesHapticFeedback.toggle()
+                    }
                 }
 
                 Section {
                     HStack {
                         Spacer()
-                        Text("Mote App \(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))")
-                            .font(.system(size: 12, weight: .regular, design: .monospaced))
-                            .foregroundStyle(.tertiary)
-                            .multilineTextAlignment(.center)
+                        Text(
+                            "\(Strings.General.appName) " +
+                            "\(Bundle.main.releaseVersionNumber) " +
+                            "(\(Bundle.main.buildVersionNumber))"
+                        )
+                        .font(.system(size: 12, weight: .regular, design: .monospaced))
+                        .foregroundStyle(.tertiary)
+                        .multilineTextAlignment(.center)
                         Spacer()
                     }
                 }
@@ -99,7 +101,7 @@ struct PreferencesView: View {
             .scrollContentBackground(.hidden)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Text("Preferences")
+                    Text(Strings.Titles.preferences)
                         .font(.system(size: Globals.smallTitleSize, weight: .bold, design: .rounded))
                         .foregroundColor(.accent)
                         .padding(.leading, Globals.iconPadding)
@@ -108,47 +110,33 @@ struct PreferencesView: View {
             }
             .navigationDestination(for: NavigationScreens.self) { screen in
                 switch screen {
-                case .about:
-                    AboutView(viewModel: viewModel)
-                case .guide:
-                    GuideView(viewModel: viewModel)
-                case .discover:
-                    DeviceDiscoveryView(viewModel: viewModel)
+                case .about: AboutView(viewModel: viewModel)
+                case .guide: GuideView(viewModel: viewModel)
+                case .discover: DeviceDiscoveryView(viewModel: viewModel)
                 }
             }
             .alert(
-                "Do you want to reset connection data?",
+                Strings.ResetConnectionData.title,
                 isPresented: $isClearAlertShown,
                 actions: {
-                    Button("Reset", role: .destructive, action: viewModel.resetConnectionData)
-                    Button("Cancel", role: .cancel, action: {})
+                    Button(Strings.General.reset, role: .destructive, action: viewModel.resetConnectionData)
+                    Button(Strings.General.cancel, role: .cancel, action: {})
                 }, message: {
-                    Text("You will need to reconnect and re-register with the TV.")
+                    Text(Strings.ResetConnectionData.message)
                 }
             )
             .alert(
-                "IP address of your TV",
+                Strings.InputIP.inputIPMessage,
                 isPresented: $enterIpAlertShown
             ) {
-                TextField("Enter IP", text: $tvIP, prompt: Text("IP address"))
+                TextField(text: $tvIP, prompt: Text(Strings.InputIP.inputIPPrompt), label: {})
                     .keyboardType(.numbersAndPunctuation)
-                Button("Save", action: { viewModel.setHostManually(host: tvIP) })
-                Button("Cancel", role: .cancel, action: {})
+                Button(Strings.General.save, action: { viewModel.setHostManually(host: tvIP) })
+                Button(Strings.General.cancel, role: .cancel, action: {})
             }
             .onAppear {
                 tvIP = "192.168."
             }
         }
-    }
-}
-
-extension UINavigationController: UIGestureRecognizerDelegate {
-    override open func viewDidLoad() {
-        super.viewDidLoad()
-        interactivePopGestureRecognizer?.delegate = self
-    }
-
-    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        return viewControllers.count > 1
     }
 }

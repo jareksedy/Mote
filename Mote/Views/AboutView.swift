@@ -20,14 +20,18 @@ struct AboutView: View {
                     .font(.system(size: 100, weight: .light, design: .rounded))
                     .foregroundColor(.accent)
 
-                Text("Mote \(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))")
-                    .font(.system(size: Globals.bodyFontSize, weight: .bold, design: .rounded))
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(.primary)
-                    .padding(.top, 25)
-                    .lineSpacing(Globals.lineHeight)
+                Text(
+                    "\(Strings.General.appName) " +
+                    "\(Bundle.main.releaseVersionNumber) " +
+                    "(\(Bundle.main.buildVersionNumber))"
+                )
+                .font(.system(size: Globals.bodyFontSize, weight: .bold, design: .rounded))
+                .multilineTextAlignment(.center)
+                .foregroundColor(.primary)
+                .padding(.top, 25)
+                .lineSpacing(Globals.lineHeight)
 
-                Text("LG Smart TV Remote Control App\nby Yaroslav Sedyshev")
+                Text("\(Strings.About.appInfo)\n\(Strings.About.authorInfo)")
                     .font(.system(size: Globals.bodyFontSize, weight: .bold, design: .rounded))
                     .multilineTextAlignment(.center)
                     .foregroundColor(.secondary)
@@ -39,7 +43,7 @@ struct AboutView: View {
             Spacer()
 
             HStack(spacing: 5) {
-                Text("Made with")
+                Text(Strings.About.madeWith)
                     .foregroundColor(.primary)
                 Image(systemName: "heart.fill")
                     .foregroundColor(.accent)
@@ -47,7 +51,7 @@ struct AboutView: View {
                     .onAppear {
                         animateSymbol.toggle()
                     }
-                Text("in Kazakhstan")
+                Text(Strings.About.madeIn)
                     .foregroundColor(.primary)
             }
             .font(.system(size: Globals.bodyFontSize, weight: .bold, design: .rounded))
@@ -71,7 +75,7 @@ struct AboutView: View {
                     }
             }
             ToolbarItem(placement: .topBarTrailing) {
-                Text("About Mote")
+                Text(Strings.Titles.aboutMote)
                     .font(.system(size: Globals.smallTitleSize, weight: .bold, design: .rounded))
                     .foregroundColor(.accent)
                     .padding(.trailing, Globals.iconPadding)

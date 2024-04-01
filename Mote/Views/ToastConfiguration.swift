@@ -32,7 +32,7 @@ struct ToastConfiguration: Equatable {
 extension ToastConfiguration {
     static let prompted = ToastConfiguration(
         type: .notification,
-        message: "Please accept the registration prompt on the TV",
+        message: Strings.ToastMessages.prompted,
         autohideIn: nil,
         closeOnTap: true,
         closeOnTapOutside: true
@@ -40,11 +40,6 @@ extension ToastConfiguration {
 
     static let promptAccepted = ToastConfiguration(
         type: .success,
-        message: "Successfully connected and registered with the TV"
-    )
-
-    static let promptRejected = ToastConfiguration(
-        type: .warning,
-        message: "Prompt rejected, press the power button to reaccept"
+        message: Strings.ToastMessages.connectedAndRegistered
     )
 }

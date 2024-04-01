@@ -17,7 +17,7 @@ struct KeyboardView: View {
 
     var body: some View {
         ScrollView([], showsIndicators: false) {
-            TextField("Enter text here...", text: $inputString)
+            TextField(Strings.General.yourTextHere, text: $inputString)
                 .focused($focused)
                 .disableAutocorrection(true)
                 .onSubmit {

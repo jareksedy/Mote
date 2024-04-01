@@ -1,5 +1,5 @@
 {
-  "originHash" : "57307e0f5e8c404c65de5420fdd80a28500569153c9f956b34946ae7fa383800",
+  "originHash" : "815cdf5a53090c5a85ad63087a2bd6b5e915a59dacbf966a0d9215ea4670408e",
   "pins" : [
     {
       "identity" : "activityindicatorview",
@@ -47,15 +47,6 @@
       }
     },
     {
-      "identity" : "popupview",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/exyte/PopupView.git",
-      "state" : {
-        "revision" : "8c85ff09d474dd3cfb69aba33046395bcf365573",
-        "version" : "2.9.1"
-      }
-    },
-    {
       "identity" : "ssdpclient",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pierrickrouxel/SSDPClient.git",
@@ -71,15 +62,6 @@
       "state" : {
         "revision" : "e97a6fcb1ab07462881ac165fdbb37f067e205d5",
         "version" : "1.5.4"
-      }
-    },
-    {
-      "identity" : "swiftui-introspect",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/siteline/swiftui-introspect",
-      "state" : {
-        "revision" : "0cd2a5a5895306bc21d54a2254302d24a9a571e4",
-        "version" : "1.1.3"
       }
     },
     {

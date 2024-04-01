@@ -10,6 +10,8 @@
 		CA08C1112B91E1930063705A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA08C1132B91E1930063705A /* Localizable.strings */; };
 		CA154C272BA74B240029855F /* MoteButtonGroupDefaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154C262BA74B240029855F /* MoteButtonGroupDefaultView.swift */; };
 		CA154C292BA74B490029855F /* MoteButtonGroupColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154C282BA74B490029855F /* MoteButtonGroupColorView.swift */; };
+		CA1D349D2BBAA6E100C9294E /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1D349C2BBAA6E100C9294E /* Strings.swift */; };
+		CA1D349F2BBAB12500C9294E /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1D349E2BBAB12500C9294E /* UINavigationController+.swift */; };
 		CA1F7FD62B8F6EFF00C5F6B8 /* MotePreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F7FD52B8F6EFF00C5F6B8 /* MotePreferencesView.swift */; };
 		CA1F7FD82B90B2F400C5F6B8 /* MoteNavigationDefaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F7FD72B90B2F400C5F6B8 /* MoteNavigationDefaultView.swift */; };
 		CA1F7FDB2B90B37000C5F6B8 /* MoteNavigationAlternativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F7FDA2B90B37000C5F6B8 /* MoteNavigationAlternativeView.swift */; };
@@ -19,7 +21,6 @@
 		CA1F7FE22B90D47300C5F6B8 /* BundleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F7FE02B90D47300C5F6B8 /* BundleExtensions.swift */; };
 		CA1F7FE42B94495C00C5F6B8 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FF74B2B67A3E1009C5DB4 /* AppSettings.swift */; };
 		CA1F80072B95F35500C5F6B8 /* MoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F80062B95F35500C5F6B8 /* MoteView.swift */; };
-		CA1F80092B95F58700C5F6B8 /* UIFont+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F80082B95F58700C5F6B8 /* UIFont+Rounded.swift */; };
 		CA1F800C2B95FC6900C5F6B8 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F800B2B95FC6900C5F6B8 /* Globals.swift */; };
 		CA1F800E2B95FE3C00C5F6B8 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F800D2B95FE3C00C5F6B8 /* PreferencesView.swift */; };
 		CA28EB672B975B6E004E2993 /* MoteVolumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA28EB662B975B6E004E2993 /* MoteVolumeView.swift */; };
@@ -32,10 +33,8 @@
 		CA34868C2B9C4EC90047D3DA /* MoteButtonRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA34868B2B9C4EC90047D3DA /* MoteButtonRow.swift */; };
 		CA34868E2B9C4EED0047D3DA /* MoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA34868D2B9C4EED0047D3DA /* MoteButton.swift */; };
 		CA3486922B9C50010047D3DA /* MoteButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3486912B9C50010047D3DA /* MoteButtonType.swift */; };
-		CA3486962B9CAD200047D3DA /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = CA3486952B9CAD200047D3DA /* PopupView */; };
 		CA34869A2B9F56140047D3DA /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3486992B9F56140047D3DA /* KeyboardView.swift */; };
 		CA34869C2B9F6A9F0047D3DA /* MoteTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA34869B2B9F6A9F0047D3DA /* MoteTabView.swift */; };
-		CA3BB9742BAC981E00BE6B4E /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BB9732BAC981E00BE6B4E /* AlertView.swift */; };
 		CA3BFEAA2B691D6700D514A3 /* MoteButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BFEA82B691D6700D514A3 /* MoteButtonType.swift */; };
 		CA3BFEAD2B692CB100D514A3 /* MotePlaybackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3BFEAC2B692CB100D514A3 /* MotePlaybackView.swift */; };
 		CA3D488C2BB6CF5F00605749 /* SSDPDiscoveryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3D488B2BB6CF5F00605749 /* SSDPDiscoveryDelegate.swift */; };
@@ -43,7 +42,6 @@
 		CA3D48902BB6D64E00605749 /* MoteViewModel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3D488F2BB6D64E00605749 /* MoteViewModel+.swift */; };
 		CA3D48922BB6DC9300605749 /* DeviceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3D48912BB6DC9300605749 /* DeviceData.swift */; };
 		CA3D48942BB6DCAE00605749 /* NavigationScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3D48932BB6DCAE00605749 /* NavigationScreens.swift */; };
-		CA4237682BB44B1C0026791E /* MoteTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4237672BB44B1C0026791E /* MoteTabView.swift */; };
 		CA5AB7822BB47FC200D31666 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5AB7812BB47FC200D31666 /* AboutView.swift */; };
 		CA5B9CEE2BB809BB005BAB54 /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5B9CED2BB809BB005BAB54 /* GuideView.swift */; };
 		CA5B9CFA2BB87F78005BAB54 /* ToastSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5B9CF92BB87F78005BAB54 /* ToastSheetView.swift */; };
@@ -67,7 +65,6 @@
 		CA99EBC82B6A1E69004C28C7 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA99EBC72B6A1E69004C28C7 /* GlobalConstants.swift */; };
 		CA9E26AA2BB595540018B52D /* ActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = CA9E26A92BB595540018B52D /* ActivityIndicatorView */; };
 		CAA7D2552B91D9E80057DD6F /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA7D2542B91D9E80057DD6F /* Strings.swift */; };
-		CAA8017B2BA87CB300FF1220 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8017A2BA87CB300FF1220 /* ToastView.swift */; };
 		CAC566192BAC824100C23885 /* ToastType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC566182BAC824100C23885 /* ToastType.swift */; };
 		CAC5661B2BAC87F600C23885 /* ToastConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC5661A2BAC87F600C23885 /* ToastConfiguration.swift */; };
 		CAF5487A2B6687070048F9CF /* MoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF548792B6687070048F9CF /* MoteApp.swift */; };
@@ -129,6 +126,8 @@
 		CA08C1162B91E2690063705A /* kk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = kk; path = kk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA154C262BA74B240029855F /* MoteButtonGroupDefaultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteButtonGroupDefaultView.swift; sourceTree = "<group>"; };
 		CA154C282BA74B490029855F /* MoteButtonGroupColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteButtonGroupColorView.swift; sourceTree = "<group>"; };
+		CA1D349C2BBAA6E100C9294E /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		CA1D349E2BBAB12500C9294E /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
 		CA1F7FD52B8F6EFF00C5F6B8 /* MotePreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotePreferencesView.swift; sourceTree = "<group>"; };
 		CA1F7FD72B90B2F400C5F6B8 /* MoteNavigationDefaultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteNavigationDefaultView.swift; sourceTree = "<group>"; };
 		CA1F7FDA2B90B37000C5F6B8 /* MoteNavigationAlternativeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteNavigationAlternativeView.swift; sourceTree = "<group>"; };
@@ -136,7 +135,6 @@
 		CA1F7FDE2B90B51600C5F6B8 /* MotePlaybackAlternativeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotePlaybackAlternativeView.swift; sourceTree = "<group>"; };
 		CA1F7FE02B90D47300C5F6B8 /* BundleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtensions.swift; sourceTree = "<group>"; };
 		CA1F80062B95F35500C5F6B8 /* MoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteView.swift; sourceTree = "<group>"; };
-		CA1F80082B95F58700C5F6B8 /* UIFont+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Rounded.swift"; sourceTree = "<group>"; };
 		CA1F800B2B95FC6900C5F6B8 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		CA1F800D2B95FE3C00C5F6B8 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		CA28EB662B975B6E004E2993 /* MoteVolumeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteVolumeView.swift; sourceTree = "<group>"; };
@@ -152,7 +150,6 @@
 		CA3486912B9C50010047D3DA /* MoteButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteButtonType.swift; sourceTree = "<group>"; };
 		CA3486992B9F56140047D3DA /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		CA34869B2B9F6A9F0047D3DA /* MoteTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoteTabView.swift; sourceTree = "<group>"; };
-		CA3BB9732BAC981E00BE6B4E /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		CA3BFEA82B691D6700D514A3 /* MoteButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteButtonType.swift; sourceTree = "<group>"; };
 		CA3BFEAC2B692CB100D514A3 /* MotePlaybackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotePlaybackView.swift; sourceTree = "<group>"; };
 		CA3D488B2BB6CF5F00605749 /* SSDPDiscoveryDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSDPDiscoveryDelegate.swift; sourceTree = "<group>"; };
@@ -160,7 +157,6 @@
 		CA3D488F2BB6D64E00605749 /* MoteViewModel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoteViewModel+.swift"; sourceTree = "<group>"; };
 		CA3D48912BB6DC9300605749 /* DeviceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceData.swift; sourceTree = "<group>"; };
 		CA3D48932BB6DCAE00605749 /* NavigationScreens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationScreens.swift; sourceTree = "<group>"; };
-		CA4237672BB44B1C0026791E /* MoteTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteTabView.swift; sourceTree = "<group>"; };
 		CA5AB7812BB47FC200D31666 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		CA5B9CED2BB809BB005BAB54 /* GuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
 		CA5B9CF92BB87F78005BAB54 /* ToastSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastSheetView.swift; sourceTree = "<group>"; };
@@ -177,7 +173,6 @@
 		CA99EBC32B6A1D9D004C28C7 /* MoteButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoteButtonGroup.swift; sourceTree = "<group>"; };
 		CA99EBC72B6A1E69004C28C7 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		CAA7D2542B91D9E80057DD6F /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
-		CAA8017A2BA87CB300FF1220 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		CAC566182BAC824100C23885 /* ToastType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastType.swift; sourceTree = "<group>"; };
 		CAC5661A2BAC87F600C23885 /* ToastConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastConfiguration.swift; sourceTree = "<group>"; };
 		CAF548762B6687070048F9CF /* Mote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mote.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,7 +201,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA9E26AA2BB595540018B52D /* ActivityIndicatorView in Frameworks */,
-				CA3486962B9CAD200047D3DA /* PopupView in Frameworks */,
 				CA5FF7482B67A3B6009C5DB4 /* Foil in Frameworks */,
 				CA5FF7342B6785DA009C5DB4 /* WebOSClient in Frameworks */,
 				CA74D4912BAEB80F0082FA11 /* SSDPClient in Frameworks */,
@@ -225,6 +219,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA1D34A02BBAB15900C9294E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CA1D349C2BBAA6E100C9294E /* Strings.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		CA1D34A12BBAB17700C9294E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CA34868A2B9C4E2F0047D3DA /* HelperViews */,
+				CA1D34A22BBAB1AE00C9294E /* ButtonGroupViews */,
+				CA1F80062B95F35500C5F6B8 /* MoteView.swift */,
+				CA1F800D2B95FE3C00C5F6B8 /* PreferencesView.swift */,
+				CA74D48D2BAEB7200082FA11 /* DeviceDiscoveryView.swift */,
+				CA5AB7812BB47FC200D31666 /* AboutView.swift */,
+				CA5B9CED2BB809BB005BAB54 /* GuideView.swift */,
+				CAC5661A2BAC87F600C23885 /* ToastConfiguration.swift */,
+				CA5B9CF92BB87F78005BAB54 /* ToastSheetView.swift */,
+				CA3486992B9F56140047D3DA /* KeyboardView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CA1D34A22BBAB1AE00C9294E /* ButtonGroupViews */ = {
+			isa = PBXGroup;
+			children = (
+				CA154C262BA74B240029855F /* MoteButtonGroupDefaultView.swift */,
+				CA948FA92BB97EAE008D72B3 /* MoteButtonGroupDefaultAlternativeView.swift */,
+				CA154C282BA74B490029855F /* MoteButtonGroupColorView.swift */,
+				CA948FAB2BB97EF5008D72B3 /* MoteButtonGroupColorAlternativeView.swift */,
+			);
+			path = ButtonGroupViews;
+			sourceTree = "<group>";
+		};
 		CA1F7FD92B90B2FC00C5F6B8 /* ButtonGroupViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,7 +278,7 @@
 		CA1F800A2B95FB4500C5F6B8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				CA1F80082B95F58700C5F6B8 /* UIFont+Rounded.swift */,
+				CA1D349E2BBAB12500C9294E /* UINavigationController+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -405,24 +435,10 @@
 			isa = PBXGroup;
 			children = (
 				CAF548792B6687070048F9CF /* MoteApp.swift */,
-				CA34868A2B9C4E2F0047D3DA /* HelperViews */,
 				CA5B9CEF2BB82C2A005BAB54 /* Globals */,
 				CA3486932B9C50060047D3DA /* Types */,
-				CA1F80062B95F35500C5F6B8 /* MoteView.swift */,
-				CA4237672BB44B1C0026791E /* MoteTabView.swift */,
-				CA1F800D2B95FE3C00C5F6B8 /* PreferencesView.swift */,
-				CA74D48D2BAEB7200082FA11 /* DeviceDiscoveryView.swift */,
-				CA5AB7812BB47FC200D31666 /* AboutView.swift */,
-				CA5B9CED2BB809BB005BAB54 /* GuideView.swift */,
-				CAA8017A2BA87CB300FF1220 /* ToastView.swift */,
-				CA3BB9732BAC981E00BE6B4E /* AlertView.swift */,
-				CAC5661A2BAC87F600C23885 /* ToastConfiguration.swift */,
-				CA5B9CF92BB87F78005BAB54 /* ToastSheetView.swift */,
-				CA154C262BA74B240029855F /* MoteButtonGroupDefaultView.swift */,
-				CA948FA92BB97EAE008D72B3 /* MoteButtonGroupDefaultAlternativeView.swift */,
-				CA154C282BA74B490029855F /* MoteButtonGroupColorView.swift */,
-				CA948FAB2BB97EF5008D72B3 /* MoteButtonGroupColorAlternativeView.swift */,
-				CA3486992B9F56140047D3DA /* KeyboardView.swift */,
+				CA1D34A02BBAB15900C9294E /* Resources */,
+				CA1D34A12BBAB17700C9294E /* Views */,
 				CA1F800A2B95FB4500C5F6B8 /* Extensions */,
 				CA87053C2B668C590066316B /* ViewModels */,
 				CAF5487D2B6687080048F9CF /* Assets.xcassets */,
@@ -501,7 +517,6 @@
 			packageProductDependencies = (
 				CA5FF7332B6785DA009C5DB4 /* WebOSClient */,
 				CA5FF7472B67A3B6009C5DB4 /* Foil */,
-				CA3486952B9CAD200047D3DA /* PopupView */,
 				CA74D4902BAEB80F0082FA11 /* SSDPClient */,
 				CA9E26A92BB595540018B52D /* ActivityIndicatorView */,
 			);
@@ -566,7 +581,6 @@
 			packageReferences = (
 				CA5FF7322B6785DA009C5DB4 /* XCRemoteSwiftPackageReference "WebOSClient" */,
 				CA5FF7462B67A3B6009C5DB4 /* XCRemoteSwiftPackageReference "Foil" */,
-				CA3486942B9CAD200047D3DA /* XCRemoteSwiftPackageReference "PopupView" */,
 				CA74D48F2BAEB80F0082FA11 /* XCRemoteSwiftPackageReference "SSDPClient" */,
 				CA9E26A82BB595540018B52D /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */,
 			);
@@ -646,35 +660,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA1F80092B95F58700C5F6B8 /* UIFont+Rounded.swift in Sources */,
 				CA154C292BA74B490029855F /* MoteButtonGroupColorView.swift in Sources */,
 				CA1F800E2B95FE3C00C5F6B8 /* PreferencesView.swift in Sources */,
 				CA948FAA2BB97EAE008D72B3 /* MoteButtonGroupDefaultAlternativeView.swift in Sources */,
 				CA5FF73A2B6787CA009C5DB4 /* StringExtensions.swift in Sources */,
 				CAC5661B2BAC87F600C23885 /* ToastConfiguration.swift in Sources */,
 				CA948FAC2BB97EF5008D72B3 /* MoteButtonGroupColorAlternativeView.swift in Sources */,
-				CA3BB9742BAC981E00BE6B4E /* AlertView.swift in Sources */,
 				CA6A24982BB6CD9000F44C0D /* WebOSClientDelegate.swift in Sources */,
 				CA1F800C2B95FC6900C5F6B8 /* Globals.swift in Sources */,
 				CAF5487A2B6687070048F9CF /* MoteApp.swift in Sources */,
 				CA3D48922BB6DC9300605749 /* DeviceData.swift in Sources */,
+				CA1D349D2BBAA6E100C9294E /* Strings.swift in Sources */,
 				CA5B9CEE2BB809BB005BAB54 /* GuideView.swift in Sources */,
 				CA3D488C2BB6CF5F00605749 /* SSDPDiscoveryDelegate.swift in Sources */,
 				CA34868E2B9C4EED0047D3DA /* MoteButton.swift in Sources */,
 				CA1F80072B95F35500C5F6B8 /* MoteView.swift in Sources */,
 				CA87053B2B668B2D0066316B /* MoteViewModel.swift in Sources */,
 				CA3486892B9C4E260047D3DA /* MoteButtonGroup.swift in Sources */,
-				CAA8017B2BA87CB300FF1220 /* ToastView.swift in Sources */,
 				CA3D488E2BB6CFE200605749 /* WCSessionDelegate.swift in Sources */,
 				CA3D48942BB6DCAE00605749 /* NavigationScreens.swift in Sources */,
 				CA5AB7822BB47FC200D31666 /* AboutView.swift in Sources */,
+				CA1D349F2BBAB12500C9294E /* UINavigationController+.swift in Sources */,
 				CA34869A2B9F56140047D3DA /* KeyboardView.swift in Sources */,
 				CA34868C2B9C4EC90047D3DA /* MoteButtonRow.swift in Sources */,
 				CA3D48902BB6D64E00605749 /* MoteViewModel+.swift in Sources */,
 				CA3486922B9C50010047D3DA /* MoteButtonType.swift in Sources */,
 				CA5B9CFA2BB87F78005BAB54 /* ToastSheetView.swift in Sources */,
 				CA74D48E2BAEB7200082FA11 /* DeviceDiscoveryView.swift in Sources */,
-				CA4237682BB44B1C0026791E /* MoteTabView.swift in Sources */,
 				CA154C272BA74B240029855F /* MoteButtonGroupDefaultView.swift in Sources */,
 				CA1F7FE42B94495C00C5F6B8 /* AppSettings.swift in Sources */,
 				CA1F7FE12B90D47300C5F6B8 /* BundleExtensions.swift in Sources */,
@@ -1101,14 +1113,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		CA3486942B9CAD200047D3DA /* XCRemoteSwiftPackageReference "PopupView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/exyte/PopupView.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.9.0;
-			};
-		};
 		CA5FF7322B6785DA009C5DB4 /* XCRemoteSwiftPackageReference "WebOSClient" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jareksedy/WebOSClient.git";
@@ -1144,11 +1148,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		CA3486952B9CAD200047D3DA /* PopupView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CA3486942B9CAD200047D3DA /* XCRemoteSwiftPackageReference "PopupView" */;
-			productName = PopupView;
-		};
 		CA5FF7332B6785DA009C5DB4 /* WebOSClient */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CA5FF7322B6785DA009C5DB4 /* XCRemoteSwiftPackageReference "WebOSClient" */;

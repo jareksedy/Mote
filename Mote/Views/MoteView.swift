@@ -45,7 +45,7 @@ struct MoteView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     HStack(spacing: 3.5) {
-                        Text("Mote App")
+                        Text(Strings.General.appName)
                             .font(.system(size: Globals.smallTitleSize, weight: .bold, design: .rounded))
                             .foregroundColor(.accent)
                         Image(
