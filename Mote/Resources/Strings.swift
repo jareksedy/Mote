@@ -9,9 +9,9 @@ enum Strings {
     enum Titles {
         static let preferences = "Preferences"
         static let aboutMote = "About Mote"
-        static let faq = "Frequently aksed questions"
+        static let faq = "Frequently Asked Questions"
         static let connectTV = "Connect TV"
-        static let manuallyEnterIP = "Manually input IP address"
+        static let manuallyEnterIP = "Input IP address manually"
         static let resetConnectionData = "Reset connection data"
 
         static let alternativeLayout = "Alternative layout"

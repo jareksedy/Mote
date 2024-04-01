@@ -29,6 +29,14 @@ extension MoteViewModel {
         }
     }
 
+    func handleScenePhase(_ scenePhase: ScenePhase) {
+        switch scenePhase {
+        case .active: connectAndRegister()
+        case .background: disconnect()
+        default: break
+        }
+    }
+
     func discoverDevices() {
         deviceDiscoveryFinished = false
         devices.removeAll()

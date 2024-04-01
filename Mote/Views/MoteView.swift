@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import PopupView
 
 struct MoteView: View {
     @Environment(\.scenePhase) var scenePhase
@@ -120,13 +119,11 @@ struct MoteView: View {
                 }
             )
             .onChange(of: scenePhase) {
-                switch scenePhase {
-                case .active:
-                    viewModel.connectAndRegister()
-                case .background:
-                    viewModel.disconnect()
-                default:
-                    break
+                viewModel.handleScenePhase(scenePhase)
+            }
+            .onAppear {
+                if AppSettings.shared.host == nil {
+                    viewModel.preferencesPresented = true
                 }
             }
         }

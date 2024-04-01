@@ -26,7 +26,7 @@ struct PreferencesView: View {
                     }
 
                     NavigationLink(value: NavigationScreens.guide) {
-                        Label(Strings.Titles.faq, systemImage: "book.pages")
+                        Label(Strings.Titles.faq, systemImage: "questionmark.circle")
                             .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.secondary)
                     }
@@ -40,7 +40,7 @@ struct PreferencesView: View {
                     }
 
                     Button(action: { enterIpAlertShown.toggle() }, label: {
-                        Label(Strings.Titles.manuallyEnterIP, systemImage: "hand.point.up.left.and.text")
+                        Label(Strings.Titles.manuallyEnterIP, systemImage: "pencil.and.outline")
                             .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.accentColor)
                     })
@@ -68,7 +68,7 @@ struct PreferencesView: View {
 
                     Toggle(
                         Strings.Titles.hapticFeedback,
-                        systemImage: "hand.tap",
+                        systemImage: "target",
                         isOn: $viewModel.preferencesHapticFeedback
                     )
                     .tint(.accent)
@@ -135,8 +135,15 @@ struct PreferencesView: View {
                 Button(Strings.General.cancel, role: .cancel, action: {})
             }
             .onAppear {
-                tvIP = "192.168."
+                if AppSettings.shared.host == nil {
+                    viewModel.navigationPath.append(.discover)
+                }
             }
         }
     }
+}
+
+#Preview {
+    MoteView(viewModel: MoteViewModel())
+        .preferredColorScheme(.dark)
 }

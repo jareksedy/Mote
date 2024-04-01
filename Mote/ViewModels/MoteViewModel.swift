@@ -18,7 +18,6 @@ final class MoteViewModel: NSObject, ObservableObject {
     @Published var isDiscoverDevicesActivityIndicatorShown: Bool = true
     @Published var isToastPresented: Bool = false
     @Published var toastConfiguration: ToastConfiguration?
-    @Published var isAlertPresented: Bool = false
     @Published var colorButtonsPresented: Bool = false
     @Published var playState: String?
     @Published var deviceDiscoveryFinished: Bool = false
