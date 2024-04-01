@@ -42,4 +42,19 @@ extension ToastConfiguration {
         type: .success,
         message: Strings.ToastMessages.connectedAndRegistered
     )
+    
+    static let connected = ToastConfiguration(
+        type: .success,
+        message: Strings.ToastMessages.connectedAndRegistered
+    )
+    
+    static let disconnected = ToastConfiguration(
+        type: .warning,
+        message: Strings.ToastMessages.disconnected
+    )
+    
+    static let goingOff = ToastConfiguration(
+        type: .notification,
+        message: Strings.ToastMessages.tvGoingOff
+    )
 }

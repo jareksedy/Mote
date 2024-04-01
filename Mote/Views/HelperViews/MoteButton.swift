@@ -82,6 +82,7 @@ struct MoteButtonStyle: ButtonStyle {
                         viewModel.send(.turnOff)
                         Task { @MainActor in
                             viewModel.isConnected = false
+                            viewModel.toast(.goingOff)
                         }
                     } else {
                         viewModel.connectAndRegister()

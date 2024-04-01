@@ -44,7 +44,7 @@ struct MoteView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     HStack(spacing: 3.5) {
-                        Text(Strings.General.appName)
+                        Text("Mote")
                             .font(.system(size: Globals.smallTitleSize, weight: .bold, design: .rounded))
                             .foregroundColor(.accent)
                         Image(
@@ -58,7 +58,7 @@ struct MoteView: View {
                     .padding(.leading, Globals.iconPadding)
                     .padding(.top, 10)
                     .onTapGesture {
-                        viewModel.toast(.prompted)
+                        viewModel.showConnectionStatus()
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
@@ -69,6 +69,10 @@ struct MoteView: View {
                         .padding(.top, 10)
                         .onTapGesture {
                             viewModel.keyboardPresented = true
+                            
+                            if viewModel.preferencesHapticFeedback {
+                                UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+                            }
                         }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
@@ -79,6 +83,10 @@ struct MoteView: View {
                         .padding(.top, 10)
                         .onTapGesture {
                             viewModel.preferencesPresented = true
+                            
+                            if viewModel.preferencesHapticFeedback {
+                                UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+                            }
                         }
                 }
             }

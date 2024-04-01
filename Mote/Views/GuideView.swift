@@ -10,13 +10,22 @@ import SwiftUI
 struct GuideView: View {
     @ObservedObject var viewModel: MoteViewModel
     var body: some View {
-        VStack {
-            VStack(alignment: .leading) {
-                DisclosureGroup(Strings.FAQ.q1) {
-                    Text(Strings.FAQ.a1)
-                }
-            }
-            .multilineTextAlignment(.leading)
+        ScrollView {
+            Spacer().frame(height: 25)
+            
+            DisclosureGroup(content: {
+                Text(Strings.FAQ.a1)
+                    .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.leading)
+                    .lineSpacing(Globals.lineHeight)
+            }, label: {
+                Text(Strings.FAQ.q1)
+                    .font(.system(size: Globals.smallTitleSize, weight: .bold, design: .rounded))
+                    .foregroundColor(.primary)
+                    .multilineTextAlignment(.leading)
+                    .lineSpacing(Globals.lineHeight)
+            })
             .padding([.leading, .trailing], 25)
 
             Spacer()

@@ -34,7 +34,7 @@ struct PreferencesView: View {
 
                 Section(Strings.SectionHeaders.connection) {
                     NavigationLink(value: NavigationScreens.discover) {
-                        Label(Strings.Titles.connectTV, systemImage: "network")
+                        Label(Strings.Titles.connectTV, systemImage: "powercord")
                             .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.secondary)
                     }
@@ -134,9 +134,11 @@ struct PreferencesView: View {
                 Button(Strings.General.save, action: { viewModel.setHostManually(host: tvIP) })
                 Button(Strings.General.cancel, role: .cancel, action: {})
             }
-            .onAppear {
+            .onAppear {                
                 if AppSettings.shared.host == nil {
-                    viewModel.navigationPath.append(.discover)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                        viewModel.navigationPath.append(.discover)
+                    }
                 }
             }
         }

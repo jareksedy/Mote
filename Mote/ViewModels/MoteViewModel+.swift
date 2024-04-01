@@ -54,6 +54,10 @@ extension MoteViewModel {
             id: Globals.SubscriptionIds.mediaPlaybackInfoRequestId
         )
     }
+    
+    func showConnectionStatus() {
+        toast(isConnected ? .connected : .disconnected)
+    }
 
     func resetConnectionData() {
         disconnect()

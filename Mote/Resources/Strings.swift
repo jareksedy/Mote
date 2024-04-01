@@ -50,6 +50,8 @@ enum Strings {
     enum ToastMessages {
         static let prompted = "Please accept the registration prompt on the TV"
         static let connectedAndRegistered = "Successfully connected and registered with the TV"
+        static let disconnected = "Disconnected, tap any button to reconnect"
+        static let tvGoingOff = "The TV is going off, tap power button to turn it on again"
     }
 
     enum FAQ {
