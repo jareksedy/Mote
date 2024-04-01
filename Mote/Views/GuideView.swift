@@ -11,6 +11,14 @@ struct GuideView: View {
     @ObservedObject var viewModel: MoteViewModel
     var body: some View {
         VStack {
+            VStack(alignment: .leading) {
+                DisclosureGroup(Strings.FAQ.q1) {
+                    Text(Strings.FAQ.a1)
+                }
+            }
+            .multilineTextAlignment(.leading)
+            .padding([.leading, .trailing], 25)
+
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

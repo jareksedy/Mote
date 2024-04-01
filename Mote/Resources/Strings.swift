@@ -5,6 +5,8 @@
 //  Created by Ярослав Седышев on 01.04.2024.
 //
 
+// swiftlint:disable line_length
+
 enum Strings {
     enum Titles {
         static let preferences = "Preferences"
@@ -50,6 +52,11 @@ enum Strings {
         static let connectedAndRegistered = "Successfully connected and registered with the TV"
     }
 
+    enum FAQ {
+        static let q1 = "How do I pair my LG Smart TV remote control app with my TV?"
+        static let a1 = "This version safely unwraps the URL and WebOSClient instance and avoids force unwrapping. Additionally, it provides error handling for potential failures during initialization. Make sure to adjust the error handling based on your application's needs."
+    }
+
     enum General {
         static let appName = "Mote App"
         static let save = "Save"
@@ -58,3 +65,5 @@ enum Strings {
         static let yourTextHere = "Enter text here..."
     }
 }
+
+// swiftlint:enable line_length
