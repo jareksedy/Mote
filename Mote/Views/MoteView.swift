@@ -43,17 +43,18 @@ struct MoteView: View {
             .background(Color(uiColor: .systemGray6))
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    HStack(spacing: 3.5) {
-                        Text("Mote")
-                            .font(.system(size: Globals.smallTitleSize, weight: .bold, design: .rounded))
-                            .foregroundColor(.accent)
+                    HStack(spacing: 5) {
                         Image(
                             systemName: viewModel.isConnected ?
                             "checkmark.circle.fill" : "exclamationmark.circle"
                         )
                         .font(.system(size: Globals.iconSize, weight: .bold, design: .rounded))
                         .foregroundColor(.accent)
-                        .contentTransition(.symbolEffect(.replace.downUp.byLayer))
+                        .contentTransition(.symbolEffect(.replace.byLayer))
+                        
+                        Text("Mote")
+                            .font(.system(size: Globals.smallTitleSize, weight: .bold, design: .rounded))
+                            .foregroundColor(.accent)
                     }
                     .padding(.leading, Globals.iconPadding)
                     .padding(.top, 10)
@@ -69,10 +70,6 @@ struct MoteView: View {
                         .padding(.top, 10)
                         .onTapGesture {
                             viewModel.keyboardPresented = true
-                            
-                            if viewModel.preferencesHapticFeedback {
-                                UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-                            }
                         }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
@@ -124,6 +121,12 @@ struct MoteView: View {
                         .presentationDetents([.height(175)])
                         .presentationDragIndicator(.visible)
                         .presentationCornerRadius(24)
+                        .onTapGesture {
+                            guard viewModel.toastConfiguration?.closeOnTap == true else {
+                                return
+                            }
+                            viewModel.isToastPresented = false
+                        }
                 }
             )
             .onChange(of: scenePhase) {

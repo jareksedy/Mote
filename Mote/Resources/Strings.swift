@@ -55,8 +55,8 @@ enum Strings {
     }
 
     enum FAQ {
-        static let q1 = "How do I pair my LG Smart TV remote control app with my TV?"
-        static let a1 = "This version safely unwraps the URL and WebOSClient instance and avoids force unwrapping. Additionally, it provides error handling for potential failures during initialization. Make sure to adjust the error handling based on your application's needs."
+        static let q1 = "How do I customize the buttons and layout?"
+        static let a1 = "Safely unwraps the URL and WebOSClient instance and avoids force unwrapping. Additionally, it provides error handling for potential failures during initialization. Make sure to adjust the error handling based on your application's needs."
     }
 
     enum General {

@@ -27,6 +27,9 @@ struct KeyboardView: View {
                 .onAppear {
                     focused = true
                     inputString = ""
+                    if viewModel.preferencesHapticFeedback {
+                        UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+                    }
                 }
                 .font(.system(size: 24, weight: .bold, design: .rounded))
                 .onChange(of: focused) {
