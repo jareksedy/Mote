@@ -19,16 +19,12 @@ struct ToastSheetView: View {
 
     var body: some View {
         VStack {
-            Spacer()
-
             TipView(
                 systemName: configuration.type.systemName,
                 color: configuration.type.iconColor,
                 message: configuration.message
             )
             .padding(.top, 25)
-
-            Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(uiColor: .systemGray6))
