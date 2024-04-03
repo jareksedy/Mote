@@ -53,7 +53,7 @@ struct MoteButtonStyle: ButtonStyle {
                     isBeingPressed = pressing
                 }
 
-                withAnimation(.smooth(duration: pressing ? 0.05 : 0.75)) {
+                withAnimation(.smooth(duration: pressing ? 0 : 0.75)) {
                     isColorChanged = pressing
                 }
 

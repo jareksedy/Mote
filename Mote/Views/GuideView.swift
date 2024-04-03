@@ -9,21 +9,17 @@ import SwiftUI
 
 struct GuideView: View {
     @ObservedObject var viewModel: MoteViewModel
-    
-    var faqItems: [FAQItem] = [
-        FAQItem(question: Strings.FAQ.q1, answer: Strings.FAQ.a1),
-        FAQItem(question: Strings.FAQ.q1, answer: Strings.FAQ.a1),
-        FAQItem(question: Strings.FAQ.q1, answer: Strings.FAQ.a1),
-        FAQItem(question: Strings.FAQ.q1, answer: Strings.FAQ.a1),
-        FAQItem(question: Strings.FAQ.q1, answer: Strings.FAQ.a1),
-        FAQItem(question: Strings.FAQ.q1, answer: Strings.FAQ.a1),
-    ]
-    
+
     var body: some View {
         ScrollView {
-            ForEach(faqItems) { faqItem in
-                DisclosureGroup(faqItem.question) { Text(faqItem.answer) }
-                    .disclosureGroupStyle(MoteFAQDisclosureStyle())
+            ForEach(Array(viewModel.faqItems.enumerated()), id: \.offset) { index, faqItem in
+                DisclosureGroup(
+                    faqItem.question,
+                    isExpanded: $viewModel.faqItems[index].isExpanded
+                ) {
+                    Text(faqItem.answer)
+                }
+                .disclosureGroupStyle(MoteFAQDisclosureStyle())
             }
 
             Spacer()
@@ -55,6 +51,7 @@ struct GuideView: View {
 
 struct MoteFAQDisclosureStyle: DisclosureGroupStyle {
     @EnvironmentObject var viewModel: MoteViewModel
+
     func makeBody(configuration: Configuration) -> some View {
         VStack(alignment: .leading) {
             HStack(spacing: 15) {
@@ -101,5 +98,5 @@ struct FAQItem: Identifiable {
     let id = UUID()
     let question: String
     let answer: String
-    @State var isExpanded: Bool = true
+    var isExpanded: Bool = false
 }

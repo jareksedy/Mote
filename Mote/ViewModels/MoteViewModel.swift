@@ -38,6 +38,16 @@ final class MoteViewModel: NSObject, ObservableObject {
         }
     }
 
+    @Published
+    var faqItems: [FAQItem] = [
+        FAQItem(question: Strings.FAQ.q1, answer: Strings.FAQ.a1, isExpanded: true),
+        FAQItem(question: Strings.FAQ.q1, answer: Strings.FAQ.a1),
+        FAQItem(question: Strings.FAQ.q1, answer: Strings.FAQ.a1),
+        FAQItem(question: Strings.FAQ.q1, answer: Strings.FAQ.a1),
+        FAQItem(question: Strings.FAQ.q1, answer: Strings.FAQ.a1),
+        FAQItem(question: Strings.FAQ.q1, answer: Strings.FAQ.a1)
+    ]
+
     var session: WCSession
     var tv: WebOSClient?
     var ssdpClient = SSDPDiscovery()
