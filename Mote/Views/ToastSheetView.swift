@@ -9,32 +9,26 @@ import SwiftUI
 
 struct ToastSheetView: View {
     @ObservedObject var viewModel: MoteViewModel
-    @State private var animateSymbol: Bool = false
+
+    @State var startTime = Date.now
+    @State var secondsElapsed: Int = 0
+
+    private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
     var configuration: ToastConfiguration
 
     var body: some View {
         VStack {
-            Spacer().frame(height: 25)
+            Spacer()
 
-            Image(systemName: configuration.type.systemName)
-                .font(.system(size: 36, weight: .bold, design: .rounded))
-                .foregroundStyle(.white, configuration.type.iconColor)
-                .padding(.top, 25)
-                .symbolEffect(.bounce.up.byLayer, value: animateSymbol)
-                .onAppear {
-                    animateSymbol.toggle()
-                }
+            TipView(
+                systemName: configuration.type.systemName,
+                color: configuration.type.iconColor,
+                message: configuration.message
+            )
+            .padding(.top, 25)
 
-            Spacer().frame(height: 10)
-
-            Text(configuration.message)
-                .font(.system(size: Globals.bodyFontSize, weight: .bold, design: .rounded))
-                .foregroundColor(.primary)
-                .multilineTextAlignment(.center)
-                .lineSpacing(Globals.lineHeight)
-                .padding([.leading, .trailing], 50)
-
-            Spacer().frame(height: 25)
+            Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(uiColor: .systemGray6))
@@ -43,12 +37,15 @@ struct ToastSheetView: View {
                 UINotificationFeedbackGenerator()
                     .notificationOccurred(configuration.type.getNotificationFeedbackType())
             }
+        }
+        .onReceive(timer) { firedTime in
+            secondsElapsed = Int(firedTime.timeIntervalSince(startTime))
 
             guard let interval = configuration.autohideIn else {
                 return
             }
 
-            DispatchQueue.main.asyncAfter(deadline: .now() + interval) {
+            if secondsElapsed >= Int(interval) {
                 viewModel.isToastPresented = false
             }
         }

@@ -15,17 +15,17 @@ struct DeviceDiscoveryView: View {
         VStack {
             if viewModel.deviceDiscoveryFinished {
                 List(viewModel.devices) { device in
-                    VStack {
+                    Section("Discovered devices") {
                         Label("\(device.name) (\(device.host))", systemImage: "tv")
                             .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
                             .foregroundColor(.secondary)
-                    }
-                    .onTapGesture {
-                        AppSettings.shared.host = device.host
-                        AppSettings.shared.clientKey = nil
-                        viewModel.disconnect()
-                        viewModel.connectAndRegister()
-                        viewModel.preferencesPresented = false
+                            .onTapGesture {
+                                AppSettings.shared.host = device.host
+                                AppSettings.shared.clientKey = nil
+                                viewModel.disconnect()
+                                viewModel.connectAndRegister()
+                                viewModel.preferencesPresented = false
+                            }
                     }
                 }
             } else {
@@ -35,30 +35,17 @@ struct DeviceDiscoveryView: View {
                     isVisible: $viewModel.isDiscoverDevicesActivityIndicatorShown,
                     type: .gradient([Color(uiColor: .systemGray6), .accent], .round, lineWidth: 6)
                 )
-                     .frame(width: 175, height: 175)
-                     .foregroundColor(.accentColor)
-                     .padding(.top, 50)
+                .frame(width: 175, height: 175)
+                .foregroundColor(.accentColor)
+                .padding(.top, 50)
 
                 Spacer()
 
-                VStack {
-                    Image(systemName: "exclamationmark.circle.fill")
-                        .font(.system(size: 36, weight: .bold, design: .rounded))
-                        .foregroundStyle(.white, .accent)
-                        .symbolEffect(.bounce.up.byLayer, value: animateSymbol)
-                        .onAppear {
-                            animateSymbol.toggle()
-                        }
-
-                    Spacer().frame(height: 10)
-
-                    Text(Strings.ConnectTV.importantNote)
-                        .font(.system(size: Globals.bodyFontSize, weight: .bold, design: .rounded))
-                        .foregroundColor(.primary)
-                        .multilineTextAlignment(.center)
-                        .lineSpacing(Globals.lineHeight)
-                        .padding([.leading, .trailing], 50)
-                }
+                TipView(
+                    systemName: "exclamationmark.circle.fill",
+                    color: .accent,
+                    message: Strings.ConnectTV.importantNote
+                )
 
                 Spacer().frame(height: 25)
             }
