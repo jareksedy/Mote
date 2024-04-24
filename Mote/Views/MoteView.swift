@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import VolumeButtonHandler
 
 struct MoteView: View {
     @Environment(\.scenePhase) var scenePhase
     @ObservedObject var viewModel: MoteViewModel
+    @State private var volumeHandler = VolumeButtonHandler()
 
     var body: some View {
         NavigationStack {
@@ -44,6 +46,10 @@ struct MoteView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     HStack(spacing: 5) {
+                        Text("Mote")
+                            .font(.system(size: Globals.smallTitleSize, weight: .bold, design: .rounded))
+                            .foregroundColor(.accent)
+                        
                         Image(
                             systemName: viewModel.isConnected ?
                             "checkmark.circle.fill" : "exclamationmark.circle"
@@ -51,10 +57,6 @@ struct MoteView: View {
                         .font(.system(size: Globals.iconSize, weight: .bold, design: .rounded))
                         .foregroundColor(.accent)
                         .contentTransition(.symbolEffect(.replace.byLayer))
-                        
-                        Text("Mote")
-                            .font(.system(size: Globals.smallTitleSize, weight: .bold, design: .rounded))
-                            .foregroundColor(.accent)
                     }
                     .padding(.leading, Globals.iconPadding)
                     .padding(.top, 10)
@@ -72,6 +74,20 @@ struct MoteView: View {
                             viewModel.keyboardPresented = true
                         }
                 }
+//                ToolbarItem(placement: .topBarTrailing) {
+//                    Image(
+//                        systemName: viewModel.isConnected ?
+//                        "checkmark.circle.fill" : "exclamationmark.triangle.fill"
+//                    )
+//                    .font(.system(size: Globals.iconSize, weight: .bold, design: .rounded))
+//                    .foregroundColor(.secondary)
+//                    .padding(.trailing, Globals.iconPadding)
+//                    .padding(.top, 10)
+//                    .contentTransition(.symbolEffect(.replace.byLayer))
+//                    .onTapGesture {
+//                        viewModel.showConnectionStatus()
+//                    }
+//                }
                 ToolbarItem(placement: .topBarTrailing) {
                     Image(systemName: "gearshape.fill")
                         .font(.system(size: Globals.iconSize, weight: .bold, design: .rounded))
@@ -136,6 +152,20 @@ struct MoteView: View {
                 if AppSettings.shared.host == nil {
                     viewModel.preferencesPresented = true
                 }
+
+                volumeHandler.startHandler(disableSystemVolumeHandler: false)
+
+                volumeHandler.upBlock = {
+                    let volumeLevel = Int(volumeHandler.currentVolume * 100)
+                    viewModel.tv?.send(.setVolume(volumeLevel))
+                }
+                volumeHandler.downBlock = {
+                    let volumeLevel = Int(volumeHandler.currentVolume * 100)
+                    viewModel.tv?.send(.setVolume(volumeLevel))
+                }
+            }
+            .onDisappear {
+                volumeHandler.stopHandler()
             }
         }
     }

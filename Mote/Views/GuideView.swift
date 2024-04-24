@@ -82,7 +82,6 @@ struct MoteFAQDisclosureStyle: DisclosureGroupStyle {
                 configuration.content
                     .font(.system(size: Globals.bodyFontSize, weight: .medium, design: .rounded))
                     .foregroundColor(.secondary)
-                    .opacity(configuration.isExpanded ? 1 : 0)
                     .multilineTextAlignment(.leading)
                     .lineSpacing(Globals.lineHeight)
                     .padding(.top, 5)

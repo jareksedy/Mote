@@ -61,6 +61,7 @@ enum Strings {
 
     enum General {
         static let appName = "Mote App"
+        static let shortAppName = "Mote"
         static let save = "Save"
         static let reset = "Reset"
         static let cancel = "Cancel"

@@ -21,7 +21,7 @@ struct AboutView: View {
                     .foregroundColor(.accent)
 
                 Text(
-                    "\(Strings.General.appName) " +
+                    "\(Strings.General.shortAppName) " +
                     "\(Bundle.main.releaseVersionNumber) " +
                     "(\(Bundle.main.buildVersionNumber))"
                 )
