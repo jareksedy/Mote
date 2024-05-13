@@ -51,9 +51,9 @@ struct MoteButtonGroupColorAlternativeView: View {
                 MoteButton(.volumeDown)
             }
             MoteButtonRow {
-                MoteButton(.rewind)
+                MoteButton(.channelUpAlternative)
                 MoteButton(.playPause)
-                MoteButton(.fastForward)
+                MoteButton(.channelDownAlternative)
             }
         }
     }

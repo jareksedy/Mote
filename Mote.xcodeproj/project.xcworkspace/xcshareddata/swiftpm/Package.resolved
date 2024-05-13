@@ -1,5 +1,5 @@
 {
-  "originHash" : "ba6c0938d5ccbbc8966f9a10e640b52f145ffe0dc09b9b7e5bc95afa1425afd9",
+  "originHash" : "815cdf5a53090c5a85ad63087a2bd6b5e915a59dacbf966a0d9215ea4670408e",
   "pins" : [
     {
       "identity" : "activityindicatorview",
@@ -62,15 +62,6 @@
       "state" : {
         "revision" : "e97a6fcb1ab07462881ac165fdbb37f067e205d5",
         "version" : "1.5.4"
-      }
-    },
-    {
-      "identity" : "volumebuttonhandler",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/CipherBitCorp/VolumeButtonHandler.git",
-      "state" : {
-        "revision" : "345de2790099871c96e9182b5562b7863d2ef362",
-        "version" : "1.1.1"
       }
     },
     {
